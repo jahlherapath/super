@@ -25,7 +25,7 @@ function Footer() {
         display: "flex",
         alignItems: "center",
         backgroundColor: "white",
-        px: 4,
+        px: 5,
       }}
     >
       <p>
