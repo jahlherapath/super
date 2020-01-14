@@ -1,35 +1,71 @@
 import React from "react"
 import { Global, css } from "@emotion/core"
 
-import FoundersGroteskMono from "../../assets/fonts/FoundersGroteskMono.woff"
-import FoundersGroteskRegular from "../../assets/fonts/FoundersGroteskText-Regular.woff"
-import FoundersGroteskBold from "../../assets/fonts/FoundersGrotesk-Bold.woff"
-import FoundersGroteskMedium from "../../assets/fonts/FoundersGroteskText-Medium.woff"
+import NBInternationalMono from "../../assets/fonts/NBInternationalMonoWebfont.woff"
+import NBInternationalRegular from "../../assets/fonts/NBInternationalRegularWebfont.woff"
+import NBInternationalBold from "../../assets/fonts/NBInternationalBoldWebfont.woff"
+
+import MonumentGroteskMono from "../../assets/fonts/MonumentGrotesk-Mono.woff"
+import MonumentGroteskSemiMono from "../../assets/fonts/MonumentGrotesk-SemiMono.woff"
+import MonumentGroteskRegular from "../../assets/fonts/MonumentGrotesk-Regular.woff"
+import MonumentGroteskMedium from "../../assets/fonts/MonumentGrotesk-Medium.woff"
+import MonumentGroteskBold from "../../assets/fonts/MonumentGrotesk-Bold.woff"
 
 const GlobalStyles = () => {
   const styles = css`
     @font-face {
-      font-family: "Founders Grotesk";
-      src: url(${FoundersGroteskBold});
-      font-weight: 700;
+      font-family: "NB International Mono";
+      src: url(${NBInternationalMono});
+      font-weight: normal;
       font-style: normal;
     }
+
     @font-face {
-      font-family: "Founders Grotesk";
-      src: url(${FoundersGroteskMedium});
-      font-weight: 600;
+      font-family: "NB International";
+      src: url(${NBInternationalRegular});
+      font-weight: normal;
       font-style: normal;
     }
+
     @font-face {
-      font-family: "Founders Grotesk";
-      src: url(${FoundersGroteskRegular});
+      font-family: "NB International";
+      src: url(${NBInternationalBold});
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Monument Grotesk Mono";
+      src: url(${MonumentGroteskMono});
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Monument Grotesk SemiMono";
+      src: url(${MonumentGroteskSemiMono});
       font-weight: 400;
       font-style: normal;
     }
+
     @font-face {
-      font-family: "Founders Grotesk";
-      src: url(${FoundersGroteskMono});
-      font-weight: 300;
+      font-family: "Monument Grotesk";
+      src: url(${MonumentGroteskRegular});
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Monument Grotesk";
+      src: url(${MonumentGroteskMedium});
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Monument Grotesk";
+      src: url(${MonumentGroteskBold});
+      font-weight: bold;
       font-style: normal;
     }
   `

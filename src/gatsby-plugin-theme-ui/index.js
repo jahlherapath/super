@@ -1,19 +1,22 @@
 export default {
   colors: {
     text: "#2b2b2b",
-    primary: "#1266e9",
+    primary: "#00ff00",
     black: "black",
     white: "white",
     gray: "#f1f1f1",
   },
   fonts: {
-    body: "'Founders Grotesk', system-ui, sans-serif",
-    heading: "'Founders Grotesk', system-ui, sans-serif",
+    body: "'Monument Grotesk', system-ui, sans-serif",
+    heading: "'Monument Grotesk', system-ui, sans-serif",
+    mono: "'Monument Grotesk Mono', system-ui, sans-serif",
+    semiMono: "'Monument Grotesk SemiMono', system-ui, sans-serif",
   },
   fontWeights: {
-    heading: 700,
+    heading: "bold",
     medium: 600,
-    body: 400,
+    body: 500,
+    semiMono: 400,
     mono: 300,
   },
   lineHeights: {

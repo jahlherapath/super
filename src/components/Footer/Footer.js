@@ -29,7 +29,7 @@ function Footer() {
       }}
     >
       <p>
-        © {new Date().getFullYear()}, All rights reserved &nbsp;
+        © {new Date().getFullYear()}, All rights reserved&nbsp;
         {site.siteMetadata.title}
       </p>
     </footer>
