@@ -10,7 +10,7 @@ import Categories from "./Categories"
 function Card({ node, categories }) {
   const item = node.data.body
   return (
-    <div sx={{ p: 4 }}>
+    <div>
       <Link to={node.uid}>
         <h2
           sx={{

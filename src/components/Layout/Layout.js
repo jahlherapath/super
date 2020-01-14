@@ -17,7 +17,7 @@ class Layout extends React.Component {
       <div>
         <GlobalStyles />
         <Header />
-        <main sx={{ py: 5, px: 4, mt: 5, backgroundColor: "gray" }}>
+        <main sx={{ py: 5, px: 5, mt: 5, backgroundColor: "gray" }}>
           {children}
         </main>
         <Footer />

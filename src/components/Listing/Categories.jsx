@@ -16,7 +16,7 @@ function Categories({ categories }) {
             backgroundColor: "white",
             borderStyle: "solid",
             borderWidth: "1px",
-            borderColor: "primary",
+            borderColor: "text",
             py: 2,
             px: 4,
             m: 1,

@@ -82,17 +82,24 @@ const GlobalStyles = () => {
             textRendering: "optimizeLegibility",
           },
           body: {
-            color: "text",
-            backgroundColor: "white",
+            color: theme.colors.text,
+            backgroundColor: theme.colors.white,
             fontFamily: theme.fonts.body,
             fontWeight: theme.fontWeights.body,
           },
           a: {
-            color: theme.colors.primary,
             textDecoration: "none",
           },
           img: {
             width: "100%",
+          },
+          "h1, h2, h3, h4, h5, h6": {
+            marginTop: theme.space[3],
+            marginBottom: theme.space[3],
+          },
+          p: {
+            marginTop: theme.space[3],
+            marginBottom: theme.space[3],
           },
         })}
       />

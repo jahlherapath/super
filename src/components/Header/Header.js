@@ -5,6 +5,8 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import kebabCase from "lodash/kebabCase"
 
+import Nav from "../Nav/Nav"
+
 function Header() {
   const data = useStaticQuery(graphql`
     query Categories {
@@ -23,23 +25,26 @@ function Header() {
   return (
     <header
       sx={{
-        position: "fixed",
-        bottom: 0,
+        position: "absolute",
+        top: 0,
+        left: 0,
         right: 0,
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
+        alignItems: "center",
         backgroundColor: "white",
-        height: "100%",
-        px: 4,
+        height: "64px",
+        px: 5,
         zIndex: 1,
       }}
     >
-      <Link to="/">Home</Link>
+      <Nav />
+      {/* <Link to="/">Home</Link>
       {data.allPrismicCategory.edges.map(items => (
         <Link to={`/categories/${kebabCase(items.node.data.name)}`}>
           {items.node.data.name}
         </Link>
-      ))}
+      ))} */}
     </header>
   )
 }
