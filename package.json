@@ -1,0 +1,45 @@
+{
+  "name": "gatsby-starter-hello-world",
+  "private": true,
+  "description": "A simplified bare-bones starter for Gatsby",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@mdx-js/react": "^1.5.1",
+    "EventEmitter": "^1.0.0",
+    "emotion": "^10.0.23",
+    "gatsby": "^2.18.4",
+    "gatsby-image": "^2.2.36",
+    "gatsby-plugin-react-helmet": "^3.1.18",
+    "gatsby-plugin-sharp": "^2.3.7",
+    "gatsby-plugin-theme-ui": "^0.2.43",
+    "gatsby-source-prismic": "^2.3.0-alpha.3",
+    "gatsby-transformer-sharp": "^2.3.9",
+    "normalize.css": "^8.0.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "theme-ui": "^0.2.49"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "prettier": "^1.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}
