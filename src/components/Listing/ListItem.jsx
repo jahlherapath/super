@@ -3,12 +3,9 @@ import { jsx } from "theme-ui"
 
 import { Link } from "gatsby"
 
-import Img from "gatsby-image"
-
 import Categories from "./Categories"
 
 function Card({ node, categories }) {
-  const item = node.data.body
   return (
     <div>
       <Link to={node.uid}>
@@ -30,17 +27,6 @@ function Card({ node, categories }) {
           <Categories categories={categories} />
         </div>
       )}
-      {item.map((images, index) => {
-        return (
-          <div key={index}>
-            {images.items.map((item, index) => (
-              <div sx={{ width: "60%" }} key={index}>
-                <Img fluid={item.image.localFile.childImageSharp.fluid} />
-              </div>
-            ))}
-          </div>
-        )
-      })}
     </div>
   )
 }

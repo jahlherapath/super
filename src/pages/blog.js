@@ -34,21 +34,6 @@ export const pageQuery = graphql`
             html
             text
           }
-          body {
-            items {
-              image {
-                alt
-                url
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 1200, quality: 90) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
-              }
-            }
-          }
           categories {
             category {
               document {

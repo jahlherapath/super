@@ -3,15 +3,30 @@ import { jsx } from "theme-ui"
 
 import { graphql } from "gatsby"
 
-import Layout from "../components/Layout/"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
-const Post = ({ data: { prismicPost } }) => {
+// import ImageSlider from "../components/ImageSlider"
+import Layout from "../components/Layout/"
+import Slices from "../components/Slices"
+
+function Post({ data: { prismicPost } }) {
   const { data } = prismicPost
+
   return (
     <Layout>
-      <div sx={{ backgroundColor: "black" }}></div>
+      {/* <ImageSlider /> */}
       <h2>{data.title.text}</h2>
-      <p>{data.content.text}</p>
+      <div dangerouslySetInnerHTML={{ __html: data.content.html }}></div>
+      {data.body.map((slice, index) => (
+        <div key={index}>
+          <Slices
+            key={index}
+            sectionType={slice.slice_type}
+            sectionData={slice}
+          />
+        </div>
+      ))}
     </Layout>
   )
 }
@@ -25,12 +40,36 @@ export const pageQuery = graphql`
       data {
         date
         title {
-          html
           text
         }
         content {
           html
-          text
+        }
+        body {
+          ... on PrismicPostBodyContent {
+            slice_type
+            items {
+              text {
+                html
+              }
+            }
+          }
+          ... on PrismicPostBodyImageGallery {
+            slice_type
+            items {
+              image {
+                alt
+                url
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 90) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

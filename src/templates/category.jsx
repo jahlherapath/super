@@ -10,6 +10,7 @@ const Category = ({
   pageContext: { category },
   data: {
     toggleState,
+    images,
     posts: { nodes, totalCount },
   },
 }) => (
@@ -52,7 +53,20 @@ export const pageQuery = graphql`
             html
             text
           }
-          body {
+          date(formatString: "DD.MM.YYYY")
+          categories {
+            category {
+              document {
+                data {
+                  name
+                }
+              }
+            }
+          }
+        }
+        children {
+          ... on PrismicPostBodyImageGallery {
+            id
             items {
               image {
                 alt
@@ -63,16 +77,6 @@ export const pageQuery = graphql`
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }
-                }
-              }
-            }
-          }
-          date(formatString: "DD.MM.YYYY")
-          categories {
-            category {
-              document {
-                data {
-                  name
                 }
               }
             }
