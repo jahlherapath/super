@@ -5,12 +5,16 @@ import { jsx } from "theme-ui"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import Form from "../components/Form"
 
 function Info() {
   return (
     <Layout>
       <SEO title="Info" />
-      <h1>Info page</h1>
+      <div>
+        <h1>Info page</h1>
+        <Form />
+      </div>
     </Layout>
   )
 }

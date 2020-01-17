@@ -37,6 +37,22 @@ export default {
         pr: 0,
       },
     },
+    label: {
+      py: 3,
+      mt: 2,
+      border: "none",
+    },
+    input: {
+      p: 3,
+      border: "none",
+      backgroundColor: "white",
+    },
+    button: {
+      px: 4,
+      py: 3,
+      border: "none",
+      backgroundColor: "white",
+    },
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
