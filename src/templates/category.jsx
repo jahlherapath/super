@@ -7,10 +7,10 @@ import SEO from "components/SEO"
 import Layout from "components/Layout/"
 import Listing from "components/Listing/"
 
-const Category = ({
+export default ({
   data: {
     toggleState,
-    images,
+    // images,
     posts: { nodes, totalCount },
   },
   pageContext: { category, title, currentPage, numPages, prefix },
@@ -28,8 +28,6 @@ const Category = ({
     />
   </Layout>
 )
-
-export default Category
 
 export const pageQuery = graphql`
   query CategoryPage($category: String!, $skip: Int!, $limit: Int!) {
