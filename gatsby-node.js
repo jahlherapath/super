@@ -118,12 +118,12 @@ exports.createPages = async ({ graphql, actions }) => {
         component: require.resolve("./src/templates/category.jsx"),
         context: {
           title: "Category",
+          prefix: `/categories/${tag}/`,
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
           currentPage: i + 1,
           category,
-          total,
         },
       })
     })
