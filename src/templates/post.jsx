@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -10,28 +10,51 @@ import "slick-carousel/slick/slick-theme.css"
 import Layout from "../components/Layout/"
 import Slices from "../components/Slices"
 
-function Post({ data: { prismicPost } }) {
-  const { data } = prismicPost
-
-  return (
-    <Layout>
-      {/* <ImageSlider /> */}
-      <h2>{data.title.text}</h2>
-      <div dangerouslySetInnerHTML={{ __html: data.content.html }}></div>
-      {data.body.map((slice, index) => (
-        <div key={index}>
-          <Slices
-            key={index}
-            sectionType={slice.slice_type}
-            sectionData={slice}
-          />
-        </div>
-      ))}
-    </Layout>
-  )
-}
-
-export default Post
+export default ({
+  data: {
+    prismicPost: { data },
+  },
+  pageContext: { next, prev },
+}) => (
+  <Layout>
+    {/* <ImageSlider /> */}
+    <h2>{data.title.text}</h2>
+    <div dangerouslySetInnerHTML={{ __html: data.content.html }}></div>
+    {(data.body || []).map((slice, index) => (
+      <div key={index}>
+        <Slices
+          key={index}
+          sectionType={slice.slice_type}
+          sectionData={slice}
+        />
+      </div>
+    ))}
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        marginTop: 20,
+      }}
+    >
+      {prev ? (
+        <Link to={prev.node.uid} rel="prev">
+          ← Prev
+        </Link>
+      ) : (
+        <div />
+      )}
+      {next ? (
+        <Link to={next.node.uid} rel="next">
+          Next →
+        </Link>
+      ) : (
+        <div />
+      )}
+    </div>
+  </Layout>
+)
 
 export const pageQuery = graphql`
   query PostBySlug($uid: String!) {
