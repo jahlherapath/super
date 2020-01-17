@@ -12,7 +12,6 @@ function Card({ node, categories }) {
         <h2
           sx={{
             display: "flex",
-            color: "black",
             m: 0,
           }}
         >
@@ -20,7 +19,8 @@ function Card({ node, categories }) {
         </h2>
       </Link>
       <p>
-        {node.data.content.text}.. <Link to={node.uid}>Read More</Link>
+        {node.data.content.text.substring(0, 100)}... &nbsp;
+        <Link to={node.uid}>Read More</Link>
       </p>
       {categories && (
         <div sx={{ my: 3 }}>

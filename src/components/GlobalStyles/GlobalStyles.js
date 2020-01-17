@@ -88,6 +88,7 @@ const GlobalStyles = () => {
             fontWeight: theme.fontWeights.body,
           },
           a: {
+            color: theme.colors.primary,
             textDecoration: "none",
           },
           img: {

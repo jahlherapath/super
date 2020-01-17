@@ -27,7 +27,7 @@ export default ({
       })}
       {!!Number(numPages) && (
         <div
-          style={{
+          sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -42,29 +42,31 @@ export default ({
             <div />
           )}
           <ul
-            style={{
+            sx={{
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "space-between",
               alignItems: "center",
               listStyle: "none",
-              padding: 0,
+              m: 0,
+              p: 0,
             }}
           >
             {Array.from({ length: numPages }, (_, i) => (
               <li
                 key={`pagination-number${i + 1}`}
-                style={{
-                  margin: 0,
+                sx={{
+                  m: 0,
                 }}
               >
                 <Link
                   to={`${prefix}${i === 0 ? "" : i + 1}`}
-                  style={{
-                    padding: 10,
+                  sx={{
+                    p: 3,
+                    m: 0,
                     textDecoration: "none",
-                    color: i + 1 === currentPage ? "#ffffff" : "",
-                    background: i + 1 === currentPage ? "#007acc" : "",
+                    color: i + 1 === currentPage ? "white" : "",
+                    backgroundColor: i + 1 === currentPage ? "primary" : "",
                   }}
                 >
                   {i + 1}

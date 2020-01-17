@@ -51,12 +51,25 @@ function SectionImageGallery(sectionData) {
   )
 }
 
+function SectionContent(sectionData) {
+  return (
+    <div>
+      {sectionData.items.map((content, index) => (
+        <div
+          key={index}
+          dangerouslySetInnerHTML={{ __html: content.text.html }}
+        />
+      ))}
+    </div>
+  )
+}
+
 const Slices = ({ sectionData, sectionType }) => {
   switch (sectionType) {
     case "image_gallery":
       return <SectionImageGallery {...sectionData} />
     case "content":
-      return "Content"
+      return <SectionContent {...sectionData} />
     default:
       return null
   }

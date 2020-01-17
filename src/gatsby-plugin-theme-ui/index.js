@@ -1,7 +1,7 @@
 export default {
   colors: {
     text: "#2b2b2b",
-    primary: "#00ff00",
+    primary: "#4834d4",
     black: "black",
     white: "white",
     gray: "#f1f1f1",

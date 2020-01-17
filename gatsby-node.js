@@ -44,10 +44,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allPrismicPost.edges
   const postsPerPage = 6
   const numPages = Math.ceil(posts.length / postsPerPage)
+
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/` : `/${i + 1}`,
-      component: require.resolve("./src/templates/blog-list.jsx"),
+      component: require.resolve("./src/templates/blog.jsx"),
       context: {
         title: "Home",
         limit: postsPerPage,
@@ -58,7 +59,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-      component: require.resolve("./src/templates/blog-list.jsx"),
+      component: require.resolve("./src/templates/blog.jsx"),
       context: {
         title: "Blog",
         prefix: "/blog/",
