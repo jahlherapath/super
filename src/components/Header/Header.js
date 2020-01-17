@@ -1,26 +1,26 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { Link, useStaticQuery, graphql } from "gatsby"
+// import { Link, useStaticQuery, graphql } from "gatsby"
 
-import kebabCase from "lodash/kebabCase"
+// import kebabCase from "lodash/kebabCase"
 
 import Nav from "../Nav/Nav"
 
 function Header() {
-  const data = useStaticQuery(graphql`
-    query Categories {
-      allPrismicCategory {
-        edges {
-          node {
-            data {
-              name
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query Categories {
+  //     allPrismicCategory {
+  //       edges {
+  //         node {
+  //           data {
+  //             name
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <header
