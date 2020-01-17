@@ -3,32 +3,40 @@ import { jsx } from "theme-ui"
 
 import { graphql } from "gatsby"
 
-import Layout from "../components/Layout/"
-import Listing from "../components/Listing/"
+import SEO from "components/SEO"
+import Layout from "components/Layout/"
+import Listing from "components/Listing/"
 
 const Category = ({
-  pageContext: { category },
   data: {
     toggleState,
     images,
     posts: { nodes, totalCount },
   },
+  pageContext: { category, title, currentPage, numPages, prefix },
 }) => (
   <Layout>
+    <SEO title={title} />
     <h2>
       {totalCount} {totalCount === 1 ? "Post" : "Posts"}
       {totalCount === 1 ? " was" : " were"} tagged with "{category}"
     </h2>
-    <Listing posts={nodes} toggleState={toggleState} />
+    <Listing
+      posts={nodes}
+      toggleState={toggleState}
+      pageInfo={{ currentPage, numPages, prefix }}
+    />
   </Layout>
 )
 
 export default Category
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String!) {
+  query CategoryPage($category: String!, $skip: Int!, $limit: Int!) {
     posts: allPrismicPost(
       sort: { fields: [data___date], order: DESC }
+      limit: $limit
+      skip: $skip
       filter: {
         data: {
           categories: {
