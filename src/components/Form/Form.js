@@ -23,6 +23,7 @@ function Footer() {
           type="text"
           name="name"
           placeholder="Your name"
+          required
         />
         <label sx={{ variant: "styles.label" }}>Email:</label>
         <input
@@ -30,6 +31,7 @@ function Footer() {
           type="text"
           name="email"
           placeholder="Your email address"
+          required
         />
         <label sx={{ variant: "styles.label" }}>Phone Number:</label>
         <input
@@ -52,6 +54,7 @@ function Footer() {
           name="message"
           placeholder="Type something here..."
           rows="10"
+          required
         />
         <div sx={{ mt: [2, 2, 4] }}>
           <button
