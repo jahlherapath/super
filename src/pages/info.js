@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { graphql } from "gatsby"
+// import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
