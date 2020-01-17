@@ -34,9 +34,9 @@ function Footer() {
         <label sx={{ variant: "styles.label" }}>Phone Number:</label>
         <input
           sx={{ variant: "styles.input" }}
-          type="text"
+          type="tel"
           name="phone-number"
-          placeholder="Your email address"
+          placeholder="Your phone number"
         />
         <label sx={{ variant: "styles.label" }}>Subject:</label>
         <input
