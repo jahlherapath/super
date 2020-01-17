@@ -36,9 +36,13 @@ function SectionImageGallery(sectionData) {
 
   return (
     <div>
-      <button onClick={prev}>Prev</button>
-      <button onClick={next}>Next</button>
-      {activeSlide + 1}
+      {sectionData.items.length > 1 && (
+        <div>
+          <button onClick={prev}>Prev</button>
+          <button onClick={next}>Next</button>
+        </div>
+      )}
+      Slide: {activeSlide + 1}
       <Slider ref={slider} {...settings}>
         {sectionData.items.map((image, index) => (
           <Img
