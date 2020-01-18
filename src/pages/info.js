@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-// import { graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -11,8 +11,8 @@ function Info({ data: { info } }) {
   return (
     <Layout>
       <SEO title="Info" />
-      <div>
-        <h1>Info page</h1>
+      <h1>Info Page</h1>
+      <div sx={{ pt: 3 }}>
         {info.data.about.html && (
           <div dangerouslySetInnerHTML={{ __html: info.data.about.html }} />
         )}

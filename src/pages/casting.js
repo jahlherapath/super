@@ -10,7 +10,7 @@ function Casting() {
   return (
     <Layout>
       <SEO title="Casting" />
-      <h1>Casting page</h1>
+      <h1>Casting Page</h1>
     </Layout>
   )
 }

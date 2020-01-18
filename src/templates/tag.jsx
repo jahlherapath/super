@@ -5,23 +5,23 @@ import { graphql } from "gatsby"
 
 import SEO from "components/SEO"
 import Layout from "components/Layout/"
-import Listing from "components/Listing/"
+import Listing from "components/TalentListing/Listing/"
 
 export default ({
   data: {
     toggleState,
-    posts: { nodes, totalCount },
+    talent: { nodes, totalCount },
   },
-  pageContext: { category, title, currentPage, numPages, prefix },
+  pageContext: { tag, title, currentPage, numPages, prefix },
 }) => (
   <Layout>
     <SEO title={title} />
     <h2>
-      {totalCount} {totalCount === 1 ? "Post" : "Posts"}
-      {totalCount === 1 ? " was" : " were"} tagged with "{category}"
+      {totalCount} {totalCount === 1 ? "Person" : "People"}
+      {totalCount === 1 ? " was" : " were"} tagged with "{tag}"
     </h2>
     <Listing
-      posts={nodes}
+      talent={nodes}
       toggleState={toggleState}
       pageInfo={{ currentPage, numPages, prefix }}
     />
@@ -29,18 +29,15 @@ export default ({
 )
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String!, $skip: Int!, $limit: Int!) {
-    posts: allPrismicPost(
-      sort: { fields: [data___date], order: DESC }
+  query tagPage($tag: String!, $skip: Int!, $limit: Int!) {
+    talent: allPrismicTalent(
       limit: $limit
       skip: $skip
       filter: {
         data: {
-          categories: {
+          tags: {
             elemMatch: {
-              category: {
-                document: { elemMatch: { data: { name: { eq: $category } } } }
-              }
+              tag: { document: { elemMatch: { data: { name: { eq: $tag } } } } }
             }
           }
         }
@@ -50,17 +47,15 @@ export const pageQuery = graphql`
       nodes {
         uid
         data {
-          title {
+          name {
+            text
+          }
+          bio {
             html
             text
           }
-          content {
-            html
-            text
-          }
-          date(formatString: "DD.MM.YYYY")
-          categories {
-            category {
+          tags {
+            tag {
               document {
                 data {
                   name

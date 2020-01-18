@@ -1,4 +1,6 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+
 import { graphql } from "gatsby"
 
 import SEO from "components/SEO"
@@ -13,7 +15,10 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
-    <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
+    <h1>Blog Page</h1>
+    <div sx={{ pt: 3 }}>
+      <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
+    </div>
   </Layout>
 )
 

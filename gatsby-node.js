@@ -14,8 +14,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const postTemplate = require.resolve("./src/templates/post.jsx")
+  const talentTemplate = require.resolve("./src/templates/talent.jsx")
 
-  const result = await wrapper(
+  const postResult = await wrapper(
     graphql(`
       {
         allPrismicPost {
@@ -41,9 +42,36 @@ exports.createPages = async ({ graphql, actions }) => {
     `)
   )
 
-  const posts = result.data.allPrismicPost.edges
+  const talentResult = await wrapper(
+    graphql(`
+      {
+        allPrismicTalent {
+          edges {
+            node {
+              id
+              uid
+              data {
+                tags {
+                  tag {
+                    document {
+                      data {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `)
+  )
+
+  const postList = postResult.data.allPrismicPost.edges
+  const talentList = talentResult.data.allPrismicTalent.edges
   const postsPerPage = 6
-  const numPages = Math.ceil(posts.length / postsPerPage)
+  const numPages = Math.ceil(postList.length / postsPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
@@ -72,9 +100,10 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const categorySet = {}
+  const tagSet = {}
 
   // Double check that the post has a category assigned
-  posts.forEach((edge, idx) => {
+  postList.forEach((edge, idx) => {
     if (edge.node.data.categories[0].category) {
       edge.node.data.categories.forEach(cat => {
         const catName = cat.category.document[0].data.name
@@ -92,8 +121,33 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         // Pass the unique ID (uid) through context so the template can filter by it
         uid: edge.node.uid,
-        next: posts[idx + 1],
-        prev: posts[idx - 1],
+        next: postList[idx + 1],
+        prev: postList[idx - 1],
+      },
+    })
+  })
+
+  // Double check that the post has a tag assigned
+  talentList.forEach((edge, idx) => {
+    if (edge.node.data.tags[0].tag) {
+      edge.node.data.tags.forEach(tag => {
+        const tagName = tag.tag.document[0].data.name
+        if (!tagSet[tagName]) {
+          tagSet[tagName] = 0
+        }
+        tagSet[tagName]++
+      })
+    }
+
+    // The uid you assigned in Prismic is the slug!
+    createPage({
+      path: `/${edge.node.uid}`,
+      component: talentTemplate,
+      context: {
+        // Pass the unique ID (uid) through context so the template can filter by it
+        uid: edge.node.uid,
+        next: talentList[idx + 1],
+        prev: talentList[idx - 1],
       },
     })
   })
@@ -125,6 +179,38 @@ exports.createPages = async ({ graphql, actions }) => {
           numPages,
           currentPage: i + 1,
           category,
+        },
+      })
+    })
+  })
+
+  const tagList = Object.keys(tagSet)
+
+  tagList.forEach(tag => {
+    // createPage({
+    //   path: `/tags/${_.kebabCase(tag)}`,
+    //   component: tagTemplate,
+    //   context: {
+    //     tag,
+    //   },
+    // })
+
+    if (!tagSet[tag]) return
+    const tagValue = _.kebabCase(tag)
+    const total = tagSet[tag]
+    const numPages = Math.ceil(total / postsPerPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/tags/${tagValue}` : `/tags/${tagValue}/${i + 1}`,
+        component: require.resolve("./src/templates/tag.jsx"),
+        context: {
+          title: "Tag",
+          prefix: `/tags/${tagValue}/`,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+          tag,
         },
       })
     })

@@ -8,20 +8,6 @@ import { jsx } from "theme-ui"
 import Nav from "../Nav/Nav"
 
 function Header() {
-  // const data = useStaticQuery(graphql`
-  //   query Categories {
-  //     allPrismicCategory {
-  //       edges {
-  //         node {
-  //           data {
-  //             name
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
   return (
     <header
       sx={{
@@ -39,12 +25,6 @@ function Header() {
       }}
     >
       <Nav />
-      {/* <Link to="/">Home</Link>
-      {data.allPrismicCategory.edges.map(items => (
-        <Link to={`/categories/${kebabCase(items.node.data.name)}`}>
-          {items.node.data.name}
-        </Link>
-      ))} */}
     </header>
   )
 }

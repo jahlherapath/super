@@ -6,7 +6,6 @@ import { graphql, Link } from "gatsby"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
-// import ImageSlider from "../components/ImageSlider"
 import Layout from "../components/Layout/"
 import Slices from "../components/Slices"
 
@@ -17,7 +16,6 @@ export default ({
   pageContext: { next, prev },
 }) => (
   <Layout>
-    {/* <ImageSlider /> */}
     <h2>{data.title.text}</h2>
     <div dangerouslySetInnerHTML={{ __html: data.content.html }}></div>
     {(data.body || []).map((slice, index) => (
@@ -35,7 +33,7 @@ export default ({
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        marginTop: 20,
+        mt: 3,
       }}
     >
       {prev ? (
