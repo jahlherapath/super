@@ -67,6 +67,19 @@ export default {
       fontSize: 8,
       fontWeight: "extraLight",
       lineHeight: "heading",
+      strong: {
+        fontFamily: "display",
+        fontWeight: "medium",
+      },
+      a: {
+        fontFamily: "display",
+        fontWeight: "medium",
+      },
+    },
+    body: {
+      fontFamily: "display",
+      fontWeight: "regular",
+      lineHeight: "body",
     },
     copy: {
       fontFamily: "display",
@@ -127,5 +140,5 @@ export default {
     },
   },
   fontSizes: [8, 10, 12, 13, 15, 16, 20, 24, 28, 30, 32, 48, 64, 72, 84],
-  space: [0, 4, 8, 14, 16, 32, 64, 128, 256, 512],
+  space: [0, 4, 8, 14, 16, 32, 48, 56, 64, 72, 84, 96, 128, 256, 512],
 }

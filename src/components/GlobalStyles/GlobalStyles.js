@@ -99,6 +99,9 @@ const GlobalStyles = () => {
           img: {
             width: "100%",
           },
+          div: {
+            border: "1px solid blue",
+          },
         })}
       />
       <Global styles={styles} />
