@@ -1,71 +1,76 @@
 import React from "react"
 import { Global, css } from "@emotion/core"
 
-import NBInternationalMono from "../../assets/fonts/NBInternationalMonoWebfont.woff"
-import NBInternationalRegular from "../../assets/fonts/NBInternationalRegularWebfont.woff"
-import NBInternationalBold from "../../assets/fonts/NBInternationalBoldWebfont.woff"
+import HelveticaNowDisplayBold from "../../assets/fonts/HelveticaNowDisplay-Bold.woff"
+import HelveticaNowDisplayMedium from "../../assets/fonts/HelveticaNowDisplay-Medium.woff"
+import HelveticaNowDisplayRegular from "../../assets/fonts/HelveticaNowDisplay-Regular.woff"
+import HelveticaNowDisplayExtraLight from "../../assets/fonts/HelveticaNowDisplay-ExtraLight.woff"
 
-import MonumentGroteskMono from "../../assets/fonts/MonumentGrotesk-Mono.woff"
-import MonumentGroteskSemiMono from "../../assets/fonts/MonumentGrotesk-SemiMono.woff"
-import MonumentGroteskRegular from "../../assets/fonts/MonumentGrotesk-Regular.woff"
-import MonumentGroteskMedium from "../../assets/fonts/MonumentGrotesk-Medium.woff"
-import MonumentGroteskBold from "../../assets/fonts/MonumentGrotesk-Bold.woff"
+import HelveticaNowTextBold from "../../assets/fonts/HelveticaNowText-Bold.woff"
+import HelveticaNowTextMedium from "../../assets/fonts/HelveticaNowText-Medium.woff"
+import HelveticaNowTextRegular from "../../assets/fonts/HelveticaNowText-Regular.woff"
+
+import TimesNow from "../../assets/fonts/TimesNow-SemiLight.woff"
+
+import IBMPlexMono from "../../assets/fonts/IBMPlexMono.woff"
 
 const GlobalStyles = () => {
   const styles = css`
     @font-face {
-      font-family: "NB International Mono";
-      src: url(${NBInternationalMono});
-      font-weight: normal;
+      font-family: "Helvetica Now Display";
+      src: url(${HelveticaNowDisplayBold});
+      font-weight: 700;
       font-style: normal;
     }
-
     @font-face {
-      font-family: "NB International";
-      src: url(${NBInternationalRegular});
-      font-weight: normal;
+      font-family: "Helvetica Now Display";
+      src: url(${HelveticaNowDisplayMedium});
+      font-weight: 600;
       font-style: normal;
     }
-
     @font-face {
-      font-family: "NB International";
-      src: url(${NBInternationalBold});
-      font-weight: bold;
+      font-family: "Helvetica Now Display";
+      src: url(${HelveticaNowDisplayRegular});
+      font-weight: 500;
       font-style: normal;
     }
-
     @font-face {
-      font-family: "Monument Grotesk Mono";
-      src: url(${MonumentGroteskMono});
+      font-family: "Helvetica Now Display";
+      src: url(${HelveticaNowDisplayExtraLight});
       font-weight: 300;
       font-style: normal;
     }
 
     @font-face {
-      font-family: "Monument Grotesk SemiMono";
-      src: url(${MonumentGroteskSemiMono});
-      font-weight: 400;
+      font-family: "Helvetica Now Text";
+      src: url(${HelveticaNowTextBold});
+      font-weight: 700;
       font-style: normal;
     }
-
     @font-face {
-      font-family: "Monument Grotesk";
-      src: url(${MonumentGroteskRegular});
+      font-family: "Helvetica Now Text";
+      src: url(${HelveticaNowTextMedium});
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Helvetica Now Text";
+      src: url(${HelveticaNowTextRegular});
       font-weight: 500;
       font-style: normal;
     }
 
     @font-face {
-      font-family: "Monument Grotesk";
-      src: url(${MonumentGroteskMedium});
-      font-weight: 600;
+      font-family: "Times Now";
+      src: url(${TimesNow});
+      font-weight: 300;
       font-style: normal;
     }
 
     @font-face {
-      font-family: "Monument Grotesk";
-      src: url(${MonumentGroteskBold});
-      font-weight: bold;
+      font-family: "IBM Plex Mono";
+      src: url(${IBMPlexMono});
+      font-weight: normal;
       font-style: normal;
     }
   `
@@ -93,14 +98,6 @@ const GlobalStyles = () => {
           },
           img: {
             width: "100%",
-          },
-          "h1, h2, h3, h4, h5, h6": {
-            marginTop: theme.space[3],
-            marginBottom: theme.space[3],
-          },
-          p: {
-            marginTop: theme.space[3],
-            marginBottom: theme.space[3],
           },
         })}
       />

@@ -12,7 +12,6 @@ function Footer() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: ["100%", "100%", "60%"],
           margin: "0 auto",
         }}
       >
@@ -56,15 +55,9 @@ function Footer() {
           rows="10"
           required
         />
-        <div sx={{ mt: [2, 2, 4] }}>
-          <button
-            sx={{ variant: "styles.button" }}
-            type="submit"
-            value="Submit"
-          >
-            Submit
-          </button>
-        </div>
+        <button sx={{ variant: "styles.button" }} type="submit" value="Submit">
+          Submit
+        </button>
       </form>
     </div>
   )
