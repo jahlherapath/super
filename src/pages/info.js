@@ -5,34 +5,38 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import Form from "../components/Form"
+
+import Services from "../assets/services.svg"
+import Talent from "../assets/talent.svg"
+import Contact from "../assets/contact.svg"
 
 function Info({ data: { info } }) {
   return (
     <Layout title="About">
       <SEO title="About" />
-      <div sx={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)" }}>
+      <div
+        sx={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", pb: 12 }}
+      >
         <div
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            gridColumnStart: 4,
-            gridColumnEnd: 10,
-            px: 5,
-            minHeight: "50vh",
+            gridColumnStart: 2,
+            gridColumnEnd: 12,
             textAlign: "center",
-            backgroundColor: "purple100",
+            minHeight: [0, 0, "60vh"],
           }}
         >
           <div
-            sx={{
-              variant: "styles.introLarge",
-            }}
+            sx={{ color: "primary", variant: "styles.introLarge" }}
             dangerouslySetInnerHTML={{ __html: info.data.about.html }}
           />
           {info.data.press_kit.url && (
-            <a href={info.data.press_kit.url}>Download Press Kit</a>
+            <div sx={{ variant: "styles.pressKit" }}>
+              <a href={info.data.press_kit.url}>Download press kit</a>
+              <a href={info.data.press_kit.url}>Download press kit</a>
+            </div>
           )}
         </div>
       </div>
@@ -40,21 +44,22 @@ function Info({ data: { info } }) {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(12, 1fr)",
-          gridGap: 8,
-          px: 8,
-          minHeight: "50vh",
-          backgroundColor: "purple200",
         }}
       >
         <div
           sx={{
             gridColumn: ["span 12", "span 12", "span 4"],
+            px: 6,
+            pb: 8,
           }}
         >
-          <h2 sx={{ textAlign: "center" }}>Services</h2>
+          <div sx={{ width: "220px", m: "0 auto" }}>
+            <img src={Services} alt="Services Icon" />
+          </div>
           <div
             sx={{
               variant: "styles.body",
+              color: "primary",
             }}
             dangerouslySetInnerHTML={{ __html: info.data.services.html }}
           />
@@ -62,12 +67,17 @@ function Info({ data: { info } }) {
         <div
           sx={{
             gridColumn: ["span 12", "span 12", "span 4"],
+            px: 6,
+            pb: 8,
           }}
         >
-          <h2 sx={{ textAlign: "center" }}>Talent</h2>
+          <div sx={{ width: "220px", m: "0 auto" }}>
+            <img src={Talent} alt="Talent Icon" />
+          </div>
           <div
             sx={{
               variant: "styles.body",
+              color: "primary",
             }}
             dangerouslySetInnerHTML={{ __html: info.data.talent.html }}
           />
@@ -75,39 +85,52 @@ function Info({ data: { info } }) {
         <div
           sx={{
             gridColumn: ["span 12", "span 12", "span 4"],
+            px: 6,
+            pb: 8,
           }}
         >
-          <h2 sx={{ textAlign: "center" }}>Contact</h2>
-          {info.data.email.text && (
-            <a
-              sx={{
-                variant: "styles.body",
-                mr: 3,
-              }}
-              href={"mailto:" + info.data.email.text}
-            >
-              Email Us
-            </a>
-          )}
-          {info.data.instagram.text && (
-            <span>
-              insta:{" "}
+          <div sx={{ width: "220px", m: "0 auto" }}>
+            <img src={Contact} alt="Contact Icon" />
+          </div>
+          <div sx={{ mb: 3 }}>
+            {info.data.email.text && (
               <a
                 sx={{
                   variant: "styles.body",
+                  color: "primary",
                   mr: 3,
+                  fontWeight: "bold",
                 }}
-                href={"https://www.instagram.com/" + info.data.instagram.text}
+                href={"mailto:" + info.data.email.text}
               >
-                @{info.data.instagram.text}
+                Email Us
               </a>
-            </span>
-          )}
-          {info.data.phone.text && <span>{info.data.phone.text}</span>}
+            )}
+            {info.data.instagram.text && (
+              <span sx={{ color: "primary", mr: 3 }}>
+                insta:{" "}
+                <a
+                  sx={{
+                    variant: "styles.body",
+                    color: "primary",
+                    fontWeight: "bold",
+                  }}
+                  href={"https://www.instagram.com/" + info.data.instagram.text}
+                >
+                  @{info.data.instagram.text}
+                </a>
+              </span>
+            )}
+            {info.data.phone.text && (
+              <span sx={{ color: "primary" }}>{info.data.phone.text}</span>
+            )}
+          </div>
           {info.data.address.html && (
             <div
               sx={{
                 variant: "styles.body",
+                color: "primary",
+                mb: 3,
               }}
               dangerouslySetInnerHTML={{ __html: info.data.address.html }}
             />
@@ -116,6 +139,8 @@ function Info({ data: { info } }) {
             <div
               sx={{
                 variant: "styles.body",
+                color: "primary",
+                mb: 3,
               }}
               dangerouslySetInnerHTML={{ __html: info.data.contact.html }}
             />

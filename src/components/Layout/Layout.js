@@ -20,7 +20,7 @@ function Layout({ children, title }) {
           position: "fixed",
           top: 0,
           bottom: 0,
-          left: 7,
+          left: [0, 0, 7],
           width: "100vh",
           height: "40px",
           display: "flex",
@@ -29,6 +29,7 @@ function Layout({ children, title }) {
           transformOrigin: "left top",
           transform: "rotate(-90deg) translateX(-100%)",
           textAlign: "center",
+          backgroundColor: "red",
         }}
       >
         <p>
@@ -41,7 +42,7 @@ function Layout({ children, title }) {
           position: "fixed",
           top: 0,
           bottom: 0,
-          right: 7,
+          right: [0, 0, 7],
           width: "100vh",
           height: "40px",
           display: "flex",
@@ -50,6 +51,7 @@ function Layout({ children, title }) {
           transformOrigin: "right top",
           transform: "rotate(90deg) translateX(100%)",
           textAlign: "center",
+          backgroundColor: "red",
         }}
       >
         Page Title
@@ -57,8 +59,9 @@ function Layout({ children, title }) {
       <main
         sx={{
           py: 5,
-          px: 11,
+          px: [3, 3, 11],
           m: "0 auto",
+          minHeight: "100vh",
           backgroundColor: "white",
         }}
       >

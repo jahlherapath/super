@@ -95,12 +95,11 @@ const GlobalStyles = () => {
           a: {
             color: theme.colors.primary,
             textDecoration: "none",
+            borderBottom: "1px solid",
+            borderColor: theme.colors.primary,
           },
           img: {
             width: "100%",
-          },
-          div: {
-            border: "1px solid blue",
           },
         })}
       />

@@ -3,7 +3,7 @@ export default {
     black: "black",
     white: "white",
     text: "black",
-    primary: "#4834D4",
+    primary: "#2421CF",
     gray: "#F1F1F1",
     orange: "#FF823D",
     green: "#00FF00",
@@ -35,7 +35,7 @@ export default {
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.1,
+    heading: 1,
   },
   styles: {
     super: {
@@ -64,7 +64,7 @@ export default {
     },
     introLarge: {
       fontFamily: "serif",
-      fontSize: 8,
+      fontSize: 11,
       fontWeight: "extraLight",
       lineHeight: "heading",
       strong: {
@@ -80,12 +80,44 @@ export default {
       fontFamily: "display",
       fontWeight: "regular",
       lineHeight: "body",
+      p: { m: 0 },
     },
     copy: {
       fontFamily: "display",
       fontSize: 4,
       fontWeight: "extraLight",
       lineHeight: "body",
+    },
+    pressKit: {
+      position: "relative",
+      display: "inline-flex",
+      fontFamily: "display",
+      fontSize: 7,
+      m: "0 auto",
+      "a:nth-of-type(1)": {
+        position: "absolute",
+        left: 0,
+        py: 4,
+        px: 5,
+        transform: "translateX(-50%)",
+        zIndex: 1,
+        color: "white",
+        border: "none",
+        whiteSpace: "nowrap",
+      },
+      "a:nth-of-type(2)": {
+        position: "absolute",
+        left: 0,
+        py: 4,
+        px: 5,
+        transform: "translateX(-50%)",
+        color: "white",
+        backgroundColor: "primary",
+        border: "none",
+        whiteSpace: "nowrap",
+        filter: "blur(10px)",
+        borderRadius: "50px",
+      },
     },
     postLink: {
       fontFamily: "display",
