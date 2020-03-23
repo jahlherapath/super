@@ -104,7 +104,7 @@ export default {
         position: "absolute",
         left: 0,
         transform: "translateX(-50%)",
-        color: "white",
+        color: "primary",
         backgroundColor: "primary",
         border: "none",
         whiteSpace: "nowrap",
@@ -136,6 +136,9 @@ export default {
       variant: "text.serif",
       fontSize: [9, 10, 11],
       textAlign: ["justify", "justify", "center"],
+      p: {
+        m: 0,
+      },
     },
     copyLight: {
       fontFamily: "display",
@@ -150,12 +153,13 @@ export default {
     pressKit: {
       variant: "text.buttonBlur",
       a: {
-        py: 4,
-        px: 5,
-        fontSize: [5, 6, 7],
+        pt: ["15px", "15px", "20px"],
+        pb: ["17px", "17px", "22px"],
+        px: ["30px", "30px", "40px"],
+        fontSize: [6, 6, 7],
         borderRadius: "50px",
         "&:last-of-type": {
-          filter: "blur(9px)",
+          filter: "blur(12px)",
         },
       },
     },

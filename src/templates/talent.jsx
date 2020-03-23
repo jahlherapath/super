@@ -16,13 +16,7 @@ export default ({
     <Container>
       <Left>
         <h1 sx={{ variant: "styles.display" }}>{data.name.text}</h1>
-        <div
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            variant: "styles.mono",
-          }}
-        >
+        <Info>
           {data.location.text && (
             <div sx={{ display: "flex", alignItems: "center" }}>
               <div sx={{ width: "15px" }}>
@@ -66,8 +60,7 @@ export default ({
               <span sx={{ mt: "-3px" }}>{data.availability.text}</span>
             </div>
           )}
-        </div>
-        <a href={"mailto:" + data.contact.text}>{data.contact.text}</a>
+        </Info>
         <h3>Bio</h3>
         <div dangerouslySetInnerHTML={{ __html: data.bio.html }} />
         <h3>Measurements</h3>
@@ -85,6 +78,11 @@ export default ({
           ))}
         </div>
       </Left>
+      <Right>
+        <Contact>
+          <a href={"mailto:" + data.contact.text}>{data.contact.text}</a>
+        </Contact>
+      </Right>
     </Container>
   </Layout>
 )
@@ -121,7 +119,35 @@ const Right = ({ children }) => {
   return (
     <div
       sx={{
+        position: "relative",
         gridColumn: ["span 2", "span 2", "span 1"],
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Info = ({ children }) => {
+  return (
+    <div
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        variant: "styles.mono",
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Contact = ({ children }) => {
+  return (
+    <div
+      sx={{
+        position: "absolute",
+        bottom: 3,
       }}
     >
       {children}

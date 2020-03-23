@@ -17,11 +17,17 @@ export default function About({ data: { about } }) {
       <Intro>
         <div
           sx={{
-            color: "primary",
             variant: "styles.introLarge",
+            color: "primary",
           }}
           dangerouslySetInnerHTML={{ __html: about.data.about.html }}
         />
+        {about.data.press_kit.url && (
+          <div sx={{ variant: "styles.pressKit", py: 8 }}>
+            <a href={about.data.press_kit.url}>Download press kit</a>
+            <a href={about.data.press_kit.url}>Download press kit</a>
+          </div>
+        )}
       </Intro>
       <Content>
         <Columns>
@@ -127,7 +133,7 @@ const Intro = ({ children }) => {
         display: "grid",
         gridTemplateColumns: "repeat(12, 1fr)",
         gridColumnGap: [0, 0, 6],
-        pb: 7,
+        py: 11,
       }}
     >
       <div
@@ -138,7 +144,6 @@ const Intro = ({ children }) => {
           gridColumnStart: [1, 1, 2],
           gridColumnEnd: [13, 13, 12],
           textAlign: "center",
-          minHeight: [0, 0, "60vh"],
         }}
       >
         {children}
