@@ -48,7 +48,7 @@ export default {
       lineHeight: "leadingTight",
       fontWeight: "regular",
       mt: 0,
-      mb: 0,
+      mb: [3, 4, 5],
     },
     body: {
       color: "inherit",
@@ -176,7 +176,7 @@ export default {
       border: "none",
       color: "black",
       backgroundColor: "orange",
-      fontSize: [0, 1, 2],
+      fontSize: [1, 1, 2],
     },
     input: {
       variant: "text.display",
@@ -189,7 +189,8 @@ export default {
       borderRadius: 0,
       color: "white",
       backgroundColor: "orange",
-      fontSize: [5, 6, 7],
+      letterSpacing: -0.9,
+      fontSize: [6, 6, 7],
       "::placeholder": {
         color: "white",
       },
@@ -202,8 +203,8 @@ export default {
       border: "none",
       borderRadius: 0,
       color: "white",
-      backgroundColor: "purple",
-      fontSize: [3, 4, 5],
+      backgroundColor: "orange",
+      fontSize: [4, 4, 5],
       fontWeight: "medium",
       cursor: "pointer",
       "::placeholder": {

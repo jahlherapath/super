@@ -9,7 +9,7 @@ export default function Styleguide() {
   return (
     <Layout>
       <SEO title="Styleguide" />
-      <div sx={{ width: "50%", margin: "0 auto" }}>
+      <div sx={{ width: "50%", margin: "0 auto", pt: 11 }}>
         <Display />
         <Mono />
         <IntroLarge />
@@ -24,7 +24,7 @@ export default function Styleguide() {
 }
 
 const Container = ({ children }) => {
-  return <div sx={{ my: 7 }}>{children}</div>
+  return <div sx={{ mb: 7 }}>{children}</div>
 }
 
 const Label = ({ children }) => {

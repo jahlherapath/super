@@ -20,39 +20,83 @@ function Footer() {
         sx={{ variant: "styles.input" }}
         type="text"
         name="name"
-        placeholder="Your name"
+        placeholder="First and last name"
         required
       />
-      <label sx={{ variant: "styles.label" }}>Email:</label>
+      <label sx={{ variant: "styles.label" }}>Company name</label>
       <input
         sx={{ variant: "styles.input" }}
         type="text"
-        name="email"
-        placeholder="Your email address"
-        required
+        name="company"
+        placeholder="Your company"
       />
-      <label sx={{ variant: "styles.label" }}>Phone Number:</label>
-      <input
-        sx={{ variant: "styles.input" }}
-        type="tel"
-        name="phone-number"
-        placeholder="Your phone number"
-      />
-      <label sx={{ variant: "styles.label" }}>Subject:</label>
-      <input
-        sx={{ variant: "styles.input" }}
-        type="text"
-        name="subject"
-        placeholder="Your enquiry"
-      />
-      <label sx={{ variant: "styles.label" }}>Message:</label>
+      <div
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gridColumnGap: 2,
+          mb: 3,
+        }}
+      >
+        <div
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gridColumn: ["span 2", "span 2", "span 1"],
+          }}
+        >
+          <label sx={{ variant: "styles.label" }}>Email*</label>
+          <input
+            sx={{ variant: "styles.input" }}
+            type="text"
+            name="email"
+            placeholder="Your email address"
+            required
+          />
+        </div>
+        <div
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gridColumn: ["span 2", "span 2", "span 1"],
+          }}
+        >
+          <label sx={{ variant: "styles.label" }}>Phone*</label>
+          <input
+            sx={{ variant: "styles.input" }}
+            type="tel"
+            name="phone"
+            placeholder="Your phone number"
+          />
+        </div>
+      </div>
+      <label sx={{ variant: "styles.label" }}>Product description*</label>
       <textarea
-        sx={{ variant: "styles.input", resize: "none" }}
-        type="text"
-        name="message"
-        placeholder="Type something here..."
-        rows="10"
+        sx={{ variant: "styles.input" }}
+        type="message"
+        name="description"
+        placeholder="Your product description"
+        rows="5"
         required
+      />
+      <label sx={{ variant: "styles.label" }}>Roles / Dates / Locations*</label>
+      <textarea
+        sx={{ variant: "styles.input" }}
+        type="message"
+        name="description"
+        placeholder="Your booking details"
+        rows="5"
+        required
+      />
+      <label sx={{ variant: "styles.label" }}>
+        Compensation & Union Contract Details
+      </label>
+      <textarea
+        sx={{ variant: "styles.input", mb: 3 }}
+        type="message"
+        name="contract"
+        placeholder="Your contract details"
+        rows="5"
       />
       <button sx={{ variant: "styles.button" }} type="submit" value="Submit">
         Submit

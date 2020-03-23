@@ -1,18 +1,85 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-// import { graphql } from "gatsby"
-
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import Form from "../components/Form"
 
-function Casting() {
+export default function Casting({ data: { casting } }) {
   return (
-    <Layout>
+    <Layout title="Casting">
       <SEO title="Casting" />
-      <h1>Casting Page</h1>
+      <Container>
+        <Left>
+          <h1 sx={{ variant: "styles.display" }}>Casting</h1>
+          {casting.data.casting.html && (
+            <div
+              sx={{
+                variant: "styles.intro",
+                p: {
+                  mb: [2, 2, 3],
+                },
+              }}
+              dangerouslySetInnerHTML={{ __html: casting.data.casting.html }}
+            />
+          )}
+        </Left>
+        <Right>
+          <Form />
+        </Right>
+      </Container>
     </Layout>
   )
 }
 
-export default Casting
+const Container = ({ children }) => {
+  return (
+    <div
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        gridRowGap: [5, 5, 0],
+        pt: 11,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Left = ({ children }) => {
+  return (
+    <div
+      sx={{
+        gridColumn: ["span 2", "span 2", "span 1"],
+        px: [0, 0, 6],
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Right = ({ children }) => {
+  return (
+    <div
+      sx={{
+        gridColumn: ["span 2", "span 2", "span 1"],
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+export const castingQuery = graphql`
+  query CastingQuery {
+    casting: prismicInfo {
+      data {
+        casting {
+          html
+        }
+      }
+    }
+  }
+`
