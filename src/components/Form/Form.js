@@ -12,6 +12,7 @@ function Footer() {
         display: "flex",
         flexDirection: "column",
         margin: "0 auto",
+        width: "100%",
       }}
     >
       <input type="hidden" name="form-name" value="contact" />
