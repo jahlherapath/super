@@ -10,7 +10,7 @@ import Services from "../assets/services.svg"
 import Talent from "../assets/talent.svg"
 import Contact from "../assets/contact.svg"
 
-function Info({ data: { info } }) {
+function About({ data: { about } }) {
   return (
     <Layout title="About">
       <SEO title="About" />
@@ -30,12 +30,12 @@ function Info({ data: { info } }) {
         >
           <div
             sx={{ color: "primary", variant: "styles.introLarge" }}
-            dangerouslySetInnerHTML={{ __html: info.data.about.html }}
+            dangerouslySetInnerHTML={{ __html: about.data.about.html }}
           />
-          {info.data.press_kit.url && (
+          {about.data.press_kit.url && (
             <div sx={{ variant: "styles.pressKit" }}>
-              <a href={info.data.press_kit.url}>Download press kit</a>
-              <a href={info.data.press_kit.url}>Download press kit</a>
+              <a href={about.data.press_kit.url}>Download press kit</a>
+              <a href={about.data.press_kit.url}>Download press kit</a>
             </div>
           )}
         </div>
@@ -58,10 +58,10 @@ function Info({ data: { info } }) {
           </div>
           <div
             sx={{
-              variant: "styles.body",
+              variant: "styles.html",
               color: "primary",
             }}
-            dangerouslySetInnerHTML={{ __html: info.data.services.html }}
+            dangerouslySetInnerHTML={{ __html: about.data.services.html }}
           />
         </div>
         <div
@@ -76,10 +76,10 @@ function Info({ data: { info } }) {
           </div>
           <div
             sx={{
-              variant: "styles.body",
+              variant: "styles.html",
               color: "primary",
             }}
-            dangerouslySetInnerHTML={{ __html: info.data.talent.html }}
+            dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
           />
         </div>
         <div
@@ -93,56 +93,58 @@ function Info({ data: { info } }) {
             <img src={Contact} alt="Contact Icon" />
           </div>
           <div sx={{ mb: 3 }}>
-            {info.data.email.text && (
+            {about.data.email.text && (
               <a
                 sx={{
-                  variant: "styles.body",
+                  variant: "styles.html",
                   color: "primary",
                   mr: 3,
                   fontWeight: "bold",
                 }}
-                href={"mailto:" + info.data.email.text}
+                href={"mailto:" + about.data.email.text}
               >
                 Email Us
               </a>
             )}
-            {info.data.instagram.text && (
+            {about.data.instagram.text && (
               <span sx={{ color: "primary", mr: 3 }}>
                 insta:{" "}
                 <a
                   sx={{
-                    variant: "styles.body",
+                    variant: "styles.html",
                     color: "primary",
                     fontWeight: "bold",
                   }}
-                  href={"https://www.instagram.com/" + info.data.instagram.text}
+                  href={
+                    "https://www.instagram.com/" + about.data.instagram.text
+                  }
                 >
-                  @{info.data.instagram.text}
+                  @{about.data.instagram.text}
                 </a>
               </span>
             )}
-            {info.data.phone.text && (
-              <span sx={{ color: "primary" }}>{info.data.phone.text}</span>
+            {about.data.phone.text && (
+              <span sx={{ color: "primary" }}>{about.data.phone.text}</span>
             )}
           </div>
-          {info.data.address.html && (
+          {about.data.address.html && (
             <div
               sx={{
-                variant: "styles.body",
+                variant: "styles.html",
                 color: "primary",
                 mb: 3,
               }}
-              dangerouslySetInnerHTML={{ __html: info.data.address.html }}
+              dangerouslySetInnerHTML={{ __html: about.data.address.html }}
             />
           )}
-          {info.data.contact.html && (
+          {about.data.contact.html && (
             <div
               sx={{
-                variant: "styles.body",
+                variant: "styles.html",
                 color: "primary",
                 mb: 3,
               }}
-              dangerouslySetInnerHTML={{ __html: info.data.contact.html }}
+              dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
             />
           )}
         </div>
@@ -151,11 +153,11 @@ function Info({ data: { info } }) {
   )
 }
 
-export default Info
+export default About
 
-export const infoQuery = graphql`
-  query InfoQuery {
-    info: prismicInfo {
+export const aboutQuery = graphql`
+  query AboutQuery {
+    about: prismicInfo {
       data {
         about {
           html
