@@ -165,8 +165,30 @@ export default {
       fontWeight: "medium",
       py: 3,
       px: 3,
+      mb: 0,
       backgroundColor: "purple",
       color: "white",
+      display: "block",
+      width: "100%",
+      border: "none",
+      "&:nth-of-type(1)": {
+        backgroundColor: "purple100",
+      },
+      "&:nth-of-type(2)": {
+        backgroundColor: "purple200",
+      },
+      "&:nth-of-type(3)": {
+        backgroundColor: "purple300",
+      },
+      "&:nth-of-type(4)": {
+        backgroundColor: "purple400",
+      },
+      "&:nth-of-type(5)": {
+        backgroundColor: "purple500",
+      },
+      "&:nth-of-type(6)": {
+        backgroundColor: "purple600",
+      },
     },
     label: {
       variant: "text.body",
