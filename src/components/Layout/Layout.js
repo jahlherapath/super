@@ -18,10 +18,10 @@ export default function Layout({ children, title }) {
           transform: "rotate(-90deg) translateX(-100%)",
         }}
       >
-        <p sx={{ variant: "styles.html" }}>
+        <div sx={{ variant: "styles.html" }}>
           <span sx={{ variant: "styles.super" }}>Super </span>
           <span sx={{ variant: "styles.html" }}>— {title}</span>
-        </p>
+        </div>
       </SideNav>
       <SideNav
         sx={{
@@ -30,7 +30,7 @@ export default function Layout({ children, title }) {
           transform: "rotate(90deg) translateX(100%)",
         }}
       >
-        <p
+        <div
           sx={{
             variant: "styles.html",
             display: "flex",
@@ -40,12 +40,13 @@ export default function Layout({ children, title }) {
         >
           <span sx={{ variant: "styles.mono" }}>scroll down</span>
           <ArrowDown />
-        </p>
+        </div>
       </SideNav>
       <main
         sx={{
-          py: 8,
-          px: [3, 3, 11],
+          pt: "114px",
+          pb: 7,
+          px: [5, 5, 11],
           m: "0 auto",
           minHeight: "100vh",
           backgroundColor: "white",
@@ -82,12 +83,12 @@ const SideNav = ({ children, ...props }) => {
     <div
       {...props}
       sx={{
+        display: ["none", "none", "flex"],
         position: "fixed",
         top: 0,
         bottom: 0,
         width: "100vh",
         height: "40px",
-        display: "flex",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",

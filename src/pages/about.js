@@ -10,52 +10,24 @@ import Services from "../assets/services.svg"
 import Talent from "../assets/talent.svg"
 import Contact from "../assets/contact.svg"
 
-function About({ data: { about } }) {
+export default function About({ data: { about } }) {
   return (
     <Layout title="About">
       <SEO title="About" />
-      <div
-        sx={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", pb: 12 }}
-      >
+      <Intro>
         <div
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            gridColumnStart: 2,
-            gridColumnEnd: 12,
-            textAlign: "center",
-            minHeight: [0, 0, "60vh"],
+            color: "primary",
+            variant: "styles.introLarge",
           }}
-        >
-          <div
-            sx={{ color: "primary", variant: "styles.introLarge" }}
-            dangerouslySetInnerHTML={{ __html: about.data.about.html }}
-          />
-          {about.data.press_kit.url && (
-            <div sx={{ variant: "styles.pressKit" }}>
-              <a href={about.data.press_kit.url}>Download press kit</a>
-              <a href={about.data.press_kit.url}>Download press kit</a>
-            </div>
-          )}
-        </div>
-      </div>
-      <div
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(12, 1fr)",
-        }}
-      >
-        <div
-          sx={{
-            gridColumn: ["span 12", "span 12", "span 4"],
-            px: 6,
-            pb: 8,
-          }}
-        >
-          <div sx={{ width: "220px", m: "0 auto" }}>
+          dangerouslySetInnerHTML={{ __html: about.data.about.html }}
+        />
+      </Intro>
+      <Content>
+        <Columns>
+          <Icons>
             <img src={Services} alt="Services Icon" />
-          </div>
+          </Icons>
           <div
             sx={{
               variant: "styles.html",
@@ -63,17 +35,11 @@ function About({ data: { about } }) {
             }}
             dangerouslySetInnerHTML={{ __html: about.data.services.html }}
           />
-        </div>
-        <div
-          sx={{
-            gridColumn: ["span 12", "span 12", "span 4"],
-            px: 6,
-            pb: 8,
-          }}
-        >
-          <div sx={{ width: "220px", m: "0 auto" }}>
+        </Columns>
+        <Columns>
+          <Icons>
             <img src={Talent} alt="Talent Icon" />
-          </div>
+          </Icons>
           <div
             sx={{
               variant: "styles.html",
@@ -81,18 +47,12 @@ function About({ data: { about } }) {
             }}
             dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
           />
-        </div>
-        <div
-          sx={{
-            gridColumn: ["span 12", "span 12", "span 4"],
-            px: 6,
-            pb: 8,
-          }}
-        >
-          <div sx={{ width: "220px", m: "0 auto" }}>
+        </Columns>
+        <Columns>
+          <Icons>
             <img src={Contact} alt="Contact Icon" />
-          </div>
-          <div sx={{ mb: 3 }}>
+          </Icons>
+          <Row>
             {about.data.email.text && (
               <a
                 sx={{
@@ -100,6 +60,7 @@ function About({ data: { about } }) {
                   color: "primary",
                   mr: 3,
                   fontWeight: "bold",
+                  lineHeight: "leadingLoose",
                 }}
                 href={"mailto:" + about.data.email.text}
               >
@@ -107,7 +68,9 @@ function About({ data: { about } }) {
               </a>
             )}
             {about.data.instagram.text && (
-              <span sx={{ color: "primary", mr: 3 }}>
+              <span
+                sx={{ color: "primary", mr: 3, lineHeight: "leadingLoose" }}
+              >
                 insta:{" "}
                 <a
                   sx={{
@@ -124,36 +87,100 @@ function About({ data: { about } }) {
               </span>
             )}
             {about.data.phone.text && (
-              <span sx={{ color: "primary" }}>{about.data.phone.text}</span>
+              <span sx={{ color: "primary", lineHeight: "leadingLoose" }}>
+                {about.data.phone.text}
+              </span>
             )}
-          </div>
-          {about.data.address.html && (
-            <div
-              sx={{
-                variant: "styles.html",
-                color: "primary",
-                mb: 3,
-              }}
-              dangerouslySetInnerHTML={{ __html: about.data.address.html }}
-            />
-          )}
-          {about.data.contact.html && (
-            <div
-              sx={{
-                variant: "styles.html",
-                color: "primary",
-                mb: 3,
-              }}
-              dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
-            />
-          )}
-        </div>
-      </div>
+          </Row>
+          <Row>
+            {about.data.address.html && (
+              <div
+                sx={{
+                  variant: "styles.html",
+                  color: "primary",
+                }}
+                dangerouslySetInnerHTML={{ __html: about.data.address.html }}
+              />
+            )}
+          </Row>
+          <Row>
+            {about.data.contact.html && (
+              <div
+                sx={{
+                  variant: "styles.html",
+                  color: "primary",
+                }}
+                dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
+              />
+            )}
+          </Row>
+        </Columns>
+      </Content>
     </Layout>
   )
 }
 
-export default About
+const Intro = ({ children }) => {
+  return (
+    <div
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(12, 1fr)",
+        gridColumnGap: [0, 0, 6],
+        pb: 7,
+      }}
+    >
+      <div
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gridColumnStart: [1, 1, 2],
+          gridColumnEnd: [13, 13, 12],
+          textAlign: "center",
+          minHeight: [0, 0, "60vh"],
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
+const Content = ({ children }) => {
+  return (
+    <div
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(6, 1fr)",
+        gridColumnGap: 6,
+        gridRowGap: 8,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Columns = ({ children }) => {
+  return (
+    <div
+      sx={{
+        gridColumn: ["span 6", "span 6", "span 2"],
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Icons = ({ children }) => {
+  return <div sx={{ width: "220px", m: "0 auto" }}>{children}</div>
+}
+
+const Row = ({ children }) => {
+  return <div sx={{ mb: 3 }}>{children}</div>
+}
 
 export const aboutQuery = graphql`
   query AboutQuery {
