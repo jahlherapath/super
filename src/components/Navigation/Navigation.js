@@ -1,11 +1,316 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { useState } from "react"
+import { Transition } from "react-spring/renderprops"
+
 import { Link } from "gatsby"
+
+export default function Navigation() {
+  const [showMenu, setShowMenu] = useState(false)
+
+  return (
+    <header
+      sx={{
+        position: "fixed",
+        top: [0, 0, 4],
+        left: 0,
+        right: 0,
+        maxWidth: ["auto", "420px", "420px"],
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: showMenu ? "purple100" : "white",
+        height: "70px",
+        m: "0 auto",
+        zIndex: 10,
+        transition: "400ms all ease",
+      }}
+    >
+      <Logo />
+      <div onClick={() => setShowMenu(x => !x)}>
+        <Burger />
+      </div>
+      <Menu show={showMenu} />
+    </header>
+  )
+}
+
+const Links = ({ show }) => {
+  return (
+    <Transition
+      items={show}
+      config={{
+        duration: 200,
+        tension: 210,
+        friction: 20,
+      }}
+      from={{ opacity: 0, transform: "translateY(-2px)" }}
+      enter={{ opacity: 1, transform: "translateY(0)" }}
+      leave={{ opacity: 0, transform: "translateY(-2px)" }}
+    >
+      {show =>
+        show &&
+        (props => (
+          <div
+            style={{
+              ...props,
+            }}
+          >
+            <Link sx={{ variant: "styles.navLink" }} to="/talent">
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  mx: "5px",
+                }}
+              >
+                <div sx={{ display: "flex" }}>
+                  <span>01</span>
+                  Talent
+                </div>
+                <div>
+                  <svg
+                    width="19"
+                    height="16"
+                    viewBox="0 0 19 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18.7071 8.70711C19.0976 8.31658 19.0976 7.68342 18.7071 7.29289L12.3431 0.928931C11.9526 0.538407 11.3195 0.538407 10.9289 0.928931C10.5384 1.31946 10.5384 1.95262 10.9289 2.34314L16.5858 8L10.9289 13.6569C10.5384 14.0474 10.5384 14.6805 10.9289 15.0711C11.3195 15.4616 11.9526 15.4616 12.3431 15.0711L18.7071 8.70711ZM8.74228e-08 9L18 9L18 7L-8.74228e-08 7L8.74228e-08 9Z"
+                      fillOpacity="0.3"
+                      sx={{ fill: "black" }}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+            <Link sx={{ variant: "styles.navLink" }} to="/casting">
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  mx: "5px",
+                }}
+              >
+                <div sx={{ display: "flex" }}>
+                  <span>02</span>
+                  Casting
+                </div>
+                <div>
+                  <svg
+                    width="19"
+                    height="16"
+                    viewBox="0 0 19 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18.7071 8.70711C19.0976 8.31658 19.0976 7.68342 18.7071 7.29289L12.3431 0.928931C11.9526 0.538407 11.3195 0.538407 10.9289 0.928931C10.5384 1.31946 10.5384 1.95262 10.9289 2.34314L16.5858 8L10.9289 13.6569C10.5384 14.0474 10.5384 14.6805 10.9289 15.0711C11.3195 15.4616 11.9526 15.4616 12.3431 15.0711L18.7071 8.70711ZM8.74228e-08 9L18 9L18 7L-8.74228e-08 7L8.74228e-08 9Z"
+                      fillOpacity="0.3"
+                      sx={{ fill: "black" }}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+            <Link sx={{ variant: "styles.navLink" }} to="/blog">
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  mx: "5px",
+                }}
+              >
+                <div sx={{ display: "flex" }}>
+                  <span>03</span>
+                  Journal
+                </div>
+                <div>
+                  <svg
+                    width="19"
+                    height="16"
+                    viewBox="0 0 19 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18.7071 8.70711C19.0976 8.31658 19.0976 7.68342 18.7071 7.29289L12.3431 0.928931C11.9526 0.538407 11.3195 0.538407 10.9289 0.928931C10.5384 1.31946 10.5384 1.95262 10.9289 2.34314L16.5858 8L10.9289 13.6569C10.5384 14.0474 10.5384 14.6805 10.9289 15.0711C11.3195 15.4616 11.9526 15.4616 12.3431 15.0711L18.7071 8.70711ZM8.74228e-08 9L18 9L18 7L-8.74228e-08 7L8.74228e-08 9Z"
+                      fillOpacity="0.3"
+                      sx={{ fill: "black" }}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+            <Link sx={{ variant: "styles.navLink" }} to="/about">
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  mx: "5px",
+                }}
+              >
+                <div sx={{ display: "flex" }}>
+                  <span>04</span>
+                  About
+                </div>
+                <div>
+                  <svg
+                    width="19"
+                    height="16"
+                    viewBox="0 0 19 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18.7071 8.70711C19.0976 8.31658 19.0976 7.68342 18.7071 7.29289L12.3431 0.928931C11.9526 0.538407 11.3195 0.538407 10.9289 0.928931C10.5384 1.31946 10.5384 1.95262 10.9289 2.34314L16.5858 8L10.9289 13.6569C10.5384 14.0474 10.5384 14.6805 10.9289 15.0711C11.3195 15.4616 11.9526 15.4616 12.3431 15.0711L18.7071 8.70711ZM8.74228e-08 9L18 9L18 7L-8.74228e-08 7L8.74228e-08 9Z"
+                      fillOpacity="0.3"
+                      sx={{ fill: "black" }}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+            <div
+              sx={{
+                variant: "styles.navFooter",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                backgroundColor: "purple600",
+              }}
+              to="/styleguide"
+            >
+              <div sx={{ display: "flex", alignItems: "center" }}>
+                <span
+                  sx={{ variant: "styles.super", fontSize: 2, m: 0, ml: "5px" }}
+                >
+                  © SUPER️
+                </span>
+                <span
+                  sx={{ variant: "styles.super", fontSize: 2, m: 0, ml: 1 }}
+                >
+                  2020
+                </span>
+                <span
+                  sx={{ variant: "styles.super", fontSize: 2, m: 0, mx: 1 }}
+                >
+                  —
+                </span>
+                <span
+                  sx={{ variant: "styles.html", fontSize: 2, m: 0, pt: "2px" }}
+                >
+                  All rights reserved.
+                </span>
+              </div>
+              <div sx={{ display: "flex" }}>
+                <a href="#" sx={{ border: "none", width: "23px", mr: 3 }}>
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 23 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.5 2.09706C14.5441 2.09706 14.95 2.09706 16.1676 2.16471C17.3176 2.23235 17.9265 2.43529 18.3324 2.57059C18.8735 2.77353 19.2794 3.04412 19.6853 3.45C20.0912 3.85588 20.3618 4.26176 20.5647 4.80294C20.7 5.20882 20.9029 5.81765 20.9706 6.96765C21.0382 8.18529 21.0382 8.52353 21.0382 11.6353C21.0382 14.7471 21.0382 15.0853 20.9706 16.3029C20.9029 17.4529 20.7 18.0618 20.5647 18.4676C20.3618 19.0088 20.0912 19.4147 19.6853 19.8206C19.2794 20.2265 18.8735 20.4971 18.3324 20.7C17.9265 20.8353 17.3176 21.0382 16.1676 21.1059C14.95 21.1735 14.6118 21.1735 11.5 21.1735C8.38824 21.1735 8.05 21.1735 6.83235 21.1059C5.68235 21.0382 5.07353 20.8353 4.66765 20.7C4.12647 20.4971 3.72059 20.2265 3.31471 19.8206C2.90882 19.4147 2.63824 19.0088 2.43529 18.4676C2.3 18.0618 2.09706 17.4529 2.02941 16.3029C1.96176 15.0853 1.96176 14.7471 1.96176 11.6353C1.96176 8.52353 1.96176 8.18529 2.02941 6.96765C2.16471 5.75 2.36765 5.14118 2.50294 4.73529C2.77353 4.19412 2.97647 3.78824 3.38235 3.38235C3.78824 2.97647 4.19412 2.70588 4.73529 2.50294C5.14118 2.36765 5.75 2.16471 6.9 2.09706C8.05 2.09706 8.45588 2.09706 11.5 2.09706ZM11.5 0C8.38824 0 7.98235 0 6.76471 0.0676471C5.54706 0.135294 4.73529 0.338235 3.99118 0.608823C3.24706 0.879412 2.57059 1.28529 1.96176 1.96176C1.35294 2.57059 0.947059 3.24706 0.608823 3.99118C0.338235 4.66765 0.135294 5.54706 0.0676471 6.76471C0 7.98235 0 8.38824 0 11.5C0 14.6118 0 15.0176 0.0676471 16.2353C0.135294 17.4529 0.338235 18.2647 0.608823 19.0088C0.879412 19.7529 1.28529 20.4294 1.96176 21.0382C2.57059 21.6471 3.24706 22.0529 3.99118 22.3912C4.73529 22.6618 5.54706 22.8647 6.76471 22.9324C7.98235 23 8.38824 23 11.5 23C14.6118 23 15.0176 23 16.2353 22.9324C17.4529 22.8647 18.2647 22.6618 19.0088 22.3912C19.7529 22.1206 20.4294 21.7147 21.0382 21.0382C21.6471 20.4294 22.0529 19.7529 22.3912 19.0088C22.6618 18.2647 22.8647 17.4529 22.9324 16.2353C23 15.0176 23 14.6118 23 11.5C23 8.38824 23 7.98235 22.9324 6.76471C22.8647 5.54706 22.6618 4.73529 22.3912 3.99118C22.1206 3.24706 21.7147 2.57059 21.0382 1.96176C20.4294 1.35294 19.7529 0.947059 19.0088 0.608823C18.2647 0.338235 17.4529 0.135294 16.2353 0.0676471C15.0176 0 14.6118 0 11.5 0Z"
+                      sx={{ fill: "white" }}
+                    />
+                    <path
+                      d="M11.5 5.61469C8.25298 5.61469 5.61475 8.25292 5.61475 11.5C5.61475 14.747 8.25298 17.3853 11.5 17.3853C14.7471 17.3853 17.3853 14.747 17.3853 11.5C17.3853 8.25292 14.7471 5.61469 11.5 5.61469ZM11.5 15.3559C9.40298 15.3559 7.64416 13.6647 7.64416 11.5C7.64416 9.40292 9.33533 7.6441 11.5 7.6441C13.6647 7.6441 15.3559 9.33527 15.3559 11.5C15.3559 13.597 13.5971 15.3559 11.5 15.3559Z"
+                      sx={{ fill: "white" }}
+                    />
+                    <path
+                      d="M17.6559 6.69709C18.4031 6.69709 19.0089 6.09136 19.0089 5.34415C19.0089 4.59694 18.4031 3.99121 17.6559 3.99121C16.9087 3.99121 16.303 4.59694 16.303 5.34415C16.303 6.09136 16.9087 6.69709 17.6559 6.69709Z"
+                      sx={{ fill: "white" }}
+                    />
+                  </svg>
+                </a>
+                <a href="#" sx={{ border: "none", width: "30px" }}>
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 31 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.43374 0.0321221C0.674699 0.0321221 0 0.70678 0 1.46582V19.6827C0 20.4418 0.674699 21.1165 1.43374 21.1165H29.4337C30.1928 21.1165 30.8675 20.4418 30.8675 19.6827V1.3815C30.8675 0.622463 30.1928 -0.0522461 29.4337 -0.0522461H1.43374V0.0321221ZM3.71084 2.14056H27.0723L15.3494 12.9357L3.71084 2.14056ZM2.10843 3.48993L9.36145 10.1526L2.10843 17.4056V3.48993ZM28.6747 3.48993V17.4056L21.4217 10.1526L28.6747 3.48993ZM10.8795 11.5863L14.6747 15.1285C15.0964 15.4658 15.6867 15.4658 16.1084 15.1285L19.9036 11.5863L27.241 18.9237H3.54217L10.8795 11.5863Z"
+                      sx={{ fill: "white" }}
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </Transition>
+  )
+}
+
+const Menu = ({ show }) => {
+  return (
+    <Transition
+      items={show}
+      config={{ duration: 70 }}
+      from={{ height: "0px" }}
+      enter={{ height: "350px" }}
+      leave={{ height: "0px" }}
+    >
+      {show =>
+        show &&
+        (props => (
+          <nav
+            style={{
+              ...props,
+              overflow: "hidden",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              maxWidth: ["auto", "420px", "420px"],
+              margin: "0 auto",
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
+            }}
+            sx={{
+              width: "100%",
+              backgroundColor: "purple100",
+              pt: "70px",
+              zIndex: -1,
+            }}
+          >
+            <Links show={show} />
+          </nav>
+        ))
+      }
+    </Transition>
+  )
+}
 
 const Logo = () => {
   return (
-    <Link to="/" sx={{ width: "127px", border: "none" }}>
+    <Link
+      to="/"
+      sx={{
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1,
+        width: "120px",
+        margin: "0 auto",
+        border: "none",
+      }}
+    >
       <svg
         width="100%"
         height="100%"
@@ -46,52 +351,48 @@ const Logo = () => {
   )
 }
 
-const Links = () => {
+const Burger = () => {
   return (
-    <nav>
-      <Link sx={{ variant: "styles.navLink" }} to="/talent">
-        Talent
-      </Link>
-      <Link sx={{ variant: "styles.navLink" }} to="/casting">
-        Casting
-      </Link>
-      <Link sx={{ variant: "styles.navLink" }} to="/blog">
-        Journal
-      </Link>
-      <Link sx={{ variant: "styles.navLink" }} to="/about">
-        About
-      </Link>
-      <Link sx={{ variant: "styles.navLink" }} to="/styleguide">
-        Styleguide
-      </Link>
-    </nav>
-  )
-}
-
-function Navigation() {
-  return (
-    <header
+    <div
       sx={{
-        position: "fixed",
-        top: 4,
-        left: 0,
-        right: 0,
-        maxWidth: ["auto", "420px", "420px"],
-        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
+        position: "absolute",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        backgroundColor: "white",
-        height: "64px",
-        px: 5,
-        m: "0 auto",
-        zIndex: 1,
+        top: 0,
+        bottom: 0,
+        right: 4,
+        cursor: "pointer",
+        zIndex: 15,
       }}
     >
-      <Logo />
-      <Links />
-    </header>
+      <svg
+        width="28"
+        height="13"
+        viewBox="0 0 28 13"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="1"
+          y1="1"
+          x2="27"
+          y2="1"
+          stroke="black"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <line
+          x1="1"
+          y1="11.7059"
+          x2="27"
+          y2="11.7059"
+          stroke="black"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
   )
 }
-
-export default Navigation
