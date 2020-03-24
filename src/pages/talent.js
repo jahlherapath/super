@@ -9,7 +9,7 @@ import Listing from "../components/TalentListing/Listing"
 
 function Talent({ data: { talent } }) {
   return (
-    <Layout>
+    <Layout title="Talent">
       <SEO title="Talent" />
       <h1>Talent Page</h1>
       <div sx={{ pt: 3 }}>

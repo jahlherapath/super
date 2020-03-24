@@ -34,7 +34,7 @@ function Footer() {
       <div
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
+          gridTemplateColumns: "repeat(6, 1fr)",
           gridColumnGap: 2,
           mb: 3,
         }}
@@ -43,7 +43,7 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gridColumn: ["span 2", "span 2", "span 1"],
+            gridColumn: ["span 6", "span 6", "span 3"],
           }}
         >
           <label sx={{ variant: "styles.label" }}>Email*</label>
@@ -59,7 +59,7 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gridColumn: ["span 2", "span 2", "span 1"],
+            gridColumn: ["span 6", "span 6", "span 3"],
           }}
         >
           <label sx={{ variant: "styles.label" }}>Phone*</label>

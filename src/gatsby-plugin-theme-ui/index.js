@@ -90,7 +90,7 @@ export default {
       position: "relative",
       display: "inline-flex",
       variant: "text.display",
-      m: "0 auto",
+      m: "0 auto !important",
       "a:nth-of-type(1)": {
         position: "absolute",
         left: 0,
@@ -122,6 +122,7 @@ export default {
       variant: "text.display",
       fontSize: [12, 13, 14],
       fontWeight: "medium",
+      wordBreak: "break-all",
     },
     mono: {
       variant: "text.mono",
@@ -131,6 +132,8 @@ export default {
     intro: {
       variant: "text.serif",
       fontSize: [5, 6, 7],
+      mt: [9, 10, 11],
+      mb: [5, 6, 7],
     },
     introLarge: {
       variant: "text.serif",
@@ -147,19 +150,35 @@ export default {
     },
     html: {
       variant: "text.body",
-      p: { variant: "text.body" },
-      a: { variant: "text.body" },
+      p: { variant: "text.body", mb: 4 },
+      a: { variant: "text.body", mb: 4 },
     },
     pressKit: {
       variant: "text.buttonBlur",
       a: {
-        pt: ["15px", "15px", "20px"],
-        pb: ["17px", "17px", "22px"],
-        px: ["30px", "30px", "40px"],
+        pt: ["15px", "15px", "15px"],
+        pb: ["17px", "17px", "17px"],
+        px: ["30px", "30px", "50px"],
         fontSize: [6, 6, 7],
         borderRadius: "50px",
         "&:last-of-type": {
-          filter: "blur(12px)",
+          filter: "blur(9px)",
+        },
+      },
+    },
+    sendMessage: {
+      variant: "text.buttonBlur",
+      a: {
+        pt: ["10px"],
+        pb: ["11px"],
+        px: ["20px"],
+        fontSize: [3],
+        borderRadius: "25px",
+        textTransform: "initial",
+        "&:last-of-type": {
+          color: "purple",
+          backgroundColor: "purple",
+          filter: "blur(4px)",
         },
       },
     },
@@ -173,7 +192,6 @@ export default {
       backgroundColor: "purple",
       color: "white",
       display: "block",
-      width: "100%",
       border: "none",
       "&:nth-of-type(1)": {
         backgroundColor: "purple100",

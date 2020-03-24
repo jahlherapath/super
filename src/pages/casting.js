@@ -37,7 +37,7 @@ const Container = ({ children }) => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
+        gridTemplateColumns: "repeat(6, 1fr)",
         gridRowGap: [5, 5, 0],
         pt: 11,
       }}
@@ -51,8 +51,8 @@ const Left = ({ children }) => {
   return (
     <div
       sx={{
-        gridColumn: ["span 2", "span 2", "span 1"],
-        px: [0, 0, 6],
+        gridColumn: ["span 6", "span 6", "span 3"],
+        px: [0, 0, 11],
       }}
     >
       {children}
@@ -64,7 +64,7 @@ const Right = ({ children }) => {
   return (
     <div
       sx={{
-        gridColumn: ["span 2", "span 2", "span 1"],
+        gridColumn: ["span 6", "span 6", "span 3"],
       }}
     >
       {children}

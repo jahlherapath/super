@@ -13,7 +13,7 @@ export default function Layout({ children, title }) {
       <Navigation />
       <SideNav
         sx={{
-          left: 0,
+          left: 7,
           transformOrigin: "left top",
           transform: "rotate(-90deg) translateX(-100%)",
         }}
@@ -25,7 +25,7 @@ export default function Layout({ children, title }) {
       </SideNav>
       <SideNav
         sx={{
-          right: 0,
+          right: 7,
           transformOrigin: "right top",
           transform: "rotate(90deg) translateX(100%)",
         }}
@@ -92,7 +92,7 @@ const SideNav = ({ children, ...props }) => {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        backgroundColor: "red",
+        // backgroundColor: "red",
       }}
     >
       {children}
