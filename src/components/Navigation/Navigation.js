@@ -398,7 +398,7 @@ const Burger = ({ show }) => {
       sx={{
         position: "absolute",
         right: "18px",
-        top: "3px",
+        top: "0",
         bottom: 0,
         display: "flex",
         alignItems: "center",

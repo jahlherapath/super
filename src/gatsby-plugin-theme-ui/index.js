@@ -122,7 +122,14 @@ export default {
       variant: "text.display",
       fontSize: [12, 13, 14],
       fontWeight: "medium",
-      wordBreak: "break-all",
+      // wordBreak: "break-all",
+    },
+    formMessages: {
+      variant: "text.display",
+      color: "orange",
+      fontSize: 7,
+      fontWeight: "medium",
+      // wordBreak: "break-all",
     },
     mono: {
       variant: "text.mono",

@@ -99,7 +99,7 @@ export default ({
           {data.links.map((link, index) => (
             <a
               key={index}
-              href={link.url.url}
+              href={link.url && link.url.url}
               sx={{
                 variant: "styles.postLink",
               }}
