@@ -24,8 +24,20 @@ export default function About({ data: { about } }) {
         />
         {about.data.press_kit.url && (
           <div sx={{ variant: "styles.pressKit", py: 8 }}>
-            <a href={about.data.press_kit.url}>Download press kit</a>
-            <a href={about.data.press_kit.url}>Download press kit</a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={about.data.press_kit.url}
+            >
+              Download press kit
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={about.data.press_kit.url}
+            >
+              Download press kit
+            </a>
           </div>
         )}
       </Intro>
@@ -79,6 +91,8 @@ export default function About({ data: { about } }) {
               >
                 insta:{" "}
                 <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
                     variant: "styles.html",
                     color: "primary",

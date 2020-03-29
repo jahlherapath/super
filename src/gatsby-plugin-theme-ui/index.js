@@ -131,7 +131,7 @@ export default {
     },
     intro: {
       variant: "text.serif",
-      fontSize: [5, 6, 7],
+      fontSize: [6, 6, 7],
       mt: [5, 6, 7],
       mb: [5, 6, 7],
     },
@@ -225,6 +225,23 @@ export default {
       border: "none",
       m: "0 !important",
       p: 4,
+      transition: "300ms all ease",
+      "&:hover": {
+        color: "black",
+        svg: {
+          transform: "translateX(0)",
+        },
+        path: {
+          fillOpacity: 1,
+        },
+      },
+      svg: {
+        transform: "translateX(-4px)",
+        transition: "300ms all ease",
+      },
+      path: {
+        transition: "300ms all ease",
+      },
       span: {
         display: "inline-block",
         fontSize: 3,

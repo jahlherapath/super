@@ -1,13 +1,25 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Transition } from "react-spring/renderprops"
 
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 export default function Navigation() {
   const [showMenu, setShowMenu] = useState()
+
+  const handler = () => setShowMenu(false)
+
+  useEffect(() => {
+    window.addEventListener("scroll", handler)
+    window.addEventListener("resize", handler)
+
+    return () => {
+      window.removeEventListener("scroll", handler)
+      window.removeEventListener("resize", handler)
+    }
+  }, [])
 
   return (
     <header
@@ -38,6 +50,23 @@ export default function Navigation() {
 }
 
 const Links = ({ show }) => {
+  const { prismicInfo } = useStaticQuery(
+    graphql`
+      query {
+        prismicInfo {
+          data {
+            email {
+              text
+            }
+            instagram {
+              text
+            }
+          }
+        }
+      }
+    `
+  )
+
   return (
     <Transition
       items={show}
@@ -58,6 +87,7 @@ const Links = ({ show }) => {
               ...props,
             }}
           >
+            {console.log(prismicInfo.data.email.text)}
             <Link sx={{ variant: "styles.navLink" }} to="/talent">
               <div
                 sx={{
@@ -211,7 +241,15 @@ const Links = ({ show }) => {
                 </span>
               </div>
               <div sx={{ display: "flex" }}>
-                <a href="#" sx={{ border: "none", width: "23px", mr: 3 }}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={
+                    "https://www.instagram.com/" +
+                    prismicInfo.data.instagram.text
+                  }
+                  sx={{ border: "none", width: "23px", mr: 3 }}
+                >
                   <svg
                     width="100%"
                     height="100%"
@@ -233,7 +271,10 @@ const Links = ({ show }) => {
                     />
                   </svg>
                 </a>
-                <a href="#" sx={{ border: "none", width: "30px" }}>
+                <a
+                  href={"mailto:" + prismicInfo.data.email.text}
+                  sx={{ border: "none", width: "30px" }}
+                >
                   <svg
                     width="100%"
                     height="100%"
@@ -260,7 +301,7 @@ const Menu = ({ show }) => {
   return (
     <Transition
       items={show}
-      config={{ duration: 70 }}
+      config={{ duration: 150 }}
       from={{ height: "0px" }}
       enter={{ height: "350px" }}
       leave={{ height: "0px" }}
@@ -392,7 +433,6 @@ const Burger = ({ show }) => {
         <span
           sx={{
             transform: show ? "rotate(-45deg)" : "",
-            top: "19.5px",
             top: show ? "19.5px" : "15.5px",
             left: "4px",
           }}
