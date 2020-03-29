@@ -48,7 +48,7 @@ export default {
       lineHeight: "leadingTight",
       fontWeight: "regular",
       mt: 0,
-      mb: [3, 4, 5],
+      mb: 0,
     },
     body: {
       color: "inherit",
@@ -132,7 +132,7 @@ export default {
     intro: {
       variant: "text.serif",
       fontSize: [5, 6, 7],
-      mt: [9, 10, 11],
+      mt: [5, 6, 7],
       mb: [5, 6, 7],
     },
     introLarge: {

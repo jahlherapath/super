@@ -7,15 +7,15 @@ import { Transition } from "react-spring/renderprops"
 import { Link } from "gatsby"
 
 export default function Navigation() {
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState()
 
   return (
     <header
       sx={{
         position: "fixed",
-        top: [0, 0, 4],
-        left: 0,
-        right: 0,
+        top: 4,
+        left: 4,
+        right: 4,
         maxWidth: ["auto", "420px", "420px"],
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
         display: "flex",
@@ -30,7 +30,7 @@ export default function Navigation() {
     >
       <Logo />
       <div onClick={() => setShowMenu(x => !x)}>
-        <Burger />
+        <Burger show={showMenu} />
       </div>
       <Menu show={showMenu} />
     </header>
@@ -351,48 +351,53 @@ const Logo = () => {
   )
 }
 
-const Burger = () => {
+const Burger = ({ show }) => {
   return (
     <div
       sx={{
         position: "absolute",
+        right: "18px",
+        top: "3px",
+        bottom: 0,
         display: "flex",
         alignItems: "center",
-        top: 0,
-        bottom: 0,
-        right: 4,
+        transform: "scale(-1, 1)",
         cursor: "pointer",
-        zIndex: 15,
       }}
     >
-      <svg
-        width="28"
-        height="13"
-        viewBox="0 0 28 13"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+      <div
+        sx={{
+          position: "relative",
+          marginBottom: "-1.5px",
+          width: "30px",
+          height: "22.5px",
+          span: {
+            position: "absolute",
+            width: "100%",
+            height: "2px",
+            transition: "250ms all ease-in-out",
+            borderRadius: "9px",
+            transformOrigin: "left center",
+            backgroundColor: "black",
+          },
+        }}
       >
-        <line
-          x1="1"
-          y1="1"
-          x2="27"
-          y2="1"
-          stroke="black"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <line
-          x1="1"
-          y1="11.7059"
-          x2="27"
-          y2="11.7059"
-          stroke="black"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+        <span
+          sx={{
+            transform: show ? "rotate(45deg)" : "",
+            top: show ? "-1.5px" : "2.5px",
+            left: "4px",
+          }}
+        ></span>
+        <span
+          sx={{
+            transform: show ? "rotate(-45deg)" : "",
+            top: "19.5px",
+            top: show ? "19.5px" : "15.5px",
+            left: "4px",
+          }}
+        ></span>
+      </div>
     </div>
   )
 }
