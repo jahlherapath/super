@@ -122,14 +122,14 @@ export default {
       variant: "text.display",
       fontSize: [12, 13, 14],
       fontWeight: "medium",
-      // wordBreak: "break-all",
+      wordBreak: "break-all",
     },
     formMessages: {
       variant: "text.display",
       color: "orange",
       fontSize: 7,
       fontWeight: "medium",
-      // wordBreak: "break-all",
+      wordBreak: "break-all",
     },
     mono: {
       variant: "text.mono",
@@ -185,6 +185,25 @@ export default {
         "&:last-of-type": {
           color: "purple",
           backgroundColor: "purple",
+          filter: "blur(4px)",
+        },
+      },
+    },
+    filterLink: {
+      variant: "text.buttonBlur",
+      a: {
+        pt: ["10px"],
+        pb: ["11px"],
+        px: ["30px"],
+        fontSize: [3],
+        borderRadius: "25px",
+        textTransform: "initial",
+        "&:nth-of-type(1)": {
+          color: "black",
+        },
+        "&:last-of-type": {
+          color: "green",
+          backgroundColor: "green",
           filter: "blur(4px)",
         },
       },
