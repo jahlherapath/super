@@ -13,7 +13,7 @@ export default ({
   },
   pageContext: { next, prev },
 }) => (
-  <Layout title={"Talent — " + data.name.text}>
+  <Layout title={"Talent — " + data.name.text} scrollText="Scroll media">
     <SEO title={data.name.text} />
     <Container>
       <Left>

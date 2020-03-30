@@ -420,7 +420,7 @@ const Burger = ({ show }) => {
             position: "absolute",
             width: "100%",
             height: "2px",
-            transition: "250ms all ease-in-out",
+            transition: "150ms all ease-in-out",
             borderRadius: "9px",
             transformOrigin: "left center",
             backgroundColor: "black",

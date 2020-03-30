@@ -6,7 +6,7 @@ import "normalize.css"
 import Navigation from "../Navigation"
 import GlobalStyles from "../GlobalStyles"
 
-export default function Layout({ children, title }) {
+export default function Layout({ children, title, scrollText }) {
   return (
     <div>
       <GlobalStyles />
@@ -38,7 +38,9 @@ export default function Layout({ children, title }) {
             justifyContent: "center",
           }}
         >
-          <span sx={{ variant: "styles.mono" }}>scroll down</span>
+          <span sx={{ variant: "styles.mono" }}>
+            {scrollText && scrollText ? scrollText : "Scroll down"}
+          </span>
           <ArrowDown />
         </div>
       </SideNav>
