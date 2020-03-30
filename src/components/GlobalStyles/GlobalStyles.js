@@ -59,19 +59,36 @@ const GlobalStyles = () => {
       font-weight: 500;
       font-style: normal;
     }
-
     @font-face {
       font-family: "Times Now";
       src: url(${TimesNow});
       font-weight: 300;
       font-style: normal;
     }
-
     @font-face {
       font-family: "IBM Plex Mono";
       src: url(${IBMPlexMono});
       font-weight: normal;
       font-style: normal;
+    }
+
+    .my-masonry-grid {
+      display: flex;
+      margin-top: -232px;
+      margin-bottom: -232px;
+      margin-left: -16px;
+      width: auto;
+      overflow: hidden;
+    }
+    .my-masonry-grid_column {
+      padding-left: 16px;
+      background-clip: padding-box;
+    }
+    .my-masonry-grid_column > div {
+      margin-bottom: 16px;
+    }
+    .my-masonry-grid_column:nth-of-type(even) > div:first-of-type {
+      margin-top: 100px;
     }
   `
 
@@ -95,10 +112,9 @@ const GlobalStyles = () => {
           a: {
             color: theme.colors.primary,
             textDecoration: "none",
-            borderBottom: "1px solid",
-            borderColor: theme.colors.primary,
           },
           img: {
+            display: "block",
             width: "100%",
           },
         })}

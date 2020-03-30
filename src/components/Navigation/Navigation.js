@@ -41,7 +41,12 @@ export default function Navigation() {
       }}
     >
       <Logo />
-      <div onClick={() => setShowMenu(x => !x)}>
+      <div
+        role="button"
+        tabIndex="0"
+        onClick={() => setShowMenu(x => !x)}
+        onKeyDown={() => setShowMenu(x => !x)}
+      >
         <Burger show={showMenu} />
       </div>
       <Menu show={showMenu} />
@@ -87,8 +92,7 @@ const Links = ({ show }) => {
               ...props,
             }}
           >
-            {console.log(prismicInfo.data.email.text)}
-            <Link sx={{ variant: "styles.navLink" }} to="/talent">
+            <Link sx={{ variant: "styles.navLink" }} to="/">
               <div
                 sx={{
                   display: "flex",

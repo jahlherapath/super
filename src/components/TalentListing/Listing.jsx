@@ -5,6 +5,10 @@ import { Link } from "gatsby"
 
 import ListItem from "./ListItem"
 
+import Masonry from "react-masonry-css"
+
+import { Fragment } from "react"
+
 export default ({
   talent,
   pageInfo: { currentPage = 0, numPages = 0, prefix = "/" } = {},
@@ -14,15 +18,28 @@ export default ({
   const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
   const nextPage = (currentPage + 1).toString()
 
+  const breakpointCols = {
+    default: 3,
+    1100: 3,
+    700: 2,
+    500: 1,
+  }
+
   return (
-    <div>
-      {talent.map(post => {
-        let tags = false
-        if (post.data.tags[0].tag) {
-          tags = post.data.tags.map(t => t.tag.document[0].data.name)
-        }
-        return <ListItem key={post.uid} node={post} tags={tags} />
-      })}
+    <Fragment>
+      <Masonry
+        breakpointCols={breakpointCols}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {talent.map(post => {
+          let tags = false
+          if (post.data.tags[0].tag) {
+            tags = post.data.tags.map(t => t.tag.document[0].data.name)
+          }
+          return <ListItem key={post.uid} node={post} tags={tags} />
+        })}
+      </Masonry>
       {!!Number(numPages) && (
         <div
           sx={{
@@ -81,6 +98,6 @@ export default ({
           )}
         </div>
       )}
-    </div>
+    </Fragment>
   )
 }

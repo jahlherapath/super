@@ -219,6 +219,15 @@ export default {
         backgroundColor: "purple600",
       },
     },
+    hoverText: {
+      variant: "text.display",
+      fontWeight: "medium",
+      letterSpacing: -0.9,
+      color: "white",
+      m: 0,
+      p: 0,
+      transition: "300ms all ease",
+    },
     navLink: {
       variant: "text.display",
       display: "flex",
@@ -294,6 +303,7 @@ export default {
       color: "black",
       backgroundColor: "orange",
       fontSize: [1, 1, 2],
+      fontWeight: "medium",
     },
     input: {
       variant: "text.display",
@@ -308,21 +318,29 @@ export default {
       backgroundColor: "orange",
       letterSpacing: -0.9,
       fontSize: [6, 6, 7],
+      "&:focus": {
+        "::placeholder": {
+          color: "white",
+          opacity: 1,
+        },
+      },
       "::placeholder": {
         color: "white",
+        opacity: 0.6,
       },
     },
     button: {
       variant: "text.display",
       px: 4,
-      height: "50px",
+      height: ["50px", "50px", "60px"],
       outline: "none",
       border: "none",
       borderRadius: 0,
       color: "white",
       backgroundColor: "orange",
-      fontSize: [4, 4, 5],
       fontWeight: "medium",
+      letterSpacing: -0.9,
+      fontSize: [6, 6, 7],
       cursor: "pointer",
       "::placeholder": {
         color: "white",

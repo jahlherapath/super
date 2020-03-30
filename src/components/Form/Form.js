@@ -37,7 +37,9 @@ function Footer() {
               }}
             >
               <input type="hidden" name="form-name" value="contact" />
-              <label sx={{ variant: "styles.label" }}>Name:</label>
+              <label htmlFor="name" sx={{ variant: "styles.label" }}>
+                Name:
+              </label>
               <input
                 sx={{ variant: "styles.input" }}
                 type="text"
@@ -45,7 +47,9 @@ function Footer() {
                 placeholder="First and last name"
                 required
               />
-              <label sx={{ variant: "styles.label" }}>Company name</label>
+              <label htmlFor="company" sx={{ variant: "styles.label" }}>
+                Company name
+              </label>
               <input
                 sx={{ variant: "styles.input" }}
                 type="text"
@@ -67,7 +71,9 @@ function Footer() {
                     gridColumn: ["span 6", "span 6", "span 3"],
                   }}
                 >
-                  <label sx={{ variant: "styles.label" }}>Email*</label>
+                  <label htmlFor="email" sx={{ variant: "styles.label" }}>
+                    Email*
+                  </label>
                   <input
                     sx={{ variant: "styles.input" }}
                     type="text"
@@ -83,7 +89,9 @@ function Footer() {
                     gridColumn: ["span 6", "span 6", "span 3"],
                   }}
                 >
-                  <label sx={{ variant: "styles.label" }}>Phone*</label>
+                  <label htmlFor="phone" sx={{ variant: "styles.label" }}>
+                    Phone*
+                  </label>
                   <input
                     sx={{ variant: "styles.input" }}
                     type="tel"
@@ -92,7 +100,7 @@ function Footer() {
                   />
                 </div>
               </div>
-              <label sx={{ variant: "styles.label" }}>
+              <label htmlFor="description" sx={{ variant: "styles.label" }}>
                 Product description*
               </label>
               <textarea
@@ -103,18 +111,18 @@ function Footer() {
                 rows="5"
                 required
               />
-              <label sx={{ variant: "styles.label" }}>
+              <label htmlFor="booking" sx={{ variant: "styles.label" }}>
                 Roles / Dates / Locations*
               </label>
               <textarea
                 sx={{ variant: "styles.input" }}
                 type="message"
-                name="description"
+                name="booking"
                 placeholder="Your booking details"
                 rows="5"
                 required
               />
-              <label sx={{ variant: "styles.label" }}>
+              <label htmlFor="contract" sx={{ variant: "styles.label" }}>
                 Compensation & Union Contract Details
               </label>
               <textarea

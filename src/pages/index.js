@@ -11,7 +11,6 @@ function Index({ data: { talent } }) {
   return (
     <Layout title="Talent">
       <SEO title="Talent" />
-      <h1>Talent Page</h1>
       <div sx={{ pt: 3 }}>
         <Listing talent={talent.nodes} />
       </div>
@@ -25,7 +24,6 @@ export const pageQuery = graphql`
   query IndexQuery {
     talent: allPrismicTalent(
       sort: { fields: [data___name___text], order: DESC }
-      limit: 10
     ) {
       nodes {
         uid
@@ -55,6 +53,15 @@ export const pageQuery = graphql`
           }
           measurements {
             html
+          }
+          thumbnail {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 70) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
           links {
             title {
