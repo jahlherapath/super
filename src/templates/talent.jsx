@@ -77,24 +77,6 @@ export default ({
             dangerouslySetInnerHTML={{ __html: data.bio.html }}
           />
         )}
-        {data.measurements.html && (
-          <div
-            sx={{ variant: "styles.html" }}
-            dangerouslySetInnerHTML={{ __html: data.measurements.html }}
-          />
-        )}
-        {data.race.html && (
-          <div
-            sx={{ variant: "styles.html" }}
-            dangerouslySetInnerHTML={{ __html: data.race.html }}
-          />
-        )}
-        {data.metadata.html && (
-          <div
-            sx={{ variant: "styles.html" }}
-            dangerouslySetInnerHTML={{ __html: data.metadata.html }}
-          />
-        )}
         <div sx={{ mt: 6 }}>
           {data.links.map((link, index) => (
             <a
@@ -295,20 +277,8 @@ export const pageQuery = graphql`
         bio {
           html
         }
-        age {
-          text
-        }
         pgp {
           text
-        }
-        race {
-          html
-        }
-        metadata {
-          html
-        }
-        measurements {
-          html
         }
         gallery {
           image {

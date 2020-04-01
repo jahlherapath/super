@@ -45,15 +45,6 @@ export const pageQuery = graphql`
             html
             text
           }
-          age {
-            text
-          }
-          pgp {
-            text
-          }
-          measurements {
-            html
-          }
           thumbnail {
             localFile {
               childImageSharp {

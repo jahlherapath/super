@@ -15,10 +15,7 @@ export default function Casting({ data: { casting } }) {
           {casting.data.casting.html && (
             <div
               sx={{
-                variant: "styles.intro",
-                p: {
-                  mb: [2, 2, 3],
-                },
+                variant: "styles.html",
               }}
               dangerouslySetInnerHTML={{ __html: casting.data.casting.html }}
             />
@@ -38,8 +35,6 @@ const Container = ({ children }) => {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
-        gridRowGap: [5, 5, 0],
-        pt: 11,
       }}
     >
       {children}
@@ -52,7 +47,7 @@ const Left = ({ children }) => {
     <div
       sx={{
         gridColumn: ["span 6", "span 6", "span 3"],
-        px: [0, 0, 11],
+        pr: 7,
       }}
     >
       {children}

@@ -38,7 +38,7 @@ function Footer() {
             >
               <input type="hidden" name="form-name" value="contact" />
               <label htmlFor="name" sx={{ variant: "styles.label" }}>
-                Name:
+                Name*
               </label>
               <input
                 sx={{ variant: "styles.input" }}
@@ -48,7 +48,7 @@ function Footer() {
                 required
               />
               <label htmlFor="company" sx={{ variant: "styles.label" }}>
-                Company name
+                Company name*
               </label>
               <input
                 sx={{ variant: "styles.input" }}
@@ -100,44 +100,23 @@ function Footer() {
                   />
                 </div>
               </div>
-              <label htmlFor="description" sx={{ variant: "styles.label" }}>
-                Product description*
+              <label htmlFor="biography" sx={{ variant: "styles.label" }}>
+                Biography*
               </label>
               <textarea
                 sx={{ variant: "styles.input" }}
                 type="message"
-                name="description"
-                placeholder="Your product description"
+                name="biography"
+                placeholder="A little about you"
                 rows="5"
                 required
-              />
-              <label htmlFor="booking" sx={{ variant: "styles.label" }}>
-                Roles / Dates / Locations*
-              </label>
-              <textarea
-                sx={{ variant: "styles.input" }}
-                type="message"
-                name="booking"
-                placeholder="Your booking details"
-                rows="5"
-                required
-              />
-              <label htmlFor="contract" sx={{ variant: "styles.label" }}>
-                Compensation & Union Contract Details
-              </label>
-              <textarea
-                sx={{ variant: "styles.input", mb: 3 }}
-                type="message"
-                name="contract"
-                placeholder="Your contract details"
-                rows="5"
               />
               <button
                 sx={{ variant: "styles.button" }}
                 type="submit"
                 value="Submit"
               >
-                Submit
+                Submit your application
               </button>
             </div>
           )}

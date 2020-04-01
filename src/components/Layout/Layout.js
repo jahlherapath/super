@@ -1,28 +1,26 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import "normalize.css"
+import { Fragment } from "react"
 
 import Navigation from "../Navigation"
 import GlobalStyles from "../GlobalStyles"
 
-export default function Layout({ children, title, scrollText }) {
+export default function Layout({ children }) {
   return (
-    <div>
+    <Fragment>
       <GlobalStyles />
       <Navigation />
       <main
         sx={{
-          pt: "114px",
-          pb: 7,
-          px: [5, 5, 11],
-          m: "0 auto",
           minHeight: "100vh",
-          backgroundColor: "white",
+          m: "0 auto",
+          pt: 12,
+          px: 5,
         }}
       >
         {children}
       </main>
-    </div>
+    </Fragment>
   )
 }

@@ -8,13 +8,17 @@ const GlobalStyles = () => {
     <div>
       <Global
         styles={theme => ({
+          "*": {
+            outline: "none",
+            boxSizing: "border-box",
+          },
           html: {
             margin: 0,
             padding: 0,
             WebkitFontSmoothing: "antialiased",
             MozOsxFontSmoothing: "grayscale",
             textRendering: "optimizeLegibility",
-            outline: "none",
+            backgroundColor: theme.colors.background,
           },
           body: {
             color: theme.colors.text,
@@ -22,7 +26,6 @@ const GlobalStyles = () => {
           a: {
             textDecoration: "none",
           },
-          button: {},
           img: {
             display: "block",
             width: "100%",
