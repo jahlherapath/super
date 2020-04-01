@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Nostra";
+  src: url("./fonts/Nostrav.woff2") format("woff2"),
+    url("./fonts/Nostrav.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aktiv Grotesk";
+  src: url("./fonts/AktivGrotesk-Light.woff2") format("woff2"),
+    url("./fonts/AktivGrotesk-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Suisse Regular";
+  src: url("./fonts/Suisse.woff2") format("woff2"),
+    url("./fonts/Suisse.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Suisse Regular";
+  src: url("./fonts/Suisse-Light.woff2") format("woff2"),
+    url("./fonts/Suisse-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Suisse Mono";
+  src: url("./fonts/SuisseMono-Regular.woff2") format("woff2"),
+    url("./fonts/SuisseMono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
