@@ -6,32 +6,24 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-import Services from "../assets/services.svg"
-import Talent from "../assets/talent.svg"
-import Contact from "../assets/contact.svg"
-
 export default function About({ data: { about } }) {
   return (
-    <Layout title="About">
+    <Layout>
       <SEO title="About" />
       <Intro>
         <div
           sx={{
-            variant: "styles.introLarge",
-            color: "primary",
+            variant: "styles.about",
+            mb: 5,
           }}
           dangerouslySetInnerHTML={{ __html: about.data.about.html }}
         />
         {about.data.press_kit.url && (
-          <div sx={{ variant: "styles.pressKit", py: 8 }}>
+          <div>
             <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={about.data.press_kit.url}
-            >
-              Download press kit
-            </a>
-            <a
+              sx={{
+                variant: "styles.button",
+              }}
               target="_blank"
               rel="noopener noreferrer"
               href={about.data.press_kit.url}
@@ -43,42 +35,30 @@ export default function About({ data: { about } }) {
       </Intro>
       <Content>
         <Columns>
-          <Icons>
-            <img src={Services} alt="Services Icon" />
-          </Icons>
+          <Title>Services</Title>
           <div
             sx={{
               variant: "styles.html",
-              color: "primary",
             }}
             dangerouslySetInnerHTML={{ __html: about.data.services.html }}
           />
         </Columns>
         <Columns>
-          <Icons>
-            <img src={Talent} alt="Talent Icon" />
-          </Icons>
+          <Title>Talent</Title>
           <div
             sx={{
               variant: "styles.html",
-              color: "primary",
             }}
             dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
           />
         </Columns>
         <Columns>
-          <Icons>
-            <img src={Contact} alt="Contact Icon" />
-          </Icons>
+          <Title>Contact</Title>
           <Row>
             {about.data.email.text && (
               <a
                 sx={{
-                  variant: "styles.html",
-                  color: "primary",
                   mr: 3,
-                  fontWeight: "bold",
-                  lineHeight: "leadingLoose",
                 }}
                 href={"mailto:" + about.data.email.text}
               >
@@ -86,18 +66,11 @@ export default function About({ data: { about } }) {
               </a>
             )}
             {about.data.instagram.text && (
-              <span
-                sx={{ color: "primary", mr: 3, lineHeight: "leadingLoose" }}
-              >
+              <span sx={{ mr: 3 }}>
                 insta:{" "}
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  sx={{
-                    variant: "styles.html",
-                    color: "primary",
-                    fontWeight: "bold",
-                  }}
                   href={
                     "https://www.instagram.com/" + about.data.instagram.text
                   }
@@ -106,19 +79,11 @@ export default function About({ data: { about } }) {
                 </a>
               </span>
             )}
-            {about.data.phone.text && (
-              <span sx={{ color: "primary", lineHeight: "leadingLoose" }}>
-                {about.data.phone.text}
-              </span>
-            )}
+            {about.data.phone.text && <span>{about.data.phone.text}</span>}
           </Row>
           <Row>
             {about.data.address.html && (
               <div
-                sx={{
-                  variant: "styles.html",
-                  color: "primary",
-                }}
                 dangerouslySetInnerHTML={{ __html: about.data.address.html }}
               />
             )}
@@ -126,10 +91,6 @@ export default function About({ data: { about } }) {
           <Row>
             {about.data.contact.html && (
               <div
-                sx={{
-                  variant: "styles.html",
-                  color: "primary",
-                }}
                 dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
               />
             )}
@@ -146,8 +107,7 @@ const Intro = ({ children }) => {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(12, 1fr)",
-        gridColumnGap: [0, 0, 6],
-        py: 11,
+        py: 7,
       }}
     >
       <div
@@ -174,6 +134,7 @@ const Content = ({ children }) => {
         gridTemplateColumns: "repeat(6, 1fr)",
         gridColumnGap: 6,
         gridRowGap: 8,
+        mt: 7,
       }}
     >
       {children}
@@ -186,6 +147,7 @@ const Columns = ({ children }) => {
     <div
       sx={{
         gridColumn: ["span 6", "span 6", "span 2"],
+        variant: "styles.html",
       }}
     >
       {children}
@@ -193,8 +155,19 @@ const Columns = ({ children }) => {
   )
 }
 
-const Icons = ({ children }) => {
-  return <div sx={{ width: "220px", m: "0 auto" }}>{children}</div>
+const Title = ({ children }) => {
+  return (
+    <h3
+      sx={{
+        variant: "styles.display",
+        fontSize: 9,
+        mb: 3,
+        textAlign: "center",
+      }}
+    >
+      {children}
+    </h3>
+  )
 }
 
 const Row = ({ children }) => {

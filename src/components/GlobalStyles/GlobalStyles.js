@@ -21,10 +21,14 @@ const GlobalStyles = () => {
             backgroundColor: theme.colors.background,
           },
           body: {
+            margin: 0,
+            padding: 0,
             color: theme.colors.text,
           },
           a: {
+            color: "inherit",
             textDecoration: "none",
+            fontWeight: "normal",
           },
           img: {
             display: "block",

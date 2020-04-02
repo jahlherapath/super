@@ -70,7 +70,7 @@ const Menu = ({ show }) => {
       items={show}
       config={{ duration: 150 }}
       from={{ height: "0px" }}
-      enter={{ height: "350px" }}
+      enter={{ height: "381px" }}
       leave={{ height: "0px" }}
     >
       {show =>

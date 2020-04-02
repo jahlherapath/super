@@ -154,8 +154,8 @@ const Filter = () => {
                 <rect x="7" y="7" width="1" height="1" sx={{ fill: "black" }} />
                 <rect x="8" y="6" width="1" height="1" sx={{ fill: "black" }} />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M5 -4.37113e-08L5 10L4 10L4 0L5 -4.37113e-08Z"
                   sx={{ fill: "black" }}
                 />
@@ -195,8 +195,8 @@ const Filter = () => {
                 <rect x="7" y="7" width="1" height="1" sx={{ fill: "green" }} />
                 <rect x="8" y="6" width="1" height="1" sx={{ fill: "green" }} />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M5 -4.37113e-08L5 10L4 10L4 0L5 -4.37113e-08Z"
                   sx={{ fill: "green" }}
                 />

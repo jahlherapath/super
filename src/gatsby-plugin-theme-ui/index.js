@@ -31,6 +31,7 @@ export default {
       fontWeight: "regular",
       mt: 0,
       mb: 0,
+      wordBreak: "break-all",
     },
     menu: {
       color: "inherit",
@@ -60,16 +61,40 @@ export default {
   styles: {
     display: {
       variant: "text.display",
-      fontSize: 10,
+      fontSize: [8, 9, 10],
+      mt: 0,
+      mb: 3,
+    },
+    about: {
+      variant: "text.body",
+      p: {
+        fontSize: [8, 9, 10],
+        mt: 0,
+        mb: 2,
+      },
+      strong: {
+        fontFamily: "display",
+        fontWeight: "regular",
+      },
     },
     html: {
       variant: "text.body",
+      fontSize: [1, 1, 2],
+      mt: 0,
+      mb: 2,
       p: {
-        fontSize: 2,
+        fontSize: [1, 1, 2],
+        mt: 0,
+        mb: 2,
       },
       strong: {
         fontWeight: "regular",
       },
+    },
+    mono: {
+      variant: "text.mono",
+      fontSize: 1,
+      textTransform: "uppercase",
     },
     label: {
       variant: "text.mono",
@@ -97,13 +122,17 @@ export default {
     button: {
       variant: "text.body",
       px: 5,
-      height: "50px",
-      borderRadius: "25px",
+      width: ["100%", "100%", "auto"],
+      height: ["30px", "30px", "40px"],
+      borderRadius: ["15px", "15px", "20px"],
       borderColor: "black",
       border: "1px solid",
       backgroundColor: "white",
-      fontSize: 4,
+      fontSize: [3, 3, 4],
       textTransform: "uppercase",
+      display: "inline-flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
     navigation: {
       variant: "text.menu",

@@ -7,7 +7,7 @@ import Form from "../components/Form"
 
 export default function Casting({ data: { casting } }) {
   return (
-    <Layout title="Casting">
+    <Layout>
       <SEO title="Casting" />
       <Container>
         <Left>
@@ -34,7 +34,7 @@ const Container = ({ children }) => {
     <div
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(6, 1fr)",
+        gridTemplateColumns: "repeat(2, 1fr)",
       }}
     >
       {children}
@@ -46,7 +46,7 @@ const Left = ({ children }) => {
   return (
     <div
       sx={{
-        gridColumn: ["span 6", "span 6", "span 3"],
+        gridColumn: ["span 2", "span 2", "span 1"],
         pr: 7,
       }}
     >
@@ -59,7 +59,7 @@ const Right = ({ children }) => {
   return (
     <div
       sx={{
-        gridColumn: ["span 6", "span 6", "span 3"],
+        gridColumn: ["span 2", "span 2", "span 1"],
       }}
     >
       {children}
