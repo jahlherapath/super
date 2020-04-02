@@ -8,7 +8,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
-import { useState, useRef } from "react"
+import { useRef } from "react"
 
 function Talent({
   data: { prismicTalent, prismicInfo },
@@ -136,7 +136,6 @@ function Talent({
                 position: "absolute",
                 top: 12,
                 right: [-9, -9, -12],
-                width: "300px",
                 width: ["200px", "200px", "300px"],
 
                 zIndex: 2,
@@ -254,6 +253,7 @@ const Emblem = () => {
         left: [-9, -9, 5],
         width: ["150px", "150px", "200px"],
         height: ["150px", "150px", "200px"],
+        animation: "spin 30s linear infinite",
         zIndex: 1,
       }}
     >
