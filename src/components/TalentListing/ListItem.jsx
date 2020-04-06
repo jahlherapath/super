@@ -10,14 +10,28 @@ function Card({ node, index }) {
       key={index}
       to={node.uid}
       sx={{
-        display: "inline-block",
-        width: "25%",
+        float: "right",
+        width: ["100%", "100%", "25%"],
       }}
     >
-      <Img
-        sx={{ p: 4, backgroundColor: "offWhite" }}
-        fluid={node.data.thumbnail.localFile.childImageSharp.fluid}
-      />
+      <div sx={{ backgroundColor: "offWhite", p: 3, pb: 3, m: 3 }}>
+        <Img fluid={node.data.thumbnail.localFile.childImageSharp.fluid} />
+        <div
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            pt: 3,
+          }}
+        >
+          <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
+            {node.data.name.text}
+          </p>
+          <p sx={{ fontFamily: "display", fontSize: 2, p: 0, m: 0 }}>
+            {node.data.location.text}
+          </p>
+        </div>
+      </div>
     </Link>
   )
 }
