@@ -78,6 +78,11 @@ export default {
         fontWeight: "regular",
       },
     },
+    date: {
+      variant: "text.body",
+      fontWeight: "regular",
+      fontSize: [2, 2, 3],
+    },
     html: {
       variant: "text.body",
       fontSize: [1, 1, 2],
@@ -86,9 +91,13 @@ export default {
       p: {
         fontSize: [1, 1, 2],
         mt: 0,
-        mb: 2,
+        mb: 3,
       },
       strong: {
+        fontWeight: "regular",
+      },
+      "h1, h2, h3, h4, h5, h6": {
+        variant: "text.body",
         fontWeight: "regular",
       },
     },
@@ -123,7 +132,7 @@ export default {
     button: {
       variant: "text.body",
       px: 5,
-      width: ["100%", "100%", "auto"],
+      width: "40px",
       height: ["30px", "30px", "40px"],
       borderRadius: ["15px", "15px", "20px"],
       borderColor: "black",
@@ -134,6 +143,24 @@ export default {
       display: "inline-flex",
       justifyContent: "center",
       alignItems: "center",
+      cursor: "pointer",
+    },
+    carouselButton: {
+      variant: "text.body",
+      height: ["50px", "50px", "100px"],
+      borderColor: "black",
+      border: "1px solid",
+      backgroundColor: "transparent",
+      fontSize: [3, 3, 4],
+      textTransform: "uppercase",
+      display: "inline-flex",
+      justifyContent: "center",
+      alignItems: "center",
+      cursor: "pointer",
+      transition: "200ms all ease",
+      "&:hover": {
+        backgroundColor: "white",
+      },
     },
     navigation: {
       variant: "text.menu",

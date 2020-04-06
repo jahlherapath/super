@@ -16,8 +16,14 @@ export default ({
   pageContext: { next, prev },
 }) => (
   <Layout>
-    <h2>{data.title.text}</h2>
-    <div dangerouslySetInnerHTML={{ __html: data.content.html }}></div>
+    <div sx={{ textAlign: "center", mb: 5 }}>
+      <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
+      <p sx={{ variant: "styles.date" }}>{data.date}</p>
+    </div>
+    <div
+      sx={{ variant: "styles.html", mb: 5 }}
+      dangerouslySetInnerHTML={{ __html: data.content.html }}
+    ></div>
     {(data.body || []).map((slice, index) => (
       <div key={index}>
         <Slices
@@ -28,24 +34,40 @@ export default ({
       </div>
     ))}
     <div
-      style={{
+      sx={{
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        mt: 3,
+        mt: 5,
       }}
     >
       {prev ? (
-        <Link to={prev.node.uid} rel="prev">
-          ← Prev
+        <Link
+          to={prev.node.uid}
+          sx={{
+            variant: "styles.mono",
+            display: "flex",
+            alignItems: "center",
+          }}
+          rel="prev"
+        >
+          <ArrowLeft sx={{ color: "black" }} /> Prev Article
         </Link>
       ) : (
         <div />
       )}
       {next ? (
-        <Link to={next.node.uid} rel="next">
-          Next →
+        <Link
+          to={next.node.uid}
+          sx={{
+            variant: "styles.mono",
+            display: "flex",
+            alignItems: "center",
+          }}
+          rel="next"
+        >
+          Next Article <ArrowRight />
         </Link>
       ) : (
         <div />
@@ -59,7 +81,7 @@ export const pageQuery = graphql`
     prismicPost(uid: { eq: $uid }) {
       uid
       data {
-        date
+        date(formatString: "MMMM Do, YYYY")
         title {
           text
         }
@@ -96,3 +118,57 @@ export const pageQuery = graphql`
     }
   }
 `
+
+const ArrowLeft = () => {
+  return (
+    <svg
+      width="40"
+      height="25"
+      viewBox="0 0 40 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      sx={{ mt: "-2px", mr: 3 }}
+    >
+      <rect width="40" height="25" />
+      <path
+        d="M36 12.5H5"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+      <path
+        d="M10 17.5L5 12.5L10 7.5"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+    </svg>
+  )
+}
+
+const ArrowRight = () => {
+  return (
+    <svg
+      width="40"
+      height="25"
+      viewBox="0 0 40 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      sx={{ mt: "-2px", ml: 3 }}
+    >
+      <rect width="40" height="25" />
+      <path
+        d="M5 12.5H36"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+      <path
+        d="M31 17.5L36 12.5L31 7.5"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+    </svg>
+  )
+}

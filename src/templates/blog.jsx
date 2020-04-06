@@ -15,7 +15,6 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
-    <h1>Blog Page</h1>
     <div sx={{ pt: 3 }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>

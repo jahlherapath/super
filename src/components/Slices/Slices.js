@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 
 import Img from "gatsby-image"
 
-import { useState, useRef, useCallback } from "react"
+import { Fragment, useState, useRef, useCallback } from "react"
 
 import Slider from "react-slick"
 
@@ -27,7 +27,6 @@ function SectionImageGallery(sectionData) {
     dots: false,
     arrows: false,
     fade: true,
-    speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
     beforeChange: prev => slideCount(prev),
@@ -35,18 +34,32 @@ function SectionImageGallery(sectionData) {
   }
 
   return (
-    <div>
+    <div sx={{ mt: 5, mb: 4, position: "relative" }}>
       {sectionData.items.length > 1 && (
-        <div>
-          <button onClick={prev}>Prev</button>
-          <button onClick={next}>Next</button>
+        <div
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            position: "absolute",
+            top: "50%",
+            left: [2, 2, 4],
+            right: [2, 2, 4],
+            transform: "translateY(-50%)",
+            zIndex: 10,
+          }}
+        >
+          <button sx={{ variant: "styles.carouselButton" }} onClick={prev}>
+            <ArrowLeft />
+          </button>
+          <button sx={{ variant: "styles.carouselButton" }} onClick={next}>
+            <ArrowRight />
+          </button>
         </div>
       )}
-      Slide: {activeSlide + 1}
       <Slider ref={slider} {...settings}>
         {sectionData.items.map((image, index) => (
           <Img
-            key={index}
+            key={index + activeSlide}
             fluid={image.image.localFile.childImageSharp.fluid}
           />
         ))}
@@ -57,14 +70,15 @@ function SectionImageGallery(sectionData) {
 
 function SectionContent(sectionData) {
   return (
-    <div>
+    <Fragment>
       {sectionData.items.map((content, index) => (
         <div
           key={index}
+          sx={{ mt: 5, mb: 4, variant: "styles.html" }}
           dangerouslySetInnerHTML={{ __html: content.text.html }}
         />
       ))}
-    </div>
+    </Fragment>
   )
 }
 
@@ -80,3 +94,56 @@ const Slices = ({ sectionData, sectionType }) => {
 }
 
 export default Slices
+
+const ArrowRight = () => {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="32" height="32" />
+      <path
+        d="M6 15.9L25.2 15.9"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+      <path
+        d="M17.1 7.8L25.2 15.9L17.1 24"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+    </svg>
+  )
+}
+
+const ArrowLeft = () => {
+  return (
+    <svg
+      sx={{ transform: "scaleX(-1)" }}
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="32" height="32" />
+      <path
+        d="M6 15.9L25.2 15.9"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+      <path
+        d="M17.1 7.8L25.2 15.9L17.1 24"
+        strokeWidth="1.608"
+        strokeMiterlimit="10"
+        sx={{ stroke: "black" }}
+      />
+    </svg>
+  )
+}
