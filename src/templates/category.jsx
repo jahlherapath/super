@@ -16,7 +16,7 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
-    <h2>
+    <h2 sx={{ variant: "styles.date", textAlign: "center", mb: 4 }}>
       {totalCount} {totalCount === 1 ? "Post" : "Posts"}
       {totalCount === 1 ? " was" : " were"} tagged with "{category}"
     </h2>

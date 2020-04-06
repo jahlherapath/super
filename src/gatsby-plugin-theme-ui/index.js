@@ -82,6 +82,7 @@ export default {
       variant: "text.body",
       fontWeight: "regular",
       fontSize: [2, 2, 3],
+      mb: 2,
     },
     html: {
       variant: "text.body",
