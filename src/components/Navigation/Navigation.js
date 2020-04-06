@@ -165,8 +165,10 @@ const Links = ({ show }) => {
               <Arrow />
             </Link>
             <div sx={{ display: "flex" }}>
-              <Link
-                to="/"
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={"mailto:" + prismicInfo.data.email.text}
                 sx={{
                   variant: "styles.navigation",
                   width: "50%",
@@ -177,9 +179,13 @@ const Links = ({ show }) => {
                 }}
               >
                 <span sx={{ fontSize: "18px !important" }}>Instagram</span>
-              </Link>
-              <Link
-                to="/"
+              </a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={
+                  "https://www.instagram.com/" + prismicInfo.data.instagram.text
+                }
                 sx={{
                   variant: "styles.navigation",
                   width: "50%",
@@ -189,7 +195,7 @@ const Links = ({ show }) => {
                 }}
               >
                 <span sx={{ fontSize: "18px !important" }}>Contact</span>
-              </Link>
+              </a>
             </div>
           </div>
         ))

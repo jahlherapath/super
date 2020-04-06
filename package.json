@@ -30,6 +30,7 @@
     "react-animated-burgers": "^1.2.7",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-isotope": "^1.0.7",
     "react-masonry-css": "^1.0.14",
     "react-netlify-form": "^2.1.5",
     "react-scroll": "^1.7.16",

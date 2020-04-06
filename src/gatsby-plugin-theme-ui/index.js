@@ -4,6 +4,7 @@ export default {
     white: "white",
     text: "#2B2B2B",
     background: "white",
+    offWhite: "#F4F4F4",
   },
   fonts: {
     display: "'Nostra', system-ui, sans-serif",

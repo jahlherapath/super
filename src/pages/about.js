@@ -6,7 +6,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-export default function About({ data: { about } }) {
+function About({ data: { about } }) {
   return (
     <Layout>
       <SEO title="About" />
@@ -101,6 +101,8 @@ export default function About({ data: { about } }) {
   )
 }
 
+export default About
+
 const Intro = ({ children }) => {
   return (
     <div
@@ -132,8 +134,7 @@ const Content = ({ children }) => {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
-        gridColumnGap: 6,
-        gridRowGap: 8,
+        gridColumnGap: 7,
         mt: 7,
       }}
     >
@@ -147,7 +148,6 @@ const Columns = ({ children }) => {
     <div
       sx={{
         gridColumn: ["span 6", "span 6", "span 2"],
-        variant: "styles.html",
       }}
     >
       {children}
@@ -171,7 +171,7 @@ const Title = ({ children }) => {
 }
 
 const Row = ({ children }) => {
-  return <div sx={{ mb: 3 }}>{children}</div>
+  return <div sx={{ mb: 3, variant: "styles.html" }}>{children}</div>
 }
 
 export const aboutQuery = graphql`
