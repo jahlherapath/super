@@ -16,7 +16,9 @@ function Talent({
 }) {
   const graphics = useRef(
     typeof window === `undefined`
-      ? null
+      ? prismicInfo.data.post_graphics
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 2)
       : prismicInfo.data.post_graphics
           .sort(() => Math.random() - 0.5)
           .slice(0, 2)
