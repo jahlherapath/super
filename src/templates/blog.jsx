@@ -32,7 +32,7 @@ export const pageQuery = graphql`
         uid
         id
         data {
-          date
+          date(formatString: "MMMM Do, YYYY")
           title {
             html
             text

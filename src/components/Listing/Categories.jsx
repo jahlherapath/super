@@ -12,7 +12,7 @@ function Categories({ categories }) {
         <Link
           key={cat}
           to={`/categories/${kebabCase(cat)}`}
-          sx={{ variant: "styles.button", mr: 2, mb: 2 }}
+          sx={{ variant: "styles.categoryButton", mr: 2, mb: 2 }}
         >
           {cat}
         </Link>
