@@ -16,6 +16,7 @@ export default function Layout({ children }) {
           minHeight: "100vh",
           m: "0 auto",
           pt: 12,
+          pb: 5,
           px: 5,
         }}
       >

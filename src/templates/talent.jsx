@@ -135,14 +135,16 @@ function Talent({
               sx={{
                 position: "absolute",
                 top: 12,
-                right: [-9, -9, -12],
+                right: -5,
+                py: 12,
                 width: ["200px", "200px", "300px"],
-
                 zIndex: 2,
+                overflow: "hidden",
               }}
             >
               <Parallax y={[-20, 20]}>
                 <Img
+                  sx={{ mr: -6 }}
                   fluid={
                     graphics.current[0].graphic.localFile.childImageSharp.fluid
                   }

@@ -7,24 +7,15 @@ import kebabCase from "lodash/kebabCase"
 
 function Categories({ categories }) {
   return (
-    <div sx={{ mb: 4 }}>
-      {categories.map((cat, i) => (
-        <div
+    <div sx={{ display: "flex", flexWrap: "wrap", mb: 4 }}>
+      {categories.map(cat => (
+        <Link
           key={cat}
-          sx={{
-            display: "inline-block",
-            backgroundColor: "white",
-            borderStyle: "solid",
-            borderWidth: "1px",
-            borderColor: "primary",
-            py: 2,
-            px: 4,
-            m: 1,
-            borderRadius: "20px",
-          }}
+          to={`/categories/${kebabCase(cat)}`}
+          sx={{ variant: "styles.button", mr: 2, mb: 2 }}
         >
-          <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
-        </div>
+          {cat}
+        </Link>
       ))}
     </div>
   )
