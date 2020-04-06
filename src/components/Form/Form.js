@@ -111,13 +111,15 @@ function Footer() {
                 rows="5"
                 required
               />
-              <button
-                sx={{ variant: "styles.button" }}
-                type="submit"
-                value="Submit"
-              >
-                Submit your application
-              </button>
+              <div>
+                <button
+                  sx={{ variant: "styles.button" }}
+                  type="submit"
+                  value="Submit"
+                >
+                  Submit your application
+                </button>
+              </div>
             </div>
           )}
         </div>

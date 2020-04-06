@@ -15,7 +15,7 @@ export default function Layout({ children }) {
         sx={{
           minHeight: "100vh",
           m: "0 auto",
-          py: 12,
+          pt: 12,
           px: 5,
         }}
       >

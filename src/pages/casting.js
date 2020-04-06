@@ -33,8 +33,15 @@ const Container = ({ children }) => {
   return (
     <div
       sx={{
+        position: ["relative", "relative", "absolute"],
+        top: ["auto", "auto", 0],
+        bottom: ["auto", "auto", 5],
+        left: ["auto", "auto", 5],
+        right: ["auto", "auto", 5],
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
+        minHeight: "100vh",
+        pb: 5,
       }}
     >
       {children}
@@ -46,8 +53,11 @@ const Left = ({ children }) => {
   return (
     <div
       sx={{
+        display: "flex",
+        justifyContent: "flex-end",
+        flexDirection: "column",
         gridColumn: ["span 2", "span 2", "span 1"],
-        pr: 7,
+        pr: [0, 0, 7],
       }}
     >
       {children}
@@ -59,6 +69,9 @@ const Right = ({ children }) => {
   return (
     <div
       sx={{
+        display: "flex",
+        justifyContent: "flex-end",
+        flexDirection: "column",
         gridColumn: ["span 2", "span 2", "span 1"],
       }}
     >

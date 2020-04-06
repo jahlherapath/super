@@ -115,7 +115,7 @@ export default {
       border: "1px solid",
       borderBottom: "none",
       backgroundColor: "white",
-      fontSize: 1,
+      fontSize: [0, 0, 1],
       textTransform: "uppercase",
     },
     input: {
@@ -127,12 +127,11 @@ export default {
       border: "1px solid",
       borderTop: "none",
       backgroundColor: "white",
-      fontSize: 5,
+      fontSize: [3, 3, 5],
     },
     button: {
       variant: "text.body",
       px: 5,
-      width: "40px",
       height: ["30px", "30px", "40px"],
       borderRadius: ["15px", "15px", "20px"],
       borderColor: "black",
