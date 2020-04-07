@@ -55,7 +55,6 @@ export default function Navigation() {
         role="button"
         tabIndex="0"
         onClick={() => setShowMenu(x => !x)}
-        onKeyDown={() => setShowMenu(x => !x)}
       >
         <Burger show={showMenu} />
       </div>
