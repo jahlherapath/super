@@ -15,6 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const postTemplate = require.resolve("./src/templates/post.jsx")
   const talentTemplate = require.resolve("./src/templates/talent.jsx")
+  const freelancersTemplate = require.resolve("./src/templates/freelancers.jsx")
 
   const postResult = await wrapper(
     graphql(`
@@ -68,8 +69,36 @@ exports.createPages = async ({ graphql, actions }) => {
     `)
   )
 
+  const freelancersResult = await wrapper(
+    graphql(`
+      {
+        allPrismicFreelancers {
+          edges {
+            node {
+              id
+              uid
+              data {
+                tags {
+                  tag {
+                    document {
+                      data {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `)
+  )
+
   const postList = postResult.data.allPrismicPost.edges
   const talentList = talentResult.data.allPrismicTalent.edges
+  const freelancersList = freelancersResult.data.allPrismicFreelancers.edges
+
   const postsPerPage = 6
   const numPages = Math.ceil(postList.length / postsPerPage)
 
@@ -148,6 +177,31 @@ exports.createPages = async ({ graphql, actions }) => {
         uid: edge.node.uid,
         next: talentList[idx + 1],
         prev: talentList[idx - 1],
+      },
+    })
+  })
+
+  // Double check that the post has a tag assigned
+  freelancersList.forEach((edge, idx) => {
+    // if (edge.node.data.tags[0].tag) {
+    //   edge.node.data.tags.forEach(tag => {
+    //     const tagName = tag.tag.document[0].data.name
+    //     if (!tagSet[tagName]) {
+    //       tagSet[tagName] = 0
+    //     }
+    //     tagSet[tagName]++
+    //   })
+    // }
+
+    // The uid you assigned in Prismic is the slug!
+    createPage({
+      path: `/${edge.node.uid}`,
+      component: freelancersTemplate,
+      context: {
+        // Pass the unique ID (uid) through context so the template can filter by it
+        uid: edge.node.uid,
+        next: freelancersList[idx + 1],
+        prev: freelancersList[idx - 1],
       },
     })
   })

@@ -153,7 +153,7 @@ const Links = ({ show }) => {
               <span>Journal</span>
               <Arrow />
             </Link>
-            <Link to="/" sx={{ variant: "styles.navigation" }}>
+            <Link to="/freelancers" sx={{ variant: "styles.navigation" }}>
               <sup>04</sup>
               <span>Freelancers</span>
               <Arrow />

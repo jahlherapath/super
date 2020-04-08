@@ -12,7 +12,7 @@ import SEO from "../components/SEO"
 
 import Masonry from "react-masonry-css"
 
-function Index({ data: { talent, tags } }) {
+function Freelancers({ data: { talent, tags } }) {
   // Fetch talent
   const talentList = talent.nodes.map(talent => {
     const tags = talent.data.tags
@@ -147,11 +147,11 @@ function Index({ data: { talent, tags } }) {
   )
 }
 
-export default Index
+export default Freelancers
 
-export const indexQuery = graphql`
-  query IndexQuery {
-    talent: allPrismicTalent(
+export const freelancersQuery = graphql`
+  query FreelancersQuery {
+    talent: allPrismicFreelancers(
       sort: { fields: [data___name___text], order: DESC }
     ) {
       nodes {
