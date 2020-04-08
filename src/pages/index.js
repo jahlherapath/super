@@ -203,7 +203,7 @@ export const indexQuery = graphql`
         }
       }
     }
-    tags: allPrismicTag(sort: { fields: [data___name], order: ASC }) {
+    tags: allPrismicTag(limit: 4, sort: { fields: id }) {
       edges {
         node {
           data {
@@ -221,7 +221,7 @@ const Menu = ({ show, tagList, activeTags, onClick }) => {
       items={show}
       config={{ duration: 150 }}
       from={{ height: "0px" }}
-      enter={{ height: "400px" }}
+      enter={{ height: "180px" }}
       leave={{ height: "0px" }}
     >
       {show =>
