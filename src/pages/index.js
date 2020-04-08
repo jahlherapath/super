@@ -82,7 +82,7 @@ function Index({ data: { talent, tags } }) {
   }, [])
 
   return (
-    <Layout>
+    <Layout graphicPosition="2">
       <SEO title="Talent" />
       <div
         sx={{
@@ -93,6 +93,7 @@ function Index({ data: { talent, tags } }) {
           bottom: [4, 4, 5],
           zIndex: 10,
           width: ["auto", "auo", "220px"],
+          backgroundColor: "white",
         }}
         role="button"
         tabIndex="0"

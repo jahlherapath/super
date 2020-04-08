@@ -18,7 +18,6 @@ const GlobalStyles = () => {
             WebkitFontSmoothing: "antialiased",
             MozOsxFontSmoothing: "grayscale",
             textRendering: "optimizeLegibility",
-            backgroundColor: theme.colors.background,
           },
           body: {
             margin: 0,

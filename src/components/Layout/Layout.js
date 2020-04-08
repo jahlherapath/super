@@ -9,7 +9,7 @@ import GlobalStyles from "../GlobalStyles"
 import BGLeft from "../../assets/bg-left.png"
 import BGRight from "../../assets/bg-right.png"
 
-export default function Layout({ children }) {
+export default function Layout({ children, graphicPosition }) {
   return (
     <Fragment>
       <GlobalStyles />
@@ -20,11 +20,12 @@ export default function Layout({ children }) {
           top: 0,
           bottom: 0,
           left: 0,
-          width: "50%",
+          width: ["150%", "150%", "50%"],
           backgroundImage: `url(${BGLeft})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
+          zIndex: graphicPosition ? graphicPosition : -1,
         }}
       ></div>
 
@@ -34,11 +35,12 @@ export default function Layout({ children }) {
           top: 0,
           bottom: 0,
           right: 0,
-          width: "50%",
+          width: ["150%", "150%", "50%"],
           backgroundImage: `url(${BGRight})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
+          zIndex: graphicPosition ? graphicPosition : -1,
         }}
       ></div>
       <main
@@ -48,6 +50,7 @@ export default function Layout({ children }) {
           pt: 12,
           pb: 5,
           px: [4, 4, 5],
+          zIndex: 1,
         }}
       >
         {children}
