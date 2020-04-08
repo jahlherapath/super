@@ -34,13 +34,29 @@ function Index({ data: { talent, tags } }) {
     }
   })
 
+  // Fetch tags
+
+  const tagList = tags.edges.map(talent => talent.node.data.name)
+
   // Setting filter
-  const [activeTag, setActiveTag] = useState()
+  const [activeTags, setActiveTags] = useState([])
 
   const filteredTalent = useMemo(() => {
-    if (activeTag === undefined) return talentList
-    return talentList.filter(talent => talent.tags.indexOf(activeTag) >= 0)
-  }, [activeTag])
+    if (activeTags.length === 0) return talentList
+    return talentList.filter(talent =>
+      talent.tags.some(talent => activeTags.includes(talent))
+    )
+  }, [activeTags])
+
+  const onClick = tag => {
+    setActiveTags(tags => {
+      if (tags.includes(tag)) {
+        return tags.filter(t => t !== tag)
+      } else {
+        return [...tags, tag]
+      }
+    })
+  }
 
   // Responsive columns
   const responsiveColumns = {
@@ -70,12 +86,13 @@ function Index({ data: { talent, tags } }) {
       <SEO title="Talent" />
       <div
         sx={{
-          position: "fixed",
-          left: 5,
-          bottom: 5,
-          zIndex: 10,
-          width: "220px",
           variant: "styles.button",
+          position: "fixed",
+          left: [4, 4, 5],
+          right: [4, "auto", "auto"],
+          bottom: [4, 4, 5],
+          zIndex: 10,
+          width: ["auto", "auo", "220px"],
         }}
         role="button"
         tabIndex="0"
@@ -96,7 +113,7 @@ function Index({ data: { talent, tags } }) {
               backgroundColor: "offWhite",
               p: 3,
               pb: 3,
-              mb: 5,
+              mb: [4, 4, 5],
             }}
             to={`/${talent.link}`}
           >
@@ -119,7 +136,13 @@ function Index({ data: { talent, tags } }) {
           </Link>
         ))}
       </Masonry>
-      <Menu show={showMenu} tags={tags} setActiveTag={setActiveTag} />
+      <Menu
+        show={showMenu}
+        tagList={tagList}
+        activeTags={activeTags}
+        setActiveTags={setActiveTags}
+        onClick={onClick}
+      />
     </Layout>
   )
 }
@@ -192,7 +215,7 @@ export const pageQuery = graphql`
   }
 `
 
-const Menu = ({ show, tags, setActiveTag }) => {
+const Menu = ({ show, tagList, activeTags, onClick }) => {
   return (
     <Transition
       items={show}
@@ -216,7 +239,8 @@ const Menu = ({ show, tags, setActiveTag }) => {
               zIndex: 9,
               overflow: "hidden",
               position: "fixed",
-              left: 5,
+              left: [4, 4, 5],
+              right: [4, 4, "auto"],
               margin: "0 auto",
               backgroundColor: "white",
               display: "flex",
@@ -224,17 +248,20 @@ const Menu = ({ show, tags, setActiveTag }) => {
               justifyContent: "flex-start",
             }}
           >
-            {tags.edges.map((tag, index) => (
+            {tagList.map((tag, i) => (
               <button
-                key={index}
-                onClick={() => setActiveTag(tag.node.data.name)}
+                key={i}
                 sx={{
                   variant: "styles.button",
+                  backgroundColor: activeTags.includes(tag)
+                    ? "rgba(0,0,0,0.1)"
+                    : null,
                   border: "none",
                   borderRadius: "0px !important",
                 }}
+                onClick={() => onClick(tag)}
               >
-                {tag.node.data.name}
+                {tag}
               </button>
             ))}
           </div>

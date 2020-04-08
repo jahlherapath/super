@@ -55,35 +55,38 @@ function About({ data: { about } }) {
         <Columns>
           <Title>Contact</Title>
           <Row>
-            {about.data.email.text && (
-              <a
-                sx={{
-                  mr: 3,
-                }}
-                href={"mailto:" + about.data.email.text}
-              >
-                Email Us
-              </a>
-            )}
-            {about.data.instagram.text && (
-              <span sx={{ mr: 3 }}>
-                insta:{" "}
+            <div sx={{ variant: "styles.html" }}>
+              {about.data.email.text && (
                 <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={
-                    "https://www.instagram.com/" + about.data.instagram.text
-                  }
+                  sx={{
+                    mr: 3,
+                  }}
+                  href={"mailto:" + about.data.email.text}
                 >
-                  @{about.data.instagram.text}
+                  Email Us
                 </a>
-              </span>
-            )}
-            {about.data.phone.text && <span>{about.data.phone.text}</span>}
+              )}
+              {about.data.instagram.text && (
+                <span sx={{ mr: 3 }}>
+                  insta:{" "}
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={
+                      "https://www.instagram.com/" + about.data.instagram.text
+                    }
+                  >
+                    @{about.data.instagram.text}
+                  </a>
+                </span>
+              )}
+              {about.data.phone.text && <span>{about.data.phone.text}</span>}
+            </div>
           </Row>
           <Row>
             {about.data.address.html && (
               <div
+                sx={{ variant: "styles.html" }}
                 dangerouslySetInnerHTML={{ __html: about.data.address.html }}
               />
             )}
@@ -91,6 +94,7 @@ function About({ data: { about } }) {
           <Row>
             {about.data.contact.html && (
               <div
+                sx={{ variant: "styles.html" }}
                 dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
               />
             )}
@@ -135,6 +139,7 @@ const Content = ({ children }) => {
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
         gridColumnGap: 7,
+        gridRowGap: 5,
         mt: 7,
       }}
     >
@@ -171,7 +176,7 @@ const Title = ({ children }) => {
 }
 
 const Row = ({ children }) => {
-  return <div sx={{ mb: 3, variant: "styles.html" }}>{children}</div>
+  return <div sx={{ mb: 3 }}>{children}</div>
 }
 
 export const aboutQuery = graphql`

@@ -43,6 +43,10 @@ const GlobalStyles = () => {
             paddingLeft: "32px",
             backgroundClip: "padding-box",
           },
+          "@media (max-width: 52em)": {
+            ".grid": { marginLeft: "-16px !important" },
+            ".column": { paddingLeft: "16px !important" },
+          },
           "@keyframes spin": {
             "0%": {
               transform: "rotate(0deg)",

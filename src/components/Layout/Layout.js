@@ -17,7 +17,7 @@ export default function Layout({ children }) {
           m: "0 auto",
           pt: 12,
           pb: 5,
-          px: 5,
+          px: [4, 4, 5],
         }}
       >
         {children}
