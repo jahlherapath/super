@@ -4,44 +4,17 @@ import { jsx } from "theme-ui"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import IsoTopeGrid from "react-isotope"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { Transition } from "react-spring/renderprops"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import Listing from "../components/TalentListing/Listing"
+
+import Masonry from "react-masonry-css"
 
 function Index({ data: { talent, tags } }) {
-  const filtersDefault = tags.edges.map(talent => {
-    return {
-      label: talent.node.data.name,
-      isChecked: true,
-    }
-  })
-
-  const [filters, updateFilters] = useState(filtersDefault)
-
-  const onFilter = event => {
-    const {
-      target: { value, checked },
-    } = event
-
-    updateFilters(state =>
-      state.map(f => {
-        if (f.label === value) {
-          return {
-            ...f,
-            isChecked: checked,
-          }
-        }
-
-        return f
-      })
-    )
-  }
-
-  const cardsDefault = talent.nodes.map(talent => {
+  // Fetch talent
+  const talentList = talent.nodes.map(talent => {
     const tags = talent.data.tags
       .map(
         tag =>
@@ -57,10 +30,27 @@ function Index({ data: { talent, tags } }) {
       location: talent.data.location.text,
       image: talent.data.thumbnail.localFile.childImageSharp.fluid,
       link: talent.uid,
-      filter: tags,
+      tags: tags,
     }
   })
 
+  // Setting filter
+  const [activeTag, setActiveTag] = useState()
+
+  const filteredTalent = useMemo(() => {
+    if (activeTag === undefined) return talentList
+    return talentList.filter(talent => talent.tags.indexOf(activeTag) >= 0)
+  }, [activeTag])
+
+  // Responsive columns
+  const responsiveColumns = {
+    default: 4,
+    1024: 4,
+    896: 3,
+    640: 2,
+  }
+
+  // Filter menu
   const [showMenu, setShowMenu] = useState()
 
   const handler = () => setShowMenu(false)
@@ -93,21 +83,24 @@ function Index({ data: { talent, tags } }) {
       >
         Filter <Arrow show={showMenu} />
       </div>
-      <Menu show={showMenu} filters={filters} onFilter={onFilter} />
-      <IsoTopeGrid
-        gridLayout={cardsDefault}
-        noOfCols={4}
-        unitWidth={350}
-        unitHeight={500}
-        filters={filters}
+      <Masonry
+        breakpointCols={responsiveColumns}
+        className="grid"
+        columnClassName="column"
       >
-        {cardsDefault.map(card => (
+        {filteredTalent.map((talent, index) => (
           <Link
-            key={card.id}
-            sx={{ backgroundColor: "offWhite", p: 3, pb: 3, m: 3 }}
-            to={card.link}
+            key={index}
+            sx={{
+              display: "block",
+              backgroundColor: "offWhite",
+              p: 3,
+              pb: 3,
+              mb: 5,
+            }}
+            to={`/${talent.link}`}
           >
-            <Img fluid={card.image} />
+            <Img fluid={talent.image} />
             <div
               sx={{
                 display: "flex",
@@ -117,15 +110,16 @@ function Index({ data: { talent, tags } }) {
               }}
             >
               <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
-                {card.id}
+                {talent.id}
               </p>
-              <p sx={{ fontFamily: "display", fontSize: 2, p: 0, m: 0 }}>
-                {card.location}
+              <p sx={{ fontFamily: "display", fontSize: 3, p: 0, m: 0 }}>
+                {talent.location}
               </p>
             </div>
           </Link>
         ))}
-      </IsoTopeGrid>
+      </Masonry>
+      <Menu show={showMenu} tags={tags} setActiveTag={setActiveTag} />
     </Layout>
   )
 }
@@ -198,7 +192,7 @@ export const pageQuery = graphql`
   }
 `
 
-const Menu = ({ show, filters, onFilter }) => {
+const Menu = ({ show, tags, setActiveTag }) => {
   return (
     <Transition
       items={show}
@@ -230,20 +224,18 @@ const Menu = ({ show, filters, onFilter }) => {
               justifyContent: "flex-start",
             }}
           >
-            {filters.map((f, index) => (
-              <div key={index}>
-                {console.log(f)}
-                <input
-                  id={f.label}
-                  type="checkbox"
-                  value={f.label}
-                  onChange={onFilter}
-                  checked={f.isChecked}
-                />
-                <label htmlFor={f.label} sx={{ textTransform: "uppercase" }}>
-                  {f.label}
-                </label>
-              </div>
+            {tags.edges.map((tag, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTag(tag.node.data.name)}
+                sx={{
+                  variant: "styles.button",
+                  border: "none",
+                  borderRadius: "0px !important",
+                }}
+              >
+                {tag.node.data.name}
+              </button>
             ))}
           </div>
         ))

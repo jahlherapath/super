@@ -34,6 +34,15 @@ const GlobalStyles = () => {
             display: "block",
             width: "100%",
           },
+          ".grid": {
+            display: "flex",
+            marginLeft: "-32px",
+            width: "auto",
+          },
+          ".column": {
+            paddingLeft: "32px",
+            backgroundClip: "padding-box",
+          },
           "@keyframes spin": {
             "0%": {
               transform: "rotate(0deg)",
