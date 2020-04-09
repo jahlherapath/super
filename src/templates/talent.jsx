@@ -40,7 +40,7 @@ function Talent({
               }}
             >
               <ArrowLeft />
-              Back to home
+              Back to Talent
             </Link>
             <h1 sx={{ variant: "styles.display", mb: 3 }}>
               {prismicTalent.data.name.text}
@@ -89,6 +89,7 @@ function Talent({
                   sx={{
                     variant: "styles.button",
                     mb: 3,
+                    width: ["100%", "100%", "auto"],
                   }}
                 >
                   {link.title.text}
@@ -137,9 +138,9 @@ function Talent({
               sx={{
                 position: "absolute",
                 top: 12,
-                right: -5,
+                right: [-4, -4, -5],
                 py: 12,
-                width: ["200px", "200px", "300px"],
+                width: ["180px", "180px", "250px"],
                 zIndex: 2,
                 overflow: "hidden",
               }}
@@ -158,7 +159,7 @@ function Talent({
                 position: "absolute",
                 top: 14,
                 left: [-10, -10, 0],
-                width: ["200px", "200px", "250px"],
+                width: ["180px", "180px", "250px"],
                 zIndex: 2,
               }}
             >
@@ -226,6 +227,7 @@ const Right = ({ children }) => {
         position: "relative",
         gridColumn: ["span 2", "span 2", "span 1"],
         pl: [0, 0, 12],
+        zIndex: -2,
       }}
     >
       {children}

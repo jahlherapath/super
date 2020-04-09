@@ -26,9 +26,9 @@ export default function Layout({ children, graphicPosition }) {
           backgroundPosition: "center",
           backgroundSize: "cover",
           zIndex: graphicPosition ? graphicPosition : -1,
+          pointerEvents: "none",
         }}
       ></div>
-
       <div
         sx={{
           position: "fixed",
@@ -41,6 +41,7 @@ export default function Layout({ children, graphicPosition }) {
           backgroundPosition: "center",
           backgroundSize: "cover",
           zIndex: graphicPosition ? graphicPosition : -1,
+          pointerEvents: "none",
         }}
       ></div>
       <main
@@ -50,7 +51,6 @@ export default function Layout({ children, graphicPosition }) {
           pt: 12,
           pb: 5,
           px: [4, 4, 5],
-          zIndex: 1,
         }}
       >
         {children}

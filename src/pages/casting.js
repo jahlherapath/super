@@ -71,8 +71,16 @@ const Right = ({ children }) => {
       sx={{
         display: "flex",
         justifyContent: "flex-end",
+        alignItems: "center",
         flexDirection: "column",
         gridColumn: ["span 2", "span 2", "span 1"],
+        width: "100%",
+        height: "100%",
+        form: {
+          display: "flex",
+          width: "100%",
+          height: "100%",
+        },
       }}
     >
       {children}

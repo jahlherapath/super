@@ -7,24 +7,61 @@ function Footer() {
   return (
     <NetlifyForm name="contact">
       {({ loading, error, success }) => (
-        <div>
+        <div
+          sx={{
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "center",
+            width: "100%",
+            height: "100%",
+          }}
+        >
           {loading && (
-            <div>
-              <h3 sx={{ variant: "styles.formMessages" }}>Loading...</h3>
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <p sx={{ variant: "styles.html", fontWeight: "regular" }}>
+                Loading...
+              </p>
             </div>
           )}
           {error && (
-            <div sx={{ textAlign: "center" }}>
-              <h3 sx={{ variant: "styles.formMessages" }}>
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <p sx={{ variant: "styles.html", fontWeight: "regular" }}>
                 Your information was not sent. Please try again later.
-              </h3>
+              </p>
             </div>
           )}
           {success && (
-            <div sx={{ textAlign: "center" }}>
-              <h3 sx={{ variant: "styles.formMessages" }}>
-                Thank you for contacting us!
-              </h3>
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <p sx={{ variant: "styles.html", fontWeight: "regular" }}>
+                We got your message! Our team will get to your soon.
+              </p>
             </div>
           )}
           {!loading && !success && (
@@ -113,7 +150,10 @@ function Footer() {
               />
               <div>
                 <button
-                  sx={{ variant: "styles.button" }}
+                  sx={{
+                    variant: "styles.button",
+                    width: "100%",
+                  }}
                   type="submit"
                   value="Submit"
                 >

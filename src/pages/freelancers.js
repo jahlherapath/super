@@ -30,6 +30,7 @@ function Freelancers({ data: { talent, tags } }) {
       location: talent.data.location.text,
       image: talent.data.thumbnail.localFile.childImageSharp.fluid,
       link: talent.uid,
+      title: talent.data.title.text,
       tags: tags,
     }
   })
@@ -82,7 +83,7 @@ function Freelancers({ data: { talent, tags } }) {
   }, [])
 
   return (
-    <Layout>
+    <Layout graphicPosition="2">
       <SEO title="Talent" />
       <div
         sx={{
@@ -93,6 +94,7 @@ function Freelancers({ data: { talent, tags } }) {
           bottom: [4, 4, 5],
           zIndex: 10,
           width: ["auto", "auo", "220px"],
+          backgroundColor: "white",
         }}
         role="button"
         tabIndex="0"
@@ -129,8 +131,8 @@ function Freelancers({ data: { talent, tags } }) {
               <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
                 {talent.id}
               </p>
-              <p sx={{ fontFamily: "display", fontSize: 3, p: 0, m: 0 }}>
-                {talent.location}
+              <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
+                {talent.title}
               </p>
             </div>
           </Link>
@@ -161,13 +163,16 @@ export const freelancersQuery = graphql`
           name {
             text
           }
-          location {
+          title {
             text
           }
           availability {
             text
           }
           contact {
+            text
+          }
+          location {
             text
           }
           bio {
@@ -177,7 +182,7 @@ export const freelancersQuery = graphql`
           thumbnail {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1200, quality: 70) {
+                fluid(maxWidth: 1200, maxHeight: 1200, quality: 70) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

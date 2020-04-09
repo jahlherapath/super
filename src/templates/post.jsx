@@ -15,7 +15,7 @@ export default ({
   },
   pageContext: { next, prev },
 }) => (
-  <Layout>
+  <Layout graphicPosition="2">
     <div sx={{ textAlign: "center", mb: 5 }}>
       <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
       <p sx={{ variant: "styles.date" }}>{data.date}</p>
@@ -36,6 +36,7 @@ export default ({
     <div
       sx={{
         display: "flex",
+        flexWrap: ["wrap", "nowrap", "nowrap"],
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
@@ -49,6 +50,7 @@ export default ({
             variant: "styles.mono",
             display: "flex",
             alignItems: "center",
+            width: ["100%", "auto", "auto"],
           }}
           rel="prev"
         >
@@ -64,6 +66,9 @@ export default ({
             variant: "styles.mono",
             display: "flex",
             alignItems: "center",
+            justifyContent: "flex-end",
+            width: ["100%", "auto", "auto"],
+            textAlign: "right",
           }}
           rel="next"
         >

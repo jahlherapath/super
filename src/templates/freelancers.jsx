@@ -31,7 +31,7 @@ function Talent({
         <Container>
           <Left>
             <Link
-              to="/"
+              to="/freelancers"
               sx={{
                 variant: "styles.mono",
                 display: "flex",
@@ -40,7 +40,7 @@ function Talent({
               }}
             >
               <ArrowLeft />
-              Back to home
+              Back to Freelancers
             </Link>
             <h1 sx={{ variant: "styles.display", mb: 3 }}>
               {prismicFreelancers.data.name.text}
@@ -49,8 +49,8 @@ function Talent({
               {prismicFreelancers.data.location.text && (
                 <p>{prismicFreelancers.data.location.text}</p>
               )}
-              {prismicFreelancers.data.pgp.text && (
-                <p>{prismicFreelancers.data.pgp.text}</p>
+              {prismicFreelancers.data.title.text && (
+                <p>{prismicFreelancers.data.title.text}</p>
               )}
               {prismicFreelancers.data.availability.text && (
                 <p>{prismicFreelancers.data.availability.text}</p>
@@ -133,7 +133,7 @@ function Talent({
             </div>
           </Left>
           <Right>
-            <div
+            {/* <div
               sx={{
                 position: "absolute",
                 top: 12,
@@ -170,7 +170,7 @@ function Talent({
                 />
               </Parallax>
             </div>
-            <Emblem />
+            <Emblem /> */}
             <div sx={{ width: "100%", height: "100%" }}>
               {prismicFreelancers.data.gallery.map((image, index) => (
                 <Img
@@ -226,6 +226,7 @@ const Right = ({ children }) => {
         position: "relative",
         gridColumn: ["span 2", "span 2", "span 1"],
         pl: [0, 0, 12],
+        zIndex: -2,
       }}
     >
       {children}
@@ -454,6 +455,9 @@ export const pageQuery = graphql`
         location {
           text
         }
+        title {
+          text
+        }
         availability {
           text
         }
@@ -466,7 +470,7 @@ export const pageQuery = graphql`
         bio {
           html
         }
-        pgp {
+        title {
           text
         }
         gallery {
