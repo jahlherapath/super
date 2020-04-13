@@ -8,6 +8,7 @@ import Form from "../components/Form"
 export default function Casting({ data: { casting } }) {
   return (
     <Layout>
+      {localStorage.model}
       <SEO title="Casting" />
       <Container>
         <Left>

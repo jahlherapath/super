@@ -107,7 +107,7 @@ function Index({ data: { talent, tags } }) {
         columnClassName="column"
       >
         {filteredTalent.map((talent, index) => (
-          <Link
+          <div
             key={index}
             sx={{
               display: "block",
@@ -118,6 +118,7 @@ function Index({ data: { talent, tags } }) {
             }}
             to={`/${talent.link}`}
           >
+            <TalentSave name={talent.id} />
             <Img fluid={talent.image} />
             <div
               sx={{
@@ -134,7 +135,7 @@ function Index({ data: { talent, tags } }) {
                 {talent.location}
               </p>
             </div>
-          </Link>
+          </div>
         ))}
       </Masonry>
       <Menu
@@ -149,6 +150,37 @@ function Index({ data: { talent, tags } }) {
 }
 
 export default Index
+
+function useLocalStorage(defaultValue, key) {
+  const [value, setValue] = useState(() => {
+    const talentValue = window.localStorage.getItem(key)
+    return talentValue !== null ? JSON.parse(talentValue) : defaultValue
+  })
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value))
+  }, [key, value])
+  return [value, setValue]
+}
+
+const TalentSave = ({ name }) => {
+  const [selectedModels, setSelectedModels] = useLocalStorage(
+    "selectedModels",
+    []
+  )
+
+  const addTalent = () => {
+    setSelectedModels(selectedModels => [...selectedModels, name])
+  }
+
+  const filteredItems = selectedModels.filter(item => !name.includes(item))
+
+  return (
+    <div>
+      <button onClick={addTalent}></button>
+      {/* {selectedModels} */}
+    </div>
+  )
+}
 
 export const indexQuery = graphql`
   query IndexQuery {
