@@ -3,6 +3,8 @@ import { jsx } from "theme-ui"
 
 import NetlifyForm from "react-netlify-form"
 
+import useLocalStorage from "../../pages/use-local-storage.js"
+
 function Footer() {
   return (
     <NetlifyForm name="contact">
@@ -73,6 +75,7 @@ function Footer() {
                 width: "100%",
               }}
             >
+              <TalentSelection />
               <input type="hidden" name="form-name" value="contact" />
               <label htmlFor="name" sx={{ variant: "styles.label" }}>
                 Name*
@@ -145,7 +148,7 @@ function Footer() {
                 type="message"
                 name="biography"
                 placeholder="A little about you"
-                rows="5"
+                rows="3"
                 required
               />
               <div>
@@ -169,3 +172,15 @@ function Footer() {
 }
 
 export default Footer
+
+function TalentSelection() {
+  const [selectedModels] = useLocalStorage("selectedModels", [])
+
+  return (
+    <div sx={{ width: "100%", variant: "styles.html" }}>
+      <div sx={{ variant: "styles.mono", mb: 2 }}>
+        Selected talent: {selectedModels.map(i => i.name).join(", ")}
+      </div>
+    </div>
+  )
+}

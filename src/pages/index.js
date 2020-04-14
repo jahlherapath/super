@@ -12,6 +12,8 @@ import SEO from "../components/SEO"
 
 import Masonry from "react-masonry-css"
 
+import useLocalStorage from "../pages/use-local-storage.js"
+
 function Index({ data: { talent, tags } }) {
   // Fetch talent
   const talentList = talent.nodes.map(talent => {
@@ -26,7 +28,8 @@ function Index({ data: { talent, tags } }) {
       )
       .filter(Boolean)
     return {
-      id: talent.data.name.text,
+      id: talent.id,
+      name: talent.data.name.text,
       location: talent.data.location.text,
       image: talent.data.thumbnail.localFile.childImageSharp.fluid,
       link: talent.uid,
@@ -81,6 +84,21 @@ function Index({ data: { talent, tags } }) {
     }
   }, [])
 
+  const [selectedModels, setSelectedModels] = useLocalStorage(
+    "selectedModels",
+    []
+  )
+
+  const onChange = model => {
+    setSelectedModels(selectedModels => {
+      if (selectedModels.find(i => i.id === model.id)) {
+        return selectedModels.filter(i => i.id !== model.id)
+      } else {
+        return [...selectedModels, model]
+      }
+    })
+  }
+
   return (
     <Layout graphicPosition="2">
       <SEO title="Talent" />
@@ -106,36 +124,13 @@ function Index({ data: { talent, tags } }) {
         className="grid"
         columnClassName="column"
       >
-        {filteredTalent.map((talent, index) => (
-          <div
-            key={index}
-            sx={{
-              display: "block",
-              backgroundColor: "offWhite",
-              p: 3,
-              pb: 3,
-              mb: [4, 4, 5],
-            }}
-            to={`/${talent.link}`}
-          >
-            <TalentSave name={talent.id} />
-            <Img fluid={talent.image} />
-            <div
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                pt: 3,
-              }}
-            >
-              <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
-                {talent.id}
-              </p>
-              <p sx={{ fontFamily: "display", fontSize: 3, p: 0, m: 0 }}>
-                {talent.location}
-              </p>
-            </div>
-          </div>
+        {filteredTalent.map(model => (
+          <Model
+            key={model.id}
+            model={model}
+            isSelected={selectedModels.find(i => i.id === model.id)}
+            onChange={onChange}
+          />
         ))}
       </Masonry>
       <Menu
@@ -151,33 +146,42 @@ function Index({ data: { talent, tags } }) {
 
 export default Index
 
-function useLocalStorage(defaultValue, key) {
-  const [value, setValue] = useState(() => {
-    const talentValue = window.localStorage.getItem(key)
-    return talentValue !== null ? JSON.parse(talentValue) : defaultValue
-  })
-  useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value))
-  }, [key, value])
-  return [value, setValue]
-}
-
-const TalentSave = ({ name }) => {
-  const [selectedModels, setSelectedModels] = useLocalStorage(
-    "selectedModels",
-    []
-  )
-
-  const addTalent = () => {
-    setSelectedModels(selectedModels => [...selectedModels, name])
-  }
-
-  const filteredItems = selectedModels.filter(item => !name.includes(item))
-
+function Model({ model, isSelected, onChange, index }) {
   return (
-    <div>
-      <button onClick={addTalent}></button>
-      {/* {selectedModels} */}
+    <div
+      key={index}
+      sx={{
+        display: "block",
+        backgroundColor: "offWhite",
+        p: 3,
+        pb: 3,
+        mb: [4, 4, 5],
+      }}
+    >
+      <input
+        type="checkbox"
+        checked={isSelected}
+        onChange={() => onChange(model)}
+      />
+      <Img fluid={model.image} />
+      <div
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          pt: 3,
+        }}
+      >
+        <Link
+          to={`/${model.link}`}
+          sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}
+        >
+          {model.name}
+        </Link>
+        <p sx={{ fontFamily: "display", fontSize: 3, p: 0, m: 0 }}>
+          {model.location}
+        </p>
+      </div>
     </div>
   )
 }

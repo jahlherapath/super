@@ -8,7 +8,6 @@ import Form from "../components/Form"
 export default function Casting({ data: { casting } }) {
   return (
     <Layout>
-      {localStorage.model}
       <SEO title="Casting" />
       <Container>
         <Left>
@@ -34,14 +33,8 @@ const Container = ({ children }) => {
   return (
     <div
       sx={{
-        position: ["relative", "relative", "absolute"],
-        top: ["auto", "auto", 0],
-        bottom: ["auto", "auto", 5],
-        left: ["auto", "auto", 5],
-        right: ["auto", "auto", 5],
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
-        minHeight: "100vh",
         pb: 5,
       }}
     >
@@ -54,9 +47,9 @@ const Left = ({ children }) => {
   return (
     <div
       sx={{
-        display: "flex",
-        justifyContent: "flex-end",
-        flexDirection: "column",
+        position: ["relative", "relative", "sticky"],
+        bottom: [4, 4, 5],
+        alignSelf: "flex-end",
         gridColumn: ["span 2", "span 2", "span 1"],
         pr: [0, 0, 7],
       }}
@@ -70,13 +63,8 @@ const Right = ({ children }) => {
   return (
     <div
       sx={{
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        flexDirection: "column",
+        position: "relative",
         gridColumn: ["span 2", "span 2", "span 1"],
-        width: "100%",
-        height: "100%",
         form: {
           display: "flex",
           width: "100%",

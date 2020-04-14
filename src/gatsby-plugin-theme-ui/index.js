@@ -104,7 +104,7 @@ export default {
     },
     mono: {
       variant: "text.mono",
-      fontSize: 1,
+      fontSize: [0, 0, 1],
       textTransform: "uppercase",
     },
     label: {
