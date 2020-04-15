@@ -12,7 +12,7 @@ import SEO from "../components/SEO"
 
 import Masonry from "react-masonry-css"
 
-import useLocalStorage from "../pages/use-local-storage.js"
+import useLocalStorage from "../components/UseLocalStorage"
 
 function Index({ data: { talent, tags } }) {
   // Fetch talent
@@ -91,7 +91,10 @@ function Index({ data: { talent, tags } }) {
 
   const onChange = model => {
     setSelectedModels(selectedModels => {
-      if (selectedModels.find(i => i.id === model.id)) {
+      if (
+        Array.isArray(selectedModels) &&
+        selectedModels.find(i => i.id === model.id)
+      ) {
         return selectedModels.filter(i => i.id !== model.id)
       } else {
         return [...selectedModels, model]
@@ -128,7 +131,10 @@ function Index({ data: { talent, tags } }) {
           <Model
             key={model.id}
             model={model}
-            isSelected={selectedModels.find(i => i.id === model.id)}
+            isSelected={
+              Array.isArray(selectedModels) &&
+              selectedModels.find(i => i.id === model.id)
+            }
             onChange={onChange}
           />
         ))}
@@ -160,7 +166,8 @@ function Model({ model, isSelected, onChange, index }) {
     >
       <input
         type="checkbox"
-        checked={isSelected}
+        value={isSelected || ""}
+        checked={isSelected ? isSelected : ""}
         onChange={() => onChange(model)}
       />
       <Img fluid={model.image} />

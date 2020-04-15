@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 
 import NetlifyForm from "react-netlify-form"
 
-import useLocalStorage from "../../pages/use-local-storage.js"
+import useLocalStorage from "../UseLocalStorage"
 
 function Footer() {
   return (
@@ -180,7 +180,8 @@ function TalentSelection() {
     <div sx={{ width: "100%", variant: "styles.html" }}>
       <div sx={{ variant: "styles.mono", mb: 2 }}>
         Selected talent:{" "}
-        {selectedModels ? null : selectedModels.map(i => i.name).join(", ")}
+        {Array.isArray(selectedModels) &&
+          selectedModels.map(i => i.name).join(", ")}
       </div>
     </div>
   )
