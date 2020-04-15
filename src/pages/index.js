@@ -157,19 +157,34 @@ function Model({ model, isSelected, onChange, index }) {
     <div
       key={index}
       sx={{
+        position: "relative",
         display: "block",
-        backgroundColor: "offWhite",
-        p: 3,
+        backgroundColor: isSelected ? "offWhite" : "offWhite",
+        border: "1px solid",
+        borderColor: isSelected ? "black" : "transparent",
+        px: 3,
+        pt: 3,
         pb: 3,
         mb: [4, 4, 5],
       }}
     >
-      <input
-        type="checkbox"
-        value={isSelected || ""}
-        checked={isSelected ? isSelected : ""}
-        onChange={() => onChange(model)}
-      />
+      <div
+        sx={{
+          position: "absolute",
+          top: 4,
+          right: 4,
+          textAlign: "right",
+          p: 2,
+          zIndex: 1,
+        }}
+      >
+        <input
+          type="checkbox"
+          value={isSelected || ""}
+          checked={isSelected ? isSelected : ""}
+          onChange={() => onChange(model)}
+        />
+      </div>
       <Img fluid={model.image} />
       <div
         sx={{
@@ -181,13 +196,19 @@ function Model({ model, isSelected, onChange, index }) {
       >
         <Link
           to={`/${model.link}`}
-          sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
         >
-          {model.name}
+          <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
+            {model.name}
+          </p>
+          <p sx={{ fontFamily: "display", fontSize: 3, p: 0, m: 0 }}>
+            {model.location}
+          </p>
         </Link>
-        <p sx={{ fontFamily: "display", fontSize: 3, p: 0, m: 0 }}>
-          {model.location}
-        </p>
       </div>
     </div>
   )
