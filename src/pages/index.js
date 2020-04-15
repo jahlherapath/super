@@ -5,7 +5,7 @@ import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import { useState, useEffect, useMemo } from "react"
-import { Transition } from "react-spring/renderprops"
+import { Spring, animated } from "react-spring/renderprops"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -254,35 +254,37 @@ export const indexQuery = graphql`
 
 const Menu = ({ show, tagList, activeTags, onClick }) => {
   return (
-    <Transition
-      items={show}
-      config={{ duration: 150 }}
-      from={{ height: "0px" }}
-      enter={{ height: "180px" }}
-      leave={{ height: "0px" }}
+    <div
+      sx={{
+        bottom: ["55px", "55px", "85px"],
+        width: ["auto", "220px", "220px"],
+        zIndex: 9,
+        position: "fixed",
+        left: [4, 4, 5],
+        right: [4, 4, "auto"],
+        margin: "0 auto",
+        overflow: "hidden",
+        display: show ? "block" : "none",
+        borderBottom: "1px solid black",
+      }}
     >
-      {show =>
-        show &&
-        (props => (
-          <div
-            style={{
-              ...props,
-            }}
+      <Spring
+        native
+        to={{
+          height: show ? "100%" : "0%",
+          marginBottom: show ? "0%" : "-100%",
+          display: show ? "block" : "none",
+        }}
+      >
+        {props => (
+          <animated.div
+            style={props}
             sx={{
-              bottom: "85px",
-              width: ["auto", "220px", "220px"],
-              borderColor: "black",
-              border: "1px solid",
-              zIndex: 9,
+              display: show ? "block" : "none",
+              border: "1px solid black",
+              borderBottom: "none",
               overflow: "hidden",
-              position: "fixed",
-              left: [4, 4, 5],
-              right: [4, 4, "auto"],
-              margin: "0 auto",
               backgroundColor: "white",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
             }}
           >
             {tagList.map((tag, i) => (
@@ -295,16 +297,17 @@ const Menu = ({ show, tagList, activeTags, onClick }) => {
                     : null,
                   border: "none",
                   borderRadius: "0px !important",
+                  width: "100%",
                 }}
                 onClick={() => onClick(tag)}
               >
                 {tag}
               </button>
             ))}
-          </div>
-        ))
-      }
-    </Transition>
+          </animated.div>
+        )}
+      </Spring>
+    </div>
   )
 }
 
