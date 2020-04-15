@@ -179,7 +179,8 @@ function TalentSelection() {
   return (
     <div sx={{ width: "100%", variant: "styles.html" }}>
       <div sx={{ variant: "styles.mono", mb: 2 }}>
-        Selected talent: {selectedModels.map(i => i.name).join(", ")}
+        Selected talent:{" "}
+        {selectedModels && selectedModels.map(i => i.name).join(", ")}
       </div>
     </div>
   )

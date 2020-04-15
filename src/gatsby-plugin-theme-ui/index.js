@@ -185,7 +185,7 @@ export default {
       alignItems: "flex-start",
       justifyContent: "space-between",
       backgroundColor: "white",
-      borderBottomColor: "black",
+      borderColor: "black",
       borderBottom: "1px solid",
       py: 3,
       px: [4, 4, 6],

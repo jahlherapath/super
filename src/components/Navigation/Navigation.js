@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 
 import { useState, useEffect } from "react"
-import { Transition } from "react-spring/renderprops"
+import { Spring, Transition, animated } from "react-spring/renderprops"
 
 import { Link, useStaticQuery, graphql } from "gatsby"
 
@@ -65,37 +65,32 @@ export default function Navigation() {
 
 const Menu = ({ show }) => {
   return (
-    <Transition
-      items={show}
-      config={{ duration: 150 }}
-      from={{ height: "0px" }}
-      enter={{ height: "381px" }}
-      leave={{ height: "0px" }}
+    <div
+      sx={{
+        mt: ["85px", "85px", "100px"],
+        width: "100%",
+      }}
     >
-      {show =>
-        show &&
-        (props => (
-          <nav
-            style={{
-              ...props,
-              overflow: "hidden",
-              position: "absolute",
-              left: 0,
-              right: 0,
-              margin: "0 auto",
-            }}
+      <Spring
+        native
+        to={{
+          height: show ? "100%" : "0%",
+        }}
+      >
+        {props => (
+          <animated.div
+            style={props}
             sx={{
-              top: ["85px", "85px", "100px"],
-              maxWidth: ["auto", "420px", "420px"],
-              borderColor: "black",
-              border: "1px solid",
+              display: show ? "block" : "none",
+              border: "1px solid black",
+              overflow: "hidden",
             }}
           >
             <Links show={show} />
-          </nav>
-        ))
-      }
-    </Transition>
+          </animated.div>
+        )}
+      </Spring>
+    </div>
   )
 }
 
@@ -138,7 +133,12 @@ const Links = ({ show }) => {
             }}
             sx={{ display: "flex", flexDirection: "column" }}
           >
-            <Link to="/" sx={{ variant: "styles.navigation" }}>
+            <Link
+              to="/"
+              sx={{
+                variant: "styles.navigation",
+              }}
+            >
               <sup>01</sup>
               <span>Talent</span>
               <Arrow />
@@ -175,6 +175,7 @@ const Links = ({ show }) => {
                   textAlign: "center",
                   justifyContent: "center",
                   borderRight: "1px solid black",
+                  borderBottom: "none",
                 }}
               >
                 <span sx={{ fontSize: "18px !important" }}>Instagram</span>
@@ -191,6 +192,7 @@ const Links = ({ show }) => {
                   px: "0 !important",
                   textAlign: "center",
                   justifyContent: "center",
+                  borderBottom: "none",
                 }}
               >
                 <span sx={{ fontSize: "18px !important" }}>Contact</span>
