@@ -1,97 +1,77 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's hello-world starter
-</h1>
+# Super website
 
-Kick off your project with this hello-world boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Online agency website for Super (sssssuper.com).
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+## Built with
 
-## 🚀 Quick start
+- [GatsbyJS](https://www.gatsbyjs.org/)
+- [Theme UI](https://theme-ui.com/)
+- [Prismic](https://prismic.io/)
+- [Netlify](https://www.netlify.com/)
 
-1.  **Create a Gatsby site.**
+## Prerequisites
 
-    Use the Gatsby CLI to create a new site, specifying the hello-world starter.
+1. Install the Gatsby CLI globally.
 
-    ```shell
-    # create a new Gatsby site using the hello-world starter
-    gatsby new my-hello-world-starter https://github.com/gatsbyjs/gatsby-starter-hello-world
-    ```
+```
+npm install -g gatsby-cli
+```
 
-1.  **Start developing.**
+2. Install Yarn globally [instructions here](https://yarnpkg.com/lang/en/docs/install/).
 
-    Navigate into your new site’s directory and start it up.
+3. Using at least `Node v8.16.2`
 
-    ```shell
-    cd my-hello-world-starter/
-    gatsby develop
-    ```
+## Installing
 
-1.  **Open the source code and start editing!**
+```
+git clone git@github.com:jahlherapath/super.git
+cd super
+yarn
+```
 
-    Your site is now running at `http://localhost:8000`!
+## API key
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+To run this site create the file `.env.development` and `.env.production` in the root dir of your project. Its content should be:
 
-    Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+```
+PRISMIC_KEY=YOURKEYHERE
+```
 
-## 🧐 What's inside?
+## Running locally
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+To start a hot-reloading development environment accessible at `localhost:8000` run
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+```
+yarn develop
+```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+To test the production build run
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+```
+yarn build && yarn serve
+```
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+This generates optimised production files as well as starting a local HTML server for testing.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+## Deployment
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+### Live Website
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+[https://sssssuper.com/](https://sssssuper.com/)
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+Any changes made to the `master` branch will trigger a new build on Netlify for the live website.
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+### Staging Website
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+[https://develop--sssssuper.netlify.com](https://develop--sssssuper.netlify.com)
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+Any changes made to the `develop` branch will trigger a new build on Netlify for the staging website.
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+### Branches
 
-## 🎓 Learning Gatsby
+When you push a new branch live, Netlify will automatically create a new website for sharing those changes. The convention for this is `https://branch-name--sssssuper.netlify.com`.
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+## Content Management System (CMS)
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-hello-world)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Any changes made to the content in the CMS ([Prismic](https://prismic.io)) will trigger a new build on Netlify for _both_ the live site and staging.
