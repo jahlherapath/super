@@ -178,7 +178,11 @@ const Links = ({ show }) => {
                   borderBottom: "none",
                 }}
               >
-                <span sx={{ fontSize: "18px !important" }}>Instagram</span>
+                <span
+                  sx={{ fontSize: "18px !important", justifyContent: "center" }}
+                >
+                  Instagram
+                </span>
               </a>
               <a
                 target="_blank"
@@ -195,7 +199,11 @@ const Links = ({ show }) => {
                   borderBottom: "none",
                 }}
               >
-                <span sx={{ fontSize: "18px !important" }}>Contact</span>
+                <span
+                  sx={{ fontSize: "18px !important", justifyContent: "center" }}
+                >
+                  Contact
+                </span>
               </a>
             </div>
           </div>

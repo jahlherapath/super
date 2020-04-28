@@ -187,7 +187,7 @@ export default {
       backgroundColor: "white",
       borderColor: "black",
       borderBottom: "1px solid",
-      py: 3,
+      py: [2, 2, 3],
       px: [4, 4, 6],
       sup: {
         display: "block",
@@ -198,7 +198,8 @@ export default {
         verticalAlign: "initial",
       },
       span: {
-        display: "block",
+        display: "inline-flex",
+        mt: "2px",
         fontSize: [4, 4, 6],
         width: "120px",
         textTransform: "uppercase",
