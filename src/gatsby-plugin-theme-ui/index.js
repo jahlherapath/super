@@ -119,6 +119,7 @@ export default {
       fontSize: [0, 0, 1],
       textTransform: "uppercase",
       borderRadius: 0,
+      width: "100%",
     },
     input: {
       variant: "text.body",
@@ -131,6 +132,7 @@ export default {
       backgroundColor: "transparent",
       fontSize: [3, 3, 5],
       borderRadius: 0,
+      width: "100%",
     },
     button: {
       variant: "text.body",
