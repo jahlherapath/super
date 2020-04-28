@@ -171,14 +171,22 @@ function Model({ model, isSelected, onChange, index }) {
       <div
         sx={{
           position: "absolute",
-          top: 4,
-          right: 4,
-          textAlign: "right",
-          p: 2,
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "calc(100% - 34px)",
           zIndex: 1,
         }}
       >
         <input
+          sx={{
+            opacity: 0,
+            width: "100%",
+            height: "100%",
+            p: 0,
+            m: 0,
+          }}
           type="checkbox"
           value={isSelected || ""}
           checked={isSelected ? isSelected : ""}
