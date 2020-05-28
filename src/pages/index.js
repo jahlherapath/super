@@ -38,7 +38,6 @@ function Index({ data: { talent, tags } }) {
   })
 
   // Fetch tags
-
   const tagList = tags.edges.map(talent => talent.node.data.name)
 
   // Setting filter
@@ -107,20 +106,21 @@ function Index({ data: { talent, tags } }) {
       <SEO title="Talent" />
       <div
         sx={{
-          variant: "styles.button",
-          position: "fixed",
-          left: [4, 4, 5],
-          right: [4, "auto", "auto"],
-          bottom: [4, 4, 5],
-          zIndex: 10,
-          width: ["auto", "auo", "220px"],
-          backgroundColor: "white",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          mb: 5,
         }}
-        role="button"
-        tabIndex="0"
-        onClick={() => setShowMenu(x => !x)}
       >
-        Filter <Arrow show={showMenu} />
+        <Tag
+          show={showMenu}
+          tagList={tagList}
+          activeTags={activeTags}
+          setActiveTags={setActiveTags}
+          onClick={onClick}
+        />
       </div>
       <Masonry
         breakpointCols={responsiveColumns}
@@ -139,13 +139,6 @@ function Index({ data: { talent, tags } }) {
           />
         ))}
       </Masonry>
-      <Menu
-        show={showMenu}
-        tagList={tagList}
-        activeTags={activeTags}
-        setActiveTags={setActiveTags}
-        onClick={onClick}
-      />
     </Layout>
   )
 }
@@ -155,69 +148,109 @@ export default Index
 function Model({ model, isSelected, onChange, index }) {
   return (
     <div
-      key={index}
       sx={{
         position: "relative",
-        display: "block",
-        backgroundColor: isSelected ? "offWhite" : "offWhite",
-        border: "1px solid",
-        borderColor: isSelected ? "black" : "transparent",
-        px: 3,
-        pt: 3,
-        pb: 3,
-        mb: [4, 4, 5],
+        backgroundColor: "red",
+        "&:hover > #talent-checkbox": {
+          display: "flex",
+          transition: "all 200ms ease",
+        },
       }}
     >
       <div
+        id="talent-checkbox"
         sx={{
           position: "absolute",
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: "calc(100% - 34px)",
-          zIndex: 1,
+          top: 4,
+          right: 4,
+          m: 1,
+          display: "none",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "30px",
+          height: "30px",
+          borderRadius: "50%",
+          backgroundColor: "white",
+          zIndex: 99999,
+          transition: "all 200ms ease",
         }}
       >
         <input
           sx={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
             opacity: 0,
             width: "100%",
             height: "100%",
             p: 0,
             m: 0,
+            cursor: "pointer",
+            zIndex: 3,
+            transition: "all 200ms ease",
           }}
           type="checkbox"
           value={isSelected || ""}
           checked={isSelected ? isSelected : ""}
           onChange={() => onChange(model)}
         />
+        <div
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: "20px",
+            cursor: "pointer",
+            transition: "all 200ms ease",
+          }}
+        >
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
+              stroke="black"
+              strokeWidth="1"
+              sx={{ stroke: "gray", fill: isSelected ? "gray" : "transparent" }}
+            />
+          </svg>
+        </div>
       </div>
-      <Img fluid={model.image} />
-      <div
+      <Link
+        to={model.link}
+        key={index}
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          position: "relative",
+          display: "block",
+          backgroundColor: "offWhite",
+          px: 3,
           pt: 3,
+          pb: 3,
+          mb: [4, 4, 5],
         }}
       >
-        <Link
-          to={`/${model.link}`}
+        <Img fluid={model.image} />
+        <div
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            width: "100%",
+            alignItems: "center",
+            pt: 3,
           }}
         >
           <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
             {model.name}
           </p>
-          <p sx={{ fontFamily: "display", fontSize: 3, p: 0, m: 0 }}>
+          <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
             {model.location}
           </p>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   )
 }
@@ -288,61 +321,32 @@ export const indexQuery = graphql`
   }
 `
 
-const Menu = ({ show, tagList, activeTags, onClick }) => {
+const Tag = ({ show, tagList, activeTags, onClick }) => {
   return (
-    <div
-      sx={{
-        bottom: ["55px", "55px", "85px"],
-        width: ["auto", "220px", "220px"],
-        zIndex: 9,
-        position: "fixed",
-        left: [4, 4, 5],
-        right: [4, 4, "auto"],
-        margin: "0 auto",
-        overflow: "hidden",
-        display: show ? "block" : "none",
-        borderBottom: "1px solid black",
-      }}
-    >
-      <Spring
-        native
-        to={{
-          height: show ? "100%" : "0%",
-          marginBottom: show ? "0%" : "-100%",
-          display: show ? "block" : "none",
-        }}
-      >
-        {props => (
-          <animated.div
-            style={props}
+    <div>
+      {tagList.map((tag, i) => (
+        <button
+          key={i}
+          sx={{
+            variant: "styles.tagButton",
+            color: activeTags.includes(tag) ? "white" : null,
+            backgroundColor: activeTags.includes(tag) ? "black" : null,
+          }}
+          onClick={() => onClick(tag)}
+        >
+          {tag}
+          <span
             sx={{
-              display: show ? "block" : "none",
-              border: "1px solid black",
-              borderBottom: "none",
-              overflow: "hidden",
-              backgroundColor: "white",
+              display: activeTags.includes(tag) ? "flex" : "none",
+              alignItems: "center",
+              mt: "-2px",
+              pl: 2,
             }}
           >
-            {tagList.map((tag, i) => (
-              <button
-                key={i}
-                sx={{
-                  variant: "styles.button",
-                  backgroundColor: activeTags.includes(tag)
-                    ? "rgba(0,0,0,0.1)"
-                    : null,
-                  border: "none",
-                  borderRadius: "0px !important",
-                  width: "100%",
-                }}
-                onClick={() => onClick(tag)}
-              >
-                {tag}
-              </button>
-            ))}
-          </animated.div>
-        )}
-      </Spring>
+            ×
+          </span>
+        </button>
+      ))}
     </div>
   )
 }

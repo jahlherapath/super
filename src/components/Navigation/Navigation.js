@@ -1,10 +1,12 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Fragment } from "react"
 import { Spring, Transition, animated } from "react-spring/renderprops"
 
 import { Link, useStaticQuery, graphql } from "gatsby"
+
+import useLocalStorage from "../UseLocalStorage"
 
 export default function Navigation() {
   const [showMenu, setShowMenu] = useState()
@@ -22,44 +24,9 @@ export default function Navigation() {
   }, [])
 
   return (
-    <header
-      sx={{
-        position: "fixed",
-        top: 4,
-        left: 4,
-        right: 4,
-        maxWidth: ["auto", "420px", "420px"],
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        height: "70px",
-        m: "0 auto",
-        zIndex: 10,
-        transition: "400ms all ease",
-      }}
-    >
-      <Logo />
-      <div
-        sx={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          right: [4, 4, 6],
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          cursor: "pointer",
-          outline: "none",
-          zIndex: 10,
-        }}
-        role="button"
-        tabIndex="0"
-        onClick={() => setShowMenu(x => !x)}
-      >
-        <Burger show={showMenu} />
-      </div>
-      <Menu show={showMenu} />
-    </header>
+    <Fragment>
+      <header>hey</header>
+    </Fragment>
   )
 }
 
@@ -67,7 +34,7 @@ const Menu = ({ show }) => {
   return (
     <div
       sx={{
-        mt: ["85px", "85px", "100px"],
+        mt: ["85px", "85px", "70px"],
         width: "100%",
       }}
     >
@@ -361,5 +328,27 @@ const Logo = () => {
         />
       </svg>
     </Link>
+  )
+}
+
+function TalentSelection() {
+  const [selectedModels] = useLocalStorage("selectedModels", [])
+
+  return (
+    <div
+      sx={{
+        width: "100%",
+        height: "50px",
+        variant: "styles.mono",
+        display: "flex",
+        alignItems: "center",
+        color: "black",
+        px: [4, 4, 5],
+      }}
+    >
+      Selected talent:{" "}
+      {Array.isArray(selectedModels) &&
+        selectedModels.map(i => i.name).join(", ")}
+    </div>
   )
 }

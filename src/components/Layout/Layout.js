@@ -14,7 +14,7 @@ export default function Layout({ children, graphicPosition }) {
     <Fragment>
       <GlobalStyles />
       <Navigation />
-      <div
+      {/* <div
         sx={{
           position: "fixed",
           top: 0,
@@ -43,14 +43,12 @@ export default function Layout({ children, graphicPosition }) {
           zIndex: graphicPosition ? graphicPosition : -1,
           pointerEvents: "none",
         }}
-      ></div>
+      ></div> */}
       <main
         sx={{
           minHeight: "100vh",
           m: "0 auto",
-          pt: 12,
-          pb: 5,
-          px: [4, 4, 5],
+          p: [4, 4, 5],
         }}
       >
         {children}
