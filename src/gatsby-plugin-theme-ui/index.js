@@ -149,6 +149,12 @@ export default {
       justifyContent: "center",
       alignItems: "center",
       cursor: "pointer",
+      transition: "200ms all ease",
+      "&:hover": {
+        backgroundColor: "black",
+        color: "white",
+        border: "1px solid black",
+      },
     },
     categoryButton: {
       variant: "text.body",
@@ -164,6 +170,12 @@ export default {
       justifyContent: "center",
       alignItems: "center",
       cursor: "pointer",
+      transition: "200ms all ease",
+      "&:hover": {
+        backgroundColor: "black",
+        color: "white",
+        border: "1px solid black",
+      },
     },
     tagButton: {
       variant: "text.body",
@@ -184,6 +196,7 @@ export default {
       "&:hover": {
         backgroundColor: "black",
         color: "white",
+        border: "1px solid black",
       },
     },
     carouselButton: {
@@ -200,7 +213,9 @@ export default {
       cursor: "pointer",
       transition: "200ms all ease",
       "&:hover": {
-        backgroundColor: "white",
+        backgroundColor: "black",
+        color: "white",
+        border: "1px solid black",
       },
     },
     navigation: {

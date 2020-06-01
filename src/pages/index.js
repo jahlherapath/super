@@ -5,17 +5,17 @@ import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import { useState, useEffect, useMemo } from "react"
-import { Spring, animated } from "react-spring/renderprops"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-
-import Masonry from "react-masonry-css"
+import SideNavigation from "../components/SideNavigation"
 
 import useLocalStorage from "../components/UseLocalStorage"
 
+import Masonry from "react-masonry-css"
+
 function Index({ data: { talent, tags } }) {
-  // Fetch talent
+  // Fetch Talent
   const talentList = talent.nodes.map(talent => {
     const tags = talent.data.tags
       .map(
@@ -37,10 +37,10 @@ function Index({ data: { talent, tags } }) {
     }
   })
 
-  // Fetch tags
+  // Fetch Tags
   const tagList = tags.edges.map(talent => talent.node.data.name)
 
-  // Setting filter
+  // Setting Filter
   const [activeTags, setActiveTags] = useState([])
 
   const filteredTalent = useMemo(() => {
@@ -60,7 +60,7 @@ function Index({ data: { talent, tags } }) {
     })
   }
 
-  // Responsive columns
+  // Responsive Columns
   const responsiveColumns = {
     default: 4,
     1024: 4,
@@ -68,7 +68,6 @@ function Index({ data: { talent, tags } }) {
     640: 2,
   }
 
-  // Filter menu
   const [showMenu, setShowMenu] = useState()
 
   const handler = () => setShowMenu(false)
@@ -104,6 +103,7 @@ function Index({ data: { talent, tags } }) {
   return (
     <Layout graphicPosition="2">
       <SEO title="Talent" />
+      <SideNavigation order="1" />
       <div
         sx={{
           display: "flex",
@@ -171,7 +171,7 @@ function Model({ model, isSelected, onChange, index }) {
           height: "30px",
           borderRadius: "50%",
           backgroundColor: "white",
-          zIndex: 99999,
+          zIndex: 15,
           transition: "all 200ms ease",
         }}
       >
@@ -216,7 +216,10 @@ function Model({ model, isSelected, onChange, index }) {
               d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
               stroke="black"
               strokeWidth="1"
-              sx={{ stroke: "gray", fill: isSelected ? "gray" : "transparent" }}
+              sx={{
+                stroke: "black",
+                fill: isSelected ? "black" : "transparent",
+              }}
             />
           </svg>
         </div>
@@ -331,6 +334,7 @@ const Tag = ({ show, tagList, activeTags, onClick }) => {
             variant: "styles.tagButton",
             color: activeTags.includes(tag) ? "white" : null,
             backgroundColor: activeTags.includes(tag) ? "black" : null,
+            border: activeTags.includes(tag) ? "1px solid black" : null,
           }}
           onClick={() => onClick(tag)}
         >
@@ -348,32 +352,5 @@ const Tag = ({ show, tagList, activeTags, onClick }) => {
         </button>
       ))}
     </div>
-  )
-}
-
-const Arrow = ({ show }) => {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      sx={{ transform: show ? "rotate(-90deg)" : "rotate(90deg)", ml: 3 }}
-    >
-      <rect width="32" height="32" />
-      <path
-        d="M6 15.9L25.2 15.9"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-      <path
-        d="M17.1 7.8L25.2 15.9L17.1 24"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-    </svg>
   )
 }

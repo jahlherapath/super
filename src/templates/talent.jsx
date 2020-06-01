@@ -4,8 +4,9 @@ import { jsx } from "theme-ui"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
+import Layout from "components/Layout"
+import SEO from "components/SEO"
+import SideNavigation from "components/SideNavigation"
 
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
 import { useRef } from "react"
@@ -27,6 +28,7 @@ function Talent({
   return (
     <Layout>
       <SEO title={prismicTalent.data.name.text} />
+      <SideNavigation />
       <ParallaxProvider>
         <Container>
           <Left>

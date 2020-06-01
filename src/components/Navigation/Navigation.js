@@ -5,10 +5,11 @@ import { useState, useEffect, Fragment } from "react"
 import { Spring, Transition, animated } from "react-spring/renderprops"
 
 import { Link, useStaticQuery, graphql } from "gatsby"
+import Headroom from "react-headroom"
 
 import useLocalStorage from "../UseLocalStorage"
 
-export default function Navigation() {
+function Navigation() {
   const [showMenu, setShowMenu] = useState()
 
   const handler = () => setShowMenu(false)
@@ -24,11 +25,81 @@ export default function Navigation() {
   }, [])
 
   return (
-    <Fragment>
-      <header>hey</header>
-    </Fragment>
+    <Headroom
+      style={{
+        paddingLeft: "40px",
+        paddingRight: "40px",
+      }}
+    >
+      <header
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "white",
+        }}
+      >
+        <div
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+            borderBottom: "1px solid black",
+            p: 4,
+          }}
+        >
+          <p></p>
+          <Logo />
+          <div
+            sx={{
+              display: ["none", "none", "flex"],
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+            onClick={() => setShowMenu(x => !x)}
+          >
+            <span sx={{ variant: "styles.mono", textTransform: "initial" }}>
+              Selected Talent
+            </span>
+            <div sx={{ display: "flex", width: "16px", ml: 2, mt: "-1px" }}>
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
+                  stroke="black"
+                  strokeWidth="1"
+                  sx={{
+                    stroke: "gray",
+                    fill: showMenu ? "gray" : "transparent",
+                  }}
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        {showMenu && (
+          <div
+            sx={{
+              backgroundColor: "white",
+              borderBottom: "1px solid black",
+              py: 4,
+              px: 5,
+              variant: "styles.mono",
+            }}
+          >
+            <TalentSelection />
+          </div>
+        )}
+      </header>
+    </Headroom>
   )
 }
+
+export default Navigation
 
 const Menu = ({ show }) => {
   return (
@@ -282,8 +353,6 @@ const Logo = () => {
       to="/"
       sx={{
         position: "absolute",
-        top: 0,
-        bottom: 0,
         left: 0,
         right: 0,
         zIndex: 1,
@@ -335,20 +404,9 @@ function TalentSelection() {
   const [selectedModels] = useLocalStorage("selectedModels", [])
 
   return (
-    <div
-      sx={{
-        width: "100%",
-        height: "50px",
-        variant: "styles.mono",
-        display: "flex",
-        alignItems: "center",
-        color: "black",
-        px: [4, 4, 5],
-      }}
-    >
-      Selected talent:{" "}
+    <Fragment>
       {Array.isArray(selectedModels) &&
         selectedModels.map(i => i.name).join(", ")}
-    </div>
+    </Fragment>
   )
 }

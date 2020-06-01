@@ -3,12 +3,14 @@ import { jsx } from "theme-ui"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import SideNavigation from "../components/SideNavigation"
 import Form from "../components/Form"
 
 export default function Casting({ data: { casting } }) {
   return (
     <Layout>
       <SEO title="Casting" />
+      <SideNavigation order="1" />
       <Container>
         <Left>
           <h1 sx={{ variant: "styles.display" }}>Casting</h1>
@@ -47,9 +49,6 @@ const Left = ({ children }) => {
   return (
     <div
       sx={{
-        position: ["relative", "relative", "sticky"],
-        bottom: [4, 4, 5],
-        alignSelf: "flex-end",
         gridColumn: ["span 2", "span 2", "span 1"],
         pr: [0, 0, 7],
       }}

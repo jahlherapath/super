@@ -6,8 +6,11 @@ import { graphql, Link } from "gatsby"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
-import Layout from "../components/Layout/"
-import Slices from "../components/Slices"
+import Layout from "components/Layout"
+import SEO from "components/SEO"
+import SideNavigation from "components/SideNavigation"
+import Listing from "components/Listing"
+import Slices from "components/Slices"
 
 export default ({
   data: {
@@ -16,6 +19,8 @@ export default ({
   pageContext: { next, prev },
 }) => (
   <Layout graphicPosition="2">
+    <SEO title={data.title.text} />
+    <SideNavigation />
     <div sx={{ textAlign: "center", mb: 5 }}>
       <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
       <p sx={{ variant: "styles.date" }}>{data.date}</p>

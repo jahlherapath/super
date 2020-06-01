@@ -75,7 +75,7 @@ function Footer() {
                 width: "100%",
               }}
             >
-              <TalentSelection />
+              {/* <TalentSelection /> */}
               <input type="hidden" name="form-name" value="contact" />
               <label htmlFor="name" sx={{ variant: "styles.label" }}>
                 Name*

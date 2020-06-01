@@ -6,53 +6,64 @@ import { Fragment } from "react"
 import Navigation from "../Navigation"
 import GlobalStyles from "../GlobalStyles"
 
-import BGLeft from "../../assets/bg-left.png"
-import BGRight from "../../assets/bg-right.png"
+import PageTransition from "gatsby-plugin-page-transitions"
 
 export default function Layout({ children, graphicPosition }) {
   return (
     <Fragment>
       <GlobalStyles />
       <Navigation />
-      {/* <div
-        sx={{
-          position: "fixed",
-          top: 0,
-          bottom: 0,
-          left: 0,
-          width: ["150%", "150%", "50%"],
-          backgroundImage: `url(${BGLeft})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          zIndex: graphicPosition ? graphicPosition : -1,
-          pointerEvents: "none",
-        }}
-      ></div>
       <div
         sx={{
           position: "fixed",
-          top: 0,
-          bottom: 0,
+          top: "100%",
           right: 0,
-          width: ["150%", "150%", "50%"],
-          backgroundImage: `url(${BGRight})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          zIndex: graphicPosition ? graphicPosition : -1,
-          pointerEvents: "none",
-        }}
-      ></div> */}
-      <main
-        sx={{
-          minHeight: "100vh",
-          m: "0 auto",
-          p: [4, 4, 5],
+          height: "40px",
+          width: "100vh",
+          zIndex: 30,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transform: "rotate(90deg)",
+          transformOrigin: "100% 0",
+          borderBottom: "1px solid black",
+          textAlign: "center",
+          a: {
+            variant: "styles.mono",
+            color: "black",
+            lineHeight: 1,
+            px: 4,
+          },
         }}
       >
-        {children}
-      </main>
+        <a href="#">** Page Actions Should Go Here **</a>
+      </div>
+      <PageTransition
+        defaultStyle={{
+          transition: "top 600ms ease-in-out",
+          top: "100%",
+          position: "absolute",
+          width: "100%",
+        }}
+        transitionStyles={{
+          entering: { top: "0%" },
+          entered: { top: "0%" },
+          exiting: { top: "100%" },
+        }}
+        transitionTime={600}
+      >
+        <main
+          sx={{
+            position: "relative",
+            minHeight: "100vh",
+            m: "0 auto",
+            px: "40px",
+            mt: ["70px", "70px", "110px"],
+          }}
+        >
+          <div sx={{ p: 5 }}>{children}</div>
+        </main>
+      </PageTransition>
     </Fragment>
   )
 }

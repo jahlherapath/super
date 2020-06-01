@@ -3,8 +3,9 @@ import { jsx } from "theme-ui"
 
 import { graphql } from "gatsby"
 
-import SEO from "components/SEO"
 import Layout from "components/Layout"
+import SEO from "components/SEO"
+import SideNavigation from "components/SideNavigation"
 import Listing from "components/Listing"
 
 export default ({
@@ -15,6 +16,7 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
+    <SideNavigation />
     <div sx={{ pt: 3 }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>

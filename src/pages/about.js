@@ -5,11 +5,13 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import SideNavigation from "../components/SideNavigation"
 
 function About({ data: { about } }) {
   return (
     <Layout>
       <SEO title="About" />
+      <SideNavigation order="1" />
       <Intro>
         <div
           sx={{
@@ -121,8 +123,8 @@ const Intro = ({ children }) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          gridColumnStart: [1, 1, 2],
-          gridColumnEnd: [13, 13, 12],
+          gridColumnStart: [1, 1, 1],
+          gridColumnEnd: [13, 13, 13],
           textAlign: "center",
         }}
       >
@@ -138,7 +140,7 @@ const Content = ({ children }) => {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
-        gridColumnGap: 7,
+        gridColumnGap: 5,
         gridRowGap: 5,
         mt: 7,
       }}

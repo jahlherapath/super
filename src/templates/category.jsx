@@ -3,9 +3,10 @@ import { jsx } from "theme-ui"
 
 import { graphql } from "gatsby"
 
+import Layout from "components/Layout"
 import SEO from "components/SEO"
-import Layout from "components/Layout/"
-import Listing from "components/Listing/"
+import SideNavigation from "components/SideNavigation"
+import Listing from "components/Listing"
 
 export default ({
   data: {
@@ -16,6 +17,7 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
+    <SideNavigation />
     <h2 sx={{ variant: "styles.date", textAlign: "center", mb: 4 }}>
       {totalCount} {totalCount === 1 ? "Post" : "Posts"}
       {totalCount === 1 ? " was" : " were"} tagged with "{category}"

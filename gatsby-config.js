@@ -24,8 +24,14 @@ module.exports = {
         linkResolver: () => post => `/${post.uid}`,
       },
     },
+    {
+      resolve: "gatsby-plugin-page-transitions",
+      options: {
+        transitionTime: 500,
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    "gatsby-plugin-theme-ui",
+    `gatsby-plugin-theme-ui`,
   ],
 }
