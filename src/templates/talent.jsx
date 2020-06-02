@@ -258,7 +258,6 @@ const Right = ({ children }) => {
         position: "relative",
         gridColumn: ["span 2", "span 2", "span 1"],
         pl: [0, 0, 12],
-        zIndex: -2,
       }}
     >
       {children}
