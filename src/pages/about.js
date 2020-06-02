@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
+import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -11,7 +12,35 @@ function About({ data: { about } }) {
   return (
     <Layout>
       <SEO title="About" />
-      <SideNavigation order="1" />
+      <SideNavigation>
+        <PageTransition
+          defaultStyle={{
+            transition: "all 600ms ease-in-out",
+          }}
+          transitionStyles={{
+            entering: { flex: 1, backgroundColor: "transparent" },
+            entered: { flex: 1, backgroundColor: "transparent" },
+            exiting: { flex: 0, backgroundColor: "transparent" },
+          }}
+          transitionTime={600}
+        >
+          <Link to="/about" sx={{}}>
+            About
+          </Link>
+        </PageTransition>
+        <Link to="/blog" sx={{}}>
+          Journal
+        </Link>
+        <Link to="/" sx={{}}>
+          Freelancers
+        </Link>
+        <Link to="/casting" sx={{}}>
+          Casting
+        </Link>
+        <Link to="/" sx={{ borderRight: "none !important" }}>
+          Talent
+        </Link>
+      </SideNavigation>
       <Intro>
         <div
           sx={{

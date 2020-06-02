@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { Link } from "gatsby"
 import PageTransition from "gatsby-plugin-page-transitions"
 
-function SideNavigation() {
+function SideNavigation({ children }) {
   return (
     <div
       sx={{
@@ -33,30 +32,7 @@ function SideNavigation() {
         },
       }}
     >
-      <Link to="/about" sx={{}}>
-        About
-      </Link>
-      <Link to="/blog" sx={{}}>
-        Journal
-      </Link>
-      <PageTransition
-        defaultStyle={{
-          transition: "all 600ms ease-in-out",
-        }}
-        transitionStyles={{
-          entering: { flex: 1, backgroundColor: "transparent" },
-          entered: { flex: 1, backgroundColor: "red" },
-          exiting: { flex: 0, backgroundColor: "transparent" },
-        }}
-        transitionTime={600}
-      >
-        <Link to="/casting" sx={{}}>
-          Casting
-        </Link>
-      </PageTransition>
-      <Link to="/" sx={{ borderRight: "none !important" }}>
-        Talent
-      </Link>
+      {children}
     </div>
   )
 }

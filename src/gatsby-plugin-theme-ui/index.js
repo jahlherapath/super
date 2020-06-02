@@ -212,11 +212,6 @@ export default {
       alignItems: "center",
       cursor: "pointer",
       transition: "200ms all ease",
-      "&:hover": {
-        backgroundColor: "black",
-        color: "white",
-        border: "1px solid black",
-      },
     },
     navigation: {
       variant: "text.menu",

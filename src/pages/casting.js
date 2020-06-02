@@ -1,6 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { Link, graphql } from "gatsby"
+import PageTransition from "gatsby-plugin-page-transitions"
+
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import SideNavigation from "../components/SideNavigation"
@@ -10,7 +13,35 @@ export default function Casting({ data: { casting } }) {
   return (
     <Layout>
       <SEO title="Casting" />
-      <SideNavigation order="1" />
+      <SideNavigation>
+        <Link to="/about" sx={{}}>
+          About
+        </Link>
+        <Link to="/blog" sx={{}}>
+          Journal
+        </Link>
+        <Link to="/" sx={{}}>
+          Freelancers
+        </Link>
+        <PageTransition
+          defaultStyle={{
+            transition: "all 600ms ease-in-out",
+          }}
+          transitionStyles={{
+            entering: { flex: 1, backgroundColor: "transparent" },
+            entered: { flex: 1, backgroundColor: "transparent" },
+            exiting: { flex: 0, backgroundColor: "transparent" },
+          }}
+          transitionTime={600}
+        >
+          <Link to="/casting" sx={{}}>
+            Casting
+          </Link>
+        </PageTransition>
+        <Link to="/" sx={{ borderRight: "none !important" }}>
+          Talent
+        </Link>
+      </SideNavigation>
       <Container>
         <Left>
           <h1 sx={{ variant: "styles.display" }}>Casting</h1>

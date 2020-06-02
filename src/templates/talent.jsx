@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
+import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
@@ -28,7 +29,35 @@ function Talent({
   return (
     <Layout>
       <SEO title={prismicTalent.data.name.text} />
-      <SideNavigation />
+      <SideNavigation>
+        <Link to="/about" sx={{}}>
+          About
+        </Link>
+        <Link to="/blog" sx={{}}>
+          Journal
+        </Link>
+        <Link to="/" sx={{}}>
+          Freelancers
+        </Link>
+        <Link to="/casting" sx={{}}>
+          Casting
+        </Link>
+        <PageTransition
+          defaultStyle={{
+            transition: "all 600ms ease-in-out",
+          }}
+          transitionStyles={{
+            entering: { flex: 1, backgroundColor: "transparent" },
+            entered: { flex: 1, backgroundColor: "transparent" },
+            exiting: { flex: 0, backgroundColor: "transparent" },
+          }}
+          transitionTime={600}
+        >
+          <Link to="/" sx={{ borderRight: "none !important" }}>
+            Talent
+          </Link>
+        </PageTransition>
+      </SideNavigation>
       <ParallaxProvider>
         <Container>
           <Left>

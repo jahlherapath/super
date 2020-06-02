@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { graphql, Link } from "gatsby"
+import { Link, graphql } from "gatsby"
+import PageTransition from "gatsby-plugin-page-transitions"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -9,7 +10,6 @@ import "slick-carousel/slick/slick-theme.css"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 import SideNavigation from "components/SideNavigation"
-import Listing from "components/Listing"
 import Slices from "components/Slices"
 
 export default ({
@@ -20,7 +20,35 @@ export default ({
 }) => (
   <Layout graphicPosition="2">
     <SEO title={data.title.text} />
-    <SideNavigation />
+    <SideNavigation>
+      <Link to="/about" sx={{}}>
+        About
+      </Link>
+      <PageTransition
+        defaultStyle={{
+          transition: "all 0 ease-in-out",
+        }}
+        transitionStyles={{
+          entering: { flex: 1, backgroundColor: "transparent" },
+          entered: { flex: 1, backgroundColor: "transparent" },
+          exiting: { flex: 1, backgroundColor: "transparent" },
+        }}
+        transitionTime={0}
+      >
+        <Link to="/blog" sx={{}}>
+          Journal
+        </Link>
+      </PageTransition>
+      <Link to="/" sx={{}}>
+        Freelancers
+      </Link>
+      <Link to="/casting" sx={{}}>
+        Casting
+      </Link>
+      <Link to="/" sx={{ borderRight: "none !important" }}>
+        Talent
+      </Link>
+    </SideNavigation>
     <div sx={{ textAlign: "center", mb: 5 }}>
       <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
       <p sx={{ variant: "styles.date" }}>{data.date}</p>

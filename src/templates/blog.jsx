@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
+import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
@@ -16,7 +17,35 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
-    <SideNavigation />
+    <SideNavigation>
+      <Link to="/about" sx={{}}>
+        About
+      </Link>
+      <PageTransition
+        defaultStyle={{
+          transition: "all 600ms ease-in-out",
+        }}
+        transitionStyles={{
+          entering: { flex: 1, backgroundColor: "transparent" },
+          entered: { flex: 1, backgroundColor: "transparent" },
+          exiting: { flex: 0, backgroundColor: "transparent" },
+        }}
+        transitionTime={600}
+      >
+        <Link to="/blog" sx={{}}>
+          Journal
+        </Link>
+      </PageTransition>
+      <Link to="/" sx={{}}>
+        Freelancers
+      </Link>
+      <Link to="/casting" sx={{}}>
+        Casting
+      </Link>
+      <Link to="/" sx={{ borderRight: "none !important" }}>
+        Talent
+      </Link>
+    </SideNavigation>
     <div sx={{ pt: 3 }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>
