@@ -185,7 +185,7 @@ export default {
       borderRadius: "15px",
       borderColor: "black",
       border: "1px solid",
-      backgroundColor: "transparent",
+      backgroundColor: "white",
       fontSize: 3,
       textTransform: "uppercase",
       display: "inline-flex",

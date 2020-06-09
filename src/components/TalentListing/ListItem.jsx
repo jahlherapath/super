@@ -8,7 +8,7 @@ function Card({ node, index }) {
   return (
     <Link
       key={index}
-      to={node.uid}
+      to={`/${node.uid}`}
       sx={{
         float: "right",
         width: ["100%", "100%", "25%"],

@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
-import SideNavigation from "components/SideNavigation"
+import SideNavigationLeft from "components/SideNavigationLeft"
 import Slices from "components/Slices"
 
 export default ({
@@ -18,9 +18,9 @@ export default ({
   },
   pageContext: { next, prev },
 }) => (
-  <Layout graphicPosition="2">
+  <Layout>
     <SEO title={data.title.text} />
-    <SideNavigation>
+    <SideNavigationLeft>
       <Link to="/about" sx={{}}>
         About
       </Link>
@@ -48,7 +48,7 @@ export default ({
       <Link to="/" sx={{ borderRight: "none !important" }}>
         Talent
       </Link>
-    </SideNavigation>
+    </SideNavigationLeft>
     <div sx={{ textAlign: "center", mb: 5 }}>
       <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
       <p sx={{ variant: "styles.date" }}>{data.date}</p>
@@ -78,7 +78,7 @@ export default ({
     >
       {prev ? (
         <Link
-          to={prev.node.uid}
+          to={`/${prev.node.uid}`}
           sx={{
             variant: "styles.mono",
             display: "flex",
@@ -94,7 +94,7 @@ export default ({
       )}
       {next ? (
         <Link
-          to={next.node.uid}
+          to={`/${next.node.uid}`}
           sx={{
             variant: "styles.mono",
             display: "flex",

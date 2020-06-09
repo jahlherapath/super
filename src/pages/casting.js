@@ -6,14 +6,14 @@ import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import SideNavigation from "../components/SideNavigation"
+import SideNavigationLeft from "../components/SideNavigationLeft"
 import Form from "../components/Form"
 
 export default function Casting({ data: { casting } }) {
   return (
     <Layout>
       <SEO title="Casting" />
-      <SideNavigation>
+      <SideNavigationLeft>
         <Link to="/about" sx={{}}>
           About
         </Link>
@@ -41,7 +41,7 @@ export default function Casting({ data: { casting } }) {
         <Link to="/" sx={{ borderRight: "none !important" }}>
           Talent
         </Link>
-      </SideNavigation>
+      </SideNavigationLeft>
       <Container>
         <Left>
           <h1 sx={{ variant: "styles.display" }}>Casting</h1>

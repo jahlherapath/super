@@ -8,36 +8,11 @@ import GlobalStyles from "../GlobalStyles"
 
 import PageTransition from "gatsby-plugin-page-transitions"
 
-export default function Layout({ children, graphicPosition }) {
+export default function Layout({ children, sideMenuText }) {
   return (
     <Fragment>
       <GlobalStyles />
       <Navigation />
-      <div
-        sx={{
-          position: "fixed",
-          top: "100%",
-          right: 0,
-          height: "40px",
-          width: "100vh",
-          zIndex: 30,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transform: "rotate(90deg)",
-          transformOrigin: "100% 0",
-          borderBottom: "1px solid black",
-          textAlign: "center",
-          a: {
-            variant: "styles.mono",
-            color: "black",
-            lineHeight: 1,
-            px: 4,
-          },
-        }}
-      >
-        <a href="#">** Page Actions Should Go Here **</a>
-      </div>
       <PageTransition
         defaultStyle={{
           transition: "top 600ms ease-in-out",
@@ -57,8 +32,8 @@ export default function Layout({ children, graphicPosition }) {
             position: "relative",
             minHeight: "100vh",
             m: "0 auto",
+            py: "60px",
             px: "40px",
-            mt: ["70px", "70px", "110px"],
           }}
         >
           <div sx={{ p: 5 }}>{children}</div>

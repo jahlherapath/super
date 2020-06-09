@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 
 import PageTransition from "gatsby-plugin-page-transitions"
 
-function SideNavigation({ children }) {
+function SideNavigationLeft({ children }) {
   return (
     <div
       sx={{
@@ -37,4 +37,4 @@ function SideNavigation({ children }) {
   )
 }
 
-export default SideNavigation
+export default SideNavigationLeft

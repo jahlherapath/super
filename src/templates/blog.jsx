@@ -6,7 +6,7 @@ import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
-import SideNavigation from "components/SideNavigation"
+import SideNavigationLeft from "components/SideNavigationLeft"
 import Listing from "components/Listing"
 
 export default ({
@@ -17,7 +17,7 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
-    <SideNavigation>
+    <SideNavigationLeft>
       <Link to="/about" sx={{}}>
         About
       </Link>
@@ -45,7 +45,7 @@ export default ({
       <Link to="/" sx={{ borderRight: "none !important" }}>
         Talent
       </Link>
-    </SideNavigation>
+    </SideNavigationLeft>
     <div sx={{ pt: 3 }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>

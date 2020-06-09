@@ -7,7 +7,7 @@ import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
-import SideNavigation from "components/SideNavigation"
+import SideNavigationLeft from "components/SideNavigationLeft"
 
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
 import { useRef } from "react"
@@ -29,7 +29,7 @@ function Talent({
   return (
     <Layout>
       <SEO title={prismicTalent.data.name.text} />
-      <SideNavigation>
+      <SideNavigationLeft>
         <Link to="/about" sx={{}}>
           About
         </Link>
@@ -57,7 +57,7 @@ function Talent({
             Talent
           </Link>
         </PageTransition>
-      </SideNavigation>
+      </SideNavigationLeft>
       <ParallaxProvider>
         <Container>
           <Left>
@@ -132,7 +132,7 @@ function Talent({
             >
               {prev ? (
                 <Link
-                  to={prev.node.uid}
+                  to={`/${prev.node.uid}`}
                   sx={{
                     variant: "styles.mono",
                     display: "flex",
@@ -148,7 +148,7 @@ function Talent({
               )}
               {next ? (
                 <Link
-                  to={next.node.uid}
+                  to={`/${next.node.uid}`}
                   sx={{
                     variant: "styles.mono",
                     display: "flex",

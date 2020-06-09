@@ -6,7 +6,7 @@ import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
-import SideNavigation from "components/SideNavigation"
+import SideNavigationLeft from "components/SideNavigationLeft"
 import Listing from "components/Listing"
 
 export default ({
@@ -18,7 +18,7 @@ export default ({
 }) => (
   <Layout>
     <SEO title={title} />
-    <SideNavigation>
+    <SideNavigationLeft>
       <Link to="/about" sx={{}}>
         About
       </Link>
@@ -46,7 +46,7 @@ export default ({
       <Link to="/" sx={{ borderRight: "none !important" }}>
         Talent
       </Link>
-    </SideNavigation>
+    </SideNavigationLeft>
     <h2 sx={{ variant: "styles.date", textAlign: "center", mb: 4 }}>
       {totalCount} {totalCount === 1 ? "Post" : "Posts"}
       {totalCount === 1 ? " was" : " were"} tagged with "{category}"

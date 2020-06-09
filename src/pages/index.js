@@ -9,7 +9,8 @@ import { useState, useEffect, useMemo } from "react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import SideNavigation from "../components/SideNavigation"
+import SideNavigationLeft from "../components/SideNavigationLeft"
+import SideNavigationRight from "../components/SideNavigationRight"
 
 import useLocalStorage from "../components/UseLocalStorage"
 
@@ -70,6 +71,7 @@ function Index({ data: { talent, tags } }) {
   }
 
   const [showMenu, setShowMenu] = useState()
+  const [showFilterTags, setShowFilterTags] = useState()
 
   const handler = () => setShowMenu(false)
 
@@ -102,9 +104,9 @@ function Index({ data: { talent, tags } }) {
   }
 
   return (
-    <Layout graphicPosition="2">
+    <Layout>
       <SEO title="Talent" />
-      <SideNavigation>
+      <SideNavigationLeft>
         <Link to="/about" sx={{}}>
           About
         </Link>
@@ -132,25 +134,35 @@ function Index({ data: { talent, tags } }) {
             Talent
           </Link>
         </PageTransition>
-      </SideNavigation>
-      <div
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          mb: 5,
-        }}
-      >
-        <Tag
-          show={showMenu}
-          tagList={tagList}
-          activeTags={activeTags}
-          setActiveTags={setActiveTags}
-          onClick={onClick}
-        />
-      </div>
+      </SideNavigationLeft>
+      <SideNavigationRight onClick={console.log("hey")}>
+        Filter +
+      </SideNavigationRight>
+      {showFilterTags && (
+        <div
+          sx={{
+            position: "fixed",
+            left: "40px",
+            right: "40px",
+            bottom: 0,
+            p: 5,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            zIndex: 20,
+          }}
+        >
+          <Tag
+            show={showMenu}
+            tagList={tagList}
+            activeTags={activeTags}
+            setActiveTags={setActiveTags}
+            onClick={onClick}
+          />
+        </div>
+      )}
       <Masonry
         breakpointCols={responsiveColumns}
         className="grid"
@@ -254,7 +266,7 @@ function Model({ model, isSelected, onChange, index }) {
         </div>
       </div>
       <Link
-        to={model.link}
+        to={`/${model.link}`}
         key={index}
         sx={{
           position: "relative",

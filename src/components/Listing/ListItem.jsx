@@ -8,7 +8,7 @@ import Categories from "./Categories"
 function Card({ node, categories }) {
   return (
     <div sx={{ gridColumn: "span 2", mb: 4 }}>
-      <Link to={node.uid}>
+      <Link to={`/${node.uid}`}>
         <h2 sx={{ variant: "styles.display", mb: 3 }}>
           {node.data.title.text}
         </h2>
@@ -16,7 +16,7 @@ function Card({ node, categories }) {
       </Link>
       <p sx={{ variant: "styles.html" }}>
         {node.data.content.text.substring(0, 300)}... &nbsp;
-        <Link to={node.uid}>Read More</Link>
+        <Link to={`/${node.uid}`}>Read More</Link>
       </p>
       {categories && (
         <div sx={{ my: 3 }}>

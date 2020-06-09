@@ -6,13 +6,13 @@ import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import SideNavigation from "../components/SideNavigation"
+import SideNavigationLeft from "../components/SideNavigationLeft"
 
 function About({ data: { about } }) {
   return (
     <Layout>
       <SEO title="About" />
-      <SideNavigation>
+      <SideNavigationLeft>
         <PageTransition
           defaultStyle={{
             transition: "all 600ms ease-in-out",
@@ -40,7 +40,7 @@ function About({ data: { about } }) {
         <Link to="/" sx={{ borderRight: "none !important" }}>
           Talent
         </Link>
-      </SideNavigation>
+      </SideNavigationLeft>
       <Intro>
         <div
           sx={{

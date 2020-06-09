@@ -35,7 +35,7 @@ export default ({
           }}
         >
           {!isFirst ? (
-            <Link to={prefix + prevPage} rel="prev">
+            <Link to={`/${prefix + nextPage}`} rel="prev">
               ← Prev
             </Link>
           ) : (
@@ -60,7 +60,7 @@ export default ({
                 }}
               >
                 <Link
-                  to={`${prefix}${i === 0 ? "" : i + 1}`}
+                  to={`/${prefix}${i === 0 ? "" : i + 1}`}
                   sx={{
                     p: 3,
                     m: 0,
@@ -75,7 +75,7 @@ export default ({
             ))}
           </ul>
           {!isLast ? (
-            <Link to={prefix + nextPage} rel="next">
+            <Link to={`/${prefix + nextPage}`} rel="next">
               Next →
             </Link>
           ) : (

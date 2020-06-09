@@ -100,7 +100,7 @@ function Talent({
             >
               {prev ? (
                 <Link
-                  to={prev.node.uid}
+                  to={`/${prev.node.uid}`}
                   sx={{
                     variant: "styles.mono",
                     display: "flex",
@@ -116,7 +116,7 @@ function Talent({
               )}
               {next ? (
                 <Link
-                  to={next.node.uid}
+                  to={`/${next.node.uid}`}
                   sx={{
                     variant: "styles.mono",
                     display: "flex",

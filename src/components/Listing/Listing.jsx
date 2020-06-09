@@ -37,7 +37,7 @@ export default ({
         >
           {!isFirst ? (
             <Link
-              to={prefix + prevPage}
+              to={`/${prefix + prevPage}`}
               sx={{
                 variant: "styles.mono",
                 display: "flex",
@@ -74,7 +74,7 @@ export default ({
                 }}
               >
                 <Link
-                  to={`${prefix}${i === 0 ? "" : i + 1}`}
+                  to={`/${prefix}${i === 0 ? "" : i + 1}`}
                   sx={{
                     p: 0,
                     m: 0,
@@ -97,7 +97,7 @@ export default ({
           </ul>
           {!isLast ? (
             <Link
-              to={prefix + nextPage}
+              to={`/${prefix + nextPage}`}
               sx={{
                 variant: "styles.mono",
                 display: "flex",
