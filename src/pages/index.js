@@ -135,8 +135,8 @@ function Index({ data: { talent, tags } }) {
           </Link>
         </PageTransition>
       </SideNavigationLeft>
-      <SideNavigationRight onClick={console.log("hey")}>
-        Filter +
+      <SideNavigationRight>
+        <span onClick={() => setShowFilterTags(x => !x)}>Filter +</span>
       </SideNavigationRight>
       {showFilterTags && (
         <div
@@ -365,7 +365,7 @@ export const indexQuery = graphql`
   }
 `
 
-const Tag = ({ show, tagList, activeTags, onClick }) => {
+const Tag = ({ tagList, activeTags, onClick }) => {
   return (
     <div>
       {tagList.map((tag, i) => (

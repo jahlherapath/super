@@ -20,13 +20,18 @@ function SideNavigationRight({ children }) {
         transformOrigin: "100% 0",
         borderBottom: "1px solid black",
         textAlign: "center",
-        cursor: "pointer",
         span: {
           variant: "styles.mono",
-          display: "block",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
           color: "black",
           lineHeight: 1,
-          px: 4,
+          height: "40px",
+          width: "100%",
+          textAlign: "right",
+          px: 2,
+          cursor: "pointer",
         },
       }}
     >
