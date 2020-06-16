@@ -7,7 +7,11 @@ import PageTransition from "gatsby-plugin-page-transitions"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 import SideNavigationLeft from "components/SideNavigationLeft"
+import SideNavigationRight from "components/SideNavigationRight"
+import ScrollDown from "components/ScrollDown"
 import Listing from "components/Listing"
+
+import { ScrollElement } from "react-scroll"
 
 export default ({
   data: {
@@ -46,6 +50,9 @@ export default ({
         Talent
       </Link>
     </SideNavigationLeft>
+    <SideNavigationRight>
+      <ScrollDown />
+    </SideNavigationRight>
     <div sx={{ pt: 3 }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>

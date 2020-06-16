@@ -7,6 +7,8 @@ import PageTransition from "gatsby-plugin-page-transitions"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 import SideNavigationLeft from "components/SideNavigationLeft"
+import SideNavigationRight from "components/SideNavigationRight"
+import ScrollDown from "components/ScrollDown"
 import Listing from "components/Listing"
 
 export default ({
@@ -47,6 +49,9 @@ export default ({
         Talent
       </Link>
     </SideNavigationLeft>
+    <SideNavigationRight>
+      <ScrollDown />
+    </SideNavigationRight>
     <h2 sx={{ variant: "styles.date", textAlign: "center", mb: 4 }}>
       {totalCount} {totalCount === 1 ? "Post" : "Posts"}
       {totalCount === 1 ? " was" : " were"} tagged with "{category}"

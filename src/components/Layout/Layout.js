@@ -32,7 +32,8 @@ export default function Layout({ children, sideMenuText }) {
             position: "relative",
             minHeight: "100vh",
             m: "0 auto",
-            py: "60px",
+            pt: "60px",
+            pb: 0,
             px: "40px",
           }}
         >

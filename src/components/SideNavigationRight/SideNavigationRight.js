@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import PageTransition from "gatsby-plugin-page-transitions"
-
 function SideNavigationRight({ children }) {
   return (
     <div
@@ -20,22 +18,22 @@ function SideNavigationRight({ children }) {
         transformOrigin: "100% 0",
         borderBottom: "1px solid black",
         textAlign: "center",
-        span: {
+        a: {
           variant: "styles.mono",
           display: "inline-flex",
           alignItems: "center",
-          justifyContent: "flex-end",
+          justifyContent: "center",
           color: "black",
           lineHeight: 1,
           height: "40px",
           width: "100%",
           textAlign: "right",
-          px: 2,
+          px: 4,
           cursor: "pointer",
         },
       }}
     >
-      <span>{children}</span>
+      {children}
     </div>
   )
 }

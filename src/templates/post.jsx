@@ -10,6 +10,8 @@ import "slick-carousel/slick/slick-theme.css"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 import SideNavigationLeft from "components/SideNavigationLeft"
+import SideNavigationRight from "components/SideNavigationRight"
+import ScrollDown from "components/ScrollDown"
 import Slices from "components/Slices"
 
 export default ({
@@ -49,6 +51,9 @@ export default ({
         Talent
       </Link>
     </SideNavigationLeft>
+    <SideNavigationRight>
+      <ScrollDown />
+    </SideNavigationRight>
     <div sx={{ textAlign: "center", mb: 5 }}>
       <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
       <p sx={{ variant: "styles.date" }}>{data.date}</p>

@@ -8,6 +8,8 @@ import PageTransition from "gatsby-plugin-page-transitions"
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 import SideNavigationLeft from "components/SideNavigationLeft"
+import SideNavigationRight from "components/SideNavigationRight"
+import ScrollDown from "components/ScrollDown"
 
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
 import { useRef } from "react"
@@ -58,6 +60,9 @@ function Talent({
           </Link>
         </PageTransition>
       </SideNavigationLeft>
+      <SideNavigationRight>
+        <ScrollDown />
+      </SideNavigationRight>
       <ParallaxProvider>
         <Container>
           <Left>

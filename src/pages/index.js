@@ -136,7 +136,7 @@ function Index({ data: { talent, tags } }) {
         </PageTransition>
       </SideNavigationLeft>
       <SideNavigationRight>
-        <span onClick={() => setShowFilterTags(x => !x)}>Filter +</span>
+        <a onClick={() => setShowFilterTags(x => !x)}>Filter +</a>
       </SideNavigationRight>
       {showFilterTags && (
         <div
