@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-import PageTransition from "gatsby-plugin-page-transitions"
 
 import { useState, useEffect, useMemo } from "react"
 
@@ -67,7 +66,7 @@ function Index({ data: { talent, tags } }) {
     default: 4,
     1024: 4,
     896: 3,
-    640: 2,
+    640: 1,
   }
 
   const [showMenu, setShowMenu] = useState()
@@ -119,21 +118,9 @@ function Index({ data: { talent, tags } }) {
         <Link to="/casting" sx={{}}>
           Casting
         </Link>
-        <PageTransition
-          defaultStyle={{
-            transition: "all 600ms ease-in-out",
-          }}
-          transitionStyles={{
-            entering: { flex: 1, backgroundColor: "transparent" },
-            entered: { flex: 1, backgroundColor: "transparent" },
-            exiting: { flex: 0, backgroundColor: "transparent" },
-          }}
-          transitionTime={600}
-        >
-          <Link to="/" sx={{ borderRight: "none !important" }}>
-            Talent
-          </Link>
-        </PageTransition>
+        <Link to="/" sx={{ borderRight: "none !important" }}>
+          Talent
+        </Link>
       </SideNavigationLeft>
       <SideNavigationRight>
         <a onClick={() => setShowFilterTags(x => !x)}>Filter</a>
@@ -288,12 +275,8 @@ function Model({ model, isSelected, onChange, index }) {
             pt: 3,
           }}
         >
-          <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
-            {model.name}
-          </p>
-          <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
-            {model.location}
-          </p>
+          <p sx={{ fontSize: 1, p: 0, m: 0 }}>{model.name}</p>
+          <p sx={{ fontSize: 1, p: 0, m: 0 }}>{model.location}</p>
         </div>
       </Link>
     </div>

@@ -21,7 +21,6 @@ function SideNavigationLeft({ children }) {
         backgroundColor: "white",
         a: {
           position: "relative",
-          variant: "styles.mono",
           color: "black",
           lineHeight: 1,
           height: "40px",
@@ -29,7 +28,6 @@ function SideNavigationLeft({ children }) {
           display: "flex",
           alignItems: "center",
           borderRight: "1px solid black",
-          borderBottom: "1px solid black",
         },
       }}
     >

@@ -39,7 +39,6 @@ export default ({
             <Link
               to={`/${prefix + prevPage}`}
               sx={{
-                variant: "styles.mono",
                 display: "flex",
                 alignItems: "center",
                 zIndex: 20,
@@ -67,7 +66,7 @@ export default ({
               listStyle: "none",
               m: 0,
               p: 0,
-              variant: "styles.mono",
+              
             }}
           >
             {Array.from({ length: numPages }, (_, i) => (
@@ -103,7 +102,7 @@ export default ({
             <Link
               to={`/${prefix + nextPage}`}
               sx={{
-                variant: "styles.mono",
+                
                 display: "flex",
                 alignItems: "center",
                 zIndex: 20,

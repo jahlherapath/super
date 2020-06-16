@@ -20,7 +20,6 @@ function SideNavigationRight({ children }) {
         textAlign: "center",
         backgroundColor: "white",
         a: {
-          variant: "styles.mono",
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "flex-end",

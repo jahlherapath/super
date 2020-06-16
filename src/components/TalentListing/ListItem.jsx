@@ -24,7 +24,7 @@ function Card({ node, index }) {
             pt: 3,
           }}
         >
-          <p sx={{ variant: "styles.mono", fontSize: 1, p: 0, m: 0 }}>
+          <p sx={{  fontSize: 1, p: 0, m: 0 }}>
             {node.data.name.text}
           </p>
           <p sx={{ fontFamily: "display", fontSize: 2, p: 0, m: 0 }}>

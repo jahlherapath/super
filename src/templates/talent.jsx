@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-import PageTransition from "gatsby-plugin-page-transitions"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
@@ -35,7 +34,7 @@ function Talent({
     default: 4,
     1024: 4,
     896: 3,
-    640: 2,
+    640: 1,
   }
 
   return (
@@ -54,21 +53,9 @@ function Talent({
         <Link to="/casting" sx={{}}>
           Casting
         </Link>
-        <PageTransition
-          defaultStyle={{
-            transition: "all 600ms ease-in-out",
-          }}
-          transitionStyles={{
-            entering: { flex: 1, backgroundColor: "transparent" },
-            entered: { flex: 1, backgroundColor: "transparent" },
-            exiting: { flex: 0, backgroundColor: "transparent" },
-          }}
-          transitionTime={600}
-        >
-          <Link to="/" sx={{ borderRight: "none !important" }}>
-            Talent
-          </Link>
-        </PageTransition>
+        <Link to="/" sx={{ borderRight: "none !important" }}>
+          Talent
+        </Link>
       </SideNavigationLeft>
       <SideNavigationRight>
         <ScrollDown />
@@ -79,7 +66,6 @@ function Talent({
             <Link
               to="/"
               sx={{
-                variant: "styles.mono",
                 display: "flex",
                 alignItems: "center",
                 mb: 8,
@@ -153,7 +139,6 @@ function Talent({
                 <Link
                   to={`/${prev.node.uid}`}
                   sx={{
-                    variant: "styles.mono",
                     display: "flex",
                     alignItems: "center",
                     "&:hover > svg": {
@@ -173,7 +158,6 @@ function Talent({
                 <Link
                   to={`/${next.node.uid}`}
                   sx={{
-                    variant: "styles.mono",
                     display: "flex",
                     alignItems: "center",
                     "&:hover > svg": {
@@ -231,7 +215,7 @@ function Talent({
             </div>
             <Emblem />
             <div sx={{ width: "100%", height: "100%" }}>
-              {prismicTalent.data.gallery.map((image, index) => (
+              {prismicTalent.data.headshots.map((image, index) => (
                 <Img
                   key={index}
                   fluid={image.image.localFile.childImageSharp.fluid}
@@ -328,7 +312,7 @@ const Info = ({ children }) => {
       sx={{
         display: "flex",
         justifyContent: "space-between",
-        variant: "styles.mono",
+
         mb: 3,
       }}
     >

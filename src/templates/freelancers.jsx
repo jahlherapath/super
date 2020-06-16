@@ -33,7 +33,6 @@ function Talent({
             <Link
               to="/freelancers"
               sx={{
-                variant: "styles.mono",
                 display: "flex",
                 alignItems: "center",
                 mb: 8,
@@ -102,7 +101,7 @@ function Talent({
                 <Link
                   to={`/${prev.node.uid}`}
                   sx={{
-                    variant: "styles.mono",
+                    
                     display: "flex",
                     alignItems: "center",
                   }}
@@ -118,7 +117,7 @@ function Talent({
                 <Link
                   to={`/${next.node.uid}`}
                   sx={{
-                    variant: "styles.mono",
+                    
                     display: "flex",
                     alignItems: "center",
                   }}
@@ -240,7 +239,7 @@ const Info = ({ children }) => {
       sx={{
         display: "flex",
         justifyContent: "space-between",
-        variant: "styles.mono",
+        
         mb: 3,
       }}
     >

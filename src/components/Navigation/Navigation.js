@@ -58,7 +58,7 @@ function Navigation() {
             }}
             onClick={() => setShowMenu(x => !x)}
           >
-            <span sx={{ variant: "styles.mono", textTransform: "initial" }}>
+            <span sx={{  textTransform: "initial" }}>
               Selected Talent
             </span>
             <div sx={{ display: "flex", width: "16px", ml: 2, mt: "-1px" }}>
@@ -89,7 +89,7 @@ function Navigation() {
               borderBottom: "1px solid black",
               py: 4,
               px: 5,
-              variant: "styles.mono",
+              
               zIndex: 30,
             }}
           >
