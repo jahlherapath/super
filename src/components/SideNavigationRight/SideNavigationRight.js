@@ -22,7 +22,7 @@ function SideNavigationRight({ children }) {
           variant: "styles.mono",
           display: "inline-flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "flex-end",
           color: "black",
           lineHeight: 1,
           height: "40px",

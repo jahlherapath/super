@@ -7,6 +7,7 @@ import PageTransition from "gatsby-plugin-page-transitions"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import SideNavigationLeft from "../components/SideNavigationLeft"
+import SideNavigationRight from "../components/SideNavigationRight"
 import Form from "../components/Form"
 
 export default function Casting({ data: { casting } }) {
@@ -42,6 +43,9 @@ export default function Casting({ data: { casting } }) {
           Talent
         </Link>
       </SideNavigationLeft>
+      <SideNavigationRight>
+        <a href={"mailto:" + casting.data.email.text}>EMAIL US</a>
+      </SideNavigationRight>
       <Container>
         <Left>
           <h1 sx={{ variant: "styles.display" }}>Casting</h1>
@@ -113,6 +117,9 @@ export const castingQuery = graphql`
       data {
         casting {
           html
+        }
+        email {
+          text
         }
       }
     }

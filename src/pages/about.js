@@ -7,6 +7,7 @@ import PageTransition from "gatsby-plugin-page-transitions"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import SideNavigationLeft from "../components/SideNavigationLeft"
+import SideNavigationRight from "../components/SideNavigationRight"
 
 function About({ data: { about } }) {
   return (
@@ -41,6 +42,9 @@ function About({ data: { about } }) {
           Talent
         </Link>
       </SideNavigationLeft>
+      <SideNavigationRight>
+        <a href={"mailto:" + about.data.email.text}>EMAIL US</a>
+      </SideNavigationRight>
       <Intro>
         <div
           sx={{
