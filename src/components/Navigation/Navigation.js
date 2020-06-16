@@ -29,6 +29,7 @@ function Navigation() {
       style={{
         paddingLeft: "40px",
         paddingRight: "40px",
+        zIndex: 30,
       }}
     >
       <header
@@ -89,6 +90,7 @@ function Navigation() {
               py: 4,
               px: 5,
               variant: "styles.mono",
+              zIndex: 30,
             }}
           >
             <TalentSelection />
@@ -405,8 +407,10 @@ function TalentSelection() {
 
   return (
     <Fragment>
-      {Array.isArray(selectedModels) &&
-        selectedModels.map(i => i.name).join(", ")}
+      {selectedModels.length > 0
+        ? Array.isArray(selectedModels) &&
+          selectedModels.map(i => i.name).join(", ")
+        : "No talent selected"}
     </Fragment>
   )
 }

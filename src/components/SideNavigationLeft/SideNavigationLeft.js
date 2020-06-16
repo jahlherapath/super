@@ -18,6 +18,7 @@ function SideNavigationLeft({ children }) {
         transform: "rotate(-90deg)",
         transformOrigin: "top left",
         borderBottom: "1px solid black",
+        backgroundColor: "white",
         a: {
           position: "relative",
           variant: "styles.mono",

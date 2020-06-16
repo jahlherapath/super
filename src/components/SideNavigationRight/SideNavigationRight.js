@@ -18,6 +18,7 @@ function SideNavigationRight({ children }) {
         transformOrigin: "100% 0",
         borderBottom: "1px solid black",
         textAlign: "center",
+        backgroundColor: "white",
         a: {
           variant: "styles.mono",
           display: "inline-flex",
