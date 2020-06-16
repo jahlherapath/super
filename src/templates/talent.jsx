@@ -14,6 +14,8 @@ import ScrollDown from "components/ScrollDown"
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
 import { useRef } from "react"
 
+import Masonry from "react-masonry-css"
+
 function Talent({
   data: { prismicTalent, prismicInfo },
   pageContext: { next, prev },
@@ -27,6 +29,14 @@ function Talent({
           .sort(() => Math.random() - 0.5)
           .slice(0, 2)
   )
+
+  // Responsive Columns
+  const responsiveColumns = {
+    default: 4,
+    1024: 4,
+    896: 3,
+    640: 2,
+  }
 
   return (
     <Layout>
@@ -186,7 +196,7 @@ function Talent({
               sx={{
                 position: "absolute",
                 top: 12,
-                right: [-4, -4, -5],
+                right: [-5, -5, -6],
                 py: 12,
                 width: ["180px", "180px", "250px"],
                 zIndex: 2,
@@ -206,7 +216,7 @@ function Talent({
               sx={{
                 position: "absolute",
                 top: 14,
-                left: [-10, -10, 0],
+                left: [-5, -5, 0],
                 width: ["180px", "180px", "250px"],
                 zIndex: 2,
               }}
@@ -231,6 +241,22 @@ function Talent({
             </div>
           </Right>
         </Container>
+        <Gallery>
+          <Masonry
+            breakpointCols={responsiveColumns}
+            className="grid-gallery"
+            columnClassName="column"
+          >
+            {prismicTalent.data.gallery.map((image, index) => (
+              <div sx={{ mb: [4, 4, 5] }}>
+                <Img
+                  key={index}
+                  fluid={image.image.localFile.childImageSharp.fluid}
+                />
+              </div>
+            ))}
+          </Masonry>
+        </Gallery>
       </ParallaxProvider>
     </Layout>
   )
@@ -263,7 +289,7 @@ const Left = ({ children }) => {
         pr: [0, 0, 7],
       }}
     >
-      <div sx={{}}>{children}</div>
+      {children}
     </div>
   )
 }
@@ -275,6 +301,20 @@ const Right = ({ children }) => {
         position: "relative",
         gridColumn: ["span 2", "span 2", "span 1"],
         pl: [0, 0, 12],
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Gallery = ({ children }) => {
+  return (
+    <div
+      sx={{
+        position: "relative",
+        gridColumn: ["span 2", "span 2", "span 2"],
+        mt: [0, 0, 5],
       }}
     >
       {children}
@@ -517,6 +557,17 @@ export const pageQuery = graphql`
         }
         pgp {
           text
+        }
+        headshots {
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
         }
         gallery {
           image {

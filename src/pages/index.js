@@ -165,7 +165,7 @@ function Index({ data: { talent, tags } }) {
       )}
       <Masonry
         breakpointCols={responsiveColumns}
-        className="grid"
+        className="grid-talent"
         columnClassName="column"
       >
         {filteredTalent.map(model => (

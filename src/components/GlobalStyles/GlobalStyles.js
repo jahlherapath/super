@@ -33,7 +33,12 @@ const GlobalStyles = () => {
             display: "block",
             width: "100%",
           },
-          ".grid": {
+          ".grid-talent": {
+            display: "flex",
+            marginLeft: "-32px",
+            width: "auto",
+          },
+          ".grid-gallery": {
             display: "flex",
             marginLeft: "-32px",
             width: "auto",
@@ -42,8 +47,9 @@ const GlobalStyles = () => {
             paddingLeft: "32px",
             backgroundClip: "padding-box",
           },
-          "@media (max-width: 52em)": {
-            ".grid": { marginLeft: "-16px !important" },
+          "@media (max-width: 56em)": {
+            ".grid-talent": { marginLeft: "-16px !important" },
+            ".grid-gallery": { marginLeft: "-16px !important" },
             ".column": { paddingLeft: "16px !important" },
           },
           "@keyframes spin": {
