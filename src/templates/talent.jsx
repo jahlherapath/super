@@ -73,6 +73,10 @@ function Talent({
                 display: "flex",
                 alignItems: "center",
                 mb: 8,
+                "&:hover > svg": {
+                  transform: " translateX(-5px)",
+                  transition: "all 200ms ease",
+                },
               }}
             >
               <ArrowLeft />
@@ -142,6 +146,10 @@ function Talent({
                     variant: "styles.mono",
                     display: "flex",
                     alignItems: "center",
+                    "&:hover > svg": {
+                      transform: " translateX(-5px)",
+                      transition: "all 200ms ease",
+                    },
                   }}
                   rel="prev"
                 >
@@ -158,6 +166,10 @@ function Talent({
                     variant: "styles.mono",
                     display: "flex",
                     alignItems: "center",
+                    "&:hover > svg": {
+                      transform: " translateX(5px)",
+                      transition: "all 200ms ease",
+                    },
                   }}
                   rel="next"
                 >

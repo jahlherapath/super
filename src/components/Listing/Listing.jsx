@@ -43,6 +43,10 @@ export default ({
                 display: "flex",
                 alignItems: "center",
                 zIndex: 20,
+                "&:hover > svg": {
+                  transform: " translateX(-5px)",
+                  transition: "all 200ms ease",
+                },
               }}
               rel="prev"
             >
@@ -103,6 +107,10 @@ export default ({
                 display: "flex",
                 alignItems: "center",
                 zIndex: 20,
+                "&:hover > svg": {
+                  transform: " translateX(5px)",
+                  transition: "all 200ms ease",
+                },
               }}
               rel="next"
             >

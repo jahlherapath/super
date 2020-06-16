@@ -89,6 +89,10 @@ export default ({
             display: "flex",
             alignItems: "center",
             width: ["100%", "auto", "auto"],
+            "&:hover > svg": {
+              transform: " translateX(-5px)",
+              transition: "all 200ms ease",
+            },
           }}
           rel="prev"
         >
@@ -107,6 +111,10 @@ export default ({
             justifyContent: "flex-end",
             width: ["100%", "auto", "auto"],
             textAlign: "right",
+            "&:hover > svg": {
+              transform: " translateX(5px)",
+              transition: "all 200ms ease",
+            },
           }}
           rel="next"
         >
