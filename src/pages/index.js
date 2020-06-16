@@ -271,7 +271,8 @@ function Model({ model, isSelected, onChange, index }) {
         sx={{
           position: "relative",
           display: "block",
-          backgroundColor: "offWhite",
+          backgroundColor: "white",
+          border: "1px solid black",
           px: 3,
           pt: 3,
           pb: 3,
