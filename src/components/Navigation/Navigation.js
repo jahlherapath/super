@@ -2,9 +2,8 @@
 import { jsx } from "theme-ui"
 
 import { useState, useEffect, Fragment } from "react"
-import { Spring, Transition, animated } from "react-spring/renderprops"
 
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import Headroom from "react-headroom"
 
 import useLocalStorage from "../UseLocalStorage"
@@ -50,18 +49,27 @@ function Navigation() {
         >
           <p></p>
           <Logo />
-          <div
+          <button
             sx={{
               display: ["none", "none", "flex"],
               alignItems: "center",
               cursor: "pointer",
+              background: "none",
+              border: "none",
             }}
             onClick={() => setShowMenu(x => !x)}
+            onKeyDown={() => setShowMenu(x => !x)}
           >
-            <span sx={{  textTransform: "initial" }}>
+            <span
+              sx={{
+                textTransform: "initial",
+                variant: "styles.serif",
+                fontStyle: "italic",
+              }}
+            >
               Selected Talent
             </span>
-            <div sx={{ display: "flex", width: "16px", ml: 2, mt: "-1px" }}>
+            <div sx={{ display: "flex", width: "16px", ml: 2 }}>
               <svg
                 width="100%"
                 height="100%"
@@ -80,7 +88,7 @@ function Navigation() {
                 />
               </svg>
             </div>
-          </div>
+          </button>
         </div>
         {showMenu && (
           <div
@@ -89,8 +97,8 @@ function Navigation() {
               borderBottom: "1px solid black",
               py: 4,
               px: 5,
-              
               zIndex: 30,
+              variant: "styles.serif",
             }}
           >
             <TalentSelection />
@@ -102,252 +110,6 @@ function Navigation() {
 }
 
 export default Navigation
-
-const Menu = ({ show }) => {
-  return (
-    <div
-      sx={{
-        mt: ["85px", "85px", "70px"],
-        width: "100%",
-      }}
-    >
-      <Spring
-        native
-        to={{
-          height: show ? "100%" : "0%",
-        }}
-      >
-        {props => (
-          <animated.div
-            style={props}
-            sx={{
-              display: show ? "block" : "none",
-              border: "1px solid black",
-              overflow: "hidden",
-            }}
-          >
-            <Links show={show} />
-          </animated.div>
-        )}
-      </Spring>
-    </div>
-  )
-}
-
-const Links = ({ show }) => {
-  const { prismicInfo } = useStaticQuery(
-    graphql`
-      query {
-        prismicInfo {
-          data {
-            email {
-              text
-            }
-            instagram {
-              text
-            }
-          }
-        }
-      }
-    `
-  )
-
-  return (
-    <Transition
-      items={show}
-      config={{
-        duration: 200,
-        tension: 210,
-        friction: 20,
-      }}
-      from={{ opacity: 0, transform: "translateY(-2px)" }}
-      enter={{ opacity: 1, transform: "translateY(0)" }}
-      leave={{ opacity: 0, transform: "translateY(-2px)" }}
-    >
-      {show =>
-        show &&
-        (props => (
-          <div
-            style={{
-              ...props,
-            }}
-            sx={{ display: "flex", flexDirection: "column" }}
-          >
-            <Link
-              to="/"
-              sx={{
-                variant: "styles.navigation",
-              }}
-            >
-              <sup>01</sup>
-              <span>Talent</span>
-              <Arrow />
-            </Link>
-            <Link to="/casting" sx={{ variant: "styles.navigation" }}>
-              <sup>02</sup>
-              <span>Casting</span>
-              <Arrow />
-            </Link>
-            <Link to="/blog" sx={{ variant: "styles.navigation" }}>
-              <sup>03</sup>
-              <span>Journal</span>
-              <Arrow />
-            </Link>
-            <Link to="/freelancers" sx={{ variant: "styles.navigation" }}>
-              <sup>04</sup>
-              <span>Freelancers</span>
-              <Arrow />
-            </Link>
-            <Link to="/about" sx={{ variant: "styles.navigation" }}>
-              <sup>05</sup>
-              <span>About</span>
-              <Arrow />
-            </Link>
-            <div sx={{ display: "flex" }}>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={"mailto:" + prismicInfo.data.email.text}
-                sx={{
-                  variant: "styles.navigation",
-                  width: "50%",
-                  px: "0 !important",
-                  textAlign: "center",
-                  justifyContent: "center",
-                  borderRight: "1px solid black",
-                  borderBottom: "none",
-                }}
-              >
-                <span
-                  sx={{ fontSize: "18px !important", justifyContent: "center" }}
-                >
-                  Instagram
-                </span>
-              </a>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={
-                  "https://www.instagram.com/" + prismicInfo.data.instagram.text
-                }
-                sx={{
-                  variant: "styles.navigation",
-                  width: "50%",
-                  px: "0 !important",
-                  textAlign: "center",
-                  justifyContent: "center",
-                  borderBottom: "none",
-                }}
-              >
-                <span
-                  sx={{ fontSize: "18px !important", justifyContent: "center" }}
-                >
-                  Contact
-                </span>
-              </a>
-            </div>
-          </div>
-        ))
-      }
-    </Transition>
-  )
-}
-
-const Burger = ({ show }) => {
-  return (
-    <div
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "40px",
-        mr: "-5px",
-        zIndex: 10,
-      }}
-    >
-      {show && <Close />}
-      {!show && <Open />}
-    </div>
-  )
-}
-
-const Open = () => {
-  return (
-    <svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" />
-      <path
-        d="M6 20L25.2 20"
-        stroke="#1D1D1B"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-      />
-      <path
-        d="M6 12L25.2 12"
-        stroke="#1D1D1B"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-      />
-    </svg>
-  )
-}
-
-const Close = () => {
-  return (
-    <svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" />
-      <path
-        d="M8 8.00001L16.1 16.1L8 24.2"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-      <path
-        d="M24.2 24.2L16.1 16.1L24.2 8"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-    </svg>
-  )
-}
-
-const Arrow = () => {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" />
-      <path
-        d="M6 15.9L25.2 15.9"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-      <path
-        d="M17.1 7.8L25.2 15.9L17.1 24"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-    </svg>
-  )
-}
 
 const Logo = () => {
   return (

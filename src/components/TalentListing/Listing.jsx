@@ -35,7 +35,7 @@ export default ({
           }}
         >
           {!isFirst ? (
-            <Link to={`/${prefix + nextPage}`} rel="prev">
+            <Link to={`/${prefix + prevPage}`} rel="prev">
               ← Prev
             </Link>
           ) : (
@@ -57,6 +57,7 @@ export default ({
                 key={`pagination-number${i + 1}`}
                 sx={{
                   m: 0,
+                  variant: "styles.serif",
                 }}
               >
                 <Link

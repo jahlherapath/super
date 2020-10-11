@@ -19,7 +19,7 @@ npm install -g gatsby-cli
 
 2. Install Yarn globally [instructions here](https://yarnpkg.com/lang/en/docs/install/).
 
-3. Using at least `Node v8.16.2`
+3. Using at least `Node v12.18.1`
 
 ## Installing
 
@@ -52,7 +52,6 @@ yarn build && yarn serve
 ```
 
 This generates optimised production files as well as starting a local HTML server for testing.
-
 
 ## Deployment
 

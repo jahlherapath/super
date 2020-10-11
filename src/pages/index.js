@@ -49,6 +49,8 @@ function Index({ data: { talent, tags } }) {
     return talentList.filter(talent =>
       talent.tags.some(talent => activeTags.includes(talent))
     )
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTags])
 
   const onClick = tag => {
@@ -123,7 +125,20 @@ function Index({ data: { talent, tags } }) {
         </Link>
       </SideNavigationLeft>
       <SideNavigationRight>
-        <a onClick={() => setShowFilterTags(x => !x)}>Filter</a>
+        <button
+          sx={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            fontFamily: "body",
+            fontSize: [1, 1, 2],
+            textTransform: "uppercase",
+            mr: 2,
+          }}
+          onClick={() => setShowFilterTags(x => !x)}
+        >
+          Filter
+        </button>
       </SideNavigationRight>
       {showFilterTags && (
         <div
@@ -275,8 +290,27 @@ function Model({ model, isSelected, onChange, index }) {
             pt: 3,
           }}
         >
-          <p sx={{ fontSize: 1, p: 0, m: 0 }}>{model.name}</p>
-          <p sx={{ fontSize: 1, p: 0, m: 0 }}>{model.location}</p>
+          <p
+            sx={{
+              fontFamily: "body",
+              fontSize: 2,
+              p: 0,
+              m: 0,
+            }}
+          >
+            {model.name}
+          </p>
+          <p
+            sx={{
+              variant: "styles.serif",
+              fontStyle: "italic",
+              fontSize: 1,
+              p: 0,
+              m: 0,
+            }}
+          >
+            {model.location}
+          </p>
         </div>
       </Link>
     </div>

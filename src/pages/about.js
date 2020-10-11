@@ -30,7 +30,16 @@ function About({ data: { about } }) {
         </Link>
       </SideNavigationLeft>
       <SideNavigationRight>
-        <a href={"mailto:" + about.data.email.text}>EMAIL US</a>
+        <a
+          sx={{
+            fontFamily: "body",
+            fontSize: [1, 1, 2],
+            textTransform: "uppercase",
+          }}
+          href={"mailto:" + about.data.email.text}
+        >
+          Email Us
+        </a>
       </SideNavigationRight>
       <Intro>
         <div

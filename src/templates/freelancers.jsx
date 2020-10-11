@@ -101,9 +101,10 @@ function Talent({
                 <Link
                   to={`/${prev.node.uid}`}
                   sx={{
-                    
                     display: "flex",
                     alignItems: "center",
+                    variant: "styles.serif",
+                    fontStyle: "italic",
                   }}
                   rel="prev"
                 >
@@ -117,9 +118,10 @@ function Talent({
                 <Link
                   to={`/${next.node.uid}`}
                   sx={{
-                    
                     display: "flex",
                     alignItems: "center",
+                    variant: "styles.serif",
+                    fontStyle: "italic",
                   }}
                   rel="next"
                 >
@@ -239,7 +241,7 @@ const Info = ({ children }) => {
       sx={{
         display: "flex",
         justifyContent: "space-between",
-        
+
         mb: 3,
       }}
     >

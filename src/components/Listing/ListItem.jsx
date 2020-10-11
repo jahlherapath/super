@@ -25,12 +25,8 @@ function Card({ node, categories }) {
         <h2 sx={{ variant: "styles.display", mb: 0 }}>
           {node.data.title.text}
         </h2>
-        <p sx={{ variant: "styles.date" }}>{node.data.date}</p>
+        <p sx={{ variant: "styles.date", mb: 4 }}>{node.data.date}</p>
       </Link>
-      {/* <p sx={{ variant: "styles.html" }}>
-        {node.data.content.text.substring(0, 300)}... &nbsp;
-        <Link to={`/${node.uid}`}>Read More</Link>
-      </p> */}
       {categories && <Categories categories={categories} />}
     </div>
   )

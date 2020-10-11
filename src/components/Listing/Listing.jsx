@@ -9,7 +9,6 @@ import Img from "gatsby-image"
 import kebabCase from "lodash/kebabCase"
 
 import ListItem from "./ListItem"
-import Categories from "./Categories"
 
 export default ({
   posts,
@@ -59,15 +58,19 @@ export default ({
                 flexDirection: ["column", "column", "row"],
               }}
             >
-              <p sx={{ variant: "styles.date" }}>{posts[0].data.date}</p>
-              <div>
+              <p sx={{ variant: "styles.date", mb: 0 }}>{posts[0].data.date}</p>
+              <div sx={{ mt: "-6px" }}>
                 {posts[0].data.categories.map(cat => {
                   return (
                     <Link
                       to={`/categories/${kebabCase(
                         cat.category.document[0].data.name
                       )}`}
-                      sx={{ variant: "styles.category", mr: 2, mb: 2 }}
+                      sx={{
+                        variant: "styles.category",
+                        mr: 2,
+                        mb: 2,
+                      }}
                     >
                       {cat.category.document[0].data.name}
                     </Link>
@@ -162,6 +165,7 @@ export default ({
                   key={`pagination-number${i + 1}`}
                   sx={{
                     m: 0,
+                    variant: "styles.serif",
                   }}
                 >
                   <Link

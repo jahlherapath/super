@@ -49,7 +49,7 @@ export default ({
     {data.thumbnail && (
       <Img
         fluid={data.thumbnail.localFile.childImageSharp.fluid}
-        sx={{ mb: 3, minHeight: "30vh", mb: 5 }}
+        sx={{ mb: 5, minHeight: "30vh" }}
       />
     )}
     <div
@@ -82,6 +82,8 @@ export default ({
             display: "flex",
             alignItems: "center",
             width: ["100%", "auto", "auto"],
+            variant: "styles.serif",
+            fontStyle: "italic",
             "&:hover > svg": {
               transform: " translateX(-5px)",
               transition: "all 200ms ease",
@@ -103,6 +105,8 @@ export default ({
             justifyContent: "flex-end",
             width: ["100%", "auto", "auto"],
             textAlign: "right",
+            variant: "styles.serif",
+            fontStyle: "italic",
             "&:hover > svg": {
               transform: " translateX(5px)",
               transition: "all 200ms ease",

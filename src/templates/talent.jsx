@@ -66,6 +66,8 @@ function Talent({
             <Link
               to="/"
               sx={{
+                variant: "styles.serif",
+                fontStyle: "italic",
                 display: "flex",
                 alignItems: "center",
                 mb: 8,
@@ -141,6 +143,8 @@ function Talent({
                   sx={{
                     display: "flex",
                     alignItems: "center",
+                    variant: "styles.serif",
+                    fontStyle: "italic",
                     "&:hover > svg": {
                       transform: " translateX(-5px)",
                       transition: "all 200ms ease",
@@ -160,6 +164,8 @@ function Talent({
                   sx={{
                     display: "flex",
                     alignItems: "center",
+                    variant: "styles.serif",
+                    fontStyle: "italic",
                     "&:hover > svg": {
                       transform: " translateX(5px)",
                       transition: "all 200ms ease",
@@ -312,8 +318,10 @@ const Info = ({ children }) => {
       sx={{
         display: "flex",
         justifyContent: "space-between",
-
-        mb: 3,
+        mb: 4,
+        variant: "styles.serif",
+        fontStyle: "italic",
+        fontSize: [1, 1, 2],
       }}
     >
       {children}

@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import PageTransition from "gatsby-plugin-page-transitions"
-
 function SideNavigationLeft({ children }) {
   return (
     <div
@@ -21,13 +19,20 @@ function SideNavigationLeft({ children }) {
         backgroundColor: "white",
         a: {
           position: "relative",
-          color: "black",
+          color: "white",
           lineHeight: 1,
           height: "40px",
           px: 4,
           display: "flex",
           alignItems: "center",
-          borderRight: "1px solid black",
+          borderBottom: "1px solid black",
+          variant: "styles.serif",
+          fontStyle: "italic",
+          "&:nth-of-type(1)": { backgroundColor: "plum", color: "white" },
+          "&:nth-of-type(2)": { backgroundColor: "brick" },
+          "&:nth-of-type(3)": { backgroundColor: "orange" },
+          "&:nth-of-type(4)": { backgroundColor: "lightGreen" },
+          "&:nth-of-type(5)": { backgroundColor: "babyBlue" },
         },
       }}
     >

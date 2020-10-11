@@ -1,20 +1,18 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import * as Scroll from "react-scroll"
-import {
-  Link,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll"
+import { animateScroll as scroll } from "react-scroll"
 
 function ScrollDown() {
   return (
-    <a
+    <button
       sx={{
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        fontFamily: "body",
+        fontSize: [1, 1, 2],
+        textTransform: "uppercase",
         "&:hover > svg": {
           transform: "translateX(5px)",
           transition: "all 200ms ease",
@@ -36,7 +34,7 @@ function ScrollDown() {
           fill="black"
         />
       </svg>
-    </a>
+    </button>
   )
 }
 

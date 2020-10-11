@@ -3,10 +3,10 @@ import { jsx } from "theme-ui"
 
 import { Fragment } from "react"
 
+import PageTransition from "gatsby-plugin-page-transitions"
+
 import Navigation from "../Navigation"
 import GlobalStyles from "../GlobalStyles"
-
-import PageTransition from "gatsby-plugin-page-transitions"
 
 export default function Layout({ children, sideMenuText }) {
   return (
