@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Layout from "components/Layout"
 import SEO from "components/SEO"
@@ -13,6 +14,7 @@ import Listing from "components/Listing"
 export default ({
   data: {
     posts: { nodes: posts },
+    single: { nodes: single },
   },
   pageContext: { title, currentPage, numPages, prefix },
 }) => (
@@ -46,6 +48,44 @@ export default ({
 
 export const pageQuery = graphql`
   query PageQuery($skip: Int!, $limit: Int!) {
+    single: allPrismicPost(
+      sort: { fields: [data___date], order: DESC }
+      limit: 1
+    ) {
+      nodes {
+        uid
+        id
+        data {
+          date(formatString: "MMMM Do, YYYY")
+          thumbnail {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          title {
+            html
+            text
+          }
+          content {
+            html
+            text
+          }
+          categories {
+            category {
+              document {
+                data {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     posts: allPrismicPost(
       sort: { fields: [data___date], order: DESC }
       limit: $limit
@@ -56,6 +96,15 @@ export const pageQuery = graphql`
         id
         data {
           date(formatString: "MMMM Do, YYYY")
+          thumbnail {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
           title {
             html
             text

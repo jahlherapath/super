@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -45,6 +46,12 @@ export default ({
       <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
       <p sx={{ variant: "styles.date" }}>{data.date}</p>
     </div>
+    {data.thumbnail && (
+      <Img
+        fluid={data.thumbnail.localFile.childImageSharp.fluid}
+        sx={{ mb: 3, minHeight: "30vh", mb: 5 }}
+      />
+    )}
     <div
       sx={{ variant: "styles.html", mb: 5 }}
       dangerouslySetInnerHTML={{ __html: data.content.html }}
@@ -118,6 +125,15 @@ export const pageQuery = graphql`
       uid
       data {
         date(formatString: "MMMM Do, YYYY")
+        thumbnail {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1200, quality: 90) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
         title {
           text
         }

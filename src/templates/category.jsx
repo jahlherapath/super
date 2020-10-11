@@ -39,7 +39,7 @@ export default ({
     <SideNavigationRight>
       <ScrollDown />
     </SideNavigationRight>
-    <h2 sx={{ variant: "styles.date", textAlign: "center", mb: 4 }}>
+    <h2 sx={{ variant: "styles.date", textAlign: "center", mb: 6 }}>
       {totalCount} {totalCount === 1 ? "Post" : "Posts"}
       {totalCount === 1 ? " was" : " were"} tagged with "{category}"
     </h2>
@@ -73,6 +73,16 @@ export const pageQuery = graphql`
       nodes {
         uid
         data {
+          date(formatString: "MMMM Do, YYYY")
+          thumbnail {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
           title {
             html
             text
@@ -81,7 +91,6 @@ export const pageQuery = graphql`
             html
             text
           }
-          date(formatString: "MMMM Do, YYYY")
           categories {
             category {
               document {
