@@ -8,25 +8,40 @@ import SEO from "../components/SEO"
 import SideNavigationLeft from "../components/SideNavigationLeft"
 import SideNavigationRight from "../components/SideNavigationRight"
 
+import { motion } from "framer-motion"
+
+const MotionLink = motion.custom(Link)
+
 function About({ data: { about } }) {
   return (
     <Layout>
       <SEO title="About" />
       <SideNavigationLeft>
-        <Link to="/about" sx={{}}>
-          About
+        <MotionLink
+          to="/about"
+          activeClassName="active"
+          animate={{ backgroundPosition: "left bottom", color: "white" }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 0.2,
+          }}
+          sx={{}}
+        >
+          <span>About</span>
+        </MotionLink>
+        <Link to="/blog" activeClassName="active" sx={{}}>
+          <span>Journal</span>
         </Link>
-        <Link to="/blog" sx={{}}>
-          Journal
+        <Link to="/" activeClassName="active" sx={{}}>
+          <span>Freelancers</span>
         </Link>
-        <Link to="/" sx={{}}>
-          Freelancers
+        <Link to="/casting" activeClassName="active" sx={{}}>
+          <span>Casting</span>
         </Link>
-        <Link to="/casting" sx={{}}>
-          Casting
-        </Link>
-        <Link to="/" sx={{ borderRight: "none !important" }}>
-          Talent
+        <Link to="/" activeClassName="active">
+          <span>Talent</span>
         </Link>
       </SideNavigationLeft>
       <SideNavigationRight>
@@ -34,104 +49,105 @@ function About({ data: { about } }) {
           sx={{
             fontFamily: "body",
             fontSize: [1, 1, 2],
-            textTransform: "uppercase",
           }}
           href={"mailto:" + about.data.email.text}
         >
-          Email Us
+          Email Super
         </a>
       </SideNavigationRight>
-      <Intro>
-        <div
-          sx={{
-            variant: "styles.about",
-            mb: 5,
-          }}
-          dangerouslySetInnerHTML={{ __html: about.data.about.html }}
-        />
-        {about.data.press_kit.url && (
-          <div>
-            <a
-              sx={{
-                variant: "styles.button",
-              }}
-              target="_blank"
-              rel="noopener noreferrer"
-              href={about.data.press_kit.url}
-            >
-              Download press kit
-            </a>
-          </div>
-        )}
-      </Intro>
-      <Content>
-        <Columns>
-          <Title>Services</Title>
+      <div sx={{ p: 5 }}>
+        <Intro>
           <div
             sx={{
-              variant: "styles.html",
+              variant: "styles.about",
+              mb: 5,
             }}
-            dangerouslySetInnerHTML={{ __html: about.data.services.html }}
+            dangerouslySetInnerHTML={{ __html: about.data.about.html }}
           />
-        </Columns>
-        <Columns>
-          <Title>Talent</Title>
-          <div
-            sx={{
-              variant: "styles.html",
-            }}
-            dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
-          />
-        </Columns>
-        <Columns>
-          <Title>Contact</Title>
-          <Row>
-            <div sx={{ variant: "styles.html" }}>
-              {about.data.email.text && (
-                <a
-                  sx={{
-                    mr: 3,
-                  }}
-                  href={"mailto:" + about.data.email.text}
-                >
-                  Email Us
-                </a>
-              )}
-              {about.data.instagram.text && (
-                <span sx={{ mr: 3 }}>
-                  insta:{" "}
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={
-                      "https://www.instagram.com/" + about.data.instagram.text
-                    }
-                  >
-                    @{about.data.instagram.text}
-                  </a>
-                </span>
-              )}
-              {about.data.phone.text && <span>{about.data.phone.text}</span>}
+          {about.data.press_kit.url && (
+            <div>
+              <a
+                sx={{
+                  variant: "styles.button",
+                }}
+                target="_blank"
+                rel="noopener noreferrer"
+                href={about.data.press_kit.url}
+              >
+                Download press kit
+              </a>
             </div>
-          </Row>
-          <Row>
-            {about.data.address.html && (
-              <div
-                sx={{ variant: "styles.html" }}
-                dangerouslySetInnerHTML={{ __html: about.data.address.html }}
-              />
-            )}
-          </Row>
-          <Row>
-            {about.data.contact.html && (
-              <div
-                sx={{ variant: "styles.html" }}
-                dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
-              />
-            )}
-          </Row>
-        </Columns>
-      </Content>
+          )}
+        </Intro>
+        <Content>
+          <Columns>
+            <Title>Services</Title>
+            <div
+              sx={{
+                variant: "styles.html",
+              }}
+              dangerouslySetInnerHTML={{ __html: about.data.services.html }}
+            />
+          </Columns>
+          <Columns>
+            <Title>Talent</Title>
+            <div
+              sx={{
+                variant: "styles.html",
+              }}
+              dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
+            />
+          </Columns>
+          <Columns>
+            <Title>Contact</Title>
+            <Row>
+              <div sx={{ variant: "styles.html" }}>
+                {about.data.email.text && (
+                  <a
+                    sx={{
+                      mr: 3,
+                    }}
+                    href={"mailto:" + about.data.email.text}
+                  >
+                    Email Us
+                  </a>
+                )}
+                {about.data.instagram.text && (
+                  <span sx={{ mr: 3 }}>
+                    insta:{" "}
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={
+                        "https://www.instagram.com/" + about.data.instagram.text
+                      }
+                    >
+                      @{about.data.instagram.text}
+                    </a>
+                  </span>
+                )}
+                {about.data.phone.text && <span>{about.data.phone.text}</span>}
+              </div>
+            </Row>
+            <Row>
+              {about.data.address.html && (
+                <div
+                  sx={{ variant: "styles.html" }}
+                  dangerouslySetInnerHTML={{ __html: about.data.address.html }}
+                />
+              )}
+            </Row>
+            <Row>
+              {about.data.contact.html && (
+                <div
+                  sx={{ variant: "styles.html" }}
+                  dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
+                />
+              )}
+            </Row>
+          </Columns>
+        </Content>
+      </div>
     </Layout>
   )
 }

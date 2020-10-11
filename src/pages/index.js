@@ -15,6 +15,10 @@ import useLocalStorage from "../components/UseLocalStorage"
 
 import Masonry from "react-masonry-css"
 
+import { motion } from "framer-motion"
+
+const MotionLink = motion.custom(Link)
+
 function Index({ data: { talent, tags } }) {
   // Fetch Talent
   const talentList = talent.nodes.map(talent => {
@@ -108,21 +112,31 @@ function Index({ data: { talent, tags } }) {
     <Layout>
       <SEO title="Talent" />
       <SideNavigationLeft>
-        <Link to="/about" sx={{}}>
-          About
+        <Link to="/about" activeClassName="active" sx={{}}>
+          <span>About</span>
         </Link>
-        <Link to="/blog" sx={{}}>
-          Journal
+        <Link to="/blog" activeClassName="active" sx={{}}>
+          <span>Journal</span>
         </Link>
-        <Link to="/" sx={{}}>
-          Freelancers
+        <Link to="/" activeClassName="active" sx={{}}>
+          <span>Freelancers</span>
         </Link>
-        <Link to="/casting" sx={{}}>
-          Casting
+        <Link to="/casting" activeClassName="active" sx={{}}>
+          <span>Casting</span>
         </Link>
-        <Link to="/" sx={{ borderRight: "none !important" }}>
-          Talent
-        </Link>
+        <MotionLink
+          to="/"
+          activeClassName="active"
+          animate={{ backgroundPosition: "left bottom", color: "white" }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 0.2,
+          }}
+        >
+          <span>Talent</span>
+        </MotionLink>
       </SideNavigationLeft>
       <SideNavigationRight>
         <button
@@ -132,7 +146,6 @@ function Index({ data: { talent, tags } }) {
             cursor: "pointer",
             fontFamily: "body",
             fontSize: [1, 1, 2],
-            textTransform: "uppercase",
             mr: 2,
           }}
           onClick={() => setShowFilterTags(x => !x)}
@@ -169,6 +182,7 @@ function Index({ data: { talent, tags } }) {
         breakpointCols={responsiveColumns}
         className="grid-talent"
         columnClassName="column"
+        sx={{ p: 5 }}
       >
         {filteredTalent.map(model => (
           <Model

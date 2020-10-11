@@ -12,7 +12,6 @@ function ScrollDown() {
         cursor: "pointer",
         fontFamily: "body",
         fontSize: [1, 1, 2],
-        textTransform: "uppercase",
         "&:hover > svg": {
           transform: "translateX(5px)",
           transition: "all 200ms ease",

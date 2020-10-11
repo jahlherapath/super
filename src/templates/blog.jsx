@@ -10,6 +10,10 @@ import SideNavigationRight from "components/SideNavigationRight"
 import ScrollDown from "components/ScrollDown"
 import Listing from "components/Listing"
 
+import { motion } from "framer-motion"
+
+const MotionLink = motion.custom(Link)
+
 export default ({
   data: {
     posts: { nodes: posts },
@@ -19,26 +23,36 @@ export default ({
   <Layout>
     <SEO title={title} />
     <SideNavigationLeft>
-      <Link to="/about" sx={{}}>
-        About
+      <Link to="/about" activeClassName="active" sx={{}}>
+        <span>About</span>
       </Link>
-      <Link to="/blog" sx={{}}>
-        Journal
+      <MotionLink
+        to="/blog"
+        activeClassName="active"
+        animate={{ backgroundPosition: "left bottom", color: "white" }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+          duration: 0.2,
+        }}
+      >
+        <span>Journal</span>
+      </MotionLink>
+      <Link to="/" activeClassName="active" sx={{}}>
+        <span>Freelancers</span>
       </Link>
-      <Link to="/" sx={{}}>
-        Freelancers
+      <Link to="/casting" activeClassName="active" sx={{}}>
+        <span>Casting</span>
       </Link>
-      <Link to="/casting" sx={{}}>
-        Casting
-      </Link>
-      <Link to="/" sx={{ borderRight: "none !important" }}>
-        Talent
+      <Link to="/">
+        <span>Talent</span>
       </Link>
     </SideNavigationLeft>
     <SideNavigationRight>
       <ScrollDown />
     </SideNavigationRight>
-    <div sx={{ pt: 3 }}>
+    <div sx={{ p: 5 }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>
   </Layout>

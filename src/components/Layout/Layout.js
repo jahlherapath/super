@@ -3,8 +3,6 @@ import { jsx } from "theme-ui"
 
 import { Fragment } from "react"
 
-import PageTransition from "gatsby-plugin-page-transitions"
-
 import Navigation from "../Navigation"
 import GlobalStyles from "../GlobalStyles"
 
@@ -13,33 +11,15 @@ export default function Layout({ children, sideMenuText }) {
     <Fragment>
       <GlobalStyles />
       <Navigation />
-      <PageTransition
-        defaultStyle={{
-          transition: "top 600ms ease-in-out",
-          top: "100%",
-          position: "absolute",
-          width: "100%",
+      <main
+        sx={{
+          position: "relative",
+          minHeight: "100vh",
+          m: "0 auto",
         }}
-        transitionStyles={{
-          entering: { top: "0%" },
-          entered: { top: "0%" },
-          exiting: { top: "100%" },
-        }}
-        transitionTime={600}
       >
-        <main
-          sx={{
-            position: "relative",
-            minHeight: "100vh",
-            m: "0 auto",
-            pt: "60px",
-            pb: 0,
-            px: "40px",
-          }}
-        >
-          <div sx={{ p: 5 }}>{children}</div>
-        </main>
-      </PageTransition>
+        <div sx={{ px: "40px" }}>{children}</div>
+      </main>
     </Fragment>
   )
 }

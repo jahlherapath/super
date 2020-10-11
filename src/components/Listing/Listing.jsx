@@ -59,7 +59,7 @@ export default ({
               }}
             >
               <p sx={{ variant: "styles.date", mb: 0 }}>{posts[0].data.date}</p>
-              <div sx={{ mt: "-6px" }}>
+              <div sx={{ mt: [4, 4, "-6px"] }}>
                 {posts[0].data.categories.map(cat => {
                   return (
                     <Link

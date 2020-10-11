@@ -15,6 +15,10 @@ import { useRef } from "react"
 
 import Masonry from "react-masonry-css"
 
+import { motion } from "framer-motion"
+
+const MotionLink = motion.custom(Link)
+
 function Talent({
   data: { prismicTalent, prismicInfo },
   pageContext: { next, prev },
@@ -41,21 +45,31 @@ function Talent({
     <Layout>
       <SEO title={prismicTalent.data.name.text} />
       <SideNavigationLeft>
-        <Link to="/about" sx={{}}>
-          About
+        <Link to="/about" activeClassName="active" sx={{}}>
+          <span>About</span>
         </Link>
-        <Link to="/blog" sx={{}}>
-          Journal
+        <Link to="/blog" activeClassName="active" sx={{}}>
+          <span>Journal</span>
         </Link>
-        <Link to="/" sx={{}}>
-          Freelancers
+        <Link to="/" activeClassName="active" sx={{}}>
+          <span>Freelancers</span>
         </Link>
-        <Link to="/casting" sx={{}}>
-          Casting
+        <Link to="/casting" activeClassName="active" sx={{}}>
+          <span>Casting</span>
         </Link>
-        <Link to="/" sx={{ borderRight: "none !important" }}>
-          Talent
-        </Link>
+        <MotionLink
+          to="/talent"
+          activeClassName="active"
+          animate={{ backgroundPosition: "left bottom", color: "white" }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 0.6,
+          }}
+        >
+          <span>Talent</span>
+        </MotionLink>
       </SideNavigationLeft>
       <SideNavigationRight>
         <ScrollDown />
@@ -191,6 +205,7 @@ function Talent({
                 width: ["180px", "180px", "250px"],
                 zIndex: 2,
                 overflow: "hidden",
+                pointerEvents: "none",
               }}
             >
               <Parallax y={[-20, 20]}>
@@ -209,6 +224,7 @@ function Talent({
                 left: [-5, -5, 0],
                 width: ["180px", "180px", "250px"],
                 zIndex: 2,
+                pointerEvents: "none",
               }}
             >
               <Parallax y={[-40, 40]}>

@@ -98,7 +98,7 @@ function Navigation() {
               py: 4,
               px: 5,
               zIndex: 30,
-              variant: "styles.serif",
+              fontFamily: "body",
             }}
           >
             <TalentSelection />

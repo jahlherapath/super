@@ -14,6 +14,10 @@ import SideNavigationRight from "components/SideNavigationRight"
 import ScrollDown from "components/ScrollDown"
 import Slices from "components/Slices"
 
+import { motion } from "framer-motion"
+
+const MotionLink = motion.custom(Link)
+
 export default ({
   data: {
     prismicPost: { data },
@@ -23,102 +27,114 @@ export default ({
   <Layout>
     <SEO title={data.title.text} />
     <SideNavigationLeft>
-      <Link to="/about" sx={{}}>
-        About
+      <Link to="/about" activeClassName="active" sx={{}}>
+        <span>About</span>
       </Link>
-      <Link to="/blog" sx={{}}>
-        Journal
+      <MotionLink
+        to="/about"
+        activeClassName="active"
+        animate={{ backgroundPosition: "left bottom", color: "white" }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+          duration: 0.2,
+        }}
+      >
+        <span>Journal</span>
+      </MotionLink>
+      <Link to="/" activeClassName="active" sx={{}}>
+        <span>Freelancers</span>
       </Link>
-      <Link to="/" sx={{}}>
-        Freelancers
+      <Link to="/casting" activeClassName="active" sx={{}}>
+        <span>Casting</span>
       </Link>
-      <Link to="/casting" sx={{}}>
-        Casting
-      </Link>
-      <Link to="/" sx={{ borderRight: "none !important" }}>
-        Talent
+      <Link to="/" activeClassName="active">
+        <span>Talent</span>
       </Link>
     </SideNavigationLeft>
     <SideNavigationRight>
       <ScrollDown />
     </SideNavigationRight>
-    <div sx={{ textAlign: "center", mb: 5 }}>
-      <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
-      <p sx={{ variant: "styles.date" }}>{data.date}</p>
-    </div>
-    {data.thumbnail && (
-      <Img
-        fluid={data.thumbnail.localFile.childImageSharp.fluid}
-        sx={{ mb: 5, minHeight: "30vh" }}
-      />
-    )}
-    <div
-      sx={{ variant: "styles.html", mb: 5 }}
-      dangerouslySetInnerHTML={{ __html: data.content.html }}
-    ></div>
-    {(data.body || []).map((slice, index) => (
-      <div key={index}>
-        <Slices
-          key={index}
-          sectionType={slice.slice_type}
-          sectionData={slice}
-        />
+    <div sx={{ p: 5 }}>
+      <div sx={{ textAlign: "center", mb: 5 }}>
+        <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
+        <p sx={{ variant: "styles.date" }}>{data.date}</p>
       </div>
-    ))}
-    <div
-      sx={{
-        display: "flex",
-        flexWrap: ["wrap", "nowrap", "nowrap"],
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: "100%",
-        mt: 5,
-      }}
-    >
-      {prev ? (
-        <Link
-          to={`/${prev.node.uid}`}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            width: ["100%", "auto", "auto"],
-            variant: "styles.serif",
-            fontStyle: "italic",
-            "&:hover > svg": {
-              transform: " translateX(-5px)",
-              transition: "all 200ms ease",
-            },
-          }}
-          rel="prev"
-        >
-          <ArrowLeft sx={{ color: "black" }} /> Prev Article
-        </Link>
-      ) : (
-        <div />
+      {data.thumbnail && (
+        <Img
+          fluid={data.thumbnail.localFile.childImageSharp.fluid}
+          sx={{ mb: 5, minHeight: "30vh" }}
+        />
       )}
-      {next ? (
-        <Link
-          to={`/${next.node.uid}`}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            width: ["100%", "auto", "auto"],
-            textAlign: "right",
-            variant: "styles.serif",
-            fontStyle: "italic",
-            "&:hover > svg": {
-              transform: " translateX(5px)",
-              transition: "all 200ms ease",
-            },
-          }}
-          rel="next"
-        >
-          Next Article <ArrowRight />
-        </Link>
-      ) : (
-        <div />
-      )}
+      <div
+        sx={{ variant: "styles.html", mb: 5 }}
+        dangerouslySetInnerHTML={{ __html: data.content.html }}
+      ></div>
+      {(data.body || []).map((slice, index) => (
+        <div key={index}>
+          <Slices
+            key={index}
+            sectionType={slice.slice_type}
+            sectionData={slice}
+          />
+        </div>
+      ))}
+      <div
+        sx={{
+          display: "flex",
+          flexWrap: ["wrap", "nowrap", "nowrap"],
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          mt: 5,
+        }}
+      >
+        {prev ? (
+          <Link
+            to={`/${prev.node.uid}`}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              width: ["100%", "auto", "auto"],
+              variant: "styles.serif",
+              fontStyle: "italic",
+              "&:hover > svg": {
+                transform: " translateX(-5px)",
+                transition: "all 200ms ease",
+              },
+            }}
+            rel="prev"
+          >
+            <ArrowLeft sx={{ color: "black" }} /> Prev Article
+          </Link>
+        ) : (
+          <div />
+        )}
+        {next ? (
+          <Link
+            to={`/${next.node.uid}`}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              width: ["100%", "auto", "auto"],
+              textAlign: "right",
+              variant: "styles.serif",
+              fontStyle: "italic",
+              "&:hover > svg": {
+                transform: " translateX(5px)",
+                transition: "all 200ms ease",
+              },
+            }}
+            rel="next"
+          >
+            Next Article <ArrowRight />
+          </Link>
+        ) : (
+          <div />
+        )}
+      </div>
     </div>
   </Layout>
 )
