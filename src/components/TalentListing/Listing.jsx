@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { Fragment } from "react"
+
 import { Link } from "gatsby"
 
 import ListItem from "./ListItem"
-
-import { Fragment } from "react"
 
 export default ({
   talent,

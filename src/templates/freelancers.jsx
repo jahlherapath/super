@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { useRef } from "react"
+
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -8,7 +10,6 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
-import { useRef } from "react"
 
 function Talent({
   data: { prismicFreelancers, prismicInfo },

@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import Img from "gatsby-image"
-
 import { Fragment, useState, useRef, useCallback } from "react"
+
+import Img from "gatsby-image"
 
 import Slider from "react-slick"
 

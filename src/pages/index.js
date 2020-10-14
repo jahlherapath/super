@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { useState, useEffect, useMemo } from "react"
+
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-
-import { useState, useEffect, useMemo } from "react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"

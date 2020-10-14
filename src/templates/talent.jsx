@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { useRef, useState } from "react"
+
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -11,7 +13,7 @@ import SideNavigationRight from "components/SideNavigationRight"
 import ScrollDown from "components/ScrollDown"
 
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
-import { useRef } from "react"
+import FsLightbox from "fslightbox-react"
 
 import Masonry from "react-masonry-css"
 
@@ -40,6 +42,9 @@ function Talent({
     896: 3,
     640: 1,
   }
+
+  const [toggler, setToggler] = useState(false)
+  const [slide, setSlide] = useState(1)
 
   return (
     <Layout>
@@ -253,17 +258,36 @@ function Talent({
             className="grid-gallery"
             columnClassName="column"
           >
-            {prismicTalent.data.gallery.map((image, index) => (
-              <div sx={{ mb: [4, 4, 5] }}>
-                <Img
+            {prismicTalent.data.gallery &&
+              prismicTalent.data.gallery.map((content, index) => (
+                <div
                   key={index}
-                  fluid={image.image.localFile.childImageSharp.fluid}
-                />
-              </div>
-            ))}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gridColumn: ["span 2", "span 1", "span 1"],
+                    mb: 5,
+                  }}
+                >
+                  <img
+                    src={content.image.url}
+                    alt={content.image.alt}
+                    onClick={() => {
+                      setSlide(index + 1)
+                      setToggler(!toggler)
+                    }}
+                  />
+                </div>
+              ))}
           </Masonry>
         </Gallery>
       </ParallaxProvider>
+      <FsLightbox
+        toggler={toggler}
+        sources={prismicTalent.data.gallery.map(image => [image.image.url])}
+        slide={slide}
+        key={prismicTalent.data.gallery}
+      />
     </Layout>
   )
 }
@@ -277,6 +301,7 @@ const Container = ({ children }) => {
         position: "relative",
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
+        p: 5,
       }}
     >
       {children}
@@ -321,6 +346,7 @@ const Gallery = ({ children }) => {
         position: "relative",
         gridColumn: ["span 2", "span 2", "span 2"],
         mt: [0, 0, 5],
+        p: 5,
       }}
     >
       {children}
@@ -579,6 +605,8 @@ export const pageQuery = graphql`
         }
         gallery {
           image {
+            url
+            alt
             localFile {
               childImageSharp {
                 fluid(maxWidth: 1200, quality: 90) {

@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { Link, graphql } from "gatsby"
-
 import { Fragment, useRef, useState, useCallback } from "react"
+
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
