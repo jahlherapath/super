@@ -192,7 +192,7 @@ export default {
       display: "flex",
       alignItems: "center",
       borderBottom: "1px solid black",
-      transition: "all 200ms ease",
+      transition: "all 800ms ease",
       justifyContent: "space-between",
       backgroundSize: "202%",
     },

@@ -22,31 +22,31 @@ function SideNavigationLeft({ children }) {
           "&:nth-of-type(1)": {
             color: "white",
             background:
-              "linear-gradient(to left, #4f1535 50%, black 50%) right",
+              "linear-gradient(to left, #4f1535 50%, white 50%) right",
             backgroundSize: "202%",
           },
           "&:nth-of-type(2)": {
             color: "black",
             background:
-              "linear-gradient(to left, #8e402a 50%, black 50%) right",
+              "linear-gradient(to left, #8e402a 50%, white 50%) right",
             backgroundSize: "202%",
           },
           "&:nth-of-type(3)": {
             color: "black",
             background:
-              "linear-gradient(to left, #ff3600 50%, black 50%) right",
+              "linear-gradient(to left, #ff3600 50%, white 50%) right",
             backgroundSize: "202%",
           },
           "&:nth-of-type(4)": {
             color: "black",
             background:
-              "linear-gradient(to left, #d3f323 50%, black 50%) right",
+              "linear-gradient(to left, #d3f323 50%, white 50%) right",
             backgroundSize: "202%",
           },
           "&:nth-of-type(5)": {
             color: "black",
             background:
-              "linear-gradient(to left, #d6ecfc 50%, black 50%) right",
+              "linear-gradient(to left, #d6ecfc 50%, white 50%) right",
             backgroundSize: "202%",
           },
         },

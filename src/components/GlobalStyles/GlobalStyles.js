@@ -47,6 +47,10 @@ const GlobalStyles = () => {
             paddingLeft: "32px",
             backgroundClip: "padding-box",
           },
+          ".active": {
+            color: "inherit !important",
+            width: "100% !important",
+          },
           "@media (max-width: 56em)": {
             ".grid-talent": { marginLeft: "-16px !important" },
             ".grid-gallery": { marginLeft: "-16px !important" },
