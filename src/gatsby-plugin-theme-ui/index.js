@@ -17,7 +17,7 @@ export default {
     plum: "#4f1535",
   },
   fonts: {
-    display: `"Suisse Int'l", sans-serif`,
+    display: `"Zephyr", sans-serif`,
     sans: `"Suisse Int'l", sans-serif`,
     body: `"Suisse Int'l", sans-serif`,
     serif: "'Suisse Works', serif",
@@ -73,9 +73,10 @@ export default {
   styles: {
     display: {
       variant: "text.display",
-      fontSize: [8, 9, 10],
+      fontSize: [13, 14, 12],
       mt: 0,
       mb: 3,
+      whiteSpace: "pre-wrap",
     },
     about: {
       variant: "text.body",
@@ -192,9 +193,12 @@ export default {
       display: "flex",
       alignItems: "center",
       borderBottom: "1px solid black",
-      transition: "all 800ms ease",
+      transition: "background 800ms ease, opacity 150ms ease",
       justifyContent: "space-between",
       backgroundSize: "202%",
+      "&:hover": {
+        opacity: "0.9 !important",
+      },
     },
     tagButton: {
       variant: "text.body",

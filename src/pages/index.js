@@ -342,6 +342,7 @@ export const indexQuery = graphql`
         data {
           name {
             text
+            html
           }
           location {
             text

@@ -105,3 +105,12 @@
   font-style: italic;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Zephyr";
+  src: url("./fonts/Zephyr-Italic.woff2") format("woff2"),
+    url("./fonts/Zephyr-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}

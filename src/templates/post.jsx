@@ -33,6 +33,7 @@ export default ({
       <MotionLink
         to="/about"
         activeClassName="active"
+        className="active"
         animate={{ backgroundPosition: "left bottom", color: "white" }}
         transition={{
           type: "spring",

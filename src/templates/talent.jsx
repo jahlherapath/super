@@ -37,9 +37,9 @@ function Talent({
 
   // Responsive Columns
   const responsiveColumns = {
-    default: 4,
-    1024: 4,
-    896: 3,
+    default: 3,
+    1024: 3,
+    896: 2,
     640: 1,
   }
 
@@ -65,6 +65,7 @@ function Talent({
         <MotionLink
           to="/talent"
           activeClassName="active"
+          className="active"
           animate={{ backgroundPosition: "left bottom", color: "white" }}
           transition={{
             type: "spring",
@@ -99,9 +100,18 @@ function Talent({
               <ArrowLeft />
               Back to Talent
             </Link>
-            <h1 sx={{ variant: "styles.display", mb: 3 }}>
-              {prismicTalent.data.name.text}
-            </h1>
+            <div
+              sx={{
+                h3: {
+                  variant: "styles.display",
+                  fontSize: ["56px", "64px", "72px"],
+                  mb: 3,
+                },
+              }}
+              dangerouslySetInnerHTML={{
+                __html: prismicTalent.data.name.html.split(" ").join("<br />"),
+              }}
+            />
             <Info>
               {prismicTalent.data.location.text && (
                 <p>{prismicTalent.data.location.text}</p>
@@ -573,6 +583,7 @@ export const pageQuery = graphql`
       data {
         name {
           text
+          html
         }
         location {
           text
