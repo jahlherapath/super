@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { useRef, useState } from "react"
+import { Fragment, useRef, useState } from "react"
 
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -63,7 +63,7 @@ function Talent({
           <span>Casting</span>
         </Link>
         <MotionLink
-          to="/talent"
+          to="/"
           activeClassName="active"
           className="active"
           animate={{ backgroundPosition: "left bottom", color: "white" }}
@@ -88,9 +88,10 @@ function Talent({
               sx={{
                 variant: "styles.serif",
                 fontStyle: "italic",
-                display: "flex",
+                display: ["none", "none", "flex"],
                 alignItems: "center",
                 mb: 8,
+                fontSize: 1,
                 "&:hover > svg": {
                   transform: " translateX(-5px)",
                   transition: "all 200ms ease",
@@ -141,30 +142,114 @@ function Talent({
                 }}
               />
             )}
+            {prismicTalent.data.qanda.html && (
+              <Fragment>
+                <h3
+                  sx={{
+                    variant: "styles.display",
+                    fontSize: ["36px", "36px", "48px"],
+                    mb: 3,
+                    mt: 6,
+                  }}
+                >
+                  QA:
+                </h3>
+                <div
+                  sx={{ variant: "styles.html" }}
+                  dangerouslySetInnerHTML={{
+                    __html: prismicTalent.data.qanda.html,
+                  }}
+                />
+              </Fragment>
+            )}
+            <h3
+              sx={{
+                variant: "styles.display",
+                fontSize: ["36px", "36px", "48px"],
+                mb: 3,
+                mt: 6,
+              }}
+            >
+              Press:
+            </h3>
             <div
               sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
                 my: 6,
+                variant: "styles.html",
+                borderLeft: " 1px solid black",
+                borderRight: " 1px solid black",
               }}
             >
               {prismicTalent.data.links.map((link, index) => (
                 <a
                   key={index}
                   href={link.url && link.url.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
-                    variant: "styles.button",
-                    mb: 3,
-                    width: ["100%", "100%", "auto"],
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    width: "100%",
+                    borderTop: "1px solid black",
+                    backgroundColor: "white",
+                    p: 3,
+                    transition: "all 150ms ease",
+                    div: {
+                      display: "none",
+                    },
+                    "&:hover": {
+                      backgroundColor: "babyBlue",
+                    },
+                    "&:hover > div": {
+                      display: "flex",
+                    },
+                    "&:last-of-type": {
+                      borderBottom: "1px solid black",
+                    },
                   }}
                 >
                   {link.title.text}
+                  <div
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      width: "20px",
+                    }}
+                  >
+                    <svg
+                      width="100%"
+                      height="100%"
+                      viewBox="0 0 101 78"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 38.9995H95.9998Z" fill="black" />
+                      <path
+                        d="M0 38.9995H95.9998"
+                        stroke="black"
+                        stroke-width="6.86482"
+                        stroke-miterlimit="10"
+                      />
+                      <path
+                        d="M62.3999 5.39972L95.9998 38.9997L62.3999 72.5996"
+                        stroke="black"
+                        stroke-width="6.86482"
+                        stroke-miterlimit="10"
+                        stroke-linecap="square"
+                      />
+                    </svg>
+                  </div>
                 </a>
               ))}
             </div>
             <div
-              sx={{ display: "flex", justifyContent: "space-between", mb: 8 }}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                mt: 5,
+                mb: 8,
+              }}
             >
               {prev ? (
                 <Link
@@ -211,6 +296,23 @@ function Talent({
             </div>
           </Left>
           <Right>
+            <Link
+              to="/"
+              sx={{
+                variant: "styles.serif",
+                fontStyle: "italic",
+                display: ["flex", "flex", "none"],
+                alignItems: "center",
+                mb: 5,
+                "&:hover > svg": {
+                  transform: " translateX(-5px)",
+                  transition: "all 200ms ease",
+                },
+              }}
+            >
+              <ArrowLeft />
+              Back to Talent
+            </Link>
             <div
               sx={{
                 position: "absolute",
@@ -225,7 +327,10 @@ function Talent({
             >
               <Parallax y={[-20, 20]}>
                 <Img
-                  sx={{ mr: -6 }}
+                  sx={{
+                    mr: -6,
+                    // boxShadow: "20px 20px 20px rgba(0, 0, 0, 0.2)",
+                  }}
                   fluid={
                     graphics.current[0].graphic.localFile.childImageSharp.fluid
                   }
@@ -240,10 +345,12 @@ function Talent({
                 width: ["180px", "180px", "250px"],
                 zIndex: 2,
                 pointerEvents: "none",
+                display: ["none", "none", "block"],
               }}
             >
               <Parallax y={[-40, 40]}>
                 <Img
+                  // sx={{ boxShadow: "20px 20px 20px rgba(0, 0, 0, 0.2)" }}
                   fluid={
                     graphics.current[1].graphic.localFile.childImageSharp.fluid
                   }
@@ -251,12 +358,22 @@ function Talent({
               </Parallax>
             </div>
             <Emblem />
-            <div sx={{ width: "100%", height: "100%" }}>
+            <div
+              sx={{
+                width: "100%",
+                height: "100%",
+                "div:not(:first-child)": {
+                  display: ["none", "none", "block"],
+                },
+              }}
+            >
               {prismicTalent.data.headshots.map((image, index) => (
                 <Img
                   key={index}
                   fluid={image.image.localFile.childImageSharp.fluid}
-                  sx={{ mb: 5 }}
+                  sx={{
+                    mb: 5,
+                  }}
                 />
               ))}
             </div>
@@ -328,6 +445,7 @@ const Left = ({ children }) => {
         alignSelf: "flex-start",
         gridColumn: ["span 2", "span 2", "span 1"],
         pr: [0, 0, 7],
+        order: [2, 2, 0],
       }}
     >
       {children}
@@ -342,6 +460,7 @@ const Right = ({ children }) => {
         position: "relative",
         gridColumn: ["span 2", "span 2", "span 1"],
         pl: [0, 0, 12],
+        order: [1, 1, 0],
       }}
     >
       {children}
@@ -598,6 +717,9 @@ export const pageQuery = graphql`
           text
         }
         bio {
+          html
+        }
+        qanda {
           html
         }
         pgp {

@@ -22,7 +22,13 @@ function Card({ node, categories }) {
             sx={{ mb: 3 }}
           />
         )}
-        <h2 sx={{ variant: "styles.display", mb: 0 }}>
+        <h2
+          sx={{
+            variant: "styles.display",
+            fontSize: "32px !important",
+            mb: 2,
+          }}
+        >
           {node.data.title.text}
         </h2>
         <p sx={{ variant: "styles.date", mb: 4 }}>{node.data.date}</p>

@@ -73,7 +73,7 @@ export default {
   styles: {
     display: {
       variant: "text.display",
-      fontSize: [13, 14, 12],
+      fontSize: [8, 9, 10],
       mt: 0,
       mb: 3,
       whiteSpace: "pre-wrap",
