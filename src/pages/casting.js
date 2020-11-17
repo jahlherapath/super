@@ -62,21 +62,13 @@ export default function Casting({ data: { casting } }) {
           Email Super
         </a>
       </SideNavigationRight>
-      {/* <Left>
-          <h1 sx={{ variant: "styles.display" }}>Casting</h1>
-          {casting.data.casting.html && (
-            <div
-              sx={{
-                variant: "styles.html",
-              }}
-              dangerouslySetInnerHTML={{ __html: casting.data.casting.html }}
-            />
-          )}
-        </Left>
-        <Right>
-          <Form />
-        </Right> */}
-      <div sx={{ display: "flex", position: "relative" }}>
+      <div
+        sx={{
+          display: "flex",
+          flexDirection: ["column", "column", "row"],
+          position: "relative",
+        }}
+      >
         {content.map((i, index) => (
           <Accordion
             key={index}
@@ -100,8 +92,12 @@ const Accordion = ({ i, expanded, setExpanded }) => {
       <motion.div
         onClick={() => setExpanded(isOpen ? false : i)}
         sx={{
-          minHeight: "100vh",
-          borderLeft: "1px solid black",
+          display: ["flex", "flex", "block"],
+          alignItems: ["center", "center", "flex-start"],
+          justifyContent: ["space-between", "space-between", "flex-start"],
+          minHeight: ["auto", "100%", "100vh"],
+          borderLeft: ["none", "none", "1px solid black"],
+          borderBottom: "1px solid black",
           py: 4,
           px: 3,
           cursor: "pointer",
@@ -114,9 +110,9 @@ const Accordion = ({ i, expanded, setExpanded }) => {
           sx={{
             fontFamily: "body",
             fontSize: [2, 2, 3],
-            writingMode: "vertical-lr",
+            writingMode: ["auto", "auto", "vertical-lr"],
             textOrientation: "mixed",
-            transform: "rotate(-180deg)",
+            transform: ["rotate(0deg)", "rotate(0deg)", "rotate(-180deg)"],
           }}
         >
           Label here
@@ -131,7 +127,7 @@ const Accordion = ({ i, expanded, setExpanded }) => {
             backgroundColor: isOpen ? "black" : "white",
             borderRadius: "50%",
             border: "1px solid black",
-            mt: 4,
+            mt: [0, 0, 4],
           }}
         ></motion.span>
       </motion.div>
@@ -144,7 +140,7 @@ const Accordion = ({ i, expanded, setExpanded }) => {
             exit="collapsed"
             variants={{
               open: { width: "100%", flex: 1, zIndex: 1 },
-              collapsed: { width: 0, flex: 0, zIndex: 0 },
+              collapsed: { width: "100%", flex: 0, zIndex: 0 },
             }}
             transition={{
               duration: 0.6,
@@ -154,7 +150,7 @@ const Accordion = ({ i, expanded, setExpanded }) => {
           >
             <motion.div
               sx={{
-                position: "absolute",
+                position: ["relative", "relative", "absolute"],
                 top: 0,
                 bottom: 0,
                 left: 0,

@@ -93,7 +93,7 @@ function Talent({
                 mb: 8,
                 fontSize: 1,
                 "&:hover > svg": {
-                  transform: " translateX(-5px)",
+                  transform: "translateX(-5px)",
                   transition: "all 200ms ease",
                 },
               }}
@@ -113,6 +113,13 @@ function Talent({
                 __html: prismicTalent.data.name.html.split(" ").join("<br />"),
               }}
             />
+            <button
+              sx={{
+                variant: "styles.tagButton",
+              }}
+            >
+              Select Talent
+            </button>
             <Info>
               {prismicTalent.data.location.text && (
                 <p>{prismicTalent.data.location.text}</p>
@@ -152,7 +159,7 @@ function Talent({
                     mt: 6,
                   }}
                 >
-                  QA:
+                  Q <span sx={{ ml: "-5px" }}>+</span> A:
                 </h3>
                 <div
                   sx={{ variant: "styles.html" }}
@@ -260,7 +267,7 @@ function Talent({
                     variant: "styles.serif",
                     fontStyle: "italic",
                     "&:hover > svg": {
-                      transform: " translateX(-5px)",
+                      transform: "translateX(-5px)",
                       transition: "all 200ms ease",
                     },
                   }}
@@ -281,7 +288,7 @@ function Talent({
                     variant: "styles.serif",
                     fontStyle: "italic",
                     "&:hover > svg": {
-                      transform: " translateX(5px)",
+                      transform: "translateX(5px)",
                       transition: "all 200ms ease",
                     },
                   }}
@@ -305,7 +312,7 @@ function Talent({
                 alignItems: "center",
                 mb: 5,
                 "&:hover > svg": {
-                  transform: " translateX(-5px)",
+                  transform: "translateX(-5px)",
                   transition: "all 200ms ease",
                 },
               }}
@@ -329,7 +336,6 @@ function Talent({
                 <Img
                   sx={{
                     mr: -6,
-                    // boxShadow: "20px 20px 20px rgba(0, 0, 0, 0.2)",
                   }}
                   fluid={
                     graphics.current[0].graphic.localFile.childImageSharp.fluid
@@ -350,7 +356,6 @@ function Talent({
             >
               <Parallax y={[-40, 40]}>
                 <Img
-                  // sx={{ boxShadow: "20px 20px 20px rgba(0, 0, 0, 0.2)" }}
                   fluid={
                     graphics.current[1].graphic.localFile.childImageSharp.fluid
                   }

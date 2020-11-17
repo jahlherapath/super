@@ -203,7 +203,8 @@ export default {
     tagButton: {
       variant: "text.body",
       px: 4,
-      m: "2px",
+      mx: "2px",
+      mb: 5,
       height: "30px",
       borderRadius: "15px",
       borderColor: "black",
