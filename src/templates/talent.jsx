@@ -169,16 +169,18 @@ function Talent({
                 />
               </Fragment>
             )}
-            <h3
-              sx={{
-                variant: "styles.display",
-                fontSize: ["36px", "36px", "48px"],
-                mb: 3,
-                mt: 6,
-              }}
-            >
-              Press:
-            </h3>
+            {prismicTalent.data.links && (
+              <h3
+                sx={{
+                  variant: "styles.display",
+                  fontSize: ["36px", "36px", "48px"],
+                  mb: 3,
+                  mt: 6,
+                }}
+              >
+                Press:
+              </h3>
+            )}
             <div
               sx={{
                 my: 6,

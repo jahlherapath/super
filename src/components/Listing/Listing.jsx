@@ -45,6 +45,7 @@ export default ({
                   variant: "styles.display",
                   mb: 0,
                   textAlign: ["center", "center", "left"],
+                  fontSize: 12,
                 }}
               >
                 {posts[0].data.title.text}

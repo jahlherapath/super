@@ -30,7 +30,7 @@ export default ({
       <MotionLink
         to="/blog"
         activeClassName="active"
-        animate={{ backgroundPosition: "left bottom", color: "white" }}
+        animate={{ backgroundPosition: "left bottom", color: "black" }}
         transition={{
           type: "spring",
           stiffness: 260,
@@ -53,43 +53,10 @@ export default ({
     <SideNavigationRight>
       <ScrollDown />
     </SideNavigationRight>
+    <HeaderBackground category={category} />
     <div
       sx={{
-        position: "fixed",
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: -1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "50vh",
-        backgroundColor: "lightGreen",
-        pt: "60px",
-        mb: "50vh",
-        textAlign: "center",
-      }}
-    >
-      <h2 sx={{ variant: "styles.date", textAlign: "center" }}>
-        {totalCount} {totalCount === 1 ? "Post" : "Posts"}
-        {totalCount === 1 ? " was" : " were"} tagged with <br></br>
-        <span
-          sx={{
-            ml: 3,
-            fontFamily: "serif",
-            fontSize: 12,
-            fontStyle: "italic",
-            fontWeight: "medium",
-          }}
-        >
-          {category}
-        </span>
-      </h2>
-    </div>
-    <div
-      sx={{
-        mt: "calc(50vh - 60px)",
+        mt: "calc(50vh - 65px)",
         p: 5,
         backgroundColor: "white",
       }}
@@ -102,6 +69,119 @@ export default ({
     </div>
   </Layout>
 )
+
+const HeaderBackground = ({ category }) => {
+  switch (category) {
+    case "Interviews":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="brick"
+          textColor="orange"
+        />
+      )
+    case "Press":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="plum"
+          textColor="hibiscusPink"
+        />
+      )
+    case "Features":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="lightGreen"
+          textColor="black"
+        />
+      )
+    case "Blog":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="darkGreen"
+          textColor="lightGreen"
+        />
+      )
+    case "Essays":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="babyBlue"
+          textColor="white"
+        />
+      )
+    case "Culture":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="hibiscusPink"
+          textColor="lightGreen"
+        />
+      )
+    case "Casting":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="royalBlue"
+          textColor="hibiscusPink"
+        />
+      )
+    case "Projects":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="red"
+          textColor="white"
+        />
+      )
+    case "Black Hole":
+      return (
+        <HeaderImage
+          category={category}
+          backgroundColor="black"
+          textColor="brick"
+        />
+      )
+    default:
+      return null
+  }
+}
+
+const HeaderImage = ({ category, textColor, backgroundColor }) => {
+  return (
+    <div
+      sx={{
+        position: "fixed",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: -1,
+        height: "50vh",
+        backgroundColor: backgroundColor,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <h2
+        sx={{
+          color: textColor,
+          fontFamily: "display",
+          fontSize: "10vw",
+          fontStyle: "italic",
+          fontWeight: "medium",
+          m: 0,
+          mt: "65px",
+        }}
+      >
+        {category}
+      </h2>
+    </div>
+  )
+}
 
 export const pageQuery = graphql`
   query CategoryPage($category: String!, $skip: Int!, $limit: Int!) {
