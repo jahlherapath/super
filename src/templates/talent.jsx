@@ -367,8 +367,6 @@ function Talent({
               {prev ? (
                 <Link
                   to={`/${prev.node.uid}`}
-                  model={prev.node}
-                  state={{ model: prev.node }}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -390,8 +388,6 @@ function Talent({
               {next ? (
                 <Link
                   to={`/${next.node.uid}`}
-                  model={next.node}
-                  state={{ model: next.node }}
                   sx={{
                     display: "flex",
                     alignItems: "center",
