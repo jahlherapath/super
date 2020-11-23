@@ -284,8 +284,6 @@ function Model({ model, isSelected, onChange, index }) {
       <Link
         to={`/${model.link}`}
         key={index}
-        model={model}
-        state={{ model: model }}
         sx={{
           position: "relative",
           display: "block",

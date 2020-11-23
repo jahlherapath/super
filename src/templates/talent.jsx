@@ -26,18 +26,39 @@ const MotionLink = motion.custom(Link)
 function Talent({
   data: { prismicTalent, prismicInfo },
   pageContext: { next, prev },
-  location,
 }) {
   
+  const getCurrentModel = () => {
+    const tags = prismicTalent.data.tags
+      .map(
+        tag =>
+          tag &&
+          tag.tag &&
+          tag.tag.document &&
+          tag.tag.document[0] &&
+          tag.tag.document[0].data.name
+      )
+      .filter(Boolean)
+    return {
+      id: prismicTalent.id,
+      name: prismicTalent.data.name.text,
+      location: prismicTalent.data.location.text,
+      image: prismicTalent.data.headshots[0].image.localFile.childImageSharp.fluid,
+      link: prismicTalent.uid,
+      tags: tags,
+    }
+  }
+  const model = getCurrentModel()
+
   const [selectedModels, setSelectedModels] = useLocalStorage(
     "selectedModels",
     []
   )
   const [isSelected, setIsSelected] = useState(false)
-  const model = location.state.model || []
+  
   useEffect(() => {
     if (Array.isArray(selectedModels) && selectedModels.find(i => i.id === model.id)) {
-      setIsSelected(true);
+      setIsSelected(true)
     }
   }, [])
 
@@ -346,6 +367,8 @@ function Talent({
               {prev ? (
                 <Link
                   to={`/${prev.node.uid}`}
+                  model={prev.node}
+                  state={{ model: prev.node }}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -367,6 +390,8 @@ function Talent({
               {next ? (
                 <Link
                   to={`/${next.node.uid}`}
+                  model={next.node}
+                  state={{ model: next.node }}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -842,6 +867,7 @@ export const pageQuery = graphql`
   query TalentBySlug($uid: String!) {
     prismicTalent(uid: { eq: $uid }) {
       uid
+      id
       data {
         name {
           text
@@ -898,6 +924,15 @@ export const pageQuery = graphql`
           }
           url {
             url
+          }
+        }
+        tags {
+          tag {
+            document {
+              data {
+                name
+              }
+            }
           }
         }
       }
