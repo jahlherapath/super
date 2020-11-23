@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { Fragment, useRef, useState } from "react"
+import { Fragment, useRef, useState, useEffect } from "react"
 
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -19,12 +19,42 @@ import Masonry from "react-masonry-css"
 
 import { motion } from "framer-motion"
 
+import useLocalStorage from "components/UseLocalStorage"
+
 const MotionLink = motion.custom(Link)
 
 function Talent({
   data: { prismicTalent, prismicInfo },
   pageContext: { next, prev },
+  location,
 }) {
+  
+  const [selectedModels, setSelectedModels] = useLocalStorage(
+    "selectedModels",
+    []
+  )
+  const [isSelected, setIsSelected] = useState(false)
+  const model = location.state.model || []
+  useEffect(() => {
+    if (Array.isArray(selectedModels) && selectedModels.find(i => i.id === model.id)) {
+      setIsSelected(true);
+    }
+  }, [])
+
+  const onChange = model => {
+    setIsSelected(!isSelected)
+    setSelectedModels(selectedModels => {
+      if (
+        Array.isArray(selectedModels) &&
+        selectedModels.find(i => i.id === model.id)
+      ) {
+        return selectedModels.filter(i => i.id !== model.id)
+      } else {
+        return [...selectedModels, model]
+      }
+    })
+  }
+
   const graphics = useRef(
     typeof window === `undefined`
       ? prismicInfo.data.post_graphics
@@ -90,7 +120,7 @@ function Talent({
                 fontStyle: "italic",
                 display: ["none", "none", "flex"],
                 alignItems: "center",
-                mb: 8,
+                mb: 2,
                 fontSize: 1,
                 "&:hover > svg": {
                   transform: "translateX(-5px)",
@@ -101,6 +131,59 @@ function Talent({
               <ArrowLeft />
               Back to Talent
             </Link>
+            <div
+              id="talent-checkbox"
+              sx={{
+                mb: 5,
+                display: ["none", "none", "flex"],
+                alignItems: "center",
+                justifyContent: "center",
+                width: "30px",
+                height: "30px",
+                backgroundColor: "white",
+                zIndex: 15,
+              }}
+            >
+              <input
+                sx={{
+                  opacity: 0,
+                  position: "absolute",
+                  cursor: "pointer",
+                  zIndex: 3,
+                }}
+                type="checkbox"
+                value={isSelected || ""}
+                checked={isSelected ? isSelected : ""}
+                onChange={() => onChange(model)}
+              />
+              <div
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "20px",
+                  cursor: "pointer",
+                  transition: "all 200ms ease",
+                }}
+              >
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
+                    stroke="black"
+                    strokeWidth="1"
+                    sx={{
+                      stroke: "black",
+                      fill: isSelected ? "black" : "transparent",
+                    }}
+                  />
+                </svg>
+              </div>
+            </div>
             <div
               sx={{
                 h3: {
@@ -312,7 +395,7 @@ function Talent({
                 fontStyle: "italic",
                 display: ["flex", "flex", "none"],
                 alignItems: "center",
-                mb: 5,
+                mb: 2,
                 "&:hover > svg": {
                   transform: "translateX(-5px)",
                   transition: "all 200ms ease",
@@ -322,6 +405,59 @@ function Talent({
               <ArrowLeft />
               Back to Talent
             </Link>
+            <div
+              id="talent-checkbox"
+              sx={{
+                mb: 3,
+                alignItems: "center",
+                display: ["flex", "flex", "none"],
+                justifyContent: "center",
+                width: "30px",
+                height: "30px",
+                backgroundColor: "white",
+                zIndex: 15,
+              }}
+            >
+              <input
+                sx={{
+                  opacity: 0,
+                  position: "absolute",
+                  cursor: "pointer",
+                  zIndex: 3,
+                }}
+                type="checkbox"
+                value={isSelected || ""}
+                checked={isSelected ? isSelected : ""}
+                onChange={() => onChange(model)}
+              />
+              <div
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "20px",
+                  cursor: "pointer",
+                  transition: "all 200ms ease",
+                }}
+              >
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
+                    stroke="black"
+                    strokeWidth="1"
+                    sx={{
+                      stroke: "black",
+                      fill: isSelected ? "black" : "transparent",
+                    }}
+                  />
+                </svg>
+              </div>
+            </div>
             <div
               sx={{
                 position: "absolute",
