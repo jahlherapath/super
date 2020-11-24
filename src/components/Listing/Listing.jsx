@@ -126,11 +126,13 @@ export default ({
               alignItems: "center",
               justifyContent: "space-between",
               mt: 4,
+              border: "1px solid black",
+              height: "35px",
             }}
           >
             {!isFirst ? (
               <Link
-                to={`/${prefix + prevPage}`}
+                to={prefix + prevPage}
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -170,13 +172,12 @@ export default ({
                   }}
                 >
                   <Link
-                    to={`/${prefix}${i === 0 ? "" : i + 1}`}
+                    to={`${prefix}${i === 0 ? "" : +(i + 1)}`}
                     sx={{
                       p: 0,
                       m: 0,
                       textDecoration: "none",
                       border: "1px solid",
-                      borderRadius: "50%",
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -193,7 +194,7 @@ export default ({
             </ul>
             {!isLast ? (
               <Link
-                to={`/${prefix + nextPage}`}
+                to={prefix + nextPage}
                 sx={{
                   display: "flex",
                   alignItems: "center",
