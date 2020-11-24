@@ -57,7 +57,7 @@ export default ({
     <SideNavigationRight>
       <ScrollDown />
     </SideNavigationRight>
-    <div sx={{ p: 5 }}>
+    <div sx={{ p: [4, 5, 5] }}>
       <div sx={{ textAlign: "center", mb: 5 }}>
         <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
         <p sx={{ variant: "styles.date" }}>{data.date}</p>

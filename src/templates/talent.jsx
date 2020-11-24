@@ -159,8 +159,9 @@ function Talent({
               sx={{
                 h3: {
                   variant: "styles.display",
-                  fontSize: ["56px", "64px", "72px"],
+                  fontSize: ["48px", "56px", "72px"],
                   mb: 3,
+                  ml: 4,
                 },
               }}
               dangerouslySetInnerHTML={{
@@ -285,7 +286,7 @@ function Talent({
                 />
               </Fragment>
             )}
-            {prismicTalent.data.links && (
+            {prismicTalent.data.links.length >= 1 && (
               <h3
                 sx={{
                   variant: "styles.display",
@@ -428,7 +429,7 @@ function Talent({
                 fontStyle: "italic",
                 display: ["flex", "flex", "none"],
                 alignItems: "center",
-                mb: 2,
+                mb: 3,
                 "&:hover > svg": {
                   transform: "translateX(-5px)",
                   transition: "all 200ms ease",
@@ -551,7 +552,7 @@ const Container = ({ children }) => {
         position: "relative",
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
-        p: 5,
+        p: [4, 5, 5],
       }}
     >
       {children}

@@ -57,7 +57,7 @@ export default ({
     <div
       sx={{
         mt: "calc(50vh - 65px)",
-        p: 5,
+        p: [4, 5, 5],
         backgroundColor: "white",
       }}
     >

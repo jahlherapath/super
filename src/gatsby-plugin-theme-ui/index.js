@@ -149,7 +149,7 @@ export default {
     button: {
       variant: "text.body",
       px: 5,
-      height: ["30px", "30px", "40px"],
+      height: ["auto", "30px", "40px"],
       borderRadius: ["15px", "15px", "20px"],
       borderColor: "black",
       border: "1px solid",
@@ -195,7 +195,7 @@ export default {
       borderBottom: "1px solid black",
       transition: "background 800ms ease, opacity 150ms ease",
       justifyContent: "space-between",
-      backgroundSize: "202%",
+      backgroundSize: "203%",
       "&:hover": {
         opacity: "0.9 !important",
       },
@@ -204,7 +204,7 @@ export default {
       variant: "text.body",
       px: 4,
       mx: "2px",
-      mb: 5,
+      mb: "4px",
       height: "30px",
       borderRadius: "15px",
       borderColor: "black",

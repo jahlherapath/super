@@ -12,10 +12,11 @@ function ScrollDown() {
         cursor: "pointer",
         fontFamily: "body",
         fontSize: [1, 1, 2],
-        // "&:hover > svg": {
-        //   transform: "translateX(5px)",
-        //   transition: "all 200ms ease",
-        // },
+        p: 3,
+        height: "40px",
+        display: "inline-flex",
+        alignItems: "center",
+        textTransform: "uppercase",
       }}
       onClick={scroll.scrollToBottom}
     >

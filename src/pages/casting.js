@@ -55,6 +55,7 @@ export default function Casting({ data: { casting } }) {
           sx={{
             fontFamily: "body",
             fontSize: [1, 1, 2],
+            textTransform: "uppercase",
           }}
           href={"mailto:" + casting.data.email.text}
         >

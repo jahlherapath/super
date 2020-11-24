@@ -49,13 +49,14 @@ function About({ data: { about } }) {
           sx={{
             fontFamily: "body",
             fontSize: [1, 1, 2],
+            textTransform: "uppercase",
           }}
           href={"mailto:" + about.data.email.text}
         >
           Email Super
         </a>
       </SideNavigationRight>
-      <div sx={{ p: 5 }}>
+      <div sx={{ p: [4, 5, 5] }}>
         <Intro>
           <div
             sx={{
@@ -214,7 +215,6 @@ const Title = ({ children }) => {
         variant: "styles.display",
         fontSize: 9,
         mb: 3,
-        textAlign: "center",
       }}
     >
       {children}

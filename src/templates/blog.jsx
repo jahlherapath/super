@@ -52,7 +52,7 @@ export default ({
     <SideNavigationRight>
       <ScrollDown />
     </SideNavigationRight>
-    <div sx={{ p: 5 }}>
+    <div sx={{ p: [4, 5, 5] }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>
   </Layout>

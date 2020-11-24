@@ -146,7 +146,11 @@ function Index({ data: { talent, tags } }) {
             cursor: "pointer",
             fontFamily: "body",
             fontSize: [1, 1, 2],
-            mr: 2,
+            p: 3,
+            height: "40px",
+            display: "inline-flex",
+            alignItems: "center",
+            textTransform: "uppercase",
           }}
           onClick={() => setShowFilterTags(x => !x)}
         >
@@ -182,7 +186,7 @@ function Index({ data: { talent, tags } }) {
         breakpointCols={responsiveColumns}
         className="grid-talent"
         columnClassName="column"
-        sx={{ p: 5 }}
+        sx={{ p: [4, 5, 5] }}
       >
         {filteredTalent.map(model => (
           <Model
