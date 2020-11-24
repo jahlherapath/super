@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { Fragment, useRef, useState, useCallback } from "react"
+import { Fragment, useState } from "react"
 
 import { Link, graphql } from "gatsby"
 
@@ -9,7 +9,6 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import SideNavigationLeft from "../components/SideNavigationLeft"
 import SideNavigationRight from "../components/SideNavigationRight"
-import Form from "../components/Form"
 
 import { motion, AnimatePresence } from "framer-motion"
 

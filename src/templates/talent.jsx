@@ -27,7 +27,6 @@ function Talent({
   data: { prismicTalent, prismicInfo },
   pageContext: { next, prev },
 }) {
-  
   const getCurrentModel = () => {
     const tags = prismicTalent.data.tags
       .map(
@@ -43,7 +42,8 @@ function Talent({
       id: prismicTalent.id,
       name: prismicTalent.data.name.text,
       location: prismicTalent.data.location.text,
-      image: prismicTalent.data.headshots[0].image.localFile.childImageSharp.fluid,
+      image:
+        prismicTalent.data.headshots[0].image.localFile.childImageSharp.fluid,
       link: prismicTalent.uid,
       tags: tags,
     }
@@ -55,12 +55,15 @@ function Talent({
     []
   )
   const [isSelected, setIsSelected] = useState(false)
-  
+
   useEffect(() => {
-    if (Array.isArray(selectedModels) && selectedModels.find(i => i.id === model.id)) {
+    if (
+      Array.isArray(selectedModels) &&
+      selectedModels.find(i => i.id === model.id)
+    ) {
       setIsSelected(true)
     }
-  }, [])
+  }, [selectedModels, model.id])
 
   const onChange = model => {
     setIsSelected(!isSelected)
@@ -141,7 +144,7 @@ function Talent({
                 fontStyle: "italic",
                 display: ["none", "none", "flex"],
                 alignItems: "center",
-                mb: 2,
+                mb: 3,
                 fontSize: 1,
                 "&:hover > svg": {
                   transform: "translateX(-5px)",
@@ -152,59 +155,6 @@ function Talent({
               <ArrowLeft />
               Back to Talent
             </Link>
-            <div
-              id="talent-checkbox"
-              sx={{
-                mb: 5,
-                display: ["none", "none", "flex"],
-                alignItems: "center",
-                justifyContent: "center",
-                width: "30px",
-                height: "30px",
-                backgroundColor: "white",
-                zIndex: 15,
-              }}
-            >
-              <input
-                sx={{
-                  opacity: 0,
-                  position: "absolute",
-                  cursor: "pointer",
-                  zIndex: 3,
-                }}
-                type="checkbox"
-                value={isSelected || ""}
-                checked={isSelected ? isSelected : ""}
-                onChange={() => onChange(model)}
-              />
-              <div
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  width: "20px",
-                  cursor: "pointer",
-                  transition: "all 200ms ease",
-                }}
-              >
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
-                    stroke="black"
-                    strokeWidth="1"
-                    sx={{
-                      stroke: "black",
-                      fill: isSelected ? "black" : "transparent",
-                    }}
-                  />
-                </svg>
-              </div>
-            </div>
             <div
               sx={{
                 h3: {
@@ -217,13 +167,75 @@ function Talent({
                 __html: prismicTalent.data.name.html.split(" ").join("<br />"),
               }}
             />
-            <button
-              sx={{
-                variant: "styles.tagButton",
-              }}
-            >
-              Select Talent
-            </button>
+            <div>
+              <div
+                id="talent-checkbox"
+                sx={{
+                  variant: "text.body",
+                  mb: 5,
+                  width: "200px",
+                  height: "32px",
+                  borderRadius: "16px",
+                  borderColor: "black",
+                  border: "1px solid",
+                  backgroundColor: "white",
+                  fontSize: 3,
+                  textTransform: "uppercase",
+                  display: "inline-flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+              >
+                <span sx={{ display: "block", mt: "1px", mr: 2 }}>
+                  Select talent
+                </span>
+                <input
+                  sx={{
+                    opacity: 0,
+                    position: "absolute",
+                    cursor: "pointer",
+                    zIndex: 3,
+                    width: "200px",
+                    height: "32px",
+                    border: "1px solid red",
+                  }}
+                  type="checkbox"
+                  value={isSelected || ""}
+                  checked={isSelected ? isSelected : ""}
+                  onChange={() => onChange(model)}
+                />
+                <div
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "20px",
+                    cursor: "pointer",
+                    transition: "all 200ms ease",
+                    mt: "-2px",
+                    mr: "-4px",
+                  }}
+                >
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
+                      stroke="black"
+                      strokeWidth="1"
+                      sx={{
+                        stroke: "black",
+                        fill: isSelected ? "black" : "transparent",
+                      }}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
             <Info>
               {prismicTalent.data.location.text && (
                 <p>{prismicTalent.data.location.text}</p>
@@ -400,7 +412,7 @@ function Talent({
                   }}
                   rel="next"
                 >
-                  Next
+                  <span>Next</span>
                   <ArrowRight />
                 </Link>
               ) : (
@@ -426,59 +438,6 @@ function Talent({
               <ArrowLeft />
               Back to Talent
             </Link>
-            <div
-              id="talent-checkbox"
-              sx={{
-                mb: 3,
-                alignItems: "center",
-                display: ["flex", "flex", "none"],
-                justifyContent: "center",
-                width: "30px",
-                height: "30px",
-                backgroundColor: "white",
-                zIndex: 15,
-              }}
-            >
-              <input
-                sx={{
-                  opacity: 0,
-                  position: "absolute",
-                  cursor: "pointer",
-                  zIndex: 3,
-                }}
-                type="checkbox"
-                value={isSelected || ""}
-                checked={isSelected ? isSelected : ""}
-                onChange={() => onChange(model)}
-              />
-              <div
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  width: "20px",
-                  cursor: "pointer",
-                  transition: "all 200ms ease",
-                }}
-              >
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
-                    stroke="black"
-                    strokeWidth="1"
-                    sx={{
-                      stroke: "black",
-                      fill: isSelected ? "black" : "transparent",
-                    }}
-                  />
-                </svg>
-              </div>
-            </div>
             <div
               sx={{
                 position: "absolute",
@@ -813,7 +772,7 @@ const ArrowLeft = () => {
       viewBox="0 0 40 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ mt: "-2px", mr: 3 }}
+      sx={{ mt: "-2px", mr: 1 }}
     >
       <rect width="40" height="25" />
       <path
@@ -840,7 +799,7 @@ const ArrowRight = () => {
       viewBox="0 0 40 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ mt: "-2px", ml: 3 }}
+      sx={{ mt: "-2px", ml: 1 }}
     >
       <rect width="40" height="25" />
       <path

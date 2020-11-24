@@ -9,7 +9,7 @@ import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-import { Parallax, ParallaxProvider } from "react-scroll-parallax"
+import { ParallaxProvider } from "react-scroll-parallax"
 
 function Talent({
   data: { prismicFreelancers, prismicInfo },
@@ -135,44 +135,6 @@ function Talent({
             </div>
           </Left>
           <Right>
-            {/* <div
-              sx={{
-                position: "absolute",
-                top: 12,
-                right: -5,
-                py: 12,
-                width: ["200px", "200px", "300px"],
-                zIndex: 2,
-                overflow: "hidden",
-              }}
-            >
-              <Parallax y={[-20, 20]}>
-                <Img
-                  sx={{ mr: -6 }}
-                  fluid={
-                    graphics.current[0].graphic.localFile.childImageSharp.fluid
-                  }
-                />
-              </Parallax>
-            </div>
-            <div
-              sx={{
-                position: "absolute",
-                top: 14,
-                left: [-10, -10, 0],
-                width: ["200px", "200px", "250px"],
-                zIndex: 2,
-              }}
-            >
-              <Parallax y={[-40, 40]}>
-                <Img
-                  fluid={
-                    graphics.current[1].graphic.localFile.childImageSharp.fluid
-                  }
-                />
-              </Parallax>
-            </div>
-            <Emblem /> */}
             <div sx={{ width: "100%", height: "100%" }}>
               {prismicFreelancers.data.gallery.map((image, index) => (
                 <Img
