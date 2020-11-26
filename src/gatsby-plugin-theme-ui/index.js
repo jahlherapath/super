@@ -5,6 +5,7 @@ export default {
     black: "black",
     white: "white",
     gray: "#2d2d2d",
+    lightGray: "#efefef",
     offWhite: "#f4f4f4",
     orange: "#ff3600",
     hibiscusPink: "#ff0060",

@@ -29,7 +29,7 @@ export default ({
       <MotionLink
         to="/blog"
         activeClassName="active"
-        animate={{ backgroundPosition: "left bottom", color: "white" }}
+        animate={{ backgroundPosition: "left bottom", color: "black" }}
         transition={{
           type: "spring",
           stiffness: 260,

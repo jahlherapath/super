@@ -126,7 +126,7 @@ export default ({
               alignItems: "center",
               justifyContent: "space-between",
               mt: 4,
-              border: "1px solid black",
+              border: "1px solid #dcdcdc",
               height: "35px",
             }}
           >
@@ -137,23 +137,19 @@ export default ({
                   display: "flex",
                   alignItems: "center",
                   zIndex: 20,
-                  "&:hover > svg": {
-                    transform: " translateX(-5px)",
-                    transition: "all 200ms ease",
-                  },
+                  borderRight: "1px solid #dcdcdc",
+                  height: "100%",
+                  px: 3,
                 }}
                 rel="prev"
               >
-                <ArrowLeft /> Prev Page
+                <ArrowLeft />
               </Link>
             ) : (
               <div />
             )}
             <ul
               sx={{
-                position: "absolute",
-                left: 0,
-                right: 0,
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",
@@ -161,6 +157,7 @@ export default ({
                 listStyle: "none",
                 m: 0,
                 p: 0,
+                width: "100%",
               }}
             >
               {Array.from({ length: numPages }, (_, i) => (
@@ -168,7 +165,15 @@ export default ({
                   key={`pagination-number${i + 1}`}
                   sx={{
                     m: 0,
-                    variant: "styles.serif",
+                    flex: 1,
+                    textAlign: "center",
+                    borderLeft: "1px solid #dcdcdc",
+                    "&:first-of-type": {
+                      borderLeft: "none",
+                    },
+                    "&:last-of-type": {
+                      borderRight: "none",
+                    },
                   }}
                 >
                   <Link
@@ -177,14 +182,13 @@ export default ({
                       p: 0,
                       m: 0,
                       textDecoration: "none",
-                      border: "1px solid",
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      width: "35px",
                       height: "35px",
-                      borderColor:
-                        i + 1 === currentPage ? "black" : "transparent",
+                      px: 4,
+                      fontFamily: "body",
+                      color: i + 1 === currentPage ? "black" : "#dcdcdc",
                     }}
                   >
                     {i + 1}
@@ -199,14 +203,12 @@ export default ({
                   display: "flex",
                   alignItems: "center",
                   zIndex: 20,
-                  "&:hover > svg": {
-                    transform: " translateX(5px)",
-                    transition: "all 200ms ease",
-                  },
+                  borderLeft: "1px solid #dcdcdc",
+                  height: "100%",
+                  px: 3,
                 }}
                 rel="next"
               >
-                Next Page
                 <ArrowRight />
               </Link>
             ) : (
@@ -222,25 +224,15 @@ export default ({
 const ArrowLeft = () => {
   return (
     <svg
-      width="40"
-      height="25"
-      viewBox="0 0 40 25"
+      width="15"
+      height="10"
+      viewBox="0 0 15 10"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ mt: "-2px", mr: 3 }}
     >
-      <rect width="40" height="25" />
       <path
-        d="M36 12.5H5"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-      <path
-        d="M10 17.5L5 12.5L10 7.5"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
+        d="M-1.14441e-05 5.00005L15 9.33018L15 0.669922L-1.14441e-05 5.00005Z"
+        fill="black"
       />
     </svg>
   )
@@ -249,25 +241,15 @@ const ArrowLeft = () => {
 const ArrowRight = () => {
   return (
     <svg
-      width="40"
-      height="25"
-      viewBox="0 0 40 25"
+      width="15"
+      height="10"
+      viewBox="0 0 15 10"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ mt: "-2px", ml: 3 }}
     >
-      <rect width="40" height="25" />
       <path
-        d="M5 12.5H36"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-      <path
-        d="M31 17.5L36 12.5L31 7.5"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
+        d="M15.0005 5.00005L0.000488385 9.33018L0.000488281 0.669922L15.0005 5.00005Z"
+        fill="black"
       />
     </svg>
   )
