@@ -59,7 +59,16 @@ export default ({
     </SideNavigationRight>
     <div sx={{ p: [4, 5, 5] }}>
       <div sx={{ textAlign: "center", mb: 5 }}>
-        <h1 sx={{ variant: "styles.display", mb: 3 }}>{data.title.text}</h1>
+        <h1
+          sx={{
+            fontFamily: "display",
+            fontStyle: "italic",
+            fontWeight: "medium",
+            mb: 3,
+          }}
+        >
+          {data.title.text}
+        </h1>
         <p sx={{ variant: "styles.date" }}>{data.date}</p>
       </div>
       {data.thumbnail && (

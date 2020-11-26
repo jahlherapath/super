@@ -212,7 +212,9 @@ const Title = ({ children }) => {
   return (
     <h3
       sx={{
-        variant: "styles.display",
+        fontFamily: "display",
+        fontStyle: "italic",
+        fontWeight: "medium",
         fontSize: 9,
         mb: 3,
       }}

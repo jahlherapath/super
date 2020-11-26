@@ -42,7 +42,14 @@ function Talent({
               <ArrowLeft />
               Back to Freelancers
             </Link>
-            <h1 sx={{ variant: "styles.display", mb: 3 }}>
+            <h1
+              sx={{
+                fontFamily: "display",
+                fontStyle: "italic",
+                fontWeight: "medium",
+                mb: 3,
+              }}
+            >
               {prismicFreelancers.data.name.text}
             </h1>
             <Info>

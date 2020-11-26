@@ -158,7 +158,9 @@ function Talent({
             <div
               sx={{
                 h3: {
-                  variant: "styles.display",
+                  fontFamily: "display",
+                  fontStyle: "italic",
+                  fontWeight: "medium",
                   fontSize: ["48px", "56px", "72px"],
                   mb: 3,
                   ml: 4,
@@ -270,7 +272,9 @@ function Talent({
               <Fragment>
                 <h3
                   sx={{
-                    variant: "styles.display",
+                    fontFamily: "display",
+                    fontStyle: "italic",
+                    fontWeight: "medium",
                     fontSize: ["36px", "36px", "48px"],
                     mb: 3,
                     mt: 6,
@@ -289,7 +293,9 @@ function Talent({
             {prismicTalent.data.links.length >= 1 && (
               <h3
                 sx={{
-                  variant: "styles.display",
+                  fontFamily: "display",
+                  fontStyle: "italic",
+                  fontWeight: "medium",
                   fontSize: ["36px", "36px", "48px"],
                   mb: 3,
                   mt: 6,

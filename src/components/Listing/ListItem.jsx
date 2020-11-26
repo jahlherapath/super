@@ -24,7 +24,9 @@ function Card({ node, categories }) {
         )}
         <h2
           sx={{
-            variant: "styles.display",
+            fontFamily: "display",
+            fontStyle: "italic",
+            fontWeight: "medium",
             fontSize: "32px !important",
             mb: 2,
           }}

@@ -42,7 +42,9 @@ export default ({
             <Link to={`/${posts[0].uid}`}>
               <h2
                 sx={{
-                  variant: "styles.display",
+                  fontFamily: "display",
+                  fontStyle: "italic",
+                  fontWeight: "medium",
                   mb: 0,
                   textAlign: ["center", "center", "left"],
                   fontSize: 12,
