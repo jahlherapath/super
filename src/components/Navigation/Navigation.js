@@ -51,7 +51,7 @@ function Navigation() {
           <Logo />
           <button
             sx={{
-              display: ["none", "none", "flex"],
+              display: "flex",
               alignItems: "center",
               cursor: "pointer",
               background: "none",
@@ -65,6 +65,7 @@ function Navigation() {
                 textTransform: "initial",
                 variant: "styles.serif",
                 fontStyle: "italic",
+                display: ["none", "none", "block"],
               }}
             >
               Selected Talent
