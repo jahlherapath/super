@@ -10,6 +10,9 @@ import SEO from "../components/SEO"
 import SideNavigationLeft from "../components/SideNavigationLeft"
 import SideNavigationRight from "../components/SideNavigationRight"
 
+import Book from "../components/Book"
+import Join from "../components/Join"
+
 import { motion, AnimatePresence } from "framer-motion"
 
 const MotionLink = motion.custom(Link)
@@ -17,7 +20,23 @@ const MotionLink = motion.custom(Link)
 export default function Casting({ data: { casting } }) {
   const [expanded, setExpanded] = useState(0)
 
-  const content = [0, 1, 2, 3]
+  const content = [
+    {
+      label: "Book Talent",
+      intro: "Submit a request to Book Super Talent",
+      content: <Book />,
+    },
+    {
+      label: "Join Super",
+      intro: "Submit a request to Join Super Talent",
+      content: <Join />,
+    },
+    {
+      label: "More Info",
+      intro: "",
+      content: "Information about casting for Super",
+    },
+  ]
 
   return (
     <Layout>
@@ -28,9 +47,6 @@ export default function Casting({ data: { casting } }) {
         </Link>
         <Link to="/blog" activeClassName="active" sx={{}}>
           <span>Journal</span>
-        </Link>
-        <Link to="/" activeClassName="active" sx={{}}>
-          <span>Freelancers</span>
         </Link>
         <MotionLink
           to="/casting"
@@ -69,32 +85,41 @@ export default function Casting({ data: { casting } }) {
           position: "relative",
         }}
       >
-        {content.map((i, index) => (
+        {content.map((content, index) => (
           <Accordion
             key={index}
-            i={i}
+            activeTab={index}
             expanded={expanded}
             setExpanded={setExpanded}
-          />
+            label={content.label}
+            intro={content.intro}
+            content={content.content}
+          ></Accordion>
         ))}
       </div>
     </Layout>
   )
 }
 
-const Accordion = ({ i, expanded, setExpanded }) => {
-  const isOpen = i === expanded
-
-  console.log(i)
+const Accordion = ({
+  activeTab,
+  label,
+  intro,
+  content,
+  expanded,
+  setExpanded,
+}) => {
+  const isOpen = activeTab === expanded
 
   return (
     <Fragment>
       <motion.div
-        onClick={() => setExpanded(isOpen ? false : i)}
+        onClick={() => setExpanded(isOpen ? false : activeTab)}
         sx={{
           display: ["flex", "flex", "block"],
           alignItems: ["center", "center", "flex-start"],
           justifyContent: ["space-between", "space-between", "flex-start"],
+          flexDirection: ["row-reverse", "row-reverse", "flex-start"],
           minHeight: ["auto", "100%", "100vh"],
           borderLeft: ["none", "none", "1px solid black"],
           borderBottom: "1px solid black",
@@ -106,17 +131,6 @@ const Accordion = ({ i, expanded, setExpanded }) => {
           },
         }}
       >
-        <span
-          sx={{
-            fontFamily: "body",
-            fontSize: [2, 2, 3],
-            writingMode: ["auto", "auto", "vertical-lr"],
-            textOrientation: "mixed",
-            transform: ["rotate(0deg)", "rotate(0deg)", "rotate(-180deg)"],
-          }}
-        >
-          Label here
-        </span>
         <motion.span
           initial={false}
           animate={{ backgroundColor: isOpen ? "black" : "white" }}
@@ -127,9 +141,20 @@ const Accordion = ({ i, expanded, setExpanded }) => {
             backgroundColor: isOpen ? "black" : "white",
             borderRadius: "50%",
             border: "1px solid black",
-            mt: [0, 0, 4],
+            mb: [0, 0, 4],
           }}
         ></motion.span>
+        <span
+          sx={{
+            fontFamily: "body",
+            fontSize: [2, 2, 3],
+            writingMode: ["auto", "auto", "vertical-lr"],
+            textOrientation: "mixed",
+            transform: ["rotate(0deg)", "rotate(0deg)", "rotate(-180deg)"],
+          }}
+        >
+          {label}
+        </span>
       </motion.div>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -139,11 +164,11 @@ const Accordion = ({ i, expanded, setExpanded }) => {
             animate="open"
             exit="collapsed"
             variants={{
-              open: { width: "100%", flex: 1, zIndex: 1 },
-              collapsed: { width: "100%", flex: 0, zIndex: 0 },
+              open: { width: "100%", opacity: 1, flex: 1, zIndex: 1 },
+              collapsed: { width: "auto", opacity: 0, flex: 0, zIndex: 0 },
             }}
             transition={{
-              duration: 0.6,
+              duration: 0.8,
               ease: [0.04, 0.62, 0.23, 0.98],
             }}
             sx={{ position: "relative", overflow: "hidden" }}
@@ -167,13 +192,8 @@ const Accordion = ({ i, expanded, setExpanded }) => {
                 collapsed: { display: "none" },
               }}
             >
-              Content here lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Phasellus at egestas ex. Nam consequat libero velit,
-              hendrerit fringilla est placerat at. Donec eleifend nulla id nulla
-              sagittis placerat. Nam hendrerit neque id cursus fermentum.
-              Praesent eget scelerisque ipsum. Curabitur lobortis ipsum sapien,
-              at tincidunt urna dignissim a. Fusce aliquet aliquam tellus nec
-              eleifend.
+              {intro && <div sx={{ mb: 3 }}>{intro}</div>}
+              {content}
             </motion.div>
           </motion.div>
         )}

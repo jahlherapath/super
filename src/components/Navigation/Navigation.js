@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 
 import { useState, useEffect, Fragment } from "react"
 
-import { Link } from "gatsby"
+import { Link, useStaticQuery } from "gatsby"
 import Headroom from "react-headroom"
 
 import useLocalStorage from "../UseLocalStorage"
@@ -22,6 +22,25 @@ function Navigation() {
       window.removeEventListener("resize", handler)
     }
   }, [])
+
+  const data = useStaticQuery(graphql`
+    query SettingsQuery {
+      allPrismicInfo {
+        nodes {
+          data {
+            instagram {
+              text
+            }
+            email {
+              text
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const info = data.allPrismicInfo.nodes[0].data
 
   return (
     <Headroom
@@ -42,12 +61,76 @@ function Navigation() {
           sx={{
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
+            height: "65px",
             width: "100%",
             borderBottom: "1px solid black",
             p: 4,
           }}
         >
-          <p></p>
+          <div sx={{ display: "flex", alignItems: "center" }}>
+            <a
+              sx={{ display: "flex", alignItems: "center", mr: 2 }}
+              href={"https://www.instagram.com/" + info.instagram.text}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.1665 1.66675H5.83317C3.53198 1.66675 1.6665 3.53223 1.6665 5.83341V14.1667C1.6665 16.4679 3.53198 18.3334 5.83317 18.3334H14.1665C16.4677 18.3334 18.3332 16.4679 18.3332 14.1667V5.83341C18.3332 3.53223 16.4677 1.66675 14.1665 1.66675Z"
+                  stroke="black"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M13.3333 9.47501C13.4361 10.1685 13.3176 10.8769 12.9947 11.4992C12.6718 12.1215 12.1609 12.6262 11.5346 12.9414C10.9083 13.2566 10.1986 13.3663 9.50641 13.255C8.81419 13.1436 8.17472 12.8167 7.67895 12.321C7.18318 11.8252 6.85636 11.1857 6.74497 10.4935C6.63359 9.8013 6.74331 9.09159 7.05852 8.46532C7.37374 7.83905 7.87841 7.32812 8.50074 7.00521C9.12307 6.68229 9.83138 6.56383 10.5249 6.66667C11.2324 6.77158 11.8873 7.10123 12.393 7.60693C12.8987 8.11263 13.2283 8.76757 13.3333 9.47501Z"
+                  stroke="black"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M14.5835 5.41675H14.5918"
+                  stroke="black"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <a
+              sx={{ display: "flex", alignItems: "center", pr: 0 }}
+              href={"mailto:" + info.email.text}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.33317 3.33325H16.6665C17.5832 3.33325 18.3332 4.08325 18.3332 4.99992V14.9999C18.3332 15.9166 17.5832 16.6666 16.6665 16.6666H3.33317C2.4165 16.6666 1.6665 15.9166 1.6665 14.9999V4.99992C1.6665 4.08325 2.4165 3.33325 3.33317 3.33325Z"
+                  stroke="black"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M18.3332 5L9.99984 10.8333L1.6665 5"
+                  stroke="black"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
           <Logo />
           <button
             sx={{
@@ -56,6 +139,8 @@ function Navigation() {
               cursor: "pointer",
               background: "none",
               border: "none",
+              p: 0,
+              m: 0,
             }}
             onClick={() => setShowMenu(x => !x)}
             onKeyDown={() => setShowMenu(x => !x)}
@@ -66,29 +151,38 @@ function Navigation() {
                 variant: "styles.serif",
                 fontStyle: "italic",
                 display: ["none", "none", "block"],
+                fontSize: 1,
+                mt: "2px",
               }}
             >
               Selected Talent
             </span>
-            <div sx={{ display: "flex", width: "16px", ml: 2 }}>
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.17229 11.2279L8.00004 11.1239L7.8278 11.2279L4.38413 13.3063L5.29799 9.38898L5.3437 9.19305L5.19163 9.06131L2.14876 6.42527L6.15489 6.08539L6.35517 6.0684L6.43361 5.88333L8.00004 2.18745L9.56647 5.88333L9.64491 6.0684L9.8452 6.08539L13.8513 6.42527L10.8085 9.06131L10.6564 9.19305L10.7021 9.38898L11.616 13.3063L8.17229 11.2279Z"
-                  stroke="black"
-                  strokeWidth="1"
-                  sx={{
-                    stroke: "gray",
-                    fill: showMenu ? "gray" : "transparent",
-                  }}
-                />
-              </svg>
-            </div>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              sx={{ ml: 2 }}
+            >
+              <path
+                d="M14.131 12.4212L15.4237 17.9621L10.5528 15.0224L10.5528 15.0223L10.2584 14.8446L10 14.6886L9.74158 14.8446L9.44729 15.0223L9.44721 15.0224L4.57644 17.9621L5.86906 12.4212L5.94717 12.0864L6.01574 11.7925L5.78764 11.5949L5.52775 11.3697L5.20036 11.7476L5.52774 11.3697L1.22308 7.64059L6.88886 7.15991L6.88887 7.15991L7.23115 7.13087L7.53158 7.10539L7.64924 6.82778L7.7833 6.51149L7.7833 6.51149L10 1.2813L12.2167 6.51149L12.3508 6.82778L12.4685 7.10539L12.7689 7.13087L13.1112 7.15991L18.7769 7.64059L14.4724 11.3697L14.4724 11.3697L14.2125 11.5948L13.9843 11.7924L14.0529 12.0864L14.131 12.4212L14.131 12.4212Z"
+                stroke="black"
+                sx={{
+                  stroke: "black",
+                  fill: showMenu ? "black" : "transparent",
+                }}
+              />
+              <path
+                d="M14.131 12.4212L15.4237 17.9621L10.5528 15.0224L10.5528 15.0223L10.2584 14.8446L10 14.6886L9.74158 14.8446L9.44729 15.0223L9.44721 15.0224L4.57644 17.9621L5.86906 12.4212L5.94717 12.0864L6.01574 11.7925L5.78764 11.5949L5.52775 11.3697L5.20036 11.7476L5.52774 11.3697L1.22308 7.64059L6.88886 7.15991L6.88887 7.15991L7.23115 7.13087L7.53158 7.10539L7.64924 6.82778L7.7833 6.51149L7.7833 6.51149L10 1.2813L12.2167 6.51149L12.3508 6.82778L12.4685 7.10539L12.7689 7.13087L13.1112 7.15991L18.7769 7.64059L14.4724 11.3697L14.4724 11.3697L14.2125 11.5948L13.9843 11.7924L14.0529 12.0864L14.131 12.4212L14.131 12.4212Z"
+                fill="black"
+                stroke="black"
+                sx={{
+                  stroke: "black",
+                  fill: showMenu ? "black" : "transparent",
+                }}
+              />
+            </svg>
           </button>
         </div>
         {showMenu && (
@@ -97,7 +191,7 @@ function Navigation() {
               backgroundColor: "white",
               borderBottom: "1px solid black",
               py: 4,
-              px: 5,
+              px: [4, 4, 5],
               zIndex: 30,
               fontFamily: "body",
             }}

@@ -3,9 +3,7 @@ import { jsx } from "theme-ui"
 
 import NetlifyForm from "react-netlify-form"
 
-import useLocalStorage from "../UseLocalStorage"
-
-function Footer() {
+function Join() {
   return (
     <NetlifyForm name="contact">
       {({ loading, error, success }) => (
@@ -13,55 +11,45 @@ function Footer() {
           sx={{
             display: "flex",
             alignItems: "flex-end",
-            justifyContent: "center",
-            width: "100%",
+            width: ["100%", "100%", "600px"],
             height: "100%",
           }}
         >
           {loading && (
-            <div
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <p sx={{ variant: "styles.html", fontWeight: "regular" }}>
+            <div>
+              <p
+                sx={{
+                  variant: "styles.html",
+                  fontWeight: "regular",
+                  backgroundColor: "babyBlue",
+                }}
+              >
                 Loading...
               </p>
             </div>
           )}
           {error && (
-            <div
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <p sx={{ variant: "styles.html", fontWeight: "regular" }}>
+            <div>
+              <p
+                sx={{
+                  variant: "styles.html",
+                  fontWeight: "regular",
+                  backgroundColor: "orange",
+                }}
+              >
                 Your information was not sent. Please try again later.
               </p>
             </div>
           )}
           {success && (
-            <div
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <p sx={{ variant: "styles.html", fontWeight: "regular" }}>
+            <div>
+              <p
+                sx={{
+                  variant: "styles.html",
+                  fontWeight: "regular",
+                  backgroundColor: "lightGreen",
+                }}
+              >
                 We got your message! Our team will get to your soon.
               </p>
             </div>
@@ -75,8 +63,8 @@ function Footer() {
                 width: "100%",
               }}
             >
-              {/* <TalentSelection /> */}
               <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="subject" value="Join" />
               <label htmlFor="name" sx={{ variant: "styles.label" }}>
                 Name*
               </label>
@@ -87,14 +75,24 @@ function Footer() {
                 placeholder="First and last name"
                 required
               />
-              <label htmlFor="company" sx={{ variant: "styles.label" }}>
-                Company name*
+              <label htmlFor="instagram" sx={{ variant: "styles.label" }}>
+                Instagram
               </label>
               <input
                 sx={{ variant: "styles.input" }}
                 type="text"
                 name="company"
-                placeholder="Your company"
+                placeholder="Your username"
+              />
+              <label htmlFor="location" sx={{ variant: "styles.label" }}>
+                Location*
+              </label>
+              <input
+                sx={{ variant: "styles.input" }}
+                type="text"
+                name="location"
+                placeholder="Your location"
+                required
               />
               <div
                 sx={{
@@ -116,7 +114,7 @@ function Footer() {
                   </label>
                   <input
                     sx={{ variant: "styles.input" }}
-                    type="text"
+                    type="email"
                     name="email"
                     placeholder="Your email address"
                     required
@@ -140,15 +138,15 @@ function Footer() {
                   />
                 </div>
               </div>
-              <label htmlFor="biography" sx={{ variant: "styles.label" }}>
-                Biography*
+              <label htmlFor="message" sx={{ variant: "styles.label" }}>
+                Blurb about yourself*
               </label>
               <textarea
                 sx={{ variant: "styles.input" }}
                 type="message"
-                name="biography"
-                placeholder="A little about you"
-                rows="3"
+                name="message"
+                placeholder="Share some projects you're a part of or what you’re passionate about"
+                rows="6"
                 required
               />
               <div>
@@ -160,7 +158,7 @@ function Footer() {
                   type="submit"
                   value="Submit"
                 >
-                  Submit your application
+                  Join Super
                 </button>
               </div>
             </div>
@@ -171,18 +169,4 @@ function Footer() {
   )
 }
 
-export default Footer
-
-function TalentSelection() {
-  const [selectedModels] = useLocalStorage("selectedModels", [])
-
-  return (
-    <div sx={{ width: "100%", variant: "styles.html" }}>
-      <div sx={{ mb: 2 }}>
-        Selected talent:{" "}
-        {Array.isArray(selectedModels) &&
-          selectedModels.map(i => i.name).join(", ")}
-      </div>
-    </div>
-  )
-}
+export default Join

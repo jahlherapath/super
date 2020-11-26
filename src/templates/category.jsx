@@ -40,9 +40,6 @@ export default ({
       >
         <span>Journal</span>
       </MotionLink>
-      <Link to="/" activeClassName="active" sx={{}}>
-        <span>Freelancers</span>
-      </Link>
       <Link to="/casting" activeClassName="active" sx={{}}>
         <span>Casting</span>
       </Link>
@@ -57,7 +54,7 @@ export default ({
     <div
       sx={{
         mt: "calc(50vh - 65px)",
-        p: [4, 5, 5],
+        p: [4, 4, 5],
         backgroundColor: "white",
       }}
     >

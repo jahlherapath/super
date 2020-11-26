@@ -34,9 +34,6 @@ function About({ data: { about } }) {
         <Link to="/blog" activeClassName="active" sx={{}}>
           <span>Journal</span>
         </Link>
-        <Link to="/" activeClassName="active" sx={{}}>
-          <span>Freelancers</span>
-        </Link>
         <Link to="/casting" activeClassName="active" sx={{}}>
           <span>Casting</span>
         </Link>
@@ -45,7 +42,7 @@ function About({ data: { about } }) {
         </Link>
       </SideNavigationLeft>
       <SideNavigationRight>
-        <a
+        {/* <a
           sx={{
             fontFamily: "body",
             fontSize: [1, 1, 2],
@@ -54,9 +51,9 @@ function About({ data: { about } }) {
           href={"mailto:" + about.data.email.text}
         >
           Email Super
-        </a>
+        </a> */}
       </SideNavigationRight>
-      <div sx={{ p: [4, 5, 5] }}>
+      <div sx={{ p: [4, 4, 5] }}>
         <Intro>
           <div
             sx={{

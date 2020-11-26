@@ -110,9 +110,6 @@ function Talent({
         <Link to="/blog" activeClassName="active" sx={{}}>
           <span>Journal</span>
         </Link>
-        <Link to="/" activeClassName="active" sx={{}}>
-          <span>Freelancers</span>
-        </Link>
         <Link to="/casting" activeClassName="active" sx={{}}>
           <span>Casting</span>
         </Link>
@@ -558,7 +555,7 @@ const Container = ({ children }) => {
         position: "relative",
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
-        p: [4, 5, 5],
+        p: [4, 4, 5],
       }}
     >
       {children}

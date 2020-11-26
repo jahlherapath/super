@@ -118,9 +118,6 @@ function Index({ data: { talent, tags } }) {
         <Link to="/blog" activeClassName="active" sx={{}}>
           <span>Journal</span>
         </Link>
-        <Link to="/" activeClassName="active" sx={{}}>
-          <span>Freelancers</span>
-        </Link>
         <Link to="/casting" activeClassName="active" sx={{}}>
           <span>Casting</span>
         </Link>

@@ -47,7 +47,7 @@ export default ({
                   fontWeight: "medium",
                   mb: 0,
                   textAlign: ["center", "center", "left"],
-                  fontSize: 12,
+                  fontSize: ["32px", "32px", 12],
                 }}
               >
                 {posts[0].data.title.text}

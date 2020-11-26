@@ -39,9 +39,6 @@ export default ({
       >
         <span>Journal</span>
       </MotionLink>
-      <Link to="/" activeClassName="active" sx={{}}>
-        <span>Freelancers</span>
-      </Link>
       <Link to="/casting" activeClassName="active" sx={{}}>
         <span>Casting</span>
       </Link>
@@ -52,7 +49,7 @@ export default ({
     <SideNavigationRight>
       <ScrollDown />
     </SideNavigationRight>
-    <div sx={{ p: [4, 5, 5] }}>
+    <div sx={{ p: [4, 4, 5] }}>
       <Listing posts={posts} pageInfo={{ currentPage, numPages, prefix }} />
     </div>
   </Layout>
