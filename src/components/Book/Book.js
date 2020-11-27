@@ -204,15 +204,3 @@ function TalentSelection() {
     </div>
   )
 }
-
-function TalentValue() {
-  const [selectedModels] = useLocalStorage("selectedModels", [])
-
-  return (
-    <Fragment>
-      {selectedModels.length > 0 &&
-        Array.isArray(selectedModels) &&
-        selectedModels.map(i => i.name).join(", ")}
-    </Fragment>
-  )
-}

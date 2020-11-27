@@ -448,7 +448,7 @@ function Talent({
                 top: 12,
                 right: [-5, -5, -6],
                 py: 12,
-                width: ["180px", "180px", "250px"],
+                width: ["120px", "120px", "250px"],
                 zIndex: 2,
                 overflow: "hidden",
                 pointerEvents: "none",
