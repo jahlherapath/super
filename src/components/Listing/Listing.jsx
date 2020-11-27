@@ -45,7 +45,8 @@ export default ({
                   fontFamily: "display",
                   fontStyle: "italic",
                   fontWeight: "medium",
-                  mb: 0,
+                  mt: 0,
+                  mb: 2,
                   textAlign: ["center", "center", "left"],
                   fontSize: ["32px", "32px", 12],
                 }}

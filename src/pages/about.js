@@ -62,7 +62,7 @@ function About({ data: { about } }) {
             }}
             dangerouslySetInnerHTML={{ __html: about.data.about.html }}
           />
-          {about.data.press_kit.url && (
+          {/* {about.data.press_kit.url && (
             <div>
               <a
                 sx={{
@@ -75,7 +75,7 @@ function About({ data: { about } }) {
                 Download press kit
               </a>
             </div>
-          )}
+          )} */}
         </Intro>
         <Content>
           <Columns>
