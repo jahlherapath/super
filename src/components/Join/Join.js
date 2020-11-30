@@ -3,6 +3,8 @@ import { jsx } from "theme-ui"
 
 import NetlifyForm from "react-netlify-form"
 
+import TagCheckbox from "../TagCheckbox"
+
 function Join() {
   return (
     <NetlifyForm name="contact">
@@ -99,7 +101,6 @@ function Join() {
                   display: "grid",
                   gridTemplateColumns: "repeat(6, 1fr)",
                   gridColumnGap: 2,
-                  mb: 3,
                 }}
               >
                 <div
@@ -138,6 +139,7 @@ function Join() {
                   />
                 </div>
               </div>
+              <TagCheckbox />
               <label htmlFor="message" sx={{ variant: "styles.label" }}>
                 Blurb about yourself*
               </label>

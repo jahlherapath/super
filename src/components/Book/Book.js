@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { Fragment } from "react"
-
 import NetlifyForm from "react-netlify-form"
 
 import useLocalStorage from "../UseLocalStorage"
+import TagCheckbox from "../TagCheckbox"
 
 function Book() {
   const [selectedModels] = useLocalStorage("selectedModels", [])
@@ -115,7 +114,6 @@ function Book() {
                   display: "grid",
                   gridTemplateColumns: "repeat(6, 1fr)",
                   gridColumnGap: 2,
-                  mb: 3,
                 }}
               >
                 <div
@@ -154,6 +152,7 @@ function Book() {
                   />
                 </div>
               </div>
+              <TagCheckbox />
               <label htmlFor="message" sx={{ variant: "styles.label" }}>
                 Your message *
               </label>
