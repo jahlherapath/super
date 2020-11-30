@@ -172,6 +172,7 @@ function Book() {
                   }}
                   type="submit"
                   value="Submit"
+                  aria-label="Book Talent"
                 >
                   Book Talent
                 </button>

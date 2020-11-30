@@ -156,6 +156,7 @@ function Casting() {
                   }}
                   type="submit"
                   value="Submit"
+                  aria-label="Casting Request"
                 >
                   Casting Request
                 </button>

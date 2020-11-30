@@ -159,6 +159,7 @@ function Join() {
                   }}
                   type="submit"
                   value="Submit"
+                  aria-label="Join Super"
                 >
                   Join Super
                 </button>

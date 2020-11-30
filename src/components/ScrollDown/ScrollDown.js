@@ -19,6 +19,7 @@ function ScrollDown() {
         textTransform: "uppercase",
       }}
       onClick={scroll.scrollToBottom}
+      aria-label="Sroll Down"
     >
       Scroll Down
       <svg

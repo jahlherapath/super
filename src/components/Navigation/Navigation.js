@@ -74,6 +74,7 @@ function Navigation() {
               href={"https://www.instagram.com/" + info.instagram.text}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
             >
               <svg
                 width="16"
@@ -108,6 +109,7 @@ function Navigation() {
             <a
               sx={{ display: "flex", alignItems: "center", pr: 0 }}
               href={"mailto:" + info.email.text}
+              aria-label="Email"
             >
               <svg
                 width="16"
@@ -144,6 +146,7 @@ function Navigation() {
               p: 0,
               m: 0,
             }}
+            aria-label="Select Talent"
             onClick={() => setShowMenu(x => !x)}
             onKeyDown={() => setShowMenu(x => !x)}
           >
@@ -222,6 +225,7 @@ const Logo = () => {
         width: "120px",
         margin: "0 auto",
       }}
+      aria-label="Home"
     >
       <svg
         width="100%"

@@ -48,10 +48,18 @@ function SectionImageGallery(sectionData) {
             zIndex: 10,
           }}
         >
-          <button sx={{ variant: "styles.carouselButton" }} onClick={prev}>
+          <button
+            sx={{ variant: "styles.carouselButton" }}
+            onClick={prev}
+            aria-label="Previous Image"
+          >
             <ArrowLeft />
           </button>
-          <button sx={{ variant: "styles.carouselButton" }} onClick={next}>
+          <button
+            sx={{ variant: "styles.carouselButton" }}
+            onClick={next}
+            aria-label="Next Image"
+          >
             <ArrowRight />
           </button>
         </div>

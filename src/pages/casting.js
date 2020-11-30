@@ -133,12 +133,15 @@ const Accordion = ({
           flexDirection: ["row-reverse", "row-reverse", "flex-start"],
           minHeight: ["auto", "100%", "100vh"],
           borderLeft: ["none", "none", "1px solid black"],
-          borderBottom: "1px solid black",
+          borderBottom: ["1px solid black", "1px solid black", "none"],
           py: 4,
           px: 3,
           cursor: "pointer",
           "&:first-of-type": {
             borderLeft: "none",
+          },
+          "&:last-of-type": {
+            borderBottom: "none",
           },
         }}
       >

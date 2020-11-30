@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { useState, useEffect, Fragment } from "react"
+import { useState } from "react"
 
-import { Link, useStaticQuery } from "gatsby"
+import { useStaticQuery } from "gatsby"
 
 function Navigation() {
   const [inputs, setInputs] = useState([])

@@ -151,6 +151,7 @@ function Index({ data: { talent, tags } }) {
             alignItems: "center",
             textTransform: "uppercase",
           }}
+          aria-label="Show Filters"
           onClick={() => setShowFilterTags(x => !x)}
         >
           Filter
@@ -478,6 +479,7 @@ const Tag = ({ tagList, activeTags, onClick }) => {
             border: activeTags.includes(tag) ? "1px solid black" : null,
           }}
           onClick={() => onClick(tag)}
+          aria-label="Filter Tags"
         >
           {tag}
           <span
