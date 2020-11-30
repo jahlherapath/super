@@ -22,8 +22,6 @@ function Navigation() {
 
   const tags = data.allPrismicTag
 
-  console.log(inputs)
-
   return (
     <div sx={{ border: "1px solid black", p: 3, mb: 3 }}>
       <label
@@ -90,7 +88,11 @@ function Navigation() {
           </label>
         ))}
       </div>
-      <input type="hidden" name="skills" value={inputs} />
+      <input
+        type="hidden"
+        name="skills"
+        value={inputs.sort((a, b) => a.localeCompare(b)).join(", ")}
+      />
     </div>
   )
 }

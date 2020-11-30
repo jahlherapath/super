@@ -10,31 +10,42 @@ import SEO from "../components/SEO"
 import SideNavigationLeft from "../components/SideNavigationLeft"
 import SideNavigationRight from "../components/SideNavigationRight"
 
-import Book from "../components/Book"
-import Join from "../components/Join"
+import BookingForm from "../components/Book"
+import CastingForm from "../components/Casting"
+import JoinForm from "../components/Join"
 
 import { motion, AnimatePresence } from "framer-motion"
 
 const MotionLink = motion.custom(Link)
 
-export default function Casting({ data: { casting } }) {
+export default function Casting({ data: { casting, form } }) {
   const [expanded, setExpanded] = useState(0)
+
+  const bookText = form.nodes[0].data.booking.html
+  const castingext = form.nodes[0].data.casting.html
+  const joinText = form.nodes[0].data.join.html
+  const informationText = form.nodes[0].data.information.html
 
   const content = [
     {
       label: "Book Talent",
-      intro: "Submit a request to Book Super Talent",
-      content: <Book />,
+      intro: bookText,
+      content: <BookingForm />,
+    },
+    {
+      label: "Casting",
+      intro: castingext,
+      content: <CastingForm />,
     },
     {
       label: "Join Super",
-      intro: "Submit a request to Join Super Talent",
-      content: <Join />,
+      intro: joinText,
+      content: <JoinForm />,
     },
     {
       label: "More Info",
-      intro: "",
-      content: "Information about casting for Super",
+      intro: informationText,
+      content: "",
     },
   ]
 
@@ -51,7 +62,7 @@ export default function Casting({ data: { casting } }) {
         <MotionLink
           to="/casting"
           activeClassName="active"
-          animate={{ backgroundPosition: "left bottom", color: "white" }}
+          animate={{ backgroundPosition: "left bottom", color: "black" }}
           transition={{
             type: "spring",
             stiffness: 260,
@@ -192,7 +203,14 @@ const Accordion = ({
                 collapsed: { display: "none" },
               }}
             >
-              {intro && <div sx={{ mb: 3 }}>{intro}</div>}
+              {intro && (
+                <div
+                  sx={{ mb: 3 }}
+                  dangerouslySetInnerHTML={{
+                    __html: intro,
+                  }}
+                />
+              )}
               {content}
             </motion.div>
           </motion.div>
@@ -211,6 +229,25 @@ export const castingQuery = graphql`
         }
         email {
           text
+        }
+      }
+    }
+    form: allPrismicCasting {
+      nodes {
+        data {
+          booking {
+            text
+            html
+          }
+          casting {
+            html
+          }
+          information {
+            html
+          }
+          join {
+            html
+          }
         }
       }
     }

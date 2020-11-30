@@ -3,9 +3,7 @@ import { jsx } from "theme-ui"
 
 import NetlifyForm from "react-netlify-form"
 
-import TagCheckbox from "../TagCheckbox"
-
-function Join() {
+function Casting() {
   return (
     <NetlifyForm name="contact">
       {({ loading, error, success }) => (
@@ -66,7 +64,7 @@ function Join() {
               }}
             >
               <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="subject" value="Join" />
+              <input type="hidden" name="subject" value="Casting" />
               <label htmlFor="name" sx={{ variant: "styles.label" }}>
                 Name*
               </label>
@@ -77,14 +75,14 @@ function Join() {
                 placeholder="First and last name"
                 required
               />
-              <label htmlFor="instagram" sx={{ variant: "styles.label" }}>
-                Instagram
+              <label htmlFor="company" sx={{ variant: "styles.label" }}>
+                Company name
               </label>
               <input
                 sx={{ variant: "styles.input" }}
                 type="text"
-                name="instagram"
-                placeholder="Your username"
+                name="company"
+                placeholder="Your company"
               />
               <label htmlFor="location" sx={{ variant: "styles.label" }}>
                 Location*
@@ -139,15 +137,14 @@ function Join() {
                   />
                 </div>
               </div>
-              <TagCheckbox />
               <label htmlFor="message" sx={{ variant: "styles.label" }}>
-                Blurb about yourself*
+                Your message *
               </label>
               <textarea
                 sx={{ variant: "styles.input" }}
                 type="message"
                 name="message"
-                placeholder="Share some projects you're a part of or what you’re passionate about"
+                placeholder="Share a brief summary of the project"
                 rows="6"
                 required
               />
@@ -160,7 +157,7 @@ function Join() {
                   type="submit"
                   value="Submit"
                 >
-                  Join Super
+                  Casting Request
                 </button>
               </div>
             </div>
@@ -171,4 +168,4 @@ function Join() {
   )
 }
 
-export default Join
+export default Casting

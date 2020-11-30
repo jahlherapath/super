@@ -17,6 +17,8 @@ import Masonry from "react-masonry-css"
 
 import { motion } from "framer-motion"
 
+import Logo from "../assets/logo.mp4"
+
 const MotionLink = motion.custom(Link)
 
 function Index({ data: { talent, tags } }) {
@@ -179,11 +181,63 @@ function Index({ data: { talent, tags } }) {
           />
         </div>
       )}
+      <div
+        sx={{
+          position: "fixed",
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: -1,
+          height: "100%",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <video
+          sx={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 200,
+          }}
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={Logo} type="video/mp4"></source>
+        </video>
+        {/* <h2
+          sx={{
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 200,
+            fontFamily: "display",
+            fontStyle: "italic",
+            fontWeight: "medium",
+            fontSize: 9,
+            textAlign: "center",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "60%",
+            m: "0 auto",
+          }}
+        >
+          Animated super logo!
+        </h2> */}
+      </div>
       <Masonry
         breakpointCols={responsiveColumns}
         className="grid-talent"
         columnClassName="column"
-        sx={{ p: [4, 5, 5] }}
+        sx={{ p: [4, 5, 5], mt: "100vh" }}
       >
         {filteredTalent.map(model => (
           <Model
@@ -259,7 +313,7 @@ function Model({ model, isSelected, onChange, index }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            width: "18px",
+            width: "16px",
             cursor: "pointer",
             transition: "all 200ms ease",
             mt: "-1px",
