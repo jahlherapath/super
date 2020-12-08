@@ -208,7 +208,13 @@ const Accordion = ({
             >
               {intro && (
                 <div
-                  sx={{ mb: 3 }}
+                  sx={{
+                    mb: 3,
+                    width: ["100%", "100%", "600px"],
+                    a: {
+                      textDecoration: "underline",
+                    },
+                  }}
                   dangerouslySetInnerHTML={{
                     __html: intro,
                   }}
