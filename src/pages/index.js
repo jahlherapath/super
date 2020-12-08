@@ -39,6 +39,7 @@ function Index({ data: { talent, tags } }) {
       name: talent.data.name.text,
       location: talent.data.location.text,
       image: talent.data.thumbnail.localFile.childImageSharp.fluid,
+      card: talent.data.card.localFile.childImageSharp.fluid,
       link: talent.uid,
       tags: tags,
     }
@@ -263,7 +264,6 @@ function Model({ model, isSelected, onChange, index }) {
     <div
       sx={{
         position: "relative",
-        backgroundColor: "red",
         "&:hover > #talent-checkbox": {
           display: "flex",
           transition: "all 200ms ease",
@@ -355,45 +355,11 @@ function Model({ model, isSelected, onChange, index }) {
         sx={{
           position: "relative",
           display: "block",
-          backgroundColor: "white",
-          border: "1px solid black",
-          px: 3,
-          pt: 3,
-          pb: 3,
           mb: [4, 4, 5],
+          // boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.25)",
         }}
       >
-        <Img fluid={model.image} />
-        <div
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            pt: 3,
-          }}
-        >
-          <p
-            sx={{
-              fontFamily: "body",
-              fontSize: 2,
-              p: 0,
-              m: 0,
-            }}
-          >
-            {model.name}
-          </p>
-          <p
-            sx={{
-              variant: "styles.serif",
-              fontStyle: "italic",
-              fontSize: 1,
-              p: 0,
-              m: 0,
-            }}
-          >
-            {model.location}
-          </p>
-        </div>
+        <Img fluid={model.card} />
       </Link>
     </div>
   )
@@ -424,6 +390,24 @@ export const indexQuery = graphql`
           bio {
             html
             text
+          }
+          card {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 70) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          card {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 70) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
           thumbnail {
             localFile {
