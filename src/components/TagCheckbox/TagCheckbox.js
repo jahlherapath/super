@@ -40,9 +40,9 @@ function Navigation() {
         sx={{
           columnCount: [1, 2, 2],
           columnFill: "auto",
-          "input:checked ~ .checkmark": {
-            backgroundColor: "black",
-          },
+          // "input:checked ~ .checkmark": {
+          //   backgroundColor: "black",
+          // },
         }}
       >
         {tags.nodes.map((tag, index) => (

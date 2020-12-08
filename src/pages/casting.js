@@ -31,21 +31,29 @@ export default function Casting({ data: { casting, form } }) {
       label: "Book Talent",
       intro: bookText,
       content: <BookingForm />,
+      color: "#ff0060",
+      backgroundColor: "#4f1535",
     },
     {
       label: "Casting",
       intro: castingext,
       content: <CastingForm />,
+      color: "#4b1818",
+      backgroundColor: "#d6ecfc",
     },
     {
       label: "Join Super",
       intro: joinText,
       content: <JoinForm />,
+      color: "#0c4004",
+      backgroundColor: "#d3f323",
     },
     {
       label: "More Info",
       intro: informationText,
       content: "",
+      color: "red",
+      backgroundColor: "white",
     },
   ]
 
@@ -105,6 +113,8 @@ export default function Casting({ data: { casting, form } }) {
             label={content.label}
             intro={content.intro}
             content={content.content}
+            color={content.color}
+            backgroundColor={content.backgroundColor}
           ></Accordion>
         ))}
       </div>
@@ -117,6 +127,8 @@ const Accordion = ({
   label,
   intro,
   content,
+  color,
+  backgroundColor,
   expanded,
   setExpanded,
 }) => {
@@ -136,6 +148,8 @@ const Accordion = ({
           borderBottom: ["1px solid black", "1px solid black", "none"],
           py: 4,
           px: 3,
+          color: color,
+          backgroundColor: backgroundColor,
           cursor: "pointer",
           "&:first-of-type": {
             borderLeft: "none",
@@ -147,14 +161,14 @@ const Accordion = ({
       >
         <motion.span
           initial={false}
-          animate={{ backgroundColor: isOpen ? "black" : "white" }}
+          animate={{ backgroundColor: isOpen ? color : "white" }}
           sx={{
             display: "block",
             width: 18,
             height: 18,
             backgroundColor: isOpen ? "black" : "white",
             borderRadius: "50%",
-            border: "1px solid black",
+            border: isOpen ? "none" : "1px solid black",
             mb: [0, 0, 4],
           }}
         ></motion.span>
@@ -179,7 +193,7 @@ const Accordion = ({
             exit="collapsed"
             variants={{
               open: { width: "100%", opacity: 1, flex: 1, zIndex: 1 },
-              collapsed: { width: "auto", opacity: 0, flex: 0, zIndex: 0 },
+              collapsed: { width: "auto", opacity: 1, flex: 0, zIndex: 0 },
             }}
             transition={{
               duration: 0.8,
@@ -197,6 +211,26 @@ const Accordion = ({
                 p: 4,
                 variant: "styles.html",
                 fontWeight: "regular",
+                backgroundColor: backgroundColor,
+                mb: 0,
+                label: {
+                  color: color,
+                },
+                input: {
+                  color: color,
+                },
+                textarea: {
+                  color: color,
+                },
+                div: {
+                  borderColor: color,
+                },
+                span: {
+                  borderColor: color,
+                },
+                "input:checked ~ .checkmark": {
+                  backgroundColor: color,
+                },
               }}
               initial="collapsed"
               animate="open"
@@ -211,8 +245,12 @@ const Accordion = ({
                   sx={{
                     mb: 3,
                     width: ["100%", "100%", "600px"],
+                    color: color,
                     a: {
-                      textDecoration: "underline",
+                      textDecoration: "none",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
                     },
                   }}
                   dangerouslySetInnerHTML={{

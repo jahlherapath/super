@@ -121,7 +121,7 @@ function Index({ data: { talent, tags } }) {
         <Link to="/blog" activeClassName="active" sx={{}}>
           <span>Journal</span>
         </Link>
-        <Link to="/casting" activeClassName="active" sx={{}}>
+        <Link to="/casting" activeClassName="active" sx={{ color: "white" }}>
           <span>Casting</span>
         </Link>
         <MotionLink
@@ -239,7 +239,7 @@ function Index({ data: { talent, tags } }) {
         breakpointCols={responsiveColumns}
         className="grid-talent"
         columnClassName="column"
-        sx={{ p: [4, 5, 5], mt: "100vh" }}
+        sx={{ p: [4, 5, 5] }}
       >
         {filteredTalent.map(model => (
           <Model
@@ -356,7 +356,6 @@ function Model({ model, isSelected, onChange, index }) {
           position: "relative",
           display: "block",
           mb: [4, 4, 5],
-          // boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.25)",
         }}
       >
         <Img fluid={model.card} />
@@ -438,7 +437,14 @@ export const indexQuery = graphql`
         }
       }
     }
-    tags: allPrismicTag(limit: 4, sort: { fields: id }) {
+    tags: allPrismicTag(
+      sort: { fields: id }
+      filter: {
+        data: {
+          name: { in: ["Model", "Photographer", "Stylist", "Production"] }
+        }
+      }
+    ) {
       edges {
         node {
           data {

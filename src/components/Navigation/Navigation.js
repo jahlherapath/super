@@ -273,8 +273,14 @@ function TalentSelection() {
   return (
     <Fragment>
       {selectedModels.length > 0
-        ? Array.isArray(selectedModels) &&
-          selectedModels.map(i => i.name).join(", ")
+        ? selectedModels.map((i, index) => (
+            <Fragment>
+              <Link key={index} to={`/${i.link}`}>
+                {i.name}
+              </Link>
+              {selectedModels.length > 1 && ", "}
+            </Fragment>
+          ))
         : "No talent selected"}
     </Fragment>
   )

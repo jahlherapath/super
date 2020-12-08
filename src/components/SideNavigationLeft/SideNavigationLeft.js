@@ -26,13 +26,13 @@ function SideNavigationLeft({ children }) {
             backgroundSize: "203%",
           },
           "&:nth-of-type(2)": {
-            color: "black",
+            color: "white",
             background:
               "linear-gradient(to left, #8e402a 50%, white 50%) right",
             backgroundSize: "203%",
           },
           "&:nth-of-type(3)": {
-            color: "black",
+            color: "white",
             background:
               "linear-gradient(to left, #ff3600 50%, white 50%) right",
             backgroundSize: "203%",
