@@ -116,6 +116,8 @@ function Index({ data: { talent, tags } }) {
     })
   }
 
+  const [toggleState, setToggleState] = useState(true)
+
   return (
     <Layout>
       <SEO title="Talent" />
@@ -188,6 +190,69 @@ function Index({ data: { talent, tags } }) {
           />
         </div>
       )}
+      {toggleState && (
+        <div
+          sx={{
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 999999,
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0,12,255,0.95)",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            sx={{
+              width: "500px",
+              paddingTop: "50%",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <iframe
+              frameBorder={0}
+              allowFullScreen
+              scrolling="no"
+              allow="autoplay;fullscreen"
+              src="https://onelineplayer.com/player.html?autoplay=true&autopause=true&muted=true&loop=false&url=https%3A%2F%2Fvimeo.com%2F388389795&poster=&time=false&progressBar=true&overlay=true&muteButton=true&fullscreenButton=true&style=light&quality=1080p&playButton=true"
+              sx={{
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                left: "0px",
+                top: "0px",
+              }}
+            />
+          </div>
+          <div
+            sx={{
+              position: "fixed",
+              left: 0,
+              right: 0,
+              bottom: 10,
+              textAlign: "center",
+            }}
+          >
+            <button
+              sx={{
+                variant: "styles.button",
+              }}
+              onClick={() => setToggleState(false)}
+            >
+              Enter Super
+            </button>
+          </div>
+        </div>
+      )}
+      {console.log(toggleState)}
+
       <div
         sx={{
           position: "fixed",
@@ -217,28 +282,6 @@ function Index({ data: { talent, tags } }) {
         >
           <source src={Logo} type="video/mp4"></source>
         </video>
-        {/* <h2
-          sx={{
-            position: "fixed",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            zIndex: 200,
-            fontFamily: "display",
-            fontStyle: "italic",
-            fontWeight: "medium",
-            fontSize: 9,
-            textAlign: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "60%",
-            m: "0 auto",
-          }}
-        >
-          Animated super logo!
-        </h2> */}
       </div>
       <Masonry
         breakpointCols={responsiveColumns}
