@@ -229,6 +229,14 @@ const Accordion = ({
                 span: {
                   borderColor: color,
                 },
+                button: {
+                  color: color,
+                  borderColor: color,
+                  "&:hover": {
+                    color: backgroundColor,
+                    backgroundColor: color,
+                  },
+                },
                 "input:checked ~ .checkmark": {
                   backgroundColor: color,
                 },
