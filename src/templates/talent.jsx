@@ -323,6 +323,7 @@ function Talent({
                 <a
                   key={index}
                   href={link.url && link.url.url}
+                  aria-label="Talent External Link"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{

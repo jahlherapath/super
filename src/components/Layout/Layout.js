@@ -16,6 +16,7 @@ export default function Layout({ children, sideMenuText }) {
           position: "relative",
           minHeight: "100vh",
           m: "0 auto",
+          pt: "65px",
         }}
       >
         <div sx={{ px: "40px" }}>{children}</div>

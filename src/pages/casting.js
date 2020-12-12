@@ -93,6 +93,7 @@ export default function Casting({ data: { casting, form } }) {
             textTransform: "uppercase",
           }}
           href={"mailto:" + casting.data.email.text}
+          aria-label="Email"
         >
           Email Super
         </a>

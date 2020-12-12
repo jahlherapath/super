@@ -81,6 +81,7 @@ export default {
     },
     about: {
       variant: "text.body",
+      lineHeight: 1.15,
       p: {
         fontSize: [8, 9, 10],
         mt: 0,

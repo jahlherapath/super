@@ -43,171 +43,167 @@ function Navigation() {
   const info = data.allPrismicInfo.nodes[0].data
 
   return (
-    <Headroom
-      style={{
-        paddingLeft: "40px",
-        paddingRight: "40px",
-        zIndex: 30,
+    <header
+      sx={{
+        position: "fixed",
+        left: "40px",
+        right: "40px",
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "white",
+        zIndex: 99999,
       }}
     >
-      <header
+      <div
         sx={{
           display: "flex",
-          flexDirection: "column",
-          backgroundColor: "white",
+          justifyContent: "space-between",
+          alignItems: "center",
+          height: "65px",
+          width: "100%",
+          borderBottom: "1px solid black",
+          p: 4,
         }}
       >
-        <div
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            height: "65px",
-            width: "100%",
-            borderBottom: "1px solid black",
-            p: 4,
-          }}
-        >
-          <div sx={{ display: "flex", alignItems: "center" }}>
-            <a
-              sx={{ display: "flex", alignItems: "center", mr: 2 }}
-              href={"https://www.instagram.com/" + info.instagram.text}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11.3335 1.33325H4.66683C2.82588 1.33325 1.3335 2.82564 1.3335 4.66659V11.3333C1.3335 13.1742 2.82588 14.6666 4.66683 14.6666H11.3335C13.1744 14.6666 14.6668 13.1742 14.6668 11.3333V4.66659C14.6668 2.82564 13.1744 1.33325 11.3335 1.33325Z"
-                  stroke="black"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10.6668 7.57996C10.7491 8.13479 10.6543 8.70143 10.396 9.1993C10.1376 9.69717 9.72889 10.1009 9.22788 10.3531C8.72687 10.6052 8.1591 10.693 7.60532 10.6039C7.05155 10.5148 6.53997 10.2533 6.14336 9.85673C5.74674 9.46012 5.48528 8.94854 5.39618 8.39477C5.30707 7.84099 5.39484 7.27322 5.64701 6.77221C5.89919 6.27119 6.30292 5.86245 6.80079 5.60412C7.29865 5.34579 7.8653 5.25102 8.42013 5.33329C8.98608 5.41721 9.51003 5.68093 9.91459 6.08549C10.3192 6.49006 10.5829 7.01401 10.6668 7.57996Z"
-                  stroke="black"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M11.6665 4.33325H11.6732"
-                  stroke="black"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-            <a
-              sx={{ display: "flex", alignItems: "center", pr: 0 }}
-              href={"mailto:" + info.email.text}
-              aria-label="Email"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2.66683 2.66675H13.3335C14.0668 2.66675 14.6668 3.26675 14.6668 4.00008V12.0001C14.6668 12.7334 14.0668 13.3334 13.3335 13.3334H2.66683C1.9335 13.3334 1.3335 12.7334 1.3335 12.0001V4.00008C1.3335 3.26675 1.9335 2.66675 2.66683 2.66675Z"
-                  stroke="black"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14.6668 4L8.00016 8.66667L1.3335 4"
-                  stroke="black"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          </div>
-          <Logo />
-          <button
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-              background: "none",
-              border: "none",
-              p: 0,
-              m: 0,
-            }}
-            aria-label="Select Talent"
-            onClick={() => setShowMenu(x => !x)}
-            onKeyDown={() => setShowMenu(x => !x)}
+        <div sx={{ display: "flex", alignItems: "center" }}>
+          <a
+            sx={{ display: "flex", alignItems: "center", mr: 2 }}
+            href={"https://www.instagram.com/" + info.instagram.text}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
           >
-            <span
-              sx={{
-                textTransform: "initial",
-                variant: "styles.serif",
-                fontStyle: "italic",
-                display: ["none", "none", "block"],
-                fontSize: 1,
-                mb: "-2px",
-              }}
-            >
-              Selected Talent
-            </span>
             <svg
               width="16"
               height="16"
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              sx={{ ml: 2 }}
             >
               <path
-                sx={{
-                  stroke: "black",
-                  fill: showMenu ? "black" : "transparent",
-                }}
-                d="M11.3681 10.2223L12.4372 14.805L8.40867 12.3736L8.40862 12.3736L8.17316 12.2314L8.00001 12.1269L7.82686 12.2314L7.59142 12.3736L7.59137 12.3736L3.56286 14.805L4.63194 10.2223L4.69444 9.95439L4.74038 9.75747L4.58755 9.62508L4.37964 9.44496L4.16739 9.68995L4.37963 9.44495L0.819466 6.36078L5.5056 5.96321L5.77942 5.93998L5.98071 5.9229L6.05955 5.73691L6.16679 5.48388L6.16679 5.48387L8.00001 1.15852L9.83323 5.48387L9.94048 5.73691L10.0193 5.9229L10.2206 5.93998L10.4944 5.96321L15.1805 6.36078L11.6205 9.44493L11.6205 9.44496L11.4125 9.62505L11.2597 9.75744L11.3056 9.95437L11.3681 10.2222L11.3681 10.2223Z"
+                d="M11.3335 1.33325H4.66683C2.82588 1.33325 1.3335 2.82564 1.3335 4.66659V11.3333C1.3335 13.1742 2.82588 14.6666 4.66683 14.6666H11.3335C13.1744 14.6666 14.6668 13.1742 14.6668 11.3333V4.66659C14.6668 2.82564 13.1744 1.33325 11.3335 1.33325Z"
                 stroke="black"
                 strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
-                sx={{
-                  stroke: "black",
-                  fill: showMenu ? "black" : "transparent",
-                }}
-                d="M11.3681 10.2223L12.4372 14.805L8.40867 12.3736L8.40862 12.3736L8.17316 12.2314L8.00001 12.1269L7.82686 12.2314L7.59142 12.3736L7.59137 12.3736L3.56286 14.805L4.63194 10.2223L4.69444 9.95439L4.74038 9.75747L4.58755 9.62508L4.37964 9.44496L4.16739 9.68995L4.37963 9.44495L0.819466 6.36078L5.5056 5.96321L5.77942 5.93998L5.98071 5.9229L6.05955 5.73691L6.16679 5.48388L6.16679 5.48387L8.00001 1.15852L9.83323 5.48387L9.94048 5.73691L10.0193 5.9229L10.2206 5.93998L10.4944 5.96321L15.1805 6.36078L11.6205 9.44493L11.6205 9.44496L11.4125 9.62505L11.2597 9.75744L11.3056 9.95437L11.3681 10.2222L11.3681 10.2223Z"
-                fill="black"
+                d="M10.6668 7.57996C10.7491 8.13479 10.6543 8.70143 10.396 9.1993C10.1376 9.69717 9.72889 10.1009 9.22788 10.3531C8.72687 10.6052 8.1591 10.693 7.60532 10.6039C7.05155 10.5148 6.53997 10.2533 6.14336 9.85673C5.74674 9.46012 5.48528 8.94854 5.39618 8.39477C5.30707 7.84099 5.39484 7.27322 5.64701 6.77221C5.89919 6.27119 6.30292 5.86245 6.80079 5.60412C7.29865 5.34579 7.8653 5.25102 8.42013 5.33329C8.98608 5.41721 9.51003 5.68093 9.91459 6.08549C10.3192 6.49006 10.5829 7.01401 10.6668 7.57996Z"
                 stroke="black"
                 strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M11.6665 4.33325H11.6732"
+                stroke="black"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
-          </button>
+          </a>
+          <a
+            sx={{ display: "flex", alignItems: "center", pr: 0 }}
+            href={"mailto:" + info.email.text}
+            aria-label="Email"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.66683 2.66675H13.3335C14.0668 2.66675 14.6668 3.26675 14.6668 4.00008V12.0001C14.6668 12.7334 14.0668 13.3334 13.3335 13.3334H2.66683C1.9335 13.3334 1.3335 12.7334 1.3335 12.0001V4.00008C1.3335 3.26675 1.9335 2.66675 2.66683 2.66675Z"
+                stroke="black"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M14.6668 4L8.00016 8.66667L1.3335 4"
+                stroke="black"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
         </div>
-        {showMenu && (
-          <div
+        <Logo />
+        <button
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            cursor: "pointer",
+            background: "none",
+            border: "none",
+            p: 0,
+            m: 0,
+          }}
+          aria-label="Select Talent"
+          onClick={() => setShowMenu(x => !x)}
+          onKeyDown={() => setShowMenu(x => !x)}
+        >
+          <span
             sx={{
-              backgroundColor: "white",
-              borderBottom: "1px solid black",
-              py: 4,
-              px: [4, 4, 5],
-              zIndex: 30,
-              fontFamily: "body",
+              textTransform: "initial",
+              variant: "styles.serif",
+              fontStyle: "italic",
+              display: ["none", "none", "block"],
+              fontSize: 1,
+              mb: "-2px",
             }}
           >
-            <TalentSelection />
-          </div>
-        )}
-      </header>
-    </Headroom>
+            Selected Talent
+          </span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            sx={{ ml: 2 }}
+          >
+            <path
+              sx={{
+                stroke: "black",
+                fill: showMenu ? "black" : "transparent",
+              }}
+              d="M11.3681 10.2223L12.4372 14.805L8.40867 12.3736L8.40862 12.3736L8.17316 12.2314L8.00001 12.1269L7.82686 12.2314L7.59142 12.3736L7.59137 12.3736L3.56286 14.805L4.63194 10.2223L4.69444 9.95439L4.74038 9.75747L4.58755 9.62508L4.37964 9.44496L4.16739 9.68995L4.37963 9.44495L0.819466 6.36078L5.5056 5.96321L5.77942 5.93998L5.98071 5.9229L6.05955 5.73691L6.16679 5.48388L6.16679 5.48387L8.00001 1.15852L9.83323 5.48387L9.94048 5.73691L10.0193 5.9229L10.2206 5.93998L10.4944 5.96321L15.1805 6.36078L11.6205 9.44493L11.6205 9.44496L11.4125 9.62505L11.2597 9.75744L11.3056 9.95437L11.3681 10.2222L11.3681 10.2223Z"
+              stroke="black"
+              strokeWidth="1"
+            />
+            <path
+              sx={{
+                stroke: "black",
+                fill: showMenu ? "black" : "transparent",
+              }}
+              d="M11.3681 10.2223L12.4372 14.805L8.40867 12.3736L8.40862 12.3736L8.17316 12.2314L8.00001 12.1269L7.82686 12.2314L7.59142 12.3736L7.59137 12.3736L3.56286 14.805L4.63194 10.2223L4.69444 9.95439L4.74038 9.75747L4.58755 9.62508L4.37964 9.44496L4.16739 9.68995L4.37963 9.44495L0.819466 6.36078L5.5056 5.96321L5.77942 5.93998L5.98071 5.9229L6.05955 5.73691L6.16679 5.48388L6.16679 5.48387L8.00001 1.15852L9.83323 5.48387L9.94048 5.73691L10.0193 5.9229L10.2206 5.93998L10.4944 5.96321L15.1805 6.36078L11.6205 9.44493L11.6205 9.44496L11.4125 9.62505L11.2597 9.75744L11.3056 9.95437L11.3681 10.2222L11.3681 10.2223Z"
+              fill="black"
+              stroke="black"
+              strokeWidth="1"
+            />
+          </svg>
+        </button>
+      </div>
+      {showMenu && (
+        <div
+          sx={{
+            backgroundColor: "white",
+            borderBottom: "1px solid black",
+            py: 4,
+            px: [4, 4, 5],
+            zIndex: 30,
+            fontFamily: "body",
+          }}
+        >
+          <TalentSelection />
+        </div>
+      )}
+    </header>
   )
 }
 

@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -27,7 +28,6 @@ function About({ data: { about } }) {
             damping: 20,
             duration: 0.2,
           }}
-          sx={{}}
         >
           <span>About</span>
         </MotionLink>
@@ -42,19 +42,20 @@ function About({ data: { about } }) {
         </Link>
       </SideNavigationLeft>
       <SideNavigationRight>
-        {/* <a
+        <a
           sx={{
             fontFamily: "body",
             fontSize: [1, 1, 2],
             textTransform: "uppercase",
           }}
           href={"mailto:" + about.data.email.text}
+          aria-label="Email"
         >
           Email Super
-        </a> */}
+        </a>
       </SideNavigationRight>
-      <div sx={{ p: [4, 4, 5] }}>
-        <Intro>
+      <Container>
+        <Left>
           <div
             sx={{
               variant: "styles.about",
@@ -62,22 +63,6 @@ function About({ data: { about } }) {
             }}
             dangerouslySetInnerHTML={{ __html: about.data.about.html }}
           />
-          {/* {about.data.press_kit.url && (
-            <div>
-              <a
-                sx={{
-                  variant: "styles.button",
-                }}
-                target="_blank"
-                rel="noopener noreferrer"
-                href={about.data.press_kit.url}
-              >
-                Download press kit
-              </a>
-            </div>
-          )} */}
-        </Intro>
-        <Content>
           <Columns>
             <Title>Services</Title>
             <div
@@ -106,6 +91,7 @@ function About({ data: { about } }) {
                       mr: 3,
                     }}
                     href={"mailto:" + about.data.email.text}
+                    aria-label="Email"
                   >
                     Email Us
                   </a>
@@ -119,6 +105,7 @@ function About({ data: { about } }) {
                       href={
                         "https://www.instagram.com/" + about.data.instagram.text
                       }
+                      aria-label="Instagram"
                     >
                       @{about.data.instagram.text}
                     </a>
@@ -144,74 +131,31 @@ function About({ data: { about } }) {
               )}
             </Row>
           </Columns>
-        </Content>
-      </div>
+        </Left>
+        <Right>
+          <div sx={{ position: "sticky", top: [4, 4, 5] }}>
+            <Img
+              sx={{ mb: 5 }}
+              fluid={about.data.side_image.localFile.childImageSharp.fluid}
+            />
+          </div>
+        </Right>
+      </Container>
     </Layout>
   )
 }
 
 export default About
 
-const Intro = ({ children }) => {
-  return (
-    <div
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(12, 1fr)",
-        py: 7,
-      }}
-    >
-      <div
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          gridColumnStart: [1, 1, 1],
-          gridColumnEnd: [13, 13, 13],
-          textAlign: "center",
-        }}
-      >
-        {children}
-      </div>
-    </div>
-  )
-}
-
-const Content = ({ children }) => {
-  return (
-    <div
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(6, 1fr)",
-        gridColumnGap: 5,
-        gridRowGap: 5,
-        mt: 7,
-      }}
-    >
-      {children}
-    </div>
-  )
-}
-
 const Columns = ({ children }) => {
-  return (
-    <div
-      sx={{
-        gridColumn: ["span 6", "span 6", "span 2"],
-      }}
-    >
-      {children}
-    </div>
-  )
+  return <div sx={{ mb: 6 }}>{children}</div>
 }
 
 const Title = ({ children }) => {
   return (
     <h3
       sx={{
-        fontFamily: "display",
-        fontStyle: "italic",
-        fontWeight: "medium",
+        variant: "styles.about",
         fontSize: 9,
         mb: 3,
       }}
@@ -225,10 +169,67 @@ const Row = ({ children }) => {
   return <div sx={{ mb: 3 }}>{children}</div>
 }
 
+const Container = ({ children }) => {
+  return (
+    <div
+      sx={{
+        position: "relative",
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        p: [4, 4, 5],
+        backgroundColor: "black",
+        color: "white",
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Left = ({ children }) => {
+  return (
+    <div
+      sx={{
+        position: ["relative", "relative", "sticky"],
+        top: [0, 0, 12],
+        alignSelf: "flex-start",
+        gridColumn: ["span 2", "span 2", "span 1"],
+        pr: [0, 0, 7],
+        order: [2, 2, 0],
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Right = ({ children }) => {
+  return (
+    <div
+      sx={{
+        gridColumn: ["span 2", "span 2", "span 1"],
+        pl: [0, 0, 7],
+        order: [1, 1, 0],
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
 export const aboutQuery = graphql`
   query AboutQuery {
     about: prismicInfo {
       data {
+        side_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1200, quality: 90) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
         about {
           html
         }
