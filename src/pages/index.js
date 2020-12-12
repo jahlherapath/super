@@ -191,7 +191,7 @@ function Index({ data: { talent, tags } }) {
       <div
         sx={{
           position: "fixed",
-          top: 0,
+          top: "65px",
           bottom: 0,
           left: 0,
           right: 0,
