@@ -99,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const talentList = talentResult.data.allPrismicTalent.edges
   // const freelancersList = freelancersResult.data.allPrismicFreelancers.edges
 
-  const postsPerPage = 6
+  const postsPerPage = 36
   const numPages = Math.ceil(postList.length / postsPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {

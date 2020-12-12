@@ -5,6 +5,7 @@ export default {
     black: "black",
     white: "white",
     gray: "#2d2d2d",
+    slate: "#9b9b9b",
     lightGray: "#efefef",
     offWhite: "#f4f4f4",
     orange: "#ff3600",

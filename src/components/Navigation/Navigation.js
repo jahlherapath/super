@@ -4,7 +4,6 @@ import { jsx } from "theme-ui"
 import { useState, useEffect, Fragment } from "react"
 
 import { Link, useStaticQuery } from "gatsby"
-import Headroom from "react-headroom"
 
 import useLocalStorage from "../UseLocalStorage"
 

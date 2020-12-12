@@ -195,7 +195,13 @@ function TalentSelection() {
       {selectedModels.length > 0 && (
         <label sx={{ minWidth: "130px", mr: 2 }}>Selected Talent:</label>
       )}
-      <span sx={{ flex: 1, backgroundColor: "babyBlue" }}>
+      <span
+        sx={{
+          flex: 1,
+          color: "plum",
+          backgroundColor: "hibiscusPink",
+        }}
+      >
         {selectedModels.length > 0
           ? Array.isArray(selectedModels) &&
             selectedModels.map(i => i.name).join(", ")
