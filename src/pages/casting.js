@@ -235,6 +235,7 @@ const Accordion = ({
                   "&:hover": {
                     color: backgroundColor,
                     backgroundColor: color,
+                    borderColor: color,
                   },
                 },
                 "input:checked ~ .checkmark": {

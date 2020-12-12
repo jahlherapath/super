@@ -34,6 +34,7 @@ function Index({ data: { talent, tags } }) {
           tag.tag.document[0].data.name
       )
       .filter(Boolean)
+    console.log(talent)
     return {
       id: talent.id,
       name: talent.data.name.text,
@@ -42,6 +43,10 @@ function Index({ data: { talent, tags } }) {
       card: talent.data.card.localFile.childImageSharp.fluid,
       link: talent.uid,
       tags: tags,
+      locationBackground: talent.data.location_background,
+      locationColor: talent.data.location_color,
+      nameBackground: talent.data.name_background,
+      nameColor: talent.data.name_color,
     }
   })
 
@@ -359,6 +364,58 @@ function Model({ model, isSelected, onChange, index }) {
         }}
       >
         <Img fluid={model.card} />
+        {/* <div
+          sx={{
+            position: "absolute",
+            top: 2,
+            bottom: 2,
+            left: 2,
+            right: 2,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            pt: 3,
+            width: "100%",
+            height: "100%",
+          }}
+        > */}
+        <p
+          sx={{
+            position: "absolute",
+            top: 2,
+            left: 2,
+            fontFamily: "display",
+            fontSize: 3,
+            py: 1,
+            px: 2,
+            m: 0,
+            color: model.nameColor,
+            backgroundColor: model.nameBackground,
+            borderRadius: "6px",
+          }}
+        >
+          {model.name}
+        </p>
+        <p
+          sx={{
+            position: "absolute",
+            bottom: 2,
+            right: 2,
+            variant: "styles.body",
+            fontFamily: "body",
+            fontSize: 1,
+            py: 1,
+            px: 2,
+            m: 0,
+            color: model.locationColor,
+            backgroundColor: model.locationBackground,
+            borderRadius: "6px",
+            textTransform: "uppercase",
+          }}
+        >
+          {model.location}
+        </p>
+        {/* </div> */}
       </Link>
     </div>
   )
@@ -390,6 +447,10 @@ export const indexQuery = graphql`
             html
             text
           }
+          location_background
+          location_color
+          name_color
+          name_background
           card {
             localFile {
               childImageSharp {
