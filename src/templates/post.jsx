@@ -95,9 +95,10 @@ export default ({
           gridColumn: "span 6",
           display: "flex",
           alignItems: "center",
+          flexWrap: "wrap",
           justifyContent: "space-between",
           mt: 4,
-          border: "1px solid #dcdcdc",
+          border: ["none", "none", "1px solid #dcdcdc"],
           height: "35px",
         }}
       >
@@ -107,10 +108,14 @@ export default ({
               display: "flex",
               alignItems: "center",
               zIndex: 20,
-              borderRight: "1px solid #dcdcdc",
+              borderTop: ["1px solid #dcdcdc", "1px solid #dcdcdc", "none"],
+              borderLeft: ["1px solid #dcdcdc", "1px solid #dcdcdc", "none"],
+              borderRight: ["1px solid #dcdcdc", "1px solid #dcdcdc", "none"],
+              width: ["100%", "100%", "auto"],
               height: "100%",
               px: 3,
               fontFamily: "body",
+              fontSize: [1, 1, 2],
             }}
             to={`/${prev.node.uid}`}
             rel="prev"
@@ -127,11 +132,18 @@ export default ({
             sx={{
               display: "flex",
               alignItems: "center",
+              justifyContent: ["flex-end", "flex-end", "flex-start"],
               zIndex: 20,
-              borderLeft: "1px solid #dcdcdc",
+              borderTop: ["1px solid #dcdcdc", "1px solid #dcdcdc", "none"],
+              borderBottom: ["1px solid #dcdcdc", "1px solid #dcdcdc", "none"],
+              borderLeft: ["1px solid #dcdcdc", "1px solid #dcdcdc", "none"],
+              borderRight: ["1px solid #dcdcdc", "1px solid #dcdcdc", "none"],
+              width: ["100%", "100%", "auto"],
               height: "100%",
               px: 3,
               fontFamily: "body",
+              mb: [4, 4, 0],
+              fontSize: [1, 1, 2],
             }}
           >
             Next Article <ArrowRight />

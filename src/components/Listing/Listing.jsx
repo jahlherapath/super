@@ -47,6 +47,7 @@ export default ({
                   fontWeight: "medium",
                   mt: 0,
                   mb: 2,
+                  mr: [0, 0, 6],
                   textAlign: ["center", "center", "left"],
                   fontSize: ["32px", "32px", 12],
                 }}

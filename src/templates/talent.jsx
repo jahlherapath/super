@@ -137,20 +137,15 @@ function Talent({
             <Link
               to="/"
               sx={{
-                variant: "styles.serif",
-                fontStyle: "italic",
                 display: ["none", "none", "flex"],
                 alignItems: "center",
                 mb: 3,
-                fontSize: 1,
-                "&:hover > svg": {
-                  transform: "translateX(-5px)",
-                  transition: "all 200ms ease",
-                },
+                fontFamily: "body",
+                fontSize: [1, 1, 2],
               }}
             >
               <ArrowLeft />
-              Back to Talent
+              <span sx={{ mt: "1px" }}>Back to Talent</span>
             </Link>
             <div
               sx={{
@@ -385,29 +380,48 @@ function Talent({
             </div>
             <div
               sx={{
+                position: "relative",
+                gridColumn: "span 6",
                 display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
                 justifyContent: "space-between",
                 mt: 5,
-                mb: 8,
+                border: ["none", "none", "1px solid #dcdcdc"],
+                height: "35px",
               }}
             >
               {prev ? (
                 <Link
-                  to={`/${prev.node.uid}`}
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    variant: "styles.serif",
-                    fontStyle: "italic",
-                    "&:hover > svg": {
-                      transform: "translateX(-5px)",
-                      transition: "all 200ms ease",
-                    },
+                    zIndex: 20,
+                    borderTop: [
+                      "1px solid #dcdcdc",
+                      "1px solid #dcdcdc",
+                      "none",
+                    ],
+                    borderLeft: [
+                      "1px solid #dcdcdc",
+                      "1px solid #dcdcdc",
+                      "none",
+                    ],
+                    borderRight: [
+                      "1px solid #dcdcdc",
+                      "1px solid #dcdcdc",
+                      "none",
+                    ],
+                    width: ["100%", "100%", "auto"],
+                    height: "100%",
+                    px: 3,
+                    fontFamily: "body",
+                    fontSize: [1, 1, 2],
                   }}
+                  to={`/${prev.node.uid}`}
                   rel="prev"
                 >
-                  <ArrowLeft />
-                  Prev
+                  <ArrowLeft /> Prev Talent
                 </Link>
               ) : (
                 <div />
@@ -415,20 +429,41 @@ function Talent({
               {next ? (
                 <Link
                   to={`/${next.node.uid}`}
+                  rel="next"
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    variant: "styles.serif",
-                    fontStyle: "italic",
-                    "&:hover > svg": {
-                      transform: "translateX(5px)",
-                      transition: "all 200ms ease",
-                    },
+                    justifyContent: ["flex-end", "flex-end", "flex-start"],
+                    zIndex: 20,
+                    borderTop: [
+                      "1px solid #dcdcdc",
+                      "1px solid #dcdcdc",
+                      "none",
+                    ],
+                    borderBottom: [
+                      "1px solid #dcdcdc",
+                      "1px solid #dcdcdc",
+                      "none",
+                    ],
+                    borderLeft: [
+                      "1px solid #dcdcdc",
+                      "1px solid #dcdcdc",
+                      "none",
+                    ],
+                    borderRight: [
+                      "1px solid #dcdcdc",
+                      "1px solid #dcdcdc",
+                      "none",
+                    ],
+                    width: ["100%", "100%", "auto"],
+                    height: "100%",
+                    px: 3,
+                    fontFamily: "body",
+                    mb: [5, 5, 0],
+                    fontSize: [1, 1, 2],
                   }}
-                  rel="next"
                 >
-                  <span>Next</span>
-                  <ArrowRight />
+                  Next Talent <ArrowRight />
                 </Link>
               ) : (
                 <div />
@@ -439,15 +474,11 @@ function Talent({
             <Link
               to="/"
               sx={{
-                variant: "styles.serif",
-                fontStyle: "italic",
                 display: ["flex", "flex", "none"],
                 alignItems: "center",
                 mb: 3,
-                "&:hover > svg": {
-                  transform: "translateX(-5px)",
-                  transition: "all 200ms ease",
-                },
+                fontFamily: "body",
+                fontSize: [1, 1, 2],
               }}
             >
               <ArrowLeft />
@@ -531,7 +562,7 @@ function Talent({
                     display: "flex",
                     flexDirection: "column",
                     gridColumn: ["span 2", "span 1", "span 1"],
-                    mb: 5,
+                    mb: [4, 4, 5],
                   }}
                 >
                   <img
@@ -612,8 +643,8 @@ const Gallery = ({ children }) => {
       sx={{
         position: "relative",
         gridColumn: ["span 2", "span 2", "span 2"],
-        mt: [0, 0, 5],
-        p: 5,
+        mt: 5,
+        p: [4, 4, 5],
       }}
     >
       {children}
@@ -782,25 +813,16 @@ const Emblem = () => {
 const ArrowLeft = () => {
   return (
     <svg
-      width="40"
-      height="25"
-      viewBox="0 0 40 25"
+      width="15"
+      height="10"
+      viewBox="0 0 15 10"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ mt: "-2px", mr: 1 }}
+      sx={{ mr: 3 }}
     >
-      <rect width="40" height="25" />
       <path
-        d="M36 12.5H5"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-      <path
-        d="M10 17.5L5 12.5L10 7.5"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
+        d="M-1.14441e-05 5.00005L15 9.33018L15 0.669922L-1.14441e-05 5.00005Z"
+        fill="black"
       />
     </svg>
   )
@@ -809,25 +831,16 @@ const ArrowLeft = () => {
 const ArrowRight = () => {
   return (
     <svg
-      width="40"
-      height="25"
-      viewBox="0 0 40 25"
+      width="15"
+      height="10"
+      viewBox="0 0 15 10"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ mt: "-2px", ml: 1 }}
+      sx={{ ml: 3 }}
     >
-      <rect width="40" height="25" />
       <path
-        d="M5 12.5H36"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
-      />
-      <path
-        d="M31 17.5L36 12.5L31 7.5"
-        strokeWidth="1.608"
-        strokeMiterlimit="10"
-        sx={{ stroke: "black" }}
+        d="M15.0005 5.00005L0.000488385 9.33018L0.000488281 0.669922L15.0005 5.00005Z"
+        fill="black"
       />
     </svg>
   )

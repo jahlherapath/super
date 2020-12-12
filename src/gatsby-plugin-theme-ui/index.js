@@ -229,7 +229,7 @@ export default {
     carouselButton: {
       variant: "text.body",
       height: ["50px", "50px", "100px"],
-      borderColor: "black",
+      borderColor: "#dcdcdc",
       border: "1px solid",
       backgroundColor: "transparent",
       fontSize: [3, 3, 4],

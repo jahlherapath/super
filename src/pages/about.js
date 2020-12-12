@@ -133,7 +133,12 @@ function About({ data: { about } }) {
           </Columns>
         </Left>
         <Right>
-          <div sx={{ position: "sticky", top: [4, 4, 5] }}>
+          <div
+            sx={{
+              position: ["relative", "relative", "sticky"],
+              top: ["auto", "auto", "97px"],
+            }}
+          >
             <Img
               sx={{ mb: 5 }}
               fluid={about.data.side_image.localFile.childImageSharp.fluid}
