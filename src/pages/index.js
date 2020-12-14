@@ -34,7 +34,6 @@ function Index({ data: { talent, tags } }) {
           tag.tag.document[0].data.name
       )
       .filter(Boolean)
-    console.log(talent)
     return {
       id: talent.id,
       name: talent.data.name.text,
@@ -116,7 +115,21 @@ function Index({ data: { talent, tags } }) {
     })
   }
 
-  const [toggleState, setToggleState] = useState(true)
+  const useStateWithLocalStorage = localStorageKey => {
+    const [value, setValue] = useState(
+      localStorage.getItem(localStorageKey) || true
+    )
+
+    useEffect(() => {
+      localStorage.setItem(localStorageKey, value)
+    }, [value])
+
+    return [value === "true", setValue]
+  }
+
+  const [value, setValue] = useStateWithLocalStorage("videoPlaceholder")
+
+  const hideVideo = () => setValue(false)
 
   return (
     <Layout>
@@ -190,7 +203,8 @@ function Index({ data: { talent, tags } }) {
           />
         </div>
       )}
-      {toggleState && (
+      {console.log(value)}
+      {value && (
         <div
           sx={{
             position: "fixed",
@@ -210,8 +224,8 @@ function Index({ data: { talent, tags } }) {
         >
           <div
             sx={{
-              width: "500px",
-              paddingTop: "50%",
+              width: ["100%", "100%", "500px"],
+              paddingTop: "56.25%",
               position: "relative",
               overflow: "hidden",
             }}
@@ -221,7 +235,7 @@ function Index({ data: { talent, tags } }) {
               allowFullScreen
               scrolling="no"
               allow="autoplay;fullscreen"
-              src="https://onelineplayer.com/player.html?autoplay=true&autopause=true&muted=true&loop=false&url=https%3A%2F%2Fvimeo.com%2F388389795&poster=&time=false&progressBar=true&overlay=true&muteButton=true&fullscreenButton=true&style=light&quality=1080p&playButton=true"
+              src="https://onelineplayer.com/player.html?autoplay=false&autopause=false&muted=false&loop=false&url=https%3A%2F%2Fvimeo.com%2F490091608&poster=&time=false&progressBar=true&overlay=true&muteButton=true&fullscreenButton=true&style=light&quality=1080p&playButton=true"
               sx={{
                 position: "absolute",
                 height: "100%",
@@ -244,15 +258,13 @@ function Index({ data: { talent, tags } }) {
               sx={{
                 variant: "styles.button",
               }}
-              onClick={() => setToggleState(false)}
+              onClick={hideVideo}
             >
               Enter Super
             </button>
           </div>
         </div>
       )}
-      {console.log(toggleState)}
-
       <div
         sx={{
           position: "fixed",
