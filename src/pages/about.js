@@ -2,7 +2,6 @@
 import { jsx } from "theme-ui"
 
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -81,7 +80,18 @@ function About({ data: { about } }) {
               dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
             />
           </Columns>
-          <Columns>
+        </Left>
+        <Right>
+          <div
+            sx={{
+              position: ["relative", "relative", "sticky"],
+              top: ["auto", "auto", "97px"],
+              border: "1px solid white",
+              p: 4,
+              background:
+                "radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 96, 0.7) 0%, rgba(196, 196, 196, 0) 100%)",
+            }}
+          >
             <Title>Contact</Title>
             <Row>
               <div sx={{ variant: "styles.html" }}>
@@ -118,31 +128,22 @@ function About({ data: { about } }) {
               {about.data.address.html && (
                 <div
                   sx={{ variant: "styles.html" }}
-                  dangerouslySetInnerHTML={{ __html: about.data.address.html }}
+                  dangerouslySetInnerHTML={{
+                    __html: about.data.address.html,
+                  }}
                 />
               )}
             </Row>
             <Row>
               {about.data.contact.html && (
                 <div
-                  sx={{ variant: "styles.html" }}
-                  dangerouslySetInnerHTML={{ __html: about.data.contact.html }}
+                  sx={{ variant: "styles.html", p: { m: 0 } }}
+                  dangerouslySetInnerHTML={{
+                    __html: about.data.contact.html,
+                  }}
                 />
               )}
             </Row>
-          </Columns>
-        </Left>
-        <Right>
-          <div
-            sx={{
-              position: ["relative", "relative", "sticky"],
-              top: ["auto", "auto", "97px"],
-            }}
-          >
-            <Img
-              sx={{ mb: 5 }}
-              fluid={about.data.side_image.localFile.childImageSharp.fluid}
-            />
           </div>
         </Right>
       </Container>
@@ -171,7 +172,7 @@ const Title = ({ children }) => {
 }
 
 const Row = ({ children }) => {
-  return <div sx={{ mb: 3 }}>{children}</div>
+  return <div>{children}</div>
 }
 
 const Container = ({ children }) => {
@@ -200,7 +201,6 @@ const Left = ({ children }) => {
         alignSelf: "flex-start",
         gridColumn: ["span 2", "span 2", "span 1"],
         pr: [0, 0, 7],
-        order: [2, 2, 0],
       }}
     >
       {children}
@@ -214,7 +214,6 @@ const Right = ({ children }) => {
       sx={{
         gridColumn: ["span 2", "span 2", "span 1"],
         pl: [0, 0, 7],
-        order: [1, 1, 0],
       }}
     >
       {children}

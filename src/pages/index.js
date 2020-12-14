@@ -117,7 +117,9 @@ function Index({ data: { talent, tags } }) {
 
   const useStateWithLocalStorage = localStorageKey => {
     const [value, setValue] = useState(
-      localStorage.getItem(localStorageKey) || true
+      typeof window === "undefined"
+        ? true
+        : localStorage.getItem(localStorageKey) || true
     )
 
     useEffect(() => {
@@ -223,7 +225,7 @@ function Index({ data: { talent, tags } }) {
           }}
         >
           <div
-            sx={{
+            style={{
               width: ["100%", "100%", "500px"],
               paddingTop: "56.25%",
               position: "relative",
@@ -235,8 +237,8 @@ function Index({ data: { talent, tags } }) {
               allowFullScreen
               scrolling="no"
               allow="autoplay;fullscreen"
-              src="https://onelineplayer.com/player.html?autoplay=false&autopause=false&muted=false&loop=false&url=https%3A%2F%2Fvimeo.com%2F490091608&poster=&time=false&progressBar=true&overlay=true&muteButton=true&fullscreenButton=true&style=light&quality=1080p&playButton=true"
-              sx={{
+              src="https://onelineplayer.com/player.html?autoplay=true&autopause=false&muted=true&loop=false&url=https%3A%2F%2Fvimeo.com%2F490549070&poster=&time=false&progressBar=true&overlay=true&muteButton=true&fullscreenButton=true&style=light&quality=1080p&playButton=true"
+              style={{
                 position: "absolute",
                 height: "100%",
                 width: "100%",

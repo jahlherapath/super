@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { Fragment } from "react"
+
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
@@ -8,13 +10,7 @@ import Categories from "./Categories"
 
 function Card({ node, categories }) {
   return (
-    <div
-      sx={{
-        gridColumn: ["span 6", "span 3", "span 2"],
-        mb: 5,
-        textAlign: "center",
-      }}
-    >
+    <div sx={{ mb: [5, 5, 6] }}>
       <Link to={`/${node.uid}`}>
         {node.data.thumbnail && (
           <Img

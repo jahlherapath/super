@@ -10,6 +10,8 @@ import kebabCase from "lodash/kebabCase"
 
 import ListItem from "./ListItem"
 
+import Masonry from "react-masonry-css"
+
 export default ({
   posts,
   pageInfo: { currentPage = 0, numPages = 0, prefix = "/" } = {},
@@ -18,6 +20,14 @@ export default ({
   const isLast = currentPage === numPages
   const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
   const nextPage = (currentPage + 1).toString()
+
+  // Responsive Columns
+  const responsiveColumns = {
+    default: 2,
+    1024: 2,
+    896: 1,
+    640: 1,
+  }
 
   return (
     <Fragment>
@@ -101,12 +111,10 @@ export default ({
           </Link>
         </div>
       )}
-      <div
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(6, 1fr)",
-          gridColumnGap: 5,
-        }}
+      <Masonry
+        breakpointCols={responsiveColumns}
+        className="grid-talent"
+        columnClassName="column"
       >
         {posts
           .map(post => {
@@ -121,106 +129,106 @@ export default ({
             )
           })
           .slice(1)}
-        {!!Number(numPages) && (
-          <div
-            sx={{
-              position: "relative",
-              gridColumn: "span 6",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              mt: 4,
-              border: "1px solid #dcdcdc",
-              height: "35px",
-            }}
-          >
-            {!isFirst ? (
-              <Link
-                to={prefix + prevPage}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  zIndex: 20,
-                  borderRight: "1px solid #dcdcdc",
-                  height: "100%",
-                  px: 3,
-                }}
-                rel="prev"
-              >
-                <ArrowLeft />
-              </Link>
-            ) : (
-              <div />
-            )}
-            <ul
+      </Masonry>
+      {!!Number(numPages) && (
+        <div
+          sx={{
+            position: "relative",
+            gridColumn: "span 6",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mt: 4,
+            border: "1px solid #dcdcdc",
+            height: "35px",
+          }}
+        >
+          {!isFirst ? (
+            <Link
+              to={prefix + prevPage}
               sx={{
                 display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
                 alignItems: "center",
-                listStyle: "none",
-                m: 0,
-                p: 0,
-                width: "100%",
+                zIndex: 20,
+                borderRight: "1px solid #dcdcdc",
+                height: "100%",
+                px: 3,
               }}
+              rel="prev"
             >
-              {Array.from({ length: numPages }, (_, i) => (
-                <li
-                  key={`pagination-number${i + 1}`}
+              <ArrowLeft />
+            </Link>
+          ) : (
+            <div />
+          )}
+          <ul
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+              listStyle: "none",
+              m: 0,
+              p: 0,
+              width: "100%",
+            }}
+          >
+            {Array.from({ length: numPages }, (_, i) => (
+              <li
+                key={`pagination-number${i + 1}`}
+                sx={{
+                  m: 0,
+                  flex: 1,
+                  textAlign: "center",
+                  borderLeft: "1px solid #dcdcdc",
+                  "&:first-of-type": {
+                    borderLeft: "none",
+                  },
+                  "&:last-of-type": {
+                    borderRight: "none",
+                  },
+                }}
+              >
+                <Link
+                  to={`${prefix}${i === 0 ? "" : +(i + 1)}`}
                   sx={{
+                    p: 0,
                     m: 0,
-                    flex: 1,
-                    textAlign: "center",
-                    borderLeft: "1px solid #dcdcdc",
-                    "&:first-of-type": {
-                      borderLeft: "none",
-                    },
-                    "&:last-of-type": {
-                      borderRight: "none",
-                    },
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "35px",
+                    px: 4,
+                    fontFamily: "body",
+                    color: i + 1 === currentPage ? "black" : "#dcdcdc",
                   }}
                 >
-                  <Link
-                    to={`${prefix}${i === 0 ? "" : +(i + 1)}`}
-                    sx={{
-                      p: 0,
-                      m: 0,
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "35px",
-                      px: 4,
-                      fontFamily: "body",
-                      color: i + 1 === currentPage ? "black" : "#dcdcdc",
-                    }}
-                  >
-                    {i + 1}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            {!isLast ? (
-              <Link
-                to={prefix + nextPage}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  zIndex: 20,
-                  borderLeft: "1px solid #dcdcdc",
-                  height: "100%",
-                  px: 3,
-                }}
-                rel="next"
-              >
-                <ArrowRight />
-              </Link>
-            ) : (
-              <div />
-            )}
-          </div>
-        )}
-      </div>
+                  {i + 1}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {!isLast ? (
+            <Link
+              to={prefix + nextPage}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                zIndex: 20,
+                borderLeft: "1px solid #dcdcdc",
+                height: "100%",
+                px: 3,
+              }}
+              rel="next"
+            >
+              <ArrowRight />
+            </Link>
+          ) : (
+            <div />
+          )}
+        </div>
+      )}
     </Fragment>
   )
 }
