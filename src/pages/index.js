@@ -17,7 +17,7 @@ import Masonry from "react-masonry-css"
 
 import { motion } from "framer-motion"
 
-import Logo from "../assets/logo.mp4"
+import BackgroundVideo from "../assets/bg.mp4"
 
 const MotionLink = motion.custom(Link)
 
@@ -225,8 +225,8 @@ function Index({ data: { talent, tags } }) {
           }}
         >
           <div
-            style={{
-              width: ["100%", "100%", "500px"],
+            sx={{
+              width: "720px",
               paddingTop: "56.25%",
               position: "relative",
               overflow: "hidden",
@@ -238,7 +238,7 @@ function Index({ data: { talent, tags } }) {
               scrolling="no"
               allow="autoplay;fullscreen"
               src="https://onelineplayer.com/player.html?autoplay=true&autopause=false&muted=true&loop=false&url=https%3A%2F%2Fvimeo.com%2F490549070&poster=&time=false&progressBar=true&overlay=true&muteButton=true&fullscreenButton=true&style=light&quality=1080p&playButton=true"
-              style={{
+              sx={{
                 position: "absolute",
                 height: "100%",
                 width: "100%",
@@ -294,7 +294,7 @@ function Index({ data: { talent, tags } }) {
           loop
           playsInline
         >
-          <source src={Logo} type="video/mp4"></source>
+          <source src={BackgroundVideo} type="video/mp4"></source>
         </video>
       </div>
       <Masonry
