@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
 
 import GlobalStyles from "../components/GlobalStyles"
 import SEO from "../components/SEO"
@@ -33,16 +32,26 @@ function PageNotFound() {
           zIndex: 10,
         }}
       >
-        <h1
-          sx={{
-            variant: "text.body",
-            fontSize: [1, 1, 3],
-            textTransform: "uppercase",
-          }}
-        >
-          Page Not Found
-        </h1>
-        <Link to="/">Home</Link>
+        <div sx={{ textAlign: "center" }}>
+          <h1
+            sx={{
+              textTransform: "uppercase",
+              fontFamily: "display",
+              fontSize: [1, 1, 2],
+            }}
+          >
+            Page Not Found
+          </h1>
+          <Link
+            sx={{
+              fontFamily: "body",
+              fontSize: [1, 1, 1],
+            }}
+            to="/"
+          >
+            BACK TO HOME
+          </Link>
+        </div>
       </div>
     </div>
   )
@@ -52,8 +61,8 @@ const Emblem = () => {
   return (
     <div
       sx={{
-        width: ["200px", "200px", "300px"],
-        height: ["200px", "200px", "300px"],
+        width: ["300px", "300px", "300px"],
+        height: ["300px", "300px", "300px"],
         animation: "spin 30s linear infinite",
         zIndex: 1,
       }}

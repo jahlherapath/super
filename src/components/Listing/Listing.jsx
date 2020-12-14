@@ -130,7 +130,7 @@ export default ({
           })
           .slice(1)}
       </Masonry>
-      {!!Number(numPages) && (
+      {/* {!!Number(numPages) && (
         <div
           sx={{
             position: "relative",
@@ -228,7 +228,7 @@ export default ({
             <div />
           )}
         </div>
-      )}
+      )} */}
     </Fragment>
   )
 }

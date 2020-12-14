@@ -124,7 +124,7 @@ function Index({ data: { talent, tags } }) {
 
     useEffect(() => {
       localStorage.setItem(localStorageKey, value)
-    }, [value])
+    }, [localStorageKey, value])
 
     return [value === "true", setValue]
   }
@@ -205,7 +205,6 @@ function Index({ data: { talent, tags } }) {
           />
         </div>
       )}
-      {console.log(value)}
       {value && (
         <div
           sx={{
@@ -233,6 +232,7 @@ function Index({ data: { talent, tags } }) {
             }}
           >
             <iframe
+              title="Super Intro Video"
               frameBorder={0}
               allowFullScreen
               scrolling="no"

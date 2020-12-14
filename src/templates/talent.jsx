@@ -387,7 +387,7 @@ function Talent({
                 flexWrap: "wrap",
                 justifyContent: "space-between",
                 mt: 5,
-                border: ["none", "none", "1px solid #dcdcdc"],
+                // border: ["none", "none", "1px solid #dcdcdc"],
                 height: "35px",
               }}
             >
@@ -397,21 +397,21 @@ function Talent({
                     display: "flex",
                     alignItems: "center",
                     zIndex: 20,
-                    borderTop: [
-                      "1px solid #dcdcdc",
-                      "1px solid #dcdcdc",
-                      "none",
-                    ],
-                    borderLeft: [
-                      "1px solid #dcdcdc",
-                      "1px solid #dcdcdc",
-                      "none",
-                    ],
-                    borderRight: [
-                      "1px solid #dcdcdc",
-                      "1px solid #dcdcdc",
-                      "none",
-                    ],
+                    // borderTop: [
+                    //   "1px solid #dcdcdc",
+                    //   "1px solid #dcdcdc",
+                    //   "none",
+                    // ],
+                    // borderLeft: [
+                    //   "1px solid #dcdcdc",
+                    //   "1px solid #dcdcdc",
+                    //   "none",
+                    // ],
+                    // borderRight: [
+                    //   "1px solid #dcdcdc",
+                    //   "1px solid #dcdcdc",
+                    //   "none",
+                    // ],
                     width: ["100%", "100%", "auto"],
                     height: "100%",
                     px: 3,
@@ -435,26 +435,26 @@ function Talent({
                     alignItems: "center",
                     justifyContent: ["flex-end", "flex-end", "flex-start"],
                     zIndex: 20,
-                    borderTop: [
-                      "1px solid #dcdcdc",
-                      "1px solid #dcdcdc",
-                      "none",
-                    ],
-                    borderBottom: [
-                      "1px solid #dcdcdc",
-                      "1px solid #dcdcdc",
-                      "none",
-                    ],
-                    borderLeft: [
-                      "1px solid #dcdcdc",
-                      "1px solid #dcdcdc",
-                      "none",
-                    ],
-                    borderRight: [
-                      "1px solid #dcdcdc",
-                      "1px solid #dcdcdc",
-                      "none",
-                    ],
+                    // borderTop: [
+                    //   "1px solid #dcdcdc",
+                    //   "1px solid #dcdcdc",
+                    //   "none",
+                    // ],
+                    // borderBottom: [
+                    //   "1px solid #dcdcdc",
+                    //   "1px solid #dcdcdc",
+                    //   "none",
+                    // ],
+                    // borderLeft: [
+                    //   "1px solid #dcdcdc",
+                    //   "1px solid #dcdcdc",
+                    //   "none",
+                    // ],
+                    // borderRight: [
+                    //   "1px solid #dcdcdc",
+                    //   "1px solid #dcdcdc",
+                    //   "none",
+                    // ],
                     width: ["100%", "100%", "auto"],
                     height: "100%",
                     px: 3,
