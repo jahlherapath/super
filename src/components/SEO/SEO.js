@@ -68,7 +68,31 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <meta itemprop="name" content="Super" />
+      <meta itemprop="description" content="1000% Super Real" />
+      <meta
+        itemprop="image"
+        content="https://images.prismic.io/sssssuper/522c2a19-ea4d-48ce-9931-4c161f64fe0b_android-chrome-512x512.png?auto=compress,format"
+      />
+
+      <meta property="og:url" content="https://sssssuper.com/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Super" />
+      <meta property="og:description" content="1000% Super Real" />
+      <meta
+        property="og:image"
+        content="https://images.prismic.io/sssssuper/522c2a19-ea4d-48ce-9931-4c161f64fe0b_android-chrome-512x512.png?auto=compress,format"
+      />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Super" />
+      <meta name="twitter:description" content="1000% Super Real" />
+      <meta
+        name="twitter:image"
+        content="https://images.prismic.io/sssssuper/522c2a19-ea4d-48ce-9931-4c161f64fe0b_android-chrome-512x512.png?auto=compress,format"
+      />
+    </Helmet>
   )
 }
 

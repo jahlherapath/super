@@ -20,13 +20,14 @@ function About({ data: { about } }) {
         <MotionLink
           to="/about"
           activeClassName="active"
-          animate={{ backgroundPosition: "left bottom", color: "white" }}
+          animate={{ backgroundPosition: "left bottom", color: "black" }}
           transition={{
             type: "spring",
             stiffness: 260,
             damping: 20,
             duration: 0.2,
           }}
+          sx={{}}
         >
           <span>About</span>
         </MotionLink>
@@ -40,21 +41,16 @@ function About({ data: { about } }) {
           <span>Talent</span>
         </Link>
       </SideNavigationLeft>
-      <SideNavigationRight>
-        <a
-          sx={{
-            fontFamily: "body",
-            fontSize: [1, 1, 2],
-            textTransform: "uppercase",
-          }}
-          href={"mailto:" + about.data.email.text}
-          aria-label="Email"
-        >
-          Email Super
-        </a>
-      </SideNavigationRight>
-      <Container>
-        <Left>
+      <SideNavigationRight></SideNavigationRight>
+      <div
+        sx={{
+          p: [4, 4, 5],
+          backgroundColor: "black",
+          color: "white",
+          minHeight: "100vh",
+        }}
+      >
+        <Intro>
           <div
             sx={{
               variant: "styles.about",
@@ -62,6 +58,8 @@ function About({ data: { about } }) {
             }}
             dangerouslySetInnerHTML={{ __html: about.data.about.html }}
           />
+        </Intro>
+        <Content>
           <Columns>
             <Title>Services</Title>
             <div
@@ -80,18 +78,7 @@ function About({ data: { about } }) {
               dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
             />
           </Columns>
-        </Left>
-        <Right>
-          <div
-            sx={{
-              position: ["relative", "relative", "sticky"],
-              top: ["auto", "auto", "97px"],
-              border: "1px solid white",
-              p: 4,
-              background:
-                "radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 96, 0.7) 0%, rgba(196, 196, 196, 0) 100%)",
-            }}
-          >
+          <Columns>
             <Title>Contact</Title>
             <Row>
               <div sx={{ variant: "styles.html" }}>
@@ -101,7 +88,6 @@ function About({ data: { about } }) {
                       mr: 3,
                     }}
                     href={"mailto:" + about.data.email.text}
-                    aria-label="Email"
                   >
                     Email Us
                   </a>
@@ -115,7 +101,6 @@ function About({ data: { about } }) {
                       href={
                         "https://www.instagram.com/" + about.data.instagram.text
                       }
-                      aria-label="Instagram"
                     >
                       @{about.data.instagram.text}
                     </a>
@@ -137,31 +122,80 @@ function About({ data: { about } }) {
             <Row>
               {about.data.contact.html && (
                 <div
-                  sx={{ variant: "styles.html", p: { m: 0 } }}
+                  sx={{ variant: "styles.html" }}
                   dangerouslySetInnerHTML={{
                     __html: about.data.contact.html,
                   }}
                 />
               )}
             </Row>
-          </div>
-        </Right>
-      </Container>
+          </Columns>
+        </Content>
+      </div>
     </Layout>
   )
 }
 
 export default About
 
+const Intro = ({ children }) => {
+  return (
+    <div
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(12, 1fr)",
+        py: 7,
+      }}
+    >
+      <div
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gridColumnStart: [1, 1, 1],
+          gridColumnEnd: [13, 13, 13],
+          textAlign: "center",
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
+const Content = ({ children }) => {
+  return (
+    <div
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(6, 1fr)",
+        gridColumnGap: 5,
+        gridRowGap: 5,
+        mt: 7,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
 const Columns = ({ children }) => {
-  return <div sx={{ mb: 6 }}>{children}</div>
+  return (
+    <div
+      sx={{
+        gridColumn: ["span 6", "span 6", "span 2"],
+      }}
+    >
+      {children}
+    </div>
+  )
 }
 
 const Title = ({ children }) => {
   return (
     <h3
       sx={{
-        variant: "styles.about",
+        variant: "text.body",
         fontSize: 9,
         mb: 3,
       }}
@@ -172,68 +206,13 @@ const Title = ({ children }) => {
 }
 
 const Row = ({ children }) => {
-  return <div>{children}</div>
-}
-
-const Container = ({ children }) => {
-  return (
-    <div
-      sx={{
-        position: "relative",
-        display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
-        p: [4, 4, 5],
-        backgroundColor: "black",
-        color: "white",
-      }}
-    >
-      {children}
-    </div>
-  )
-}
-
-const Left = ({ children }) => {
-  return (
-    <div
-      sx={{
-        position: ["relative", "relative", "sticky"],
-        top: [0, 0, 12],
-        alignSelf: "flex-start",
-        gridColumn: ["span 2", "span 2", "span 1"],
-        pr: [0, 0, 7],
-      }}
-    >
-      {children}
-    </div>
-  )
-}
-
-const Right = ({ children }) => {
-  return (
-    <div
-      sx={{
-        gridColumn: ["span 2", "span 2", "span 1"],
-        pl: [0, 0, 7],
-      }}
-    >
-      {children}
-    </div>
-  )
+  return <div sx={{ mb: 3 }}>{children}</div>
 }
 
 export const aboutQuery = graphql`
   query AboutQuery {
     about: prismicInfo {
       data {
-        side_image {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1200, quality: 90) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
         about {
           html
         }
