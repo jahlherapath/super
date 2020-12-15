@@ -26,7 +26,7 @@ function Index() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "rgba(0,12,255,0.95)",
+          backgroundColor: "#d3f323",
           overflow: "hidden",
         }}
       >

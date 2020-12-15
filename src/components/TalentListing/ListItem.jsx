@@ -25,7 +25,16 @@ function Card({ node, index }) {
           }}
         >
           <p sx={{ fontSize: 1, p: 0, m: 0 }}>{node.data.name.text}</p>
-          <p sx={{ fontFamily: "display", fontSize: 2, p: 0, m: 0 }}>
+          <p
+            sx={{
+              fontFamily: "display",
+              fontStyle: "italic",
+              fontWeight: "medium",
+              fontSize: 2,
+              p: 0,
+              m: 0,
+            }}
+          >
             {node.data.location.text}
           </p>
         </div>

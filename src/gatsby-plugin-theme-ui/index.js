@@ -41,8 +41,9 @@ export default {
     display: {
       color: "inherit",
       fontFamily: "display",
+      fontStyle: "italic",
+      fontWeight: "medium",
       lineHeight: "leadingTight",
-      fontWeight: "regular",
       mt: 0,
       mb: 0,
       wordBreak: "break-all",
@@ -90,7 +91,8 @@ export default {
       },
       strong: {
         fontFamily: "display",
-        fontWeight: "regular",
+        fontStyle: "italic",
+        fontWeight: "medium",
       },
     },
     date: {

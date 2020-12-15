@@ -38,6 +38,8 @@ function PageNotFound() {
             sx={{
               textTransform: "uppercase",
               fontFamily: "display",
+              fontStyle: "italic",
+              fontWeight: "medium",
               fontSize: [1, 1, 2],
             }}
           >
