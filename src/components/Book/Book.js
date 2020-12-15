@@ -21,12 +21,13 @@ function Book() {
           }}
         >
           {loading && (
-            <div>
+            <div sx={{ minHeight: "100vh" }}>
               <p
                 sx={{
                   variant: "styles.html",
                   fontWeight: "regular",
-                  backgroundColor: "babyBlue",
+                  color: "white",
+                  backgroundColor: "black",
                 }}
               >
                 Loading...
@@ -34,12 +35,13 @@ function Book() {
             </div>
           )}
           {error && (
-            <div>
+            <div sx={{ minHeight: "100vh" }}>
               <p
                 sx={{
                   variant: "styles.html",
                   fontWeight: "regular",
-                  backgroundColor: "orange",
+                  color: "white",
+                  backgroundColor: "black",
                 }}
               >
                 Your information was not sent. Please try again later.
@@ -47,12 +49,13 @@ function Book() {
             </div>
           )}
           {success && (
-            <div>
+            <div sx={{ minHeight: "100vh" }}>
               <p
                 sx={{
                   variant: "styles.html",
                   fontWeight: "regular",
-                  backgroundColor: "lightGreen",
+                  color: "white",
+                  backgroundColor: "black",
                 }}
               >
                 We got your message! Our team will get to your soon.
