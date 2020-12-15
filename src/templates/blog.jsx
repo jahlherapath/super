@@ -42,7 +42,7 @@ export default ({
       <Link to="/casting" activeClassName="active" sx={{}}>
         <span>Casting</span>
       </Link>
-      <Link to="/">
+      <Link to="/talent">
         <span>Talent</span>
       </Link>
     </SideNavigationLeft>

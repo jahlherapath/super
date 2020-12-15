@@ -14,9 +14,10 @@ function PageNotFound() {
         alignItems: "center",
         justifyContent: "center",
         minHeight: "100vh",
+        backgroundColor: "lightGreen",
       }}
     >
-      <SEO title="Page Not Found" />
+      <SEO title="404" />
       <Emblem />
       <GlobalStyles />
       <div
@@ -47,7 +48,7 @@ function PageNotFound() {
               fontFamily: "body",
               fontSize: [1, 1, 1],
             }}
-            to="/"
+            to="/talent"
           >
             BACK TO HOME
           </Link>
