@@ -66,6 +66,10 @@ export const pageQuery = graphql`
         uid
         id
         data {
+          date_background_color
+          date_color
+          title_background_color
+          title_color
           date(formatString: "MMMM Do, YYYY")
           thumbnail {
             localFile {

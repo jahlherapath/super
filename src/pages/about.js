@@ -41,7 +41,19 @@ function About({ data: { about } }) {
           <span>Talent</span>
         </Link>
       </SideNavigationLeft>
-      <SideNavigationRight></SideNavigationRight>
+      <SideNavigationRight>
+        <a
+          sx={{
+            fontFamily: "body",
+            fontSize: [1, 1, 2],
+            textTransform: "uppercase",
+          }}
+          href={"mailto:" + about.data.email.text}
+          aria-label="Email"
+        >
+          Email Super
+        </a>
+      </SideNavigationRight>
       <div
         sx={{
           p: [4, 4, 5],
@@ -54,7 +66,7 @@ function About({ data: { about } }) {
           <div
             sx={{
               variant: "styles.about",
-              mb: 5,
+              mb: [0, 0, 5],
             }}
             dangerouslySetInnerHTML={{ __html: about.data.about.html }}
           />
@@ -196,7 +208,7 @@ const Title = ({ children }) => {
     <h3
       sx={{
         variant: "text.body",
-        fontSize: 9,
+        fontSize: [8, 9, 10],
         mb: 3,
       }}
     >

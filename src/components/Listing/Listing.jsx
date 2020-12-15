@@ -31,104 +31,20 @@ export default ({
 
   return (
     <Fragment>
-      {isFirst && (
-        <div
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gridColumnGap: 5,
-          }}
-        >
-          <div
-            sx={{
-              gridColumn: ["span 2", "span 2", "span 1"],
-              mb: 5,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              order: [2, 2, 0],
-            }}
-          >
-            <Link to={`/${posts[0].uid}`}>
-              <h2
-                sx={{
-                  fontFamily: "display",
-                  fontStyle: "italic",
-                  fontWeight: "medium",
-                  mt: 0,
-                  mb: 2,
-                  mr: [0, 0, 6],
-                  textAlign: ["center", "center", "left"],
-                  fontSize: ["32px", "32px", 12],
-                }}
-              >
-                {posts[0].data.title.text}
-              </h2>
-            </Link>
-            <div
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                flexDirection: ["column", "column", "row"],
-              }}
-            >
-              <p sx={{ variant: "styles.date", mb: 0 }}>{posts[0].data.date}</p>
-              <div sx={{ mt: [4, 4, "-6px"] }}>
-                {posts[0].data.categories.map(cat => {
-                  return (
-                    <Link
-                      to={`/categories/${kebabCase(
-                        cat.category.document[0].data.name
-                      )}`}
-                      sx={{
-                        variant: "styles.category",
-                        mr: 2,
-                        mb: 2,
-                      }}
-                    >
-                      {cat.category.document[0].data.name}
-                    </Link>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-          <Link
-            to={`/${posts[0].uid}`}
-            sx={{
-              gridColumn: ["span 2", "span 2", "span 1"],
-              mb: 4,
-              textAlign: "center",
-            }}
-          >
-            {posts[0].data.thumbnail && (
-              <Img
-                fluid={posts[0].data.thumbnail.localFile.childImageSharp.fluid}
-                sx={{ mb: 3 }}
-              />
-            )}
-          </Link>
-        </div>
-      )}
       <Masonry
         breakpointCols={responsiveColumns}
         className="grid-talent"
         columnClassName="column"
       >
-        {posts
-          .map(post => {
-            let categories = false
-            if (post.data.categories[0].category) {
-              categories = post.data.categories.map(
-                c => c.category.document[0].data.name
-              )
-            }
-            return (
-              <ListItem key={post.uid} node={post} categories={categories} />
+        {posts.map(post => {
+          let categories = false
+          if (post.data.categories[0].category) {
+            categories = post.data.categories.map(
+              c => c.category.document[0].data.name
             )
-          })
-          .slice(1)}
+          }
+          return <ListItem key={post.uid} node={post} categories={categories} />
+        })}
       </Masonry>
       {/* {!!Number(numPages) && (
         <div
