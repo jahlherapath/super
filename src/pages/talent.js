@@ -385,7 +385,7 @@ function Model({ model, isSelected, onChange, index }) {
 export const indexQuery = graphql`
   query IndexQuery {
     talent: allPrismicTalent(
-      sort: { fields: [data___name___text], order: DESC }
+      sort: { fields: [data___name___text], order: ASC }
     ) {
       nodes {
         uid

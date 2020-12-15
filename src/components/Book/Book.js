@@ -80,17 +80,22 @@ function Book() {
                   selectedModels.map(i => i.name).join(", ")
                 }
               />
-              <label htmlFor="name" sx={{ variant: "styles.label" }}>
+              <label htmlFor="name" id="name" sx={{ variant: "styles.label" }}>
                 Name *
               </label>
               <input
                 sx={{ variant: "styles.input" }}
+                id="name"
                 type="text"
                 name="name"
                 placeholder="First and last name"
                 required
               />
-              <label htmlFor="company" sx={{ variant: "styles.label" }}>
+              <label
+                htmlFor="company"
+                id="company"
+                sx={{ variant: "styles.label" }}
+              >
                 Company name
               </label>
               <input
@@ -193,7 +198,9 @@ function TalentSelection() {
   return (
     <div sx={{ display: "flex", mb: 3 }}>
       {selectedModels.length > 0 && (
-        <label sx={{ minWidth: "130px", mr: 2 }}>Selected Talent:</label>
+        <span sx={{ color: "hibiscusPink", minWidth: "130px", mr: 2 }}>
+          Selected Talent:
+        </span>
       )}
       <span
         sx={{

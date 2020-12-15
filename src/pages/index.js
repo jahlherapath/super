@@ -32,7 +32,7 @@ function Index() {
       >
         <div
           sx={{
-            width: ["500px", "500px", "720px"],
+            width: ["320px", "500px", "720px"],
             paddingTop: "56.25%",
             position: "relative",
             overflow: "hidden",
