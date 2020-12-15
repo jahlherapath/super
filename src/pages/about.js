@@ -72,26 +72,7 @@ function About({ data: { about } }) {
           />
         </Intro>
         <Content>
-          <Columns>
-            <Title>Services</Title>
-            <div
-              sx={{
-                variant: "styles.html",
-              }}
-              dangerouslySetInnerHTML={{ __html: about.data.services.html }}
-            />
-          </Columns>
-          <Columns>
-            <Title>Talent</Title>
-            <div
-              sx={{
-                variant: "styles.html",
-              }}
-              dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
-            />
-          </Columns>
-          <Columns>
-            <Title>Contact</Title>
+          <Contact>
             <Row>
               <div sx={{ variant: "styles.html" }}>
                 {about.data.email.text && (
@@ -141,6 +122,26 @@ function About({ data: { about } }) {
                 />
               )}
             </Row>
+          </Contact>
+        </Content>
+        <Content>
+          <Columns>
+            <Title>Services</Title>
+            <div
+              sx={{
+                variant: "styles.html",
+              }}
+              dangerouslySetInnerHTML={{ __html: about.data.services.html }}
+            />
+          </Columns>
+          <Columns>
+            <Title>Talent</Title>
+            <div
+              sx={{
+                variant: "styles.html",
+              }}
+              dangerouslySetInnerHTML={{ __html: about.data.talent.html }}
+            />
           </Columns>
         </Content>
       </div>
@@ -156,7 +157,8 @@ const Intro = ({ children }) => {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(12, 1fr)",
-        py: 7,
+        pt: 7,
+        pb: 0,
       }}
     >
       <div
@@ -183,7 +185,22 @@ const Content = ({ children }) => {
         gridTemplateColumns: "repeat(6, 1fr)",
         gridColumnGap: 5,
         gridRowGap: 5,
-        mt: 7,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const Contact = ({ children }) => {
+  return (
+    <div
+      sx={{
+        gridColumn: ["span 6", "span 6", "span 6"],
+        textAlign: "center",
+        mt: [7, 7, 4],
+        mb: 9,
+        mx: "auto",
       }}
     >
       {children}
@@ -195,7 +212,7 @@ const Columns = ({ children }) => {
   return (
     <div
       sx={{
-        gridColumn: ["span 6", "span 6", "span 2"],
+        gridColumn: ["span 6", "span 6", "span 3"],
       }}
     >
       {children}
