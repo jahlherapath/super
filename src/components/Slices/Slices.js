@@ -5,6 +5,7 @@ import { Fragment, useState, useRef, useCallback } from "react"
 
 import Img from "gatsby-image"
 
+import ReactPlayer from "react-player/lazy"
 import Slider from "react-slick"
 
 import "slick-carousel/slick/slick.css"
@@ -90,12 +91,38 @@ function SectionContent(sectionData) {
   )
 }
 
+function SectionVideo(sectionData) {
+  return (
+    <Fragment>
+      {sectionData.items.map((content, index) => (
+        <div sx={{ position: "relative", pt: "56.25%", mt: 5, mb: 4 }}>
+          <ReactPlayer
+            sx={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100%",
+            }}
+            url={content.embed_url.embed_url}
+            width="100%"
+            height="100%"
+            controls
+          />
+        </div>
+      ))}
+    </Fragment>
+  )
+}
+
 const Slices = ({ sectionData, sectionType }) => {
   switch (sectionType) {
     case "image_gallery":
       return <SectionImageGallery {...sectionData} />
     case "content":
       return <SectionContent {...sectionData} />
+    case "video_embed_block":
+      return <SectionVideo {...sectionData} />
     default:
       return null
   }

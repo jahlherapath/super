@@ -31,7 +31,7 @@ export default ({
         <span>About</span>
       </Link>
       <MotionLink
-        to="/about"
+        to="/blog"
         activeClassName="active"
         className="active"
         animate={{ backgroundPosition: "left bottom", color: "white" }}
@@ -199,6 +199,15 @@ export const pageQuery = graphql`
                     }
                   }
                 }
+              }
+            }
+          }
+          ... on PrismicPostBodyVideoEmbedBlock {
+            id
+            slice_type
+            items {
+              embed_url {
+                embed_url
               }
             }
           }
