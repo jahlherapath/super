@@ -67,10 +67,19 @@ function SectionImageGallery(sectionData) {
       )}
       <Slider ref={slider} {...settings}>
         {sectionData.items.map((image, index) => (
-          <Img
-            key={index + activeSlide}
-            fluid={image.image.localFile.childImageSharp.fluid}
-          />
+          <div sx={{ position: "relative", pt: "56.25%", overflow: "hidden" }}>
+            <Img
+              sx={{
+                position: "absolute !important",
+                top: "0 !important",
+                left: "0 !important",
+                width: "100% !important",
+                height: "100% !important",
+              }}
+              key={index + activeSlide}
+              fluid={image.image.localFile.childImageSharp.fluid}
+            />
+          </div>
         ))}
       </Slider>
     </div>

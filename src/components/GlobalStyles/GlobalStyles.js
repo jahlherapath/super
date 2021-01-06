@@ -54,6 +54,9 @@ const GlobalStyles = () => {
           ".headroom": {
             zIndex: "999999 !important",
           },
+          ".slick-active": {
+            zIndex: "10 !important",
+          },
           "@media (max-width: 56em)": {
             ".grid-talent": { marginLeft: "-16px !important" },
             ".grid-gallery": { marginLeft: "-16px !important" },
