@@ -34,52 +34,26 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
     >
+      <meta name="description" content="We cast. We represent. We create." />
+
       <meta itemprop="name" content="Super" />
-      <meta itemprop="description" content="1000% Super Real" />
+      <meta
+        itemprop="description"
+        content="We cast. We represent. We create."
+      />
       <meta
         itemprop="image"
         content="https://images.prismic.io/sssssuper/522c2a19-ea4d-48ce-9931-4c161f64fe0b_android-chrome-512x512.png?auto=compress,format"
       />
 
-      <meta property="og:url" content="https://sssssuper.com/" />
+      <meta property="og:url" content="https://sssssuper.com" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content="Super" />
-      <meta property="og:description" content="1000% Super Real" />
+      <meta
+        property="og:description"
+        content="We cast. We represent. We create."
+      />
       <meta
         property="og:image"
         content="https://images.prismic.io/sssssuper/522c2a19-ea4d-48ce-9931-4c161f64fe0b_android-chrome-512x512.png?auto=compress,format"
@@ -87,7 +61,10 @@ function SEO({ description, lang, meta, title }) {
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Super" />
-      <meta name="twitter:description" content="1000% Super Real" />
+      <meta
+        name="twitter:description"
+        content="We cast. We represent. We create."
+      />
       <meta
         name="twitter:image"
         content="https://images.prismic.io/sssssuper/522c2a19-ea4d-48ce-9931-4c161f64fe0b_android-chrome-512x512.png?auto=compress,format"
