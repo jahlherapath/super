@@ -50,7 +50,7 @@ function PageNotFound() {
               fontFamily: "body",
               fontSize: [1, 1, 1],
             }}
-            to="/talent"
+            to="/"
           >
             BACK TO HOME
           </Link>

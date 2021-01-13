@@ -81,7 +81,7 @@ export default function Casting({ data: { casting, form } }) {
         >
           <span>Casting</span>
         </MotionLink>
-        <Link to="/talent" activeClassName="active">
+        <Link to="/" activeClassName="active">
           <span>Talent</span>
         </Link>
       </SideNavigationLeft>

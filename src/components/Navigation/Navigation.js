@@ -211,7 +211,7 @@ export default Navigation
 const Logo = () => {
   return (
     <Link
-      to="/talent"
+      to="/"
       sx={{
         position: "absolute",
         left: 0,

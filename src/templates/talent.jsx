@@ -114,7 +114,7 @@ function Talent({
           <span>Casting</span>
         </Link>
         <MotionLink
-          to="/talent"
+          to="/"
           activeClassName="active"
           className="active"
           animate={{ backgroundPosition: "left bottom", color: "white" }}
@@ -135,7 +135,7 @@ function Talent({
         <Container>
           <Left>
             <Link
-              to="/talent"
+              to="/"
               sx={{
                 display: ["none", "none", "flex"],
                 alignItems: "center",
@@ -472,7 +472,7 @@ function Talent({
           </Left>
           <Right>
             <Link
-              to="/talent"
+              to="/"
               sx={{
                 display: ["flex", "flex", "none"],
                 alignItems: "center",
